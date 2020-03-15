@@ -1,0 +1,11 @@
+pages:
+  image: node
+  stage: deploy
+  variables:
+    CI_DEBUG_TRACE: "true"
+  script:
+    - npm install
+    - npm run generate
+  artifacts:
+    paths:
+    - public

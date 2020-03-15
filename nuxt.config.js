@@ -51,6 +51,13 @@ export default {
    */
   axios: {},
   /*
+   ** Configure the generation of your universal web application to a static web application.
+   ** When launching nuxt generate Nuxt.js will use the configuration defined in the generate property.
+   */
+  generate: {
+    dir: 'public'
+  },
+  /*
    ** Build configuration
    */
   build: {
