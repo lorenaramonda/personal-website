@@ -1,20 +1,38 @@
+import dotenv from 'dotenv'
+// Load environment variables declared in .env into env.process
+dotenv.config()
+
 export default {
   mode: 'universal',
+  server: {
+    host: process.env.NUXT_HOST || 'localhost',
+    port: process.env.NUXT_PORT || 3000
+  },
   /*
    ** Headers of the page
    */
   head: {
-    title: process.env.npm_package_name || '',
+    htmlAttrs: {
+      lang: 'it'
+    },
+    title: 'Lorena Ramonda',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {
         hid: 'description',
         name: 'description',
-        content: process.env.npm_package_description || ''
+        content: 'Front End Developer'
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    script: [
+      {
+        src: 'https://platform.twitter.com/widgets.js',
+        defer: true,
+        body: true
+      }
+    ]
   },
   /*
    ** Customize the progress-bar color
@@ -23,11 +41,17 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: ['@/assets/scss/main.scss'],
+  /**
+   * Nuxtjs Style Resources configuration
+   */
+  styleResources: {
+    scss: './assets/scss/_variables.scss'
+  },
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: ['~/plugins/filters', '~/plugins/tooltip'],
   /*
    ** Nuxt.js dev-modules
    */
@@ -41,21 +65,110 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    // Doc: https://pwa.nuxtjs.org/
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    // Doc: https://nuxt-community.github.io/nuxt-i18n/
+    'nuxt-i18n',
+    // Doc: https://www.npmjs.com/package/@nuxtjs/style-resources
+    '@nuxtjs/style-resources',
+    // Doc: https://prismic-nuxt.js.org/docs/getting-started
+    '@nuxtjs/prismic',
+    // Doc: https://github.com/nuxt-community/svg-sprite-module
+    '@nuxtjs/svg-sprite',
+    // Doc: https://github.com/nuxt-community/gtm-module
+    '@nuxtjs/gtm',
+    // Doc: https://www.npmjs.com/package/nuxt-lazy-load/v/latest
+    [
+      'nuxt-lazy-load',
+      {
+        directiveOnly: true
+      }
+    ],
+    // Doc: https://github.com/netsells/nuxt-hotjar
+    [
+      '@netsells/nuxt-hotjar',
+      {
+        id: process.env.HOTJAR || '',
+        sv: '6'
+      }
+    ]
   ],
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
   axios: {},
+  /**
+   * I18n module configuration
+   * See https://nuxt-community.github.io/nuxt-i18n/options-reference.html
+   */
+  i18n: {
+    locales: [
+      {
+        name: 'Italiano',
+        code: 'it',
+        iso: 'it-IT',
+        file: 'it.js'
+      },
+      {
+        name: 'English',
+        code: 'en',
+        iso: 'en-US',
+        file: 'en.js'
+      }
+    ],
+    lazy: true,
+    langDir: 'langs/',
+    defaultLocale: 'it'
+  },
+  /**
+   * Prismic module configuration
+   */
+  prismic: {
+    endpoint: process.env.PRISMIC_URL,
+    linkResolver: '~/prismic/link-resolver.js'
+  },
+  /**
+   * SvgSprite module configuration
+   */
+  svgSprite: {
+    input: '~/assets/images/icons'
+  },
+  /**
+   * Google Tag Manager module configuration
+   */
+  gtm: {
+    id: process.env.GTM || ''
+  },
   /*
    ** Configure the generation of your universal web application to a static web application.
    ** When launching nuxt generate Nuxt.js will use the configuration defined in the generate property.
    */
   generate: {
     dir: 'public'
+  },
+  pwa: {
+    manifest: {
+      name: 'Lorena Ramonda',
+      short_name: 'Lorena R.',
+      start_url: '/index.html',
+      display: 'fullscreen',
+      background_color: '#fff',
+      description: 'Interact with Lorena',
+      lang: 'it-IT'
+    },
+    meta: {
+      author: 'Lorena Ramonda',
+      ogSiteName: 'Lorena Ramonda',
+      ogDescription: 'Front End Developer',
+      ogImage: '/images/social_image_for_sharing.png',
+      twitterCard: 'summary',
+      twitterSite: '@loreenaramonda',
+      twitterCreator: '@loreenaramonda',
+      nativeUI: true
+    }
   },
   /*
    ** Build configuration
@@ -64,6 +177,10 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    extend(config, ctx) {
+      if (ctx.isDev) {
+        config.devtool = ctx.isClient ? 'source-map' : 'inline-source-map'
+      }
+    }
   }
 }

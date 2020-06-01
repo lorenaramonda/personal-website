@@ -6,23 +6,27 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/0d2afc2b-cd8b-4606-9df1-aefcac7bfb39/deploy-status)](https://app.netlify.com/sites/lorenaramonda/deploys)
 
-The site is deployed via Netlify, at the moment reachable at https://lorenaramonda.netlify.com/.
+The site is deployed via Netlify, reachable at https://lorena.ramonda.me/.
 
-## Build Setup
+## Versioning
 
-``` bash
-# install dependencies
-$ npm run install
+Original code, work in progress and experiments are hosted by Gitlab.  
+Final code is hosted by Github and free to consult.
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+### Branches
 
-# build for production and launch server
-$ npm run build
-$ npm run start
+**master** Github (public) and Gitlab (private)  
+**develop** Only on Gitlab (private)  
+**features** Only on Gitlab (private)
 
-# generate static project
-$ npm run generate
-```
+### Flow
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+Original Git Flow with some rules:
+
+- Every featured branch must be **squashed** into one descriptive commit before **rebasing** it into develop
+
+## Upgrading
+
+👉 https://nuxtjs.org/guide/upgrading/
+
+Check Nuxt version: `npm view nuxt version`

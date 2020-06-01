@@ -1,55 +1,55 @@
 <template>
-  <div>
-    <nuxt />
+  <div class="layout" itemscope itemtype="http://schema.org/Person">
+    <a id="top" accesskey="1"></a>
+    <v-cookies v-if="false" />
+    <div class="stage">
+      <v-header />
+      <nuxt />
+      <v-socials />
+      <div class="stage__bottom">
+        <v-magic-button />
+      </div>
+    </div>
+    <!-- <v-nav />-->
+    <v-footer />
+    <!-- <v-overlay />-->
+    <a id="bottom" accesskey="2"></a>
   </div>
 </template>
 
-<style>
-html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
+<script>
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
+import Socials from '@/components/Socials'
+import MagicButton from '@/components/MagicButton'
+import Cookie from '@/components/Cookie'
 
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-  margin: 0;
+export default {
+  components: {
+    'v-header': Header,
+    'v-footer': Footer,
+    'v-socials': Socials,
+    'v-magic-button': MagicButton,
+    'v-cookies': Cookie
+  },
+  data: () => ({
+    isNavOpen: false
+  }),
+  head() {
+    return {
+      htmlAttrs: {
+        lang: this.$i18n.locale
+      }
+    }
+  }
 }
+</script>
 
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
-}
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+<style lang="scss">
+.site-wrapper {
+  transition: all 0.2s linear;
+  &--open {
+    transform: translateX(250px);
+  }
 }
 </style>

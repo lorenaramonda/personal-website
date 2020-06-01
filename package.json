@@ -6,6 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "nuxt",
+    "prod": "npm run build && npm run start",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
@@ -13,7 +14,7 @@
     "test": "jest"
   },
   "lint-staged": {
-    "*.{js,vue}": "eslint"
+    "*.{js,vue}": "npm run lint"
   },
   "husky": {
     "hooks": {
@@ -21,25 +22,35 @@
     }
   },
   "dependencies": {
-    "nuxt": "^2.0.0",
+    "@netsells/nuxt-hotjar": "^0.1.2",
     "@nuxtjs/axios": "^5.3.6",
+    "@nuxtjs/dotenv": "^1.4.0",
+    "@nuxtjs/gtm": "^2.2.3",
+    "@nuxtjs/prismic": "^1.2.1",
     "@nuxtjs/pwa": "^3.0.0-0",
-    "@nuxtjs/dotenv": "^1.4.0"
+    "@nuxtjs/style-resources": "^1.0.0",
+    "@nuxtjs/svg-sprite": "^0.4.10",
+    "nuxt": "^2.0.0",
+    "nuxt-i18n": "^6.5.0",
+    "nuxt-lazy-load": "^1.2.4",
+    "v-tooltip": "^2.0.3"
   },
   "devDependencies": {
-    "@nuxtjs/eslint-config": "^1.0.1",
+    "@nuxtjs/eslint-config": "^3.0.0",
     "@nuxtjs/eslint-module": "^1.0.0",
-    "babel-eslint": "^10.0.1",
-    "eslint": "^6.1.0",
-    "eslint-plugin-nuxt": ">=0.4.2",
-    "eslint-config-prettier": "^4.1.0",
-    "eslint-plugin-prettier": "^3.0.1",
-    "prettier": "^1.16.4",
-    "husky": "^2.6.0",
-    "lint-staged": "^8.2.1",
     "@vue/test-utils": "^1.0.0-beta.27",
-    "babel-jest": "^24.1.0",
-    "jest": "^24.1.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^26.0.1",
+    "eslint": "^6.1.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-nuxt": ">=0.4.2",
+    "eslint-plugin-prettier": "^3.0.1",
+    "husky": "^2.6.0",
+    "jest": "^26.0.1",
+    "lint-staged": "^8.2.1",
+    "node-sass": "^4.14.1",
+    "prettier": "^1.16.4",
+    "sass-loader": "^8.0.2",
     "vue-jest": "^4.0.0-0"
   }
 }

@@ -1,0 +1,52 @@
+//* COLORS */
+/**
+green summer: #87ded7 | rgb(135,222,215)
+pink fashion: #A11140 | rgb(161, 17, 64)
+*/
+$color-main: #87ded7;
+$color-main-darkest: darken($color-main, 20);
+$color-main-darker: darken($color-main, 10);
+$color-main-dark: lighten($color-main, 2);
+$color-main-light: lighten($color-main, 15);
+$color-main-lighter: lighten($color-main, 20);
+$color-main-lightest: lighten($color-main, 25);
+
+$color-text: #292828;
+$color-background: lighten($color-main, 18);
+$color-background-lightest: #ffffff;
+// fallback
+$color-bg: $color-background-lightest;
+
+//* TYPOGRAPHY */
+$base-font-size: 10px;
+$base-font-family: sans-serif;
+$font-family-title: 'BookEnd', Trebuchet, sans-serif;
+$font-family-text: 'Ruda', Verdana, sans-serif;
+
+//* URL */
+$path__img: "~assets/images/";
+$path__fonts: "~assets/fonts/";
+
+$fa-font-path: "~assets/fonts";
+
+//* LAYOUT */
+$gutter: 1.5rem;
+$gutter-inner: .9375rem;
+
+//* BREAKPOINTS */
+$small-breakpoint:  640px;
+$medium-breakpoint: 1024px;
+$large-breakpoint:  1440px;
+$xlarge-breakpoint: 1920px;
+
+$small-only: "only screen and (max-width: #{$small-breakpoint - 1})";
+
+$medium-down: "only screen and (max-width:#{$medium-breakpoint - 1})";
+$medium-up: "only screen and (min-width:#{$medium-breakpoint})";
+$medium-only: "only screen and (min-width:#{$medium-breakpoint)}) and (max-width:#{$medium-breakpoint - 1})";
+
+$large-up: "only screen and (min-width:#{$large-breakpoint})";
+$large-only: "only screen and (min-width:#{$large-breakpoint)}) and (max-width:#{$large-breakpoint - 1})";
+
+$xlarge-up: "only screen and (min-width:#{$xlarge-breakpoint})";
+$xlarge-only: "only screen and (min-width:#{$xlarge-breakpoint)}) and (max-width:#{$xlarge-breakpoint - 1})";
