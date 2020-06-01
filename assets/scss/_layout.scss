@@ -17,7 +17,7 @@ body {
 .stage {
   background-color: $color-bg;
   box-shadow: 0 2px 15px 3px rgba($color-main,0.8);
-  margin-bottom: 200px;
+  margin-bottom: 190px;
   border-bottom: solid 1px darken($color-main,10%);
   &__bottom {
     text-align: center;
@@ -28,7 +28,7 @@ body {
     }
   }
   @media #{$medium-up} {
-    margin-bottom: 99px;
+    margin-bottom: 110px;
   }
 }
 
@@ -129,7 +129,6 @@ body {
   line-height: normal;
   color: darken($color-main,15%);
   position: relative;
-  border-top: solid 1px $color-bg;
   
   @media #{$medium-down} {
     text-align: center;
