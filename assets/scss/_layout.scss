@@ -28,7 +28,7 @@ body {
     }
   }
   @media #{$medium-up} {
-    margin-bottom: 120px;
+    margin-bottom: 99px;
   }
 }
 
@@ -129,6 +129,7 @@ body {
   line-height: normal;
   color: darken($color-main,15%);
   position: relative;
+  border-top: solid 1px $color-bg;
   
   @media #{$medium-down} {
     text-align: center;
