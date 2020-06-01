@@ -2,6 +2,8 @@
 All notable changes to this project will be documented in this file. (http://keepachangelog.com/)
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.0.4] - 2010-06-01
+- Fixed meter matching
 
 ## [1.0.3] - 2010-06-01
 - Fixed header on tablet and update social image

@@ -11,7 +11,9 @@
       </div>
     </div>
     <!-- <v-nav />-->
-    <v-footer />
+    <div class="fixed">
+      <v-footer />
+    </div>
     <!-- <v-overlay />-->
     <a id="bottom" accesskey="2"></a>
   </div>
