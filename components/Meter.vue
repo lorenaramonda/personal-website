@@ -36,7 +36,7 @@ export default {
   computed: {
     stars() {
       const stars = []
-      for (let i = 0; i < this.max; i++) {
+      for (let i = 1; i <= this.max; i++) {
         stars.push({
           id: i,
           full: i <= this.value
