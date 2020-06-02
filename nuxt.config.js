@@ -128,7 +128,10 @@ export default {
    */
   prismic: {
     endpoint: process.env.PRISMIC_URL,
-    linkResolver: '~/prismic/link-resolver.js'
+    linkResolver: '~/prismic/link-resolver.js',
+    apiOptions: {
+      accessToken: process.env.PRISMIC_TOKEN
+    }
   },
   /**
    * SvgSprite module configuration

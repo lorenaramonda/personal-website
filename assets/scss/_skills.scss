@@ -10,7 +10,9 @@
     border-radius: 20px;
     position: relative;
     overflow: hidden;
-    cursor: help;
+    &.has-tooltip {
+      cursor: help;
+    }
     + .tags__single {
       margin-left: 1em;
     }

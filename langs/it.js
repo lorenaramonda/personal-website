@@ -26,7 +26,6 @@ export default {
   education: {
     title: 'Formazione',
     subtitle: 'Aggiornamenti',
-    at: 'presso',
     conference: 'conferenza',
     course: 'corso',
     coursePost: 'corso post-diploma',
@@ -56,7 +55,8 @@ export default {
     day: 'giorno',
     days: 'giornate',
     hours: 'ore',
-    for: 'per'
+    for: 'per',
+    at: 'presso'
   },
   rate: {
     beginner: 'Conoscenza base',
