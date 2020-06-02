@@ -76,6 +76,12 @@ body {
   }
 }
 
+.hobbies {
+  @media #{$medium-up} {
+    column-count: 2;
+  }
+}
+
 .fixed {
   width: 100%;
   bottom: 0;

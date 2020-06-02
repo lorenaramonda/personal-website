@@ -29,7 +29,7 @@
                 >{{ $t('education.magento.title') }}</a
               >
             </strong>
-            {{ $t('education.at') }}
+            {{ $t('misc.at') }}
             <em itemscope itemtype="http://schema.org/Organization">
               <span itemprop="name">
                 <a href="http://www.magentocommerce.com/" target="_blank" title="Magento Inc." rel="noreferrer">Magento Inc.</a> </span
@@ -38,7 +38,7 @@
           </li>
           <li>
             <strong class="item__title">{{ $t('education.coursePost') }} {{ $t('education.coursePostTitle') }} (600 {{ $t('misc.hours') }})</strong>
-            {{ $t('education.at') }}
+            {{ $t('misc.at') }}
             <em itemscope itemtype="http://schema.org/Organization">
               <span itemprop="name">Azienda di Formazione Professionale</span>, <span itemprop="address">Cuneo</span> - 2002/2003
             </em>
@@ -113,7 +113,7 @@
       </article>
       <article v-if="hobbies" id="hobbies" class="medium-6 column">
         <h2 class="section__title">{{ hobbies.title[0].text }}</h2>
-        <ul>
+        <ul class="hobbies">
           <li v-for="hobby in hobbies.items" :key="hobby.name">{{ hobby.name }}</li>
         </ul>
       </article>

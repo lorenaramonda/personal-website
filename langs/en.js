@@ -26,7 +26,6 @@ export default {
   education: {
     title: 'Education',
     subtitle: 'Updates',
-    at: 'at',
     conference: 'conference',
     course: 'course',
     coursePost: 'postgraduate course',
@@ -56,7 +55,8 @@ export default {
     day: 'day',
     days: 'days',
     hours: 'hours',
-    for: 'for'
+    for: 'for',
+    at: 'at'
   },
   rate: {
     beginner: 'Beginner',
