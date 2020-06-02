@@ -2,10 +2,10 @@
   <article id="work" class="medium-6 column p-experience textfade" data-readmore="Mostra di più">
     <h2 class="section__title">{{ $t('jobs.title') }}</h2>
     <dl>
-      <template v-for="job in jobs">
-        <dt :key="job.id">
+      <template v-for="(job, index) in jobs">
+        <dt :key="index">
           <strong class="item__title">{{ job.data.job_title[0].text }}</strong>
-          presso
+          {{ $t('misc.at') }}
           <em>
             <span itemprop="affiliation" class="p-org">{{ job.data.company_name[0].text }}</span
             >, {{ job.data.company_city[0].text }} - {{ job.data.start_date | justYear }}{{ getEndDate(job.data.end_date, job.data.start_date) }}
