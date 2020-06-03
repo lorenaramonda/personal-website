@@ -4,7 +4,9 @@
       <v-summary v-if="page" :title="page.summary_title" :content="page.summary_content" />
     </div>
 
-    <v-agenda />
+    <client-only>
+      <v-agenda />
+    </client-only>
 
     <div class="section row">
       <v-jobs v-if="jobs && jobs.length > 0" :jobs="jobs" />
@@ -45,7 +47,9 @@
           </li>
         </ul>
 
-        <v-next-meeting />
+        <client-only>
+          <v-next-meeting />
+        </client-only>
 
         <section>
           <h3 class="section__subtitle">{{ $t('education.subtitle') }}</h3>
