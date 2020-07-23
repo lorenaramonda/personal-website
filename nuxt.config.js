@@ -77,6 +77,8 @@ export default {
     '@nuxtjs/prismic',
     // Doc: https://github.com/nuxt-community/svg-sprite-module
     '@nuxtjs/svg-sprite',
+    // Doc: https://github.com/nuxt-community/sentry-module
+    '@nuxtjs/sentry',
     // Doc: https://github.com/nuxt-community/gtm-module
     '@nuxtjs/gtm',
     // Doc: https://www.npmjs.com/package/nuxt-lazy-load/v/latest
@@ -138,6 +140,15 @@ export default {
    */
   svgSprite: {
     input: '~/assets/images/icons'
+  },
+  /**
+   * Sentry module configuration
+   */
+  sentry: {
+    dsn: process.env.SENTRY_DNS,
+    config: {
+      // disableClientSide: true
+    }
   },
   /**
    * Google Tag Manager module configuration
