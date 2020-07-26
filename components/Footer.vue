@@ -13,8 +13,17 @@
         </template>
         <br />
         <small class="hide-for-small">
-          <!--{{ __('site.version') }} -->
-          <span>{{ $t('site.tecnology') }}</span>
+          <i18n path="site.tecnology" tag="span">
+            <template v-slot:framework>
+              <a href="https://nuxtjs.org/" target="_blank">Nuxt.js</a>
+            </template>
+            <template v-slot:host>
+              <a href="https://www.netlify.com/" target="_blank">Netlify</a>
+            </template>
+            <template v-slot:repo>
+              <a href="https://github.com/lorenaramonda/personal-website" target="_blank">Github</a>
+            </template>
+          </i18n>
         </small>
       </p>
     </div>
@@ -50,5 +59,11 @@ export default {
 <style scoped>
 .lang {
   text-transform: uppercase;
+}
+small a {
+  font-weight: bold;
+  text-decoration: underline;
+  color: inherit;
+  border-bottom: none;
 }
 </style>

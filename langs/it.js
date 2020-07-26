@@ -1,6 +1,6 @@
 export default {
   site: {
-    tecnology: 'Fatto con Nuxt.js, Prismic.io, Sass e tanto ♥',
+    tecnology: 'Fatto con {framework} e ospitato su {host} ♥ Codice sorgente su {repo}',
     privacy: 'Privacy Policy',
     magicButton: 'Fai la magia!',
     follow: 'Segui'
