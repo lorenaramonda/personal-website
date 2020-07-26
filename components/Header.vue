@@ -1,5 +1,5 @@
 <template>
-  <header class="row  column layout__header hcard">
+  <header class="row column layout__header hcard">
     <v-logo />
     <v-address />
     <v-picture />
