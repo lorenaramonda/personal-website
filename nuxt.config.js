@@ -62,7 +62,7 @@ export default {
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
    */
-  components: true,
+  components: { path: '~/components/', prefix: 'v' },
   /*
    ** Nuxt.js dev-modules
    */
@@ -84,6 +84,8 @@ export default {
     'nuxt-i18n',
     // Doc: https://www.npmjs.com/package/@nuxtjs/style-resources
     '@nuxtjs/style-resources',
+    // Doc: https://www.npmjs.com/package/cookie-universal-nuxt
+    'cookie-universal-nuxt',
     // Doc: https://prismic-nuxt.js.org/docs/getting-started
     '@nuxtjs/prismic',
     // Doc: https://github.com/nuxt-community/svg-sprite-module
@@ -163,7 +165,7 @@ export default {
   sentry: {
     dsn: process.env.SENTRY_DNS,
     config: {
-      // disableClientSide: true
+      disableClientSide: true
     }
   },
   /**

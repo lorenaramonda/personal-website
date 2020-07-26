@@ -61,9 +61,9 @@ export default {
     height: 20px;
     max-width: none;
     max-height: none;
-    fill: lighten($color-main, 15%);
+    fill: var(--color-main-light);
     &--full {
-      fill: darken($color-main, 10%);
+      fill: var(--color-main-darker);
     }
   }
   &__text {

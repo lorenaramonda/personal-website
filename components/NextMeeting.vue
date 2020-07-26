@@ -51,7 +51,7 @@ export default {
 .event {
   &--today {
     padding: 1em;
-    border: dashed 1px $color-main;
+    border: dashed 1px var(--color-main);
     margin: 1em 0;
     position: relative;
   }
@@ -61,11 +61,12 @@ export default {
   svg {
     max-height: 80px;
     width: 100px;
-    fill: rgba($color-main, 0.3);
+    fill: var(--color-main);
     font-size: 6em;
     position: absolute;
     top: 0.2em;
     right: 0.1em;
+    opacity: 0.3;
   }
   span[itemprop='location'] {
     span[itemprop='name'] {

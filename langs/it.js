@@ -5,6 +5,10 @@ export default {
     magicButton: 'Fai la magia!',
     follow: 'Segui'
   },
+  palette: {
+    ally: 'Passa alla palette con contrasto',
+    original: 'Passa alla palette originale'
+  },
   birthday: {
     annoncement: 'Oggi è il mio compleanno!',
     gifts: 'Sai cosa mi piacerebbe ricevere per il mio compleanno?'

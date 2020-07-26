@@ -24,13 +24,13 @@ export default {}
     width: 100%;
     height: auto;
     /* @media #{$medium-up} { */
-    outline: dashed 1px $color-main;
+    outline: dashed 1px var(--color-main);
     max-width: 200px;
     outline: none;
     border-radius: 1000px;
     padding: 5px;
     margin-top: 0.5em;
-    border: dashed 2px $color-main;
+    border: dashed 2px var(--color-main);
     /* } */
   }
   figcaption {
@@ -38,8 +38,8 @@ export default {}
     @media #{$medium-up} {
       line-height: 2em;
       text-align: center;
-      background-color: $color-main;
-      color: #fff;
+      background-color: var(--color-main);
+      color: var(--color-bg);
       font-size: 0.8em;
       padding: 0.2em 0.5em;
       display: block;

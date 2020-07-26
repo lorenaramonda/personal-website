@@ -51,7 +51,7 @@ export default {
   border-radius: 50%;
   margin: 0;
   border: none;
-  background-color: $color-main;
+  background-color: var(--color-main);
   font-size: 0;
   padding: 4px;
   box-sizing: border-box;
@@ -75,7 +75,7 @@ export default {
     }
   }
   &:active {
-    background-color: darken($color-main, 5%);
+    background-color: var(--color-main-dark);
     svg {
       animation: none;
       transform: rotate(0);

@@ -6,7 +6,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## unreleased
 
 - Installed Sentry
-- Upgrade Nuxt.js to v.2.13
+- Upgraded Nuxt.js to v.2.13
+- Converted color variables in CSS variables
+- Added Ally palette version
 
 ## [1.0.6] - 2010-06-02
 
