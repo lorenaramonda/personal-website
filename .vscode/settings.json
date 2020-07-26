@@ -1,5 +1,5 @@
 {
-  "editor.formatOnSave": false,
+  "editor.formatOnSave": true,
   "editor.maxTokenizationLineLength": 200,
   "editor.tabSize": 2,
   "editor.wordWrapColumn": 150,
@@ -11,5 +11,7 @@
   "prettier.requireConfig": true,
   "prettier.semi": false,
   "prettier.printWidth": 150,
-  "eslint.alwaysShowStatus": true
+  "eslint.alwaysShowStatus": true,
+  "prettier.trailingComma": "none",
+  "prettier.withNodeModules": true
 }

@@ -25,7 +25,7 @@ export default {
   margin-bottom: 2em;
   p {
     strong {
-      color: $color-main;
+      color: var(--color-main);
       font-weight: normal;
       font-size: 1.2em;
     }

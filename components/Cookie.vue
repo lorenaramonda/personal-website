@@ -31,22 +31,22 @@ export default {}
   &__content {
     position: relative;
     font-family: $font-family-text;
-    background-color: #cff2ef;
+    background-color: var(--color-main-lightest); //#cff2ef;
     text-align: center;
     padding: 1em;
   }
   a {
-    color: darken($color-main, 20%);
+    color: var(--color-main-darkest);
   }
   p {
     margin: 1em;
   }
   button {
-    background-color: darken($color-main, 2%);
+    background-color: var(--color-main-dark);
     border: none;
     font-family: $font-family-text;
     border-radius: 20px;
-    border-bottom: solid 3px darken($color-main, 20%);
+    border-bottom: solid 3px var(--color-main-darkest);
     padding: 0.5em 1.5em;
     cursor: pointer;
   }

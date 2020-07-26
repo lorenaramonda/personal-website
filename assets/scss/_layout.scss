@@ -3,22 +3,23 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   height: auto;
 }
 
 body {
-  background-color: $color-bg;
-  background-image: linear-gradient(to bottom, $color-bg 20%, lighten($color-main,18%) 80%);
+  background-color: var(--color-bg);
+  background-image: linear-gradient(to bottom, var(--color-bg) 20%, var(--color-main-lighter) 80%);
 }
 
 .stage {
-  background-color: $color-bg;
-  box-shadow: 0 2px 15px 3px rgba($color-main,0.8);
+  background-color: var(--color-bg);
+  box-shadow: 0 2px 15px 3px rgba(var(--color-main-rgb), 0.8);
   margin-bottom: 190px;
-  border-bottom: solid 1px darken($color-main,10%);
+  border-bottom: solid 1px var(--color-main-darker);
   &__bottom {
     text-align: center;
     max-height: 10px;
@@ -31,7 +32,6 @@ body {
     margin-bottom: 110px;
   }
 }
-
 
 .row {
   // padding: 0 $gutter;
@@ -67,12 +67,12 @@ body {
 
 .graph li {
   span {
-    float:right;
-    background-color: $color-main;
-    color: #fff;
+    float: right;
+    background-color: var(--color-main);
+    color: var(--color-bg);
     border-radius: 10px;
     padding: 0 0.5em;
-    font-weight:bold;
+    font-weight: bold;
   }
 }
 
@@ -97,14 +97,14 @@ body {
   p {
     margin: 0;
     a {
-      color: $color-main;
+      color: var(--color-main);
       text-decoration: none;
       &:hover {
-        border-bottom: dashed 1px $color-main;
+        border-bottom: dashed 1px var(--color-main);
       }
     }
     strong {
-      color: $color-main;
+      color: var(--color-main);
       font-weight: normal;
     }
   }
@@ -133,35 +133,36 @@ body {
 .layout__footer {
   padding: 1.2em 0;
   line-height: normal;
-  color: darken($color-main,15%);
+  color: var(--color-main-darker);
   position: relative;
-  
+
   @media #{$medium-down} {
     text-align: center;
   }
-  
-  p, li {
+
+  p,
+  li {
     text-shadow: none;
     margin: 0;
     padding: 0;
     a {
-      color: darken($color-main,15%);
-      text-decoration:none;
-      border-bottom:dashed 1px $color-main;
+      color: var(--color-main-darker);
+      text-decoration: none;
+      border-bottom: dashed 1px var(--color-main);
       &.nibbler {
         border: none;
       }
     }
   }
   small {
-    color: #666666;
+    color: var(--color-text-minor);
     font-size: 0.75em;
     margin: 1em 0;
     display: block;
     line-height: 1.5em;
   }
   .iubenda-white {
-    color: #666666;
+    color: var(--color-text-minor);
     font-size: 0.75em;
     margin: 1em auto;
     text-decoration: none;
@@ -178,7 +179,7 @@ body {
   }
   @media #{$medium-up} {
     .right {
-      text-align:right;
+      text-align: right;
     }
   }
 }

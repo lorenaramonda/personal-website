@@ -16,16 +16,20 @@
     <client-only>
       <v-email />
     </client-only>
+    <v-palette />
   </aside>
 </template>
 
 <script>
 import Birthday from './Birthday'
 import Email from './Email'
+import Palette from '@/components/PaletteSwitcher'
+
 export default {
   components: {
     'v-birthday': Birthday,
-    'v-email': Email
+    'v-email': Email,
+    'v-palette': Palette
   },
   computed: {
     otherLanguages() {

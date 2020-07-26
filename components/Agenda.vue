@@ -87,7 +87,7 @@ export default {
       padding-right: 1em;
       .day {
         font-size: 2.4em;
-        color: $color-main;
+        color: var(--color-main);
       }
       .month {
         display: block;

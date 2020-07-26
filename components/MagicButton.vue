@@ -9,7 +9,7 @@
         x="0"
         y="0"
         viewBox="0 0 512 512"
-        style="enable-background:new 0 0 512 512;"
+        style="enable-background: new 0 0 512 512;"
         xml:space="preserve"
         width="512px"
         height="512px"
@@ -51,7 +51,7 @@ export default {
   border-radius: 50%;
   margin: 0;
   border: none;
-  background-color: $color-main;
+  background-color: var(--color-main);
   font-size: 0;
   padding: 4px;
   box-sizing: border-box;
@@ -75,7 +75,7 @@ export default {
     }
   }
   &:active {
-    background-color: darken($color-main, 5%);
+    background-color: var(--color-main-dark);
     svg {
       animation: none;
       transform: rotate(0);

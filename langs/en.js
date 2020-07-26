@@ -1,9 +1,13 @@
 export default {
   site: {
-    tecnology: 'Made with Nuxt.js, Prismic.io, Sass and a lot of ♥',
+    tecnology: 'Made with {framework} e hosted on {host} ♥ Source code on {repo}',
     privacy: 'Privacy Policy',
     magicButton: 'Do the magic!',
     follow: 'Follow'
+  },
+  palette: {
+    ally: 'Switch to ally palette',
+    original: 'Switch to original palette'
   },
   birthday: {
     annoncement: "Today's my birthday!",

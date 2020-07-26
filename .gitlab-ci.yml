@@ -1,6 +1,8 @@
 pages:
   image: node
   stage: deploy
+  except:
+    - master
   variables:
     CI_DEBUG_TRACE: "true"
   script:

@@ -32,8 +32,8 @@ h1 {
   line-height: 1.3;
 }
 .button {
-  background-color: $color-main;
-  color: $color-bg;
+  background-color: var(--color-main);
+  color: var(--color-bg);
   padding: 0.5em 1em;
   text-decoration: none;
   border-radius: 5px;

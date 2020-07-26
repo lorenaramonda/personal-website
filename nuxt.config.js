@@ -1,15 +1,21 @@
-import dotenv from 'dotenv'
-// Load environment variables declared in .env into env.process
-dotenv.config()
-
 export default {
+  /*
+   ** Nuxt rendering mode
+   ** See https://nuxtjs.org/api/configuration-mode
+   */
   mode: 'universal',
+  /*
+   ** Nuxt target
+   ** See https://nuxtjs.org/api/configuration-target
+   */
+  target: 'static',
   server: {
     host: process.env.NUXT_HOST || 'localhost',
     port: process.env.NUXT_PORT || 3000
   },
   /*
    ** Headers of the page
+   ** See https://nuxtjs.org/api/configuration-head
    */
   head: {
     htmlAttrs: {
@@ -53,6 +59,11 @@ export default {
    */
   plugins: ['~/plugins/filters', '~/plugins/tooltip'],
   /*
+   ** Auto import components
+   ** See https://nuxtjs.org/api/configuration-components
+   */
+  components: { path: '~/components/', prefix: 'v' },
+  /*
    ** Nuxt.js dev-modules
    */
   buildModules: [
@@ -65,18 +76,22 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    // Doc: https://github.com/nuxt/content
+    '@nuxt/content',
     // Doc: https://pwa.nuxtjs.org/
     '@nuxtjs/pwa',
-    // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv',
     // Doc: https://nuxt-community.github.io/nuxt-i18n/
     'nuxt-i18n',
     // Doc: https://www.npmjs.com/package/@nuxtjs/style-resources
     '@nuxtjs/style-resources',
+    // Doc: https://www.npmjs.com/package/cookie-universal-nuxt
+    'cookie-universal-nuxt',
     // Doc: https://prismic-nuxt.js.org/docs/getting-started
     '@nuxtjs/prismic',
     // Doc: https://github.com/nuxt-community/svg-sprite-module
     '@nuxtjs/svg-sprite',
+    // Doc: https://github.com/nuxt-community/sentry-module
+    '@nuxtjs/sentry',
     // Doc: https://github.com/nuxt-community/gtm-module
     '@nuxtjs/gtm',
     // Doc: https://www.npmjs.com/package/nuxt-lazy-load/v/latest
@@ -100,6 +115,11 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {},
+  /*
+   ** Content module configuration
+   ** See https://content.nuxtjs.org/configuration
+   */
+  content: {},
   /**
    * I18n module configuration
    * See https://nuxt-community.github.io/nuxt-i18n/options-reference.html
@@ -138,6 +158,15 @@ export default {
    */
   svgSprite: {
     input: '~/assets/images/icons'
+  },
+  /**
+   * Sentry module configuration
+   */
+  sentry: {
+    dsn: process.env.SENTRY_DNS,
+    config: {
+      disableClientSide: true
+    }
   },
   /**
    * Google Tag Manager module configuration

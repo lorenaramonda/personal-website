@@ -1,26 +1,62 @@
-// Sass Variables Map
-$variablesMap: (
-color-main: $color-main,
-color-main-darker: $color-main-darker,
-color-main-dark: $color-main-dark,
-color-main-light: $color-main-light,
-color-main-lighter: $color-main-lighter,
-color-main-lightest: $color-main-lightest,
-color-background: $color-background,
-color-background-lightest: $color-background-lightest,
-color-text: $color-text,
+$noPalette: (
+  color-main: #000000,
+  color-main-rgb: '0, 0, 0',
+  color-main-darkest: darken(#000000, 20),
+  color-main-darker: darken(#000000, 15),
+  color-main-dark: darken(#000000, 5),
+  color-main-light: lighten(#000000, 15),
+  color-main-lighter: lighten(#000000, 18),
+  color-main-lightest: lighten(#000000, 25),
+  color-background: lighten(#000000, 18),
+  color-bg: #ffffff,
+  color-text: #292828,
+  color-text-minor: #666666
+);
+
+$originalPalette: (
+  color-main: $color-main-original,
+  color-main-rgb: '135, 222, 215',
+  color-main-darkest: darken($color-main-original, 20),
+  color-main-darker: darken($color-main-original, 15),
+  color-main-dark: darken($color-main-original, 5),
+  color-main-light: lighten($color-main-original, 15),
+  color-main-lighter: lighten($color-main-original, 18),
+  color-main-lightest: lighten($color-main-original, 25),
+  color-background: lighten($color-main-original, 18),
+  color-bg: #ffffff,
+  color-text: #292828,
+  color-text-minor: #666666
+);
+
+$allyPalette: (
+  color-main: $color-main-ally,
+  color-main-rgb: '161, 17, 64',
+  color-main-darkest: darken($color-main-ally, 20),
+  color-main-darker: darken($color-main-ally, 15),
+  color-main-dark: darken($color-main-ally, 2),
+  color-main-light: lighten($color-main-ally, 15),
+  color-main-lighter: lighten($color-main-ally, 40),
+  color-main-lightest: lighten($color-main-ally, 25),
+  color-background: lighten($color-main-ally, 18),
+  color-bg: #ffffff,
+  color-text: #292828,
+  color-text-minor: #ffffff
 );
 
 // :root custom properties generator
 :root {
-  @each $prop, $val in $variablesMap {
-    --#{$prop}: #{$val};
-  }
+  @include colors($allyPalette);
 }
 
 html {
   font-size: $base-font-size;
   font-family: $base-font-family;
+  &.palette--ally {
+    @include colors($allyPalette);
+  }
+  &.palette--original {
+    @include colors($originalPalette);
+  }
 }
 
 body {
@@ -30,7 +66,7 @@ body {
 }
 
 a {
-  color:$color-text;
+  color: $color-text;
 }
 strong {
   font-weight: 700;
@@ -48,7 +84,8 @@ abbr[title] {
   text-decoration: none;
 }
 
-img, svg {
+img,
+svg {
   max-width: 100%;
   max-height: 100%;
   width: auto;
@@ -72,7 +109,7 @@ img, svg {
     font-family: $font-family-title;
     font-size: 3em;
     line-height: normal;
-    color: $color-main;
+    color: var(--color-main);
     text-transform: uppercase;
     margin-bottom: 0.35em;
     @media #{$medium-up} {
@@ -84,20 +121,22 @@ img, svg {
     font-weight: bold;
     display: block;
   }
-  
+
   // misc section typography
-  ul, dl {
-    li, dd {
+  ul,
+  dl {
+    li,
+    dd {
       margin-bottom: 1em;
       clear: both;
       P {
-        line-height:normal;
-        font-size:0.85em;
+        line-height: normal;
+        font-size: 0.85em;
       }
       small {
-        display:block;
-        color:#999999;
-        line-height:1.5;
+        display: block;
+        color: lighten($color-text, 20%);
+        line-height: 1.5;
         font-size: 0.8em;
       }
       img {
@@ -109,23 +148,20 @@ img, svg {
       &.talk SPAN {
         font-size: 0.9em;
         font-weight: bold;
-        color: lighten($color-text,20%);
+        color: lighten($color-text, 20%);
         &:before {
           content: '>';
-          color: $color-main;
+          color: var(--color-main);
           margin-right: 0.3em;
         }
         A {
-          color: $color-main;
+          color: var(--color-main);
         }
       }
     }
   }
   a {
-    text-decoration:none;
-    border-bottom:dashed 1px #CCCCCC;
+    text-decoration: none;
+    border-bottom: dashed 1px #cccccc;
   }
-  
 }
-
-

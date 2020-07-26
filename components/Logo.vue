@@ -1,5 +1,5 @@
 <template>
-  <div class="logo hgroup card-name">
+  <div class="logo hgroup card-name" data-version="Ally version">
     <h1 itemprop="name" class="p-name"><strong class="p-given-name">Lorena</strong> <span class="p-family-name">Ramonda</span></h1>
     <h2 itemprop="jobTitle" class="p-job-title">{{ $t('job.title') }}</h2>
   </div>
@@ -20,7 +20,22 @@ export default {}
   line-height: normal;
   font-size: 1.4rem;
   margin: 2em 0;
-  /* max-height: 140px; */
+  background-color: var(--color-bg);
+
+  .palette--ally & {
+    position: relative;
+    &::after {
+      content: attr(data-version);
+      display: block;
+      background-color: var(--color-main);
+      color: var(--color-bg);
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 100%;
+      padding: 1rem 2rem;
+    }
+  }
   h1 {
     font-family: $font-family-title;
     font-size: 3.5em;
@@ -37,7 +52,7 @@ export default {}
   h2 {
     font-family: $font-family-title;
     text-transform: lowercase;
-    color: $color-main;
+    color: var(--color-main);
     font-size: 2em; //1.5em;
     font-weight: bold;
     @media #{$medium-up} {
