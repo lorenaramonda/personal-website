@@ -15,13 +15,13 @@
         <small class="hide-for-small">
           <i18n path="site.tecnology" tag="span">
             <template v-slot:framework>
-              <a href="https://nuxtjs.org/" target="_blank">Nuxt.js</a>
+              <a href="https://nuxtjs.org/" target="_blank" rel="noreferrer">Nuxt.js</a>
             </template>
             <template v-slot:host>
-              <a href="https://www.netlify.com/" target="_blank">Netlify</a>
+              <a href="https://www.netlify.com/" target="_blank" rel="noreferrer">Netlify</a>
             </template>
             <template v-slot:repo>
-              <a href="https://github.com/lorenaramonda/personal-website" target="_blank">Github</a>
+              <a href="https://github.com/lorenaramonda/personal-website" target="_blank" rel="noreferrer">Github</a>
             </template>
           </i18n>
         </small>
