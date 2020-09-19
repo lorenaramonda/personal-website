@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file. (http://keepachangelog.com/)
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## unreleased
+
+- Added publication section
+
 ## [1.1.1] - 2020-07-26
 
 - Fixed unsafe links to cross-origin destinations

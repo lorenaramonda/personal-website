@@ -43,6 +43,9 @@ export default {
     },
     topic: 'Topic'
   },
+  publications: {
+    title: 'Publications'
+  },
   skills: {
     title: 'Skills'
   },

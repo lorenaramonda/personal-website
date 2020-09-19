@@ -43,6 +43,9 @@ export default {
     },
     topic: 'Argomento'
   },
+  publications: {
+    title: 'Pubblicazioni'
+  },
   skills: {
     title: 'Conoscenze tecniche'
   },
