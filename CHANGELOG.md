@@ -3,9 +3,10 @@
 All notable changes to this project will be documented in this file. (http://keepachangelog.com/)
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## unreleased
+## [1.2.0] - 2020-09-19
 
 - Added publication section
+- Upgrade Nuxt.js to v2.14
 
 ## [1.1.1] - 2020-07-26
 
@@ -14,7 +15,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [1.1.0] - 2020-07-26
 
 - Installed Sentry
-- Upgraded Nuxt.js to v.2.13
+- Upgraded Nuxt.js to v2.13
 - Converted color variables in CSS variables
 - Added Ally palette version
 
