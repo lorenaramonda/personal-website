@@ -5,6 +5,9 @@ export default {
     magicButton: 'Do the magic!',
     follow: 'Follow'
   },
+  error: {
+    path: "The page {path} can't be found"
+  },
   palette: {
     ally: 'Switch to ally palette',
     original: 'Switch to original palette'

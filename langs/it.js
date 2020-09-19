@@ -5,6 +5,9 @@ export default {
     magicButton: 'Fai la magia!',
     follow: 'Segui'
   },
+  error: {
+    path: 'La pagina {path} non esiste'
+  },
   palette: {
     ally: 'Passa alla palette con contrasto',
     original: 'Passa alla palette originale'

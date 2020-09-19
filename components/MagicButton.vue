@@ -9,7 +9,7 @@
         x="0"
         y="0"
         viewBox="0 0 512 512"
-        style="enable-background: new 0 0 512 512;"
+        style="enable-background: new 0 0 512 512"
         xml:space="preserve"
         width="512px"
         height="512px"

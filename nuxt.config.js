@@ -3,7 +3,7 @@ export default {
    ** Nuxt rendering mode
    ** See https://nuxtjs.org/api/configuration-mode
    */
-  mode: 'universal',
+  // mode: 'universal',
   /*
    ** Nuxt target
    ** See https://nuxtjs.org/api/configuration-target
@@ -62,7 +62,7 @@ export default {
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
    */
-  components: { path: '~/components/', prefix: 'v' },
+  components: false,
   /*
    ** Nuxt.js dev-modules
    */
@@ -185,7 +185,7 @@ export default {
     manifest: {
       name: 'Lorena Ramonda',
       short_name: 'Lorena R.',
-      start_url: '/index.html',
+      start_url: '../index.html',
       display: 'fullscreen',
       background_color: '#fff',
       description: 'Interact with Lorena',

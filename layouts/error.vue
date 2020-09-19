@@ -1,8 +1,17 @@
 <template>
   <div class="row">
     <div class="column">
-      <h1 v-if="error.statusCode === 404">404</h1>
-      <h1 v-else>An error occurred</h1>
+      <template v-if="error.statusCode === 404">
+        <h1>404</h1>
+        <i18n path="error.path" tag="p">
+          <template #path>
+            {{ $route.path }}
+          </template>
+        </i18n>
+      </template>
+      <template v-else>
+        <h1>An error occurred</h1>
+      </template>
       <nuxt-link :to="localePath({ name: 'index' })" class="button">Home page</nuxt-link>
     </div>
   </div>
