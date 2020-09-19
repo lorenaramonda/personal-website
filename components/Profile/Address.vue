@@ -21,9 +21,9 @@
 </template>
 
 <script>
+import Palette from '@/components/PaletteSwitcher'
 import Birthday from './Birthday'
 import Email from './Email'
-import Palette from '@/components/PaletteSwitcher'
 
 export default {
   components: {
