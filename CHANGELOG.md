@@ -3,9 +3,10 @@
 All notable changes to this project will be documented in this file. (http://keepachangelog.com/)
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## unreleased
+## [1.3.0] - 2020-11-28
 
 - Added browser detection language redirect
+- Improved GitLab pipeline
 
 ## [1.2.0] - 2020-09-19
 
