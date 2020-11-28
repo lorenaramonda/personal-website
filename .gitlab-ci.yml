@@ -1,13 +1,22 @@
+image: node:12
+
+variables:
+  NODE_ENV: production
+  CI_DEBUG_TRACE: "true"
+
+before_script:
+  - npm install
+
+cache:
+  paths:
+    - node_modules/
+
 pages:
-  image: node
   stage: deploy
-  except:
-    - master
-  variables:
-    CI_DEBUG_TRACE: "true"
   script:
-    - npm install
     - npm run generate
   artifacts:
     paths:
     - public
+  except:
+    - master
