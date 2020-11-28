@@ -141,7 +141,12 @@ export default {
     ],
     lazy: true,
     langDir: 'langs/',
-    defaultLocale: 'it'
+    defaultLocale: 'it',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      onlyOnRoot: true
+    }
   },
   /**
    * Prismic module configuration
