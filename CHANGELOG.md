@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file. (http://keepachangelog.com/)
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.3.1] - 2020-11-29
+
+- Edited max number of skills to show
+
 ## [1.3.0] - 2020-11-28
 
 - Added browser detection language redirect
