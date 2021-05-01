@@ -1,5 +1,8 @@
+// TIPS from https://www.freecodecamp.org/news/web-fonts-in-2018-f191a48367e8/
+
 @mixin fontDownloadTime {
-  font-display: block;
+  font-display: swap;
+  unicode-range: U+000-5FF;
 }
 
 @font-face {
@@ -7,8 +10,7 @@
   font-family: 'BookEnd';
   font-weight: normal;
   font-style: normal;
-  src: url('#{$path__fonts}/bookendswithaccents.woff2') format('woff2'), url('#{$path__fonts}/bookendswithaccents.woff') format('woff'),
-    url('#{$path__fonts}/bookendswithaccents.ttf') format('truetype');
+  src: url('#{$path__fonts}/bookendswithaccents.woff2') format('woff2'), url('#{$path__fonts}/bookendswithaccents.woff') format('woff');
 }
 
 @font-face {

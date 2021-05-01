@@ -31,7 +31,11 @@ export default {
         content: 'Front End Developer'
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'preload', as: 'font', type: 'font/woff2', href: '/fonts/bookendswithaccents.woff2', crossorigin: 'anonymous' },
+      { rel: 'preload', as: 'font', type: 'font/woff', href: '/fonts/bookendswithaccents.woff', crossorigin: 'anonymous' }
+    ],
     script: [
       {
         src: 'https://platform.twitter.com/widgets.js',
