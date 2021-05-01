@@ -33,8 +33,10 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'preload', as: 'font', type: 'font/woff2', href: '/fonts/bookendswithaccents.woff2', crossorigin: 'anonymous' },
-      { rel: 'preload', as: 'font', type: 'font/woff', href: '/fonts/bookendswithaccents.woff', crossorigin: 'anonymous' }
+      { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
+      { rel: 'stylesheet', type: 'text/css', href: 'https://fonts.googleapis.com/css2?family=Great+Vibes&family=Ruda:wght@400;700&display=swap' }
+      // { rel: 'preload', as: 'font', type: 'font/woff2', href: '/fonts/bookendswithaccents.woff2', crossorigin: 'anonymous' },
+      // { rel: 'preload', as: 'font', type: 'font/woff', href: '/fonts/bookendswithaccents.woff', crossorigin: 'anonymous' }
     ],
     script: [
       {

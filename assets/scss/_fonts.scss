@@ -7,6 +7,21 @@
 
 @font-face {
   @include fontDownloadTime;
+  font-family: 'Great Vibes';
+  font-weight: normal;
+  font-style: normal;
+  src: url('#{$path__fonts}/GreatVibes-Regular.ttf') format('truetype');
+}
+@font-face {
+  @include fontDownloadTime;
+  font-family: 'Codystar';
+  font-weight: 300;
+  font-style: normal;
+  src: url('#{$path__fonts}/Codystar-Light.ttf') format('truetype');
+}
+
+@font-face {
+  @include fontDownloadTime;
   font-family: 'BookEnd';
   font-weight: normal;
   font-style: normal;
