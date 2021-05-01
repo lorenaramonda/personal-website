@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file. (http://keepachangelog.com/)
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.3.2] - 2021-05-01
+
+- Fixed Lighthouse warnings
+
 ## [1.3.1] - 2020-11-29
 
 - Edited max number of skills to show

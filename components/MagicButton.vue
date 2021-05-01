@@ -1,7 +1,6 @@
 <template>
-  <button class="magic-button" type="button" @click="doTheMagic">
+  <button class="magic-button" type="button" role="presentation" :title="$t('site.magicButton')" @click="doTheMagic">
     <span class="magic-button__inner">
-      {{ $t('site.magicButton') }}
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"

@@ -1,6 +1,5 @@
 <template>
   <div class="layout" itemscope itemtype="http://schema.org/Person">
-    <a id="top" accesskey="1"></a>
     <v-cookies v-if="false" />
     <div class="stage">
       <v-header />
@@ -15,7 +14,6 @@
       <v-footer />
     </div>
     <!-- <v-overlay />-->
-    <a id="bottom" accesskey="2"></a>
   </div>
 </template>
 
