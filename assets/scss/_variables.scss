@@ -20,14 +20,13 @@ $color-bg: $color-background-lightest;
 //* TYPOGRAPHY */
 $base-font-size: 10px;
 $base-font-family: sans-serif;
-$font-family-title: 'BookEnd', Trebuchet, sans-serif;
+$font-family-title: 'Great Vibes', Trebuchet, sans-serif;
+$font-family-logo: 'Codystar', Trebuchet, sans-serif;
 $font-family-text: 'Ruda', Verdana, sans-serif;
 
 //* URL */
 $path__img: '~assets/images/';
-$path__fonts: '~assets/fonts/';
-
-$fa-font-path: '~assets/fonts';
+$path__fonts: '/fonts/';
 
 //* LAYOUT */
 $gutter: 1.5rem;

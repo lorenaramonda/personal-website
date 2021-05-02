@@ -40,7 +40,7 @@ export default {}
     font-family: $font-family-title;
     font-size: 3.5em;
     text-align: center;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     @media #{$large-up} {
       font-size: 6.5em;
       text-align: left;
@@ -54,7 +54,7 @@ export default {}
     text-transform: lowercase;
     color: var(--color-main);
     font-size: 2em; //1.5em;
-    font-weight: bold;
+    /* font-weight: bold; */
     @media #{$medium-up} {
       font-size: 2.5em;
       font-weight: normal;

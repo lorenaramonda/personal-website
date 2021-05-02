@@ -97,10 +97,14 @@ svg {
     font-family: $font-family-title;
     font-size: 3.3em;
     line-height: normal;
-    text-transform: uppercase;
+    // text-transform: uppercase;
     margin-bottom: 0.35em;
     max-width: 100%;
     overflow: hidden;
+    &::first-letter {
+      color: var(--color-main);
+      opacity: 0.8;
+    }
     @media #{$medium-up} {
       font-size: 4em;
     }
@@ -110,7 +114,7 @@ svg {
     font-size: 3em;
     line-height: normal;
     color: var(--color-main);
-    text-transform: uppercase;
+    // text-transform: uppercase;
     margin-bottom: 0.35em;
     @media #{$medium-up} {
       font-size: 2.5em;
