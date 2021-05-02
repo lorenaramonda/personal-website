@@ -10,14 +10,7 @@
   font-family: 'Great Vibes';
   font-weight: normal;
   font-style: normal;
-  src: url('#{$path__fonts}/GreatVibes-Regular.ttf') format('truetype');
-}
-@font-face {
-  @include fontDownloadTime;
-  font-family: 'Codystar';
-  font-weight: 300;
-  font-style: normal;
-  src: url('#{$path__fonts}/Codystar-Light.ttf') format('truetype');
+  src: url('#{$path__fonts}/GreatVibes-Regular.woff2') format('woff2'), url('#{$path__fonts}/GreatVibes-Regular.woff') format('woff');
 }
 
 @font-face {
