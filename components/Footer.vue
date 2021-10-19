@@ -28,11 +28,6 @@
       </p>
     </div>
     <div class="right medium-6 column">
-      <p class="hide-for-small">
-        <a :href="linkPdf" target="_blank" download>
-          {{ $t('cv.downloadable') }}
-        </a>
-      </p>
       <a href="//www.iubenda.com/privacy-policy/262452" class="iubenda-white iubenda-embed" title="Privacy Policy" target="_blank" rel="noreferrer">
         {{ $t('site.privacy') }}
       </a>
