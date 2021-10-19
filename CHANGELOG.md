@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file. (http://keepachangelog.com/)
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.3.3] - 2021-10-19
+
+- Removed outdated cv
+
 ## [1.3.2] - 2021-05-01
 
 - Fixed Lighthouse warnings
