@@ -1,5 +1,5 @@
 <template>
-  <article id="work" class="medium-6 column p-experience textfade" data-readmore="Mostra di più">
+  <article v-if="jobs && jobs.length > 0" id="work" class="medium-6 column p-experience textfade" data-readmore="Mostra di più">
     <h2 class="section__title">{{ $t('jobs.title') }}</h2>
     <dl>
       <template v-for="(job, index) in jobs">
@@ -28,12 +28,23 @@ export default {
       return parsedDate.getFullYear()
     }
   },
-  props: {
-    jobs: {
-      type: Array,
-      required: true
-    }
+  async fetch() {
+    const currentLocale = this.$i18n.locales.find(lang => lang.code === this.$i18n.locale)
+    /**
+     * Get jobs
+     */
+    const jobs = await this.$prismic.api.query(
+      [this.$prismic.predicates.at('document.type', 'job'), this.$prismic.predicates.at(`my.job.public`, true)],
+      {
+        orderings: '[my.job.start_date desc]',
+        lang: currentLocale.iso.toLowerCase()
+      }
+    )
+    this.jobs = jobs ? jobs.results || jobs : []
   },
+  data: () => ({
+    jobs: []
+  }),
   methods: {
     getEndDate(endDate, startDate) {
       if (!endDate) return '/...'

@@ -13,7 +13,7 @@
     </div>
 
     <div class="section row">
-      <v-jobs v-if="jobs && jobs.length > 0" :jobs="jobs" />
+      <v-jobs />
       <article id="study" :data-readmore="$t('misc.showMore')" class="medium-6 column p-education textfade">
         <h2 class="section__title">{{ $t('education.title') }}</h2>
         <ul>
@@ -183,14 +183,6 @@ export default {
     })
 
     /**
-     * Get jobs
-     */
-    const jobs = await $prismic.api.query([$prismic.predicates.at('document.type', 'job'), $prismic.predicates.at(`my.job.public`, true)], {
-      orderings: '[my.job.start_date desc]',
-      lang: currentLocale.iso.toLowerCase()
-    })
-
-    /**
      * Get talks
      */
     const talks = await $prismic.api.query($prismic.predicates.at('document.type', 'talk'), {
@@ -215,7 +207,6 @@ export default {
       return {
         page: home.data || home,
         posts: posts ? posts.results || posts : [],
-        jobs: jobs ? jobs.results || jobs : [],
         talks: talks ? talks.results || talks : {},
         projects: projects ? projects.results || projects : {},
         skills: skills ? skills.data || skills : {}
@@ -226,7 +217,6 @@ export default {
   },
   data: () => ({
     page: null,
-    jobs: null,
     talks: null,
     projects: null,
     skills: null
