@@ -57,7 +57,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['~/plugins/filters', '~/plugins/tooltip'],
+  plugins: ['~/plugins/filters', '~/plugins/tooltip', '~/plugins/composition-api.js', '~/plugins/storyblok-rich-text-renderer.js'],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -107,6 +107,14 @@ export default {
       {
         id: process.env.HOTJAR || '',
         sv: '6'
+      }
+    ],
+    // Doc: https://github.com/storyblok/storyblok-nuxt
+    [
+      'storyblok-nuxt',
+      {
+        accessToken: process.env.STORYBLOK_TOKEN,
+        cacheProvider: 'memory'
       }
     ]
   ],

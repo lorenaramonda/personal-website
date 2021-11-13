@@ -4,17 +4,17 @@
     <dl>
       <template v-for="(job, index) in jobs">
         <dt :key="index">
-          <strong class="p-role item__title">{{ job.data.job_title[0].text }}</strong>
+          <strong class="p-role item__title">{{ job.job_title }}</strong>
           {{ $t('misc.at') }}
           <em>
-            <span itemprop="affiliation" class="p-org">{{ job.data.company_name[0].text }}</span
-            >, {{ job.data.company_city[0].text }} - {{ job.data.start_date | justYear }}{{ getEndDate(job.data.end_date, job.data.start_date) }}
+            <span itemprop="affiliation" class="p-org">{{ job.company_name }}</span
+            >, {{ job.company_city }} - {{ getStartDate(job.start_date) }}{{ getEndDate(job.end_date, job.start_date) }}
           </em>
         </dt>
-        <dd :key="job.id">
-          <prismic-rich-text :field="job.data.job_description" />
-          <ul v-if="job.data.skills && job.data.skills.length > 0" class="tags tags--left">
-            <li v-for="skill in job.data.skills" :key="skill.name" class="tags__single tags__single--small">
+        <dd :key="job._uid">
+          <rich-text-renderer v-if="job.job_description" :document="job.job_description" />
+          <ul v-if="job.skills && job.skills.length > 0" class="tags tags--left">
+            <li v-for="skill in job.skills" :key="skill.name" class="tags__single tags__single--small">
               <span>{{ skill.name }}</span>
             </li>
           </ul>
@@ -26,35 +26,42 @@
 
 <script>
 export default {
-  filters: {
-    justYear(date) {
-      const parsedDate = new Date(date)
-      if (!parsedDate) return date
-      return parsedDate.getFullYear()
-    }
-  },
   async fetch() {
     const currentLocale = this.$i18n.locales.find(lang => lang.code === this.$i18n.locale)
+    const apiLocale = currentLocale.code === this.$i18n.defaultLocale ? '' : `?language=${currentLocale.code}`
     /**
      * Get jobs
      */
-    const jobs = await this.$prismic.api.query(
-      [this.$prismic.predicates.at('document.type', 'job'), this.$prismic.predicates.at(`my.job.public`, true)],
-      {
-        orderings: '[my.job.start_date desc]',
-        lang: currentLocale.iso.toLowerCase()
-      }
-    )
-    this.jobs = jobs ? jobs.results || jobs : []
+    const jobs = await this.$storyapi
+      .get(`cdn/stories/experience${apiLocale}`, {
+        version: 'published' // 'draft'
+      })
+      .then(res => {
+        return res.data.story.content.body
+      })
+      .catch(res => {
+        if (!res.response) {
+          console.error(res)
+        } else {
+          console.error(res.response.data)
+        }
+        return []
+      })
+    this.jobs = jobs
   },
   data: () => ({
     jobs: []
   }),
   methods: {
+    getStartDate(startDate) {
+      if (!startDate) return ''
+      const parsedDate = new Date(startDate.substring(0, 10))
+      return parsedDate.getFullYear()
+    },
     getEndDate(endDate, startDate) {
       if (!endDate) return '/...'
-      const parsedDate = new Date(endDate)
-      const parsedStartDate = new Date(startDate)
+      const parsedDate = new Date(endDate.substring(0, 10))
+      const parsedStartDate = new Date(startDate.substring(0, 10))
       if (!parsedDate || !parsedStartDate) return endDate
       if (parsedStartDate.getFullYear() === parsedDate.getFullYear()) {
         return ` (${parsedDate.getMonth() - parsedStartDate.getMonth()} ${this.$t('misc.months')})`
