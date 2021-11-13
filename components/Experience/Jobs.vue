@@ -4,15 +4,20 @@
     <dl>
       <template v-for="(job, index) in jobs">
         <dt :key="index">
-          <strong class="item__title">{{ job.data.job_title[0].text }}</strong>
+          <strong class="p-role item__title">{{ job.data.job_title[0].text }}</strong>
           {{ $t('misc.at') }}
           <em>
             <span itemprop="affiliation" class="p-org">{{ job.data.company_name[0].text }}</span
             >, {{ job.data.company_city[0].text }} - {{ job.data.start_date | justYear }}{{ getEndDate(job.data.end_date, job.data.start_date) }}
           </em>
         </dt>
-        <dd :key="job.id" class="p-role">
+        <dd :key="job.id">
           <prismic-rich-text :field="job.data.job_description" />
+          <ul v-if="job.data.skills && job.data.skills.length > 0" class="tags tags--left">
+            <li v-for="skill in job.data.skills" :key="skill.name" class="tags__single tags__single--small">
+              <span>{{ skill.name }}</span>
+            </li>
+          </ul>
         </dd>
       </template>
     </dl>
