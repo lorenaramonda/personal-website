@@ -58,6 +58,26 @@
         <section>
           <h3 class="section__subtitle">{{ $t('education.subtitle') }}</h3>
           <ul>
+            <li class="talk">
+              <strong class="item__title">{{ $t('education.teacherOf', { course: $t('education.vueCourse') }) }}</strong>
+              {{ $t('education.teacherFor') }}
+              <em>
+                <a href="https://www.apropos.srl/" target="_blank" rel="noreferrer">Apropos Srl</a>
+              </em>
+              {{ $t('education.teacherTo') }}
+              <em> <a href="https://www.accenture.com/it-it" target="_blank" rel="noreferrer">Accenture</a> - 2020/2021 </em>
+              <br />
+              <span>
+                {{ $t('education.material') }}:
+                <a
+                  href="https://docs.google.com/presentation/d/e/2PACX-1vQ5yQ_xGRtk2btkDdSv4i4NiRzK8AXI2NHTgddYrBhpQsWhEg5U1EksGPsUHJJwXrEpcAnPVY3gXgYu/pub?start=false&loop=false&delayms=3000"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {{ $t('education.vueCourseName') }}
+                </a>
+              </span>
+            </li>
             <li v-for="talk in talks" :key="talk.id" class="talk">
               <strong class="item__title">{{ $t('education.speakerAt', { conf: talk.data.conference }) }}</strong>
               {{ $t('education.organizer') }}

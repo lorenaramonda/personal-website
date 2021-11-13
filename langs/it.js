@@ -32,19 +32,25 @@ export default {
   },
   education: {
     title: 'Formazione',
-    subtitle: 'Aggiornamenti',
+    subtitle: 'Partecipazioni',
     conference: 'conferenza',
     course: 'corso',
     coursePost: 'corso post-diploma',
     coursePostTitle: 'Tecnico di Grafica per Internet',
     organizer: 'tenuto da',
     speakerAt: 'relatrice alla conferenza {conf}',
+    teacherOf: 'docente per un corso {course}',
+    teacherFor: 'tramite',
+    teacherTo: 'per',
     magento: {
       logoTitle: 'Logo ufficiale della certificazione Magento per front end developer',
       linkTitle: 'Certificazione Magento Front End Developer di Lorena Ramonda',
       title: 'certificazione Magento Front End Developer'
     },
-    topic: 'Argomento'
+    topic: 'Argomento',
+    material: 'Materiale',
+    vueCourseName: 'Corso Vue.js base',
+    vueCourse: 'base di Vue.js'
   },
   publications: {
     title: 'Pubblicazioni'
@@ -73,5 +79,9 @@ export default {
     improving: 'Conoscenza sufficiente',
     intermediate: 'Buona conoscenza',
     expert: 'Ottima conoscenza'
+  },
+  personality: {
+    link: 'https://www.16personalities.com/it/personalita-infj',
+    title: 'Personalità Sostenitore'
   }
 }
