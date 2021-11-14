@@ -13,7 +13,7 @@
     </div>
 
     <div class="section row">
-      <v-jobs v-if="jobs && jobs.length > 0" :jobs="jobs" />
+      <v-jobs :preview="preview" />
       <article id="study" :data-readmore="$t('misc.showMore')" class="medium-6 column p-education textfade">
         <h2 class="section__title">{{ $t('education.title') }}</h2>
         <ul>
@@ -58,6 +58,26 @@
         <section>
           <h3 class="section__subtitle">{{ $t('education.subtitle') }}</h3>
           <ul>
+            <li class="talk">
+              <strong class="item__title">{{ $t('education.teacherOf', { course: $t('education.vueCourse') }) }}</strong>
+              {{ $t('education.teacherFor') }}
+              <em>
+                <a href="https://www.apropos.srl/" target="_blank" rel="noreferrer">Apropos Srl</a>
+              </em>
+              {{ $t('education.teacherTo') }}
+              <em> <a href="https://www.accenture.com/it-it" target="_blank" rel="noreferrer">Accenture</a> - 2020/2021 </em>
+              <br />
+              <span>
+                {{ $t('education.material') }}:
+                <a
+                  href="https://docs.google.com/presentation/d/e/2PACX-1vQ5yQ_xGRtk2btkDdSv4i4NiRzK8AXI2NHTgddYrBhpQsWhEg5U1EksGPsUHJJwXrEpcAnPVY3gXgYu/pub?start=false&loop=false&delayms=3000"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {{ $t('education.vueCourseName') }}
+                </a>
+              </span>
+            </li>
             <li v-for="talk in talks" :key="talk.id" class="talk">
               <strong class="item__title">{{ $t('education.speakerAt', { conf: talk.data.conference }) }}</strong>
               {{ $t('education.organizer') }}
@@ -163,7 +183,7 @@ export default {
     'v-agenda': Agenda,
     'v-meter': Meter
   },
-  async asyncData({ $prismic, error, app }) {
+  async asyncData({ $prismic, error, app, isDev }) {
     const currentLocale = app.i18n.locales.find(lang => lang.code === app.i18n.locale)
     // Doc: https://prismic.io/docs/javascript/query-the-api/query-a-single-type-document
 
@@ -179,14 +199,6 @@ export default {
      */
     const posts = await $prismic.api.query([$prismic.predicates.at('document.type', 'post')], {
       orderings: '[my.post.pubblication_date desc]',
-      lang: currentLocale.iso.toLowerCase()
-    })
-
-    /**
-     * Get jobs
-     */
-    const jobs = await $prismic.api.query([$prismic.predicates.at('document.type', 'job'), $prismic.predicates.at(`my.job.public`, true)], {
-      orderings: '[my.job.start_date desc]',
       lang: currentLocale.iso.toLowerCase()
     })
 
@@ -215,10 +227,10 @@ export default {
       return {
         page: home.data || home,
         posts: posts ? posts.results || posts : [],
-        jobs: jobs ? jobs.results || jobs : [],
         talks: talks ? talks.results || talks : {},
         projects: projects ? projects.results || projects : {},
-        skills: skills ? skills.data || skills : {}
+        skills: skills ? skills.data || skills : {},
+        preview: isDev
       }
     } else {
       error({ statusCode: 404, message: 'Page not found' })
@@ -226,10 +238,10 @@ export default {
   },
   data: () => ({
     page: null,
-    jobs: null,
     talks: null,
     projects: null,
-    skills: null
+    skills: null,
+    preview: false
   }),
   computed: {
     languages() {

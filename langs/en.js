@@ -28,23 +28,30 @@ export default {
     confucio: 'Choose a job you love, and you will never have to work a day in your life.'
   },
   jobs: {
-    title: 'Work experience'
+    title: 'Work experience',
+    notFound: "I'm working on it.."
   },
   education: {
     title: 'Education',
-    subtitle: 'Updates',
+    subtitle: 'Sharing',
     conference: 'conference',
     course: 'course',
     coursePost: 'postgraduate course',
     coursePostTitle: 'Technical Graphics for Internet',
     organizer: 'held by',
     speakerAt: 'speaker at {conf} conference',
+    teacherOf: 'teacher for a {course} course',
+    teacherFor: 'via',
+    teacherTo: 'for',
     magento: {
       logoTitle: 'Official Magento Front End Developer Certification logo',
       linkTitle: 'Magento Front End Developer Certification of Lorena Ramonda',
       title: 'Magento Front End Developer certification'
     },
-    topic: 'Topic'
+    topic: 'Topic',
+    material: 'Study material',
+    vueCourseName: 'Base Vue.js course',
+    vueCourse: 'base Vue.js'
   },
   publications: {
     title: 'Publications'
@@ -59,6 +66,7 @@ export default {
     title: 'Side projects'
   },
   misc: {
+    years: 'years',
     months: 'months',
     showMore: 'Read more',
     denmark: 'Denmark',
@@ -73,5 +81,9 @@ export default {
     improving: 'Improving',
     intermediate: 'Intermediate',
     expert: 'Expert'
+  },
+  personality: {
+    link: 'https://www.16personalities.com/infj-personality',
+    title: 'Personality Advocate'
   }
 }

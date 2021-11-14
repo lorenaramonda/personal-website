@@ -28,6 +28,7 @@
       </p>
     </div>
     <div class="right medium-6 column">
+      <p><a :href="$t('personality.link')" :title="$t('personality.title')">INFJ-T</a></p>
       <a href="//www.iubenda.com/privacy-policy/262452" class="iubenda-white iubenda-embed" title="Privacy Policy" target="_blank" rel="noreferrer">
         {{ $t('site.privacy') }}
       </a>
@@ -38,11 +39,6 @@
 <script>
 export default {
   computed: {
-    linkPdf() {
-      const currentLocale = this.$i18n.locales.find(lang => lang.code === this.$i18n.locale)
-      const langPrefix = currentLocale && currentLocale.code !== 'it' ? `-${currentLocale.code}` : ''
-      return `/download/lorena-ramonda-cv${langPrefix}.pdf`
-    },
     otherLanguages() {
       const langs = this.$i18n.locales.filter(lang => lang.code !== this.$i18n.locale)
       return langs || []

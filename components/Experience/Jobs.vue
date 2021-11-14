@@ -1,49 +1,93 @@
 <template>
   <article id="work" class="medium-6 column p-experience textfade" data-readmore="Mostra di più">
     <h2 class="section__title">{{ $t('jobs.title') }}</h2>
-    <dl>
-      <template v-for="(job, index) in jobs">
-        <dt :key="index">
-          <strong class="item__title">{{ job.data.job_title[0].text }}</strong>
-          {{ $t('misc.at') }}
-          <em>
-            <span itemprop="affiliation" class="p-org">{{ job.data.company_name[0].text }}</span
-            >, {{ job.data.company_city[0].text }} - {{ job.data.start_date | justYear }}{{ getEndDate(job.data.end_date, job.data.start_date) }}
-          </em>
-        </dt>
-        <dd :key="job.id" class="p-role">
-          <prismic-rich-text :field="job.data.job_description" />
-        </dd>
-      </template>
+    <dl v-if="jobs && jobs.length > 0">
+      <job v-for="(job, index) in jobs" :key="index" v-editable="job" :blok="job" />
     </dl>
+    <p v-else>{{ $t('jobs.notFound') }}</p>
   </article>
 </template>
 
 <script>
+import Job from '@/components/Experience/Job'
+
 export default {
-  filters: {
-    justYear(date) {
-      const parsedDate = new Date(date)
-      if (!parsedDate) return date
-      return parsedDate.getFullYear()
-    }
+  components: {
+    job: Job
   },
   props: {
-    jobs: {
-      type: Array,
-      required: true
+    preview: {
+      type: Boolean,
+      default: false
     }
   },
+  async fetch() {
+    const currentLocale = this.$i18n.locales.find(lang => lang.code === this.$i18n.locale)
+    const apiLocale = currentLocale.code === this.$i18n.defaultLocale ? '' : `?language=${currentLocale.code}`
+    /**
+     * Get jobs
+     */
+    const story = await this.$storyapi
+      .get(`cdn/stories/career${apiLocale}`, {
+        version: this.preview ? 'draft' : 'published'
+      })
+      .then(res => {
+        return res.data.story
+      })
+      .catch(res => {
+        return null
+      })
+    this.story = story
+  },
+  data: () => ({
+    story: null
+  }),
+  computed: {
+    jobs() {
+      return this.story ? this.story.content.body : []
+    }
+  },
+  mounted() {
+    this.$storybridge(
+      () => {
+        // eslint-disable-next-line no-undef
+        const storyblokInstance = new StoryblokBridge()
+
+        storyblokInstance.on(['input', 'published', 'change'], event => {
+          if (event.action === 'input') {
+            if (event.story.id === this.story.id) {
+              this.story.content = event.story.content
+            }
+          } else {
+            this.$nuxt.$router.go({
+              path: this.$nuxt.$router.currentRoute,
+              force: true
+            })
+          }
+        })
+      },
+      error => {
+        // eslint-disable-next-line no-console
+        console.warn(error)
+      }
+    )
+  },
   methods: {
+    getStartDate(startDate) {
+      if (!startDate) return ''
+      const parsedDate = new Date(startDate.substring(0, 10))
+      return parsedDate.getFullYear()
+    },
     getEndDate(endDate, startDate) {
-      if (!endDate) return '/...'
-      const parsedDate = new Date(endDate)
-      const parsedStartDate = new Date(startDate)
+      const today = new Date()
+      const parsedStartDate = new Date(startDate.substring(0, 10))
+      if (!endDate) return `/... (${this.$tc('misc.years', parseInt(today.getFullYear() - parsedStartDate.getFullYear()))})`
+      const parsedDate = new Date(endDate.substring(0, 10))
       if (!parsedDate || !parsedStartDate) return endDate
       if (parsedStartDate.getFullYear() === parsedDate.getFullYear()) {
-        return ` (${parsedDate.getMonth() - parsedStartDate.getMonth()} ${this.$t('misc.months')})`
+        return ` (${this.$tc('misc.months', parsedDate.getMonth() - parsedStartDate.getMonth())})`
       } else {
-        return `/${parsedDate.getFullYear()}`
+        return `/${parsedDate.getFullYear()} (${this.$tc('misc.years', parsedDate.getFullYear() - parsedStartDate.getFullYear())})`
       }
     }
   }

@@ -20,3 +20,4 @@ pages:
     - public
   except:
     - master
+  when: manual
