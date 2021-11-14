@@ -36,13 +36,17 @@ export default {
     getEndDate(endDate, startDate) {
       const today = new Date()
       const parsedStartDate = new Date(startDate.substring(0, 10))
-      if (!endDate) return `/... (${this.$tc('misc.years', parseInt(today.getFullYear() - parsedStartDate.getFullYear()))})`
+      const duration = this.blok.show_duration ? ` (${this.$tc('misc.years', parseInt(today.getFullYear() - parsedStartDate.getFullYear()))})` : ''
+      if (!endDate) return `/...${duration}`
       const parsedDate = new Date(endDate.substring(0, 10))
       if (!parsedDate || !parsedStartDate) return endDate
       if (parsedStartDate.getFullYear() === parsedDate.getFullYear()) {
-        return ` (${this.$tc('misc.months', parsedDate.getMonth() - parsedStartDate.getMonth())})`
+        if (this.blok.show_duration) {
+          return ` (${this.$tc('misc.months', parsedDate.getMonth() - parsedStartDate.getMonth())})`
+        }
       } else {
-        return `/${parsedDate.getFullYear()} (${this.$tc('misc.years', parsedDate.getFullYear() - parsedStartDate.getFullYear())})`
+        const duration = this.blok.show_duration ? ` (${this.$tc('misc.years', parsedDate.getFullYear() - parsedStartDate.getFullYear())})` : ''
+        return `/${parsedDate.getFullYear()}${duration}`
       }
     }
   }

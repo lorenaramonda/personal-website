@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file. (http://keepachangelog.com/)
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.4.1] - 2021-11-14
+
+- Fixed English duration translation and added a setting to show/hide duration
+
 ## [1.4.0] - 2021-11-14
 
 - Added Storyblok
