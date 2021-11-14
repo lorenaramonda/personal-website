@@ -28,7 +28,8 @@ export default {
     confucio: 'Choose a job you love, and you will never have to work a day in your life.'
   },
   jobs: {
-    title: 'Work experience'
+    title: 'Work experience',
+    notFound: "I'm working on it.."
   },
   education: {
     title: 'Education',
@@ -65,6 +66,7 @@ export default {
     title: 'Side projects'
   },
   misc: {
+    years: 'years',
     months: 'months',
     showMore: 'Read more',
     denmark: 'Denmark',

@@ -28,7 +28,8 @@ export default {
     confucio: 'Scegli il lavoro che ami e non lavorerai mai, neanche per un giorno in tutta la tua vita.'
   },
   jobs: {
-    title: 'Esperienza'
+    title: 'Esperienza',
+    notFound: 'Ci sto lavorando...'
   },
   education: {
     title: 'Formazione',
@@ -65,7 +66,8 @@ export default {
     title: 'Progetti paralleli'
   },
   misc: {
-    months: 'mesi',
+    years: '{count} anno | {count} anni',
+    months: '{count} mese | {count} mesi',
     showMore: 'Mostra di più',
     denmark: 'Danimarca',
     day: 'giorno',

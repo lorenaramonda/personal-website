@@ -13,7 +13,7 @@
     </div>
 
     <div class="section row">
-      <v-jobs />
+      <v-jobs :preview="preview" />
       <article id="study" :data-readmore="$t('misc.showMore')" class="medium-6 column p-education textfade">
         <h2 class="section__title">{{ $t('education.title') }}</h2>
         <ul>
@@ -183,7 +183,7 @@ export default {
     'v-agenda': Agenda,
     'v-meter': Meter
   },
-  async asyncData({ $prismic, error, app }) {
+  async asyncData({ $prismic, error, app, isDev }) {
     const currentLocale = app.i18n.locales.find(lang => lang.code === app.i18n.locale)
     // Doc: https://prismic.io/docs/javascript/query-the-api/query-a-single-type-document
 
@@ -229,7 +229,8 @@ export default {
         posts: posts ? posts.results || posts : [],
         talks: talks ? talks.results || talks : {},
         projects: projects ? projects.results || projects : {},
-        skills: skills ? skills.data || skills : {}
+        skills: skills ? skills.data || skills : {},
+        preview: isDev
       }
     } else {
       error({ statusCode: 404, message: 'Page not found' })
@@ -239,7 +240,8 @@ export default {
     page: null,
     talks: null,
     projects: null,
-    skills: null
+    skills: null,
+    preview: false
   }),
   computed: {
     languages() {
