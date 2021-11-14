@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file. (http://keepachangelog.com/)
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.4.0] - 2021-11-14
+
+- Added Storyblok
+- Updated info
+
 ## [1.3.3] - 2021-10-19
 
 - Removed outdated cv
