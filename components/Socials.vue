@@ -83,6 +83,11 @@ export default {
     margin-bottom: 0;
     display: flex;
     justify-content: space-between;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
   }
   .twitter-follow-button:not(.twitter-follow-button-rendered) {
     background: var(--color-main)

@@ -7,6 +7,7 @@
         <a v-if="post.data.link.url" :href="post.data.link.url" rel="noreferrer" target="_blank">
           {{ post.data.title[0].text }}
         </a>
+        <n-link v-else :to="localePath({ name: 'publications-post', params: { post: post.uid } })">{{ post.data.title[0].text }}</n-link>
       </li>
     </ul>
   </article>

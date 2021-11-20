@@ -238,6 +238,7 @@ export default {
   },
   data: () => ({
     page: null,
+    posts: null,
     talks: null,
     projects: null,
     skills: null,
