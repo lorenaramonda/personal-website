@@ -8,8 +8,8 @@
       <v-agenda />
     </client-only>
 
-    <div v-if="posts" class="section row">
-      <v-posts v-if="posts && posts.length > 0" :posts="posts" />
+    <div class="section row">
+      <v-posts :preview="preview" />
     </div>
 
     <div class="section row">

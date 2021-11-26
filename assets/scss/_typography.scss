@@ -92,6 +92,15 @@ svg {
   height: auto;
 }
 
+code {
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 5px;
+  border: 1px solid var(--color-main-lighter);
+  padding: 2px 4px;
+  font: 12px $font-family-monospace;
+}
+
 .section {
   &__title {
     font-family: $font-family-title;
@@ -164,4 +173,13 @@ svg {
     text-decoration: none;
     border-bottom: dashed 1px #cccccc;
   }
+}
+
+.icon--pen {
+  width: 16px;
+  height: 16px;
+  fill: var(--color-main);
+  vertical-align: middle;
+  margin-right: 0.5rem;
+  display: inline-block;
 }
