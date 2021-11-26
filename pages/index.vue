@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main v-editable="home">
     <div class="section row">
       <v-summary v-if="page" :title="page.summary_title" :content="page.summary_content" />
     </div>
@@ -129,6 +129,28 @@
     </v-quote>
 
     <div class="section row">
+      <article id="contributions" class="medium-6 column">
+        <h2 class="section__title">{{ $t('contributions.title') }}</h2>
+        <ul>
+          <li>
+            <svg-icon name="pen" class="icon--pen" />
+            <a href="https://github.com/vuestorefront/storefront-ui" target="_blank">storefront-ui</a>
+          </li>
+          <li>
+            <svg-icon name="pen" class="icon--pen" />
+            <a href="https://github.com/vuestorefront/vue-storefront" target="_blank">vue-storefront</a>
+          </li>
+        </ul>
+      </article>
+      <v-projects v-if="projects && projects.length > 0" :projects="projects" />
+    </div>
+
+    <v-quote author="Confucio">
+      {{ $t('quote.confucio') }}
+    </v-quote>
+
+    <div class="section row">
+      <v-insights v-if="insights" :title="insights.title" :list="insights.items" />
       <article v-if="languages" id="languages" class="medium-6 column">
         <h2 class="section__title">{{ languages.title[0].text }}</h2>
         <ul class="graph">
@@ -139,21 +161,17 @@
           </li>
         </ul>
       </article>
-      <article v-if="hobbies" id="hobbies" class="medium-6 column">
-        <h2 class="section__title">{{ hobbies.title[0].text }}</h2>
-        <ul class="hobbies">
-          <li v-for="hobby in hobbies.items" :key="hobby.name">{{ hobby.name }}</li>
-        </ul>
-      </article>
     </div>
 
-    <v-quote author="Confucio">
-      {{ $t('quote.confucio') }}
-    </v-quote>
-
-    <div class="section row">
-      <v-insights v-if="insights" :title="insights.title" :list="insights.items" />
-      <v-projects v-if="projects && projects.length > 0" :projects="projects" />
+    <div v-if="hobbies" id="hobbies" v-editable="hobbies" class="section row hobbies">
+      <div class="column">
+        <h2 class="section__title section__title--minor">{{ hobbies.title }}</h2>
+        <ul>
+          <li v-for="hobby in hobbies.items" :key="hobby.name">
+            <img v-if="hobby.icon" v-tooltip="hobby.name" :src="hobby.icon.filename" :title="hobby.name" alt="" />
+          </li>
+        </ul>
+      </div>
     </div>
   </main>
 </template>
@@ -183,8 +201,9 @@ export default {
     'v-agenda': Agenda,
     'v-meter': Meter
   },
-  async asyncData({ $prismic, error, app, isDev }) {
+  async asyncData({ $prismic, $storyapi, error, app, isDev }) {
     const currentLocale = app.i18n.locales.find(lang => lang.code === app.i18n.locale)
+    const apiLocale = currentLocale.code === app.i18n.defaultLocale ? '' : `?language=${currentLocale.code}`
     // Doc: https://prismic.io/docs/javascript/query-the-api/query-a-single-type-document
 
     /**
@@ -193,14 +212,16 @@ export default {
     const home = await $prismic.api.getSingle('homepage', {
       lang: currentLocale.iso.toLowerCase()
     })
-
-    /**
-     * Get posts
-     */
-    const posts = await $prismic.api.query([$prismic.predicates.at('document.type', 'post')], {
-      orderings: '[my.post.pubblication_date desc]',
-      lang: currentLocale.iso.toLowerCase()
-    })
+    const story = await $storyapi
+      .get(`cdn/stories/home/${apiLocale}`, {
+        version: isDev ? 'draft' : 'published'
+      })
+      .then(res => {
+        return res.data.story
+      })
+      .catch(res => {
+        return null
+      })
 
     /**
      * Get talks
@@ -226,7 +247,7 @@ export default {
     if (home) {
       return {
         page: home.data || home,
-        posts: posts ? posts.results || posts : [],
+        home: story.content,
         talks: talks ? talks.results || talks : {},
         projects: projects ? projects.results || projects : {},
         skills: skills ? skills.data || skills : {},
@@ -238,7 +259,7 @@ export default {
   },
   data: () => ({
     page: null,
-    posts: null,
+    home: null,
     talks: null,
     projects: null,
     skills: null,
@@ -254,12 +275,9 @@ export default {
       }
     },
     hobbies() {
-      const hobbies = this.getSlice('hobbies')
+      const hobbies = this.getBlok('hobbies')
       if (!hobbies) return null
-      return {
-        title: hobbies.primary.title,
-        items: hobbies.items
-      }
+      return hobbies
     },
     insights() {
       const insights = this.getSlice('insights')
@@ -271,6 +289,10 @@ export default {
     }
   },
   methods: {
+    getBlok(name) {
+      if (!this.home || this.home.body.length === 0) return null
+      return this.home.body.find(blok => blok.component === name)
+    },
     getSlice(name) {
       if (!this.page) return null
       return this.page.body.find(e => e.slice_type === name)

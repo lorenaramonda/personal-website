@@ -84,8 +84,18 @@ body {
 }
 
 .hobbies {
-  @media #{$medium-up} {
-    column-count: 2;
+  margin-top: 2em;
+  text-align: center;
+  ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    li {
+      margin: 0 2rem 2rem 0;
+      img {
+        max-width: 60px;
+      }
+    }
   }
 }
 

@@ -1,20 +1,19 @@
 <template>
   <div class="socials row">
     <div class="tw-follow medium-6 column">
-      <client-only>
-        <p>
-          <a
-            href="https://twitter.com/loreenaramonda?ref_src=twsrc%5Etfw"
-            class="twitter-follow-button"
-            data-size="large"
-            data-show-count="true"
-            :data-lang="currentLocale"
-            rel="noreferrer"
-          >
-            {{ $t('site.follow') }} @loreenaramonda
-          </a>
-        </p>
-      </client-only>
+      <p>
+        <a
+          href="https://twitter.com/loreenaramonda?ref_src=twsrc%5Etfw"
+          class="twitter-follow-button"
+          data-size="large"
+          data-dnt="true"
+          data-show-count="true"
+          :data-lang="currentLocale"
+          rel="noreferrer"
+        >
+          {{ $t('site.follow') }} @loreenaramonda
+        </a>
+      </p>
     </div>
     <div class="socials__list medium-6 column">
       <ul>

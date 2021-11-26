@@ -113,6 +113,9 @@ code {
     @media #{$medium-up} {
       font-size: 4em;
     }
+    &--minor {
+      text-transform: none;
+    }
   }
   &__subtitle {
     font-family: $font-family-title;

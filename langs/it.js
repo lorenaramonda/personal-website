@@ -59,11 +59,14 @@ export default {
   skills: {
     title: 'Conoscenze tecniche'
   },
+  contributions: {
+    title: 'Contributi'
+  },
   nextEvent: {
     title: 'Mi troverai a'
   },
   projects: {
-    title: 'Progetti paralleli'
+    title: 'Progetti personali'
   },
   misc: {
     years: '{count} anno | {count} anni',
