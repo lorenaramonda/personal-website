@@ -145,6 +145,35 @@ body {
       order: 2;
     }
   }
+  &--base {
+    justify-content: flex-start;
+    align-items: center;
+    .logo {
+      text-align: left;
+      a {
+        font-family: $font-family-title;
+        text-decoration: none;
+        font-size: 2.5em;
+      }
+    }
+    .hgroup {
+      flex: 0;
+    }
+    .profile-picture {
+      min-width: 100px;
+      min-height: 100px;
+      margin: 1rem 1rem 1rem 0;
+      img {
+        width: 100px;
+      }
+      figcaption {
+        display: none;
+      }
+    }
+    @media #{$medium-down} {
+      flex-direction: row;
+    }
+  }
 }
 
 .layout__footer {

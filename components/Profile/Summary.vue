@@ -1,7 +1,7 @@
 <template>
   <article class="column summary p-summary">
-    <prismic-rich-text v-if="title" :field="title" class="section__title" />
-    <prismic-rich-text v-if="content" :field="content" />
+    <h2 v-if="title" class="section__title">{{ title }}</h2>
+    <rich-text-renderer v-if="content" :document="content" />
   </article>
 </template>
 
@@ -9,11 +9,11 @@
 export default {
   props: {
     title: {
-      type: Array,
+      type: String,
       required: true
     },
     content: {
-      type: Array,
+      type: Object,
       required: true
     }
   }
@@ -24,7 +24,8 @@ export default {
 .summary {
   margin-bottom: 2em;
   p {
-    strong {
+    strong,
+    b {
       color: var(--color-main);
       font-weight: normal;
       font-size: 1.2em;

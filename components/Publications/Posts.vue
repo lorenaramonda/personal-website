@@ -2,7 +2,7 @@
   <article v-if="posts && posts.length > 0" id="publications" class="column publications">
     <h2 class="section__title">{{ $t('publications.title') }}</h2>
     <ul v-for="post in posts.filter(e => !!e.content.title)" :key="post.uuid">
-      <li>
+      <li v-if="post.content.link || (post.content.long_text && post.content.long_text.content[0].content)">
         <svg-icon name="pen" class="icon--pen" />
         <a v-if="post.content.link" :href="post.content.link.url" rel="noreferrer" target="_blank">
           {{ post.content.title }}

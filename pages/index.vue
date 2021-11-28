@@ -1,7 +1,7 @@
 <template>
   <main v-editable="home">
     <div class="section row">
-      <v-summary v-if="page" :title="page.summary_title" :content="page.summary_content" />
+      <v-summary v-if="summary" v-editable="summary" :title="summary.title" :content="summary.content" />
     </div>
 
     <client-only>
@@ -150,12 +150,12 @@
     </v-quote>
 
     <div class="section row">
-      <v-insights v-if="insights" :title="insights.title" :list="insights.items" />
-      <article v-if="languages" id="languages" class="medium-6 column">
-        <h2 class="section__title">{{ languages.title[0].text }}</h2>
+      <v-insights v-if="insights" v-editable="insights" :title="insights.title" :list="insights.items" />
+      <article v-if="languages" id="languages" v-editable="languages" class="medium-6 column">
+        <h2 class="section__title">{{ languages.title }}</h2>
         <ul class="graph">
-          <li v-for="lang in languages.items" :key="lang.name">
-            <v-meter :value="lang.rate" />
+          <li v-for="lang in languages.items" :key="lang.name" v-editable="lang">
+            <v-meter :value="parseInt(lang.rate)" />
             {{ lang.name }}
             <small v-if="lang.info">{{ lang.info }}</small>
           </li>
@@ -167,7 +167,7 @@
       <div class="column">
         <h2 class="section__title section__title--minor">{{ hobbies.title }}</h2>
         <ul>
-          <li v-for="hobby in hobbies.items" :key="hobby.name">
+          <li v-for="hobby in hobbies.items" :key="hobby.name" v-editable="hobby">
             <img v-if="hobby.icon" v-tooltip="hobby.name" :src="hobby.icon.filename" :title="hobby.name" alt="" />
           </li>
         </ul>
@@ -204,14 +204,10 @@ export default {
   async asyncData({ $prismic, $storyapi, error, app, isDev }) {
     const currentLocale = app.i18n.locales.find(lang => lang.code === app.i18n.locale)
     const apiLocale = currentLocale.code === app.i18n.defaultLocale ? '' : `?language=${currentLocale.code}`
-    // Doc: https://prismic.io/docs/javascript/query-the-api/query-a-single-type-document
 
     /**
      * Get homepage
      */
-    const home = await $prismic.api.getSingle('homepage', {
-      lang: currentLocale.iso.toLowerCase()
-    })
     const story = await $storyapi
       .get(`cdn/stories/home/${apiLocale}`, {
         version: isDev ? 'draft' : 'published'
@@ -244,9 +240,8 @@ export default {
      */
     const skills = await $prismic.api.getSingle('skills')
 
-    if (home) {
+    if (story) {
       return {
-        page: home.data || home,
         home: story.content,
         talks: talks ? talks.results || talks : {},
         projects: projects ? projects.results || projects : {},
@@ -258,7 +253,6 @@ export default {
     }
   },
   data: () => ({
-    page: null,
     home: null,
     talks: null,
     projects: null,
@@ -267,12 +261,14 @@ export default {
   }),
   computed: {
     languages() {
-      const languages = this.getSlice('languages')
+      const languages = this.getBlok('languages')
       if (!languages) return null
-      return {
-        title: languages.primary.title,
-        items: languages.items
-      }
+      return languages
+    },
+    summary() {
+      const summary = this.getBlok('summary')
+      if (!summary) return null
+      return summary
     },
     hobbies() {
       const hobbies = this.getBlok('hobbies')
@@ -280,22 +276,15 @@ export default {
       return hobbies
     },
     insights() {
-      const insights = this.getSlice('insights')
+      const insights = this.getBlok('insights')
       if (!insights) return null
-      return {
-        title: insights.primary.title,
-        items: insights.items
-      }
+      return insights
     }
   },
   methods: {
     getBlok(name) {
       if (!this.home || this.home.body.length === 0) return null
       return this.home.body.find(blok => blok.component === name)
-    },
-    getSlice(name) {
-      if (!this.page) return null
-      return this.page.body.find(e => e.slice_type === name)
     }
   },
   head() {
