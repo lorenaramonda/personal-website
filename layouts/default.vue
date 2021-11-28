@@ -2,7 +2,7 @@
   <div class="layout" itemscope itemtype="http://schema.org/Person">
     <v-cookies v-if="false" />
     <div class="stage">
-      <v-header />
+      <component :is="header" />
       <nuxt />
       <v-socials />
       <div class="stage__bottom">
@@ -19,6 +19,7 @@
 
 <script>
 import Header from '@/components/Header'
+import BaseHeader from '@/components/BaseHeader'
 import Footer from '@/components/Footer'
 import Socials from '@/components/Socials'
 import MagicButton from '@/components/MagicButton'
@@ -27,6 +28,7 @@ import Cookie from '@/components/Cookie'
 export default {
   components: {
     'v-header': Header,
+    'v-base-header': BaseHeader,
     'v-footer': Footer,
     'v-socials': Socials,
     'v-magic-button': MagicButton,
@@ -35,6 +37,14 @@ export default {
   data: () => ({
     isNavOpen: false
   }),
+  computed: {
+    isHomePage() {
+      return this.$route.name.substring(0, 5) === 'index'
+    },
+    header() {
+      return this.isHomePage ? 'v-header' : 'v-base-header'
+    }
+  },
   head() {
     return {
       htmlAttrs: {

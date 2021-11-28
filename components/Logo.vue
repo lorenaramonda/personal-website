@@ -1,12 +1,24 @@
 <template>
   <div class="logo hgroup card-name" data-version="Ally version">
-    <h1 itemprop="name" class="p-name"><strong class="p-given-name">Lorena</strong> <span class="p-family-name">Ramonda</span></h1>
-    <h2 itemprop="jobTitle" class="p-job-title">{{ $t('job.title') }}</h2>
+    <template v-if="heading">
+      <h1 itemprop="name" class="p-name"><strong class="p-given-name">Lorena</strong> <span class="p-family-name">Ramonda</span></h1>
+      <h2 itemprop="jobTitle" class="p-job-title">{{ $t('job.title') }}</h2>
+    </template>
+    <template v-else>
+      <n-link :to="localePath({ name: 'index' })"> <strong>lorena</strong>.ramonda.me </n-link>
+    </template>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    heading: {
+      type: Boolean,
+      default: true
+    }
+  }
+}
 </script>
 
 <style lang="scss">
