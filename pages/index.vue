@@ -203,13 +203,18 @@ export default {
   },
   async asyncData({ $prismic, $storyapi, error, app, isDev }) {
     const currentLocale = app.i18n.locales.find(lang => lang.code === app.i18n.locale)
-    const apiLocale = currentLocale.code === app.i18n.defaultLocale ? '' : `?language=${currentLocale.code}`
+    let sbLocaleSingle = ''
+    let sbLocaleMulti = ''
+    if (currentLocale.code !== app.i18n.defaultLocale) {
+      sbLocaleSingle = `?language=${currentLocale.code}`
+      sbLocaleMulti = `${currentLocale.code}/`
+    }
 
     /**
      * Get homepage
      */
     const story = await $storyapi
-      .get(`cdn/stories/home/${apiLocale}`, {
+      .get(`cdn/stories/home/${sbLocaleSingle}`, {
         version: isDev ? 'draft' : 'published'
       })
       .then(res => {
@@ -230,10 +235,16 @@ export default {
     /**
      * Get projects
      */
-    const projects = await $prismic.api.query($prismic.predicates.at('document.type', 'project'), {
-      orderings: '[document.first_publication_date desc]',
-      lang: currentLocale.iso.toLowerCase()
-    })
+    const projects = await $storyapi
+      .get(`cdn/stories?starts_with=${sbLocaleMulti}projects/&is_startpage=0`, {
+        version: isDev ? 'draft' : 'published'
+      })
+      .then(res => {
+        return res.data.stories
+      })
+      .catch(res => {
+        return null
+      })
 
     /**
      * Get skills
@@ -244,7 +255,7 @@ export default {
       return {
         home: story.content,
         talks: talks ? talks.results || talks : {},
-        projects: projects ? projects.results || projects : {},
+        projects,
         skills: skills ? skills.data || skills : {},
         preview: isDev
       }

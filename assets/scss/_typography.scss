@@ -68,10 +68,12 @@ body {
 a {
   color: $color-text;
 }
-strong {
+strong,
+b {
   font-weight: 700;
 }
-em {
+em,
+i {
   font-style: italic;
 }
 p {

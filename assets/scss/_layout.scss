@@ -150,10 +150,17 @@ body {
     align-items: center;
     .logo {
       text-align: left;
-      a {
-        font-family: $font-family-title;
-        text-decoration: none;
-        font-size: 2.5em;
+      border: none;
+      margin: 2em 1em;
+    }
+    a {
+      font-family: $font-family-title;
+      text-decoration: none;
+      font-size: 2.5em;
+    }
+    .palette--ally & .logo {
+      &::after {
+        content: none;
       }
     }
     .hgroup {
