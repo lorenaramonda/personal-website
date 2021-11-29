@@ -1,15 +1,15 @@
 <template>
-  <main>
+  <main v-editable="home">
     <div class="section row">
-      <v-summary v-if="page" :title="page.summary_title" :content="page.summary_content" />
+      <v-summary v-if="summary" v-editable="summary" :title="summary.title" :content="summary.content" />
     </div>
 
     <client-only>
       <v-agenda />
     </client-only>
 
-    <div v-if="posts" class="section row">
-      <v-posts v-if="posts && posts.length > 0" :posts="posts" />
+    <div class="section row">
+      <v-posts :preview="preview" />
     </div>
 
     <div class="section row">
@@ -129,22 +129,20 @@
     </v-quote>
 
     <div class="section row">
-      <article v-if="languages" id="languages" class="medium-6 column">
-        <h2 class="section__title">{{ languages.title[0].text }}</h2>
-        <ul class="graph">
-          <li v-for="lang in languages.items" :key="lang.name">
-            <v-meter :value="lang.rate" />
-            {{ lang.name }}
-            <small v-if="lang.info">{{ lang.info }}</small>
+      <article id="contributions" class="medium-6 column">
+        <h2 class="section__title">{{ $t('contributions.title') }}</h2>
+        <ul>
+          <li>
+            <svg-icon name="pen" class="icon--pen" />
+            <a href="https://github.com/vuestorefront/storefront-ui" target="_blank">storefront-ui</a>
+          </li>
+          <li>
+            <svg-icon name="pen" class="icon--pen" />
+            <a href="https://github.com/vuestorefront/vue-storefront" target="_blank">vue-storefront</a>
           </li>
         </ul>
       </article>
-      <article v-if="hobbies" id="hobbies" class="medium-6 column">
-        <h2 class="section__title">{{ hobbies.title[0].text }}</h2>
-        <ul class="hobbies">
-          <li v-for="hobby in hobbies.items" :key="hobby.name">{{ hobby.name }}</li>
-        </ul>
-      </article>
+      <v-projects v-if="projects && projects.length > 0" :projects="projects" />
     </div>
 
     <v-quote author="Confucio">
@@ -152,8 +150,28 @@
     </v-quote>
 
     <div class="section row">
-      <v-insights v-if="insights" :title="insights.title" :list="insights.items" />
-      <v-projects v-if="projects && projects.length > 0" :projects="projects" />
+      <v-insights v-if="insights" v-editable="insights" :title="insights.title" :list="insights.items" />
+      <article v-if="languages" id="languages" v-editable="languages" class="medium-6 column">
+        <h2 class="section__title">{{ languages.title }}</h2>
+        <ul class="graph">
+          <li v-for="lang in languages.items" :key="lang.name" v-editable="lang">
+            <v-meter :value="parseInt(lang.rate)" />
+            {{ lang.name }}
+            <small v-if="lang.info">{{ lang.info }}</small>
+          </li>
+        </ul>
+      </article>
+    </div>
+
+    <div v-if="hobbies" id="hobbies" v-editable="hobbies" class="section row hobbies">
+      <div class="column">
+        <h2 class="section__title section__title--minor">{{ hobbies.title }}</h2>
+        <ul>
+          <li v-for="hobby in hobbies.items" :key="hobby.name" v-editable="hobby">
+            <img v-if="hobby.icon" v-tooltip="hobby.name" :src="hobby.icon.filename" :title="hobby.name" alt="" />
+          </li>
+        </ul>
+      </div>
     </div>
   </main>
 </template>
@@ -183,24 +201,28 @@ export default {
     'v-agenda': Agenda,
     'v-meter': Meter
   },
-  async asyncData({ $prismic, error, app, isDev }) {
+  async asyncData({ $prismic, $storyapi, error, app, isDev }) {
     const currentLocale = app.i18n.locales.find(lang => lang.code === app.i18n.locale)
-    // Doc: https://prismic.io/docs/javascript/query-the-api/query-a-single-type-document
+    let sbLocaleSingle = ''
+    let sbLocaleMulti = ''
+    if (currentLocale.code !== app.i18n.defaultLocale) {
+      sbLocaleSingle = `?language=${currentLocale.code}`
+      sbLocaleMulti = `${currentLocale.code}/`
+    }
 
     /**
      * Get homepage
      */
-    const home = await $prismic.api.getSingle('homepage', {
-      lang: currentLocale.iso.toLowerCase()
-    })
-
-    /**
-     * Get posts
-     */
-    const posts = await $prismic.api.query([$prismic.predicates.at('document.type', 'post')], {
-      orderings: '[my.post.pubblication_date desc]',
-      lang: currentLocale.iso.toLowerCase()
-    })
+    const story = await $storyapi
+      .get(`cdn/stories/home/${sbLocaleSingle}`, {
+        version: isDev ? 'draft' : 'published'
+      })
+      .then(res => {
+        return res.data.story
+      })
+      .catch(res => {
+        return null
+      })
 
     /**
      * Get talks
@@ -213,22 +235,27 @@ export default {
     /**
      * Get projects
      */
-    const projects = await $prismic.api.query($prismic.predicates.at('document.type', 'project'), {
-      orderings: '[document.first_publication_date desc]',
-      lang: currentLocale.iso.toLowerCase()
-    })
+    const projects = await $storyapi
+      .get(`cdn/stories?starts_with=${sbLocaleMulti}projects/&is_startpage=0`, {
+        version: isDev ? 'draft' : 'published'
+      })
+      .then(res => {
+        return res.data.stories
+      })
+      .catch(res => {
+        return null
+      })
 
     /**
      * Get skills
      */
     const skills = await $prismic.api.getSingle('skills')
 
-    if (home) {
+    if (story) {
       return {
-        page: home.data || home,
-        posts: posts ? posts.results || posts : [],
+        home: story.content,
         talks: talks ? talks.results || talks : {},
-        projects: projects ? projects.results || projects : {},
+        projects,
         skills: skills ? skills.data || skills : {},
         preview: isDev
       }
@@ -237,7 +264,7 @@ export default {
     }
   },
   data: () => ({
-    page: null,
+    home: null,
     talks: null,
     projects: null,
     skills: null,
@@ -245,34 +272,30 @@ export default {
   }),
   computed: {
     languages() {
-      const languages = this.getSlice('languages')
+      const languages = this.getBlok('languages')
       if (!languages) return null
-      return {
-        title: languages.primary.title,
-        items: languages.items
-      }
+      return languages
+    },
+    summary() {
+      const summary = this.getBlok('summary')
+      if (!summary) return null
+      return summary
     },
     hobbies() {
-      const hobbies = this.getSlice('hobbies')
+      const hobbies = this.getBlok('hobbies')
       if (!hobbies) return null
-      return {
-        title: hobbies.primary.title,
-        items: hobbies.items
-      }
+      return hobbies
     },
     insights() {
-      const insights = this.getSlice('insights')
+      const insights = this.getBlok('insights')
       if (!insights) return null
-      return {
-        title: insights.primary.title,
-        items: insights.items
-      }
+      return insights
     }
   },
   methods: {
-    getSlice(name) {
-      if (!this.page) return null
-      return this.page.body.find(e => e.slice_type === name)
+    getBlok(name) {
+      if (!this.home || this.home.body.length === 0) return null
+      return this.home.body.find(blok => blok.component === name)
     }
   },
   head() {

@@ -59,6 +59,9 @@ export default {
   skills: {
     title: 'Skills'
   },
+  contributions: {
+    title: 'Contributions'
+  },
   nextEvent: {
     title: 'You will meet me in'
   },

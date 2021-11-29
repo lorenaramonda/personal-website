@@ -19,10 +19,15 @@ body {
   background-color: var(--color-bg);
   box-shadow: 0 2px 15px 3px rgba(var(--color-main-rgb), 0.8);
   margin-bottom: 190px;
+  min-height: calc(100vh - 190px);
   border-bottom: solid 1px var(--color-main-darker);
+  position: relative;
   &__bottom {
     text-align: center;
     max-height: 10px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
     .magic-button {
       top: -15px;
       position: relative;
@@ -30,6 +35,8 @@ body {
   }
   @media #{$medium-up} {
     margin-bottom: 110px;
+    min-height: calc(100vh - 110px);
+    padding-bottom: 100px;
   }
 }
 
@@ -77,8 +84,18 @@ body {
 }
 
 .hobbies {
-  @media #{$medium-up} {
-    column-count: 2;
+  margin-top: 2em;
+  text-align: center;
+  ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    li {
+      margin: 0 2rem 2rem 0;
+      img {
+        max-width: 60px;
+      }
+    }
   }
 }
 
@@ -126,6 +143,42 @@ body {
     .profile-address {
       flex: 1 0 auto;
       order: 2;
+    }
+  }
+  &--base {
+    justify-content: flex-start;
+    align-items: center;
+    .logo {
+      text-align: left;
+      border: none;
+      margin: 2em 1em;
+    }
+    a {
+      font-family: $font-family-title;
+      text-decoration: none;
+      font-size: 2.5em;
+    }
+    .palette--ally & .logo {
+      &::after {
+        content: none;
+      }
+    }
+    .hgroup {
+      flex: 0;
+    }
+    .profile-picture {
+      min-width: 100px;
+      min-height: 100px;
+      margin: 1rem 1rem 1rem 0;
+      img {
+        width: 100px;
+      }
+      figcaption {
+        display: none;
+      }
+    }
+    @media #{$medium-down} {
+      flex-direction: row;
     }
   }
 }
