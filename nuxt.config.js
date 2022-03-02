@@ -86,8 +86,6 @@ export default {
     '@nuxtjs/style-resources',
     // Doc: https://www.npmjs.com/package/cookie-universal-nuxt
     'cookie-universal-nuxt',
-    // Doc: https://prismic-nuxt.js.org/docs/getting-started
-    '@nuxtjs/prismic',
     // Doc: https://github.com/nuxt-community/svg-sprite-module
     '@nuxtjs/svg-sprite',
     // Doc: https://github.com/nuxt-community/sentry-module
@@ -154,16 +152,6 @@ export default {
       useCookie: true,
       cookieKey: 'i18n_redirected',
       onlyOnRoot: true
-    }
-  },
-  /**
-   * Prismic module configuration
-   */
-  prismic: {
-    endpoint: process.env.PRISMIC_URL,
-    linkResolver: '~/prismic/link-resolver.js',
-    apiOptions: {
-      accessToken: process.env.PRISMIC_TOKEN
     }
   },
   /**

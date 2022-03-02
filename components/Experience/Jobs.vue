@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import Job from '@/components/Experience/Job'
+import Job from './Job'
 
 export default {
   components: {
@@ -71,25 +71,6 @@ export default {
         console.warn(error)
       }
     )
-  },
-  methods: {
-    getStartDate(startDate) {
-      if (!startDate) return ''
-      const parsedDate = new Date(startDate.substring(0, 10))
-      return parsedDate.getFullYear()
-    },
-    getEndDate(endDate, startDate) {
-      const today = new Date()
-      const parsedStartDate = new Date(startDate.substring(0, 10))
-      if (!endDate) return `/... (${this.$tc('misc.years', parseInt(today.getFullYear() - parsedStartDate.getFullYear()))})`
-      const parsedDate = new Date(endDate.substring(0, 10))
-      if (!parsedDate || !parsedStartDate) return endDate
-      if (parsedStartDate.getFullYear() === parsedDate.getFullYear()) {
-        return ` (${this.$tc('misc.months', parsedDate.getMonth() - parsedStartDate.getMonth())})`
-      } else {
-        return `/${parsedDate.getFullYear()} (${this.$tc('misc.years', parsedDate.getFullYear() - parsedStartDate.getFullYear())})`
-      }
-    }
   }
 }
 </script>

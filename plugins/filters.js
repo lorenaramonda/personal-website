@@ -8,7 +8,7 @@ import Vue from 'vue'
  * 9-10 = expert
  */
 Vue.filter('rateLabel', rate => {
-  switch (rate) {
+  switch (parseInt(rate)) {
     case 1:
     case 2:
     case 3:

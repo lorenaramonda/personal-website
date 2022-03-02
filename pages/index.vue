@@ -5,7 +5,7 @@
     </div>
 
     <client-only>
-      <v-agenda />
+      <v-agenda :preview="preview" />
     </client-only>
 
     <div class="section row">
@@ -18,31 +18,6 @@
         <h2 class="section__title">{{ $t('education.title') }}</h2>
         <ul>
           <li>
-            <img
-              v-lazy-load
-              data-src="~/assets/images/frontend_developer_certification.png"
-              src="/images/default-image.jpg"
-              :alt="$t('education.magento.logoTitle')"
-              width="128"
-              height="228"
-            />
-            <strong class="item__title">
-              <a
-                :title="$t('education.magento.linkTitle')"
-                href="http://www.magentocommerce.com/certification/directory/dev/1776391/"
-                target="_blank"
-                rel="noreferrer"
-                >{{ $t('education.magento.title') }}</a
-              >
-            </strong>
-            {{ $t('misc.at') }}
-            <em itemscope itemtype="http://schema.org/Organization">
-              <span itemprop="name">
-                <a href="http://www.magentocommerce.com/" target="_blank" title="Magento Inc." rel="noreferrer">Magento Inc.</a> </span
-              >, <span itemprop="address">Campbell, CA, USA</span> - 2015
-            </em>
-          </li>
-          <li>
             <strong class="item__title">{{ $t('education.coursePost') }} {{ $t('education.coursePostTitle') }} (600 {{ $t('misc.hours') }})</strong>
             {{ $t('misc.at') }}
             <em itemscope itemtype="http://schema.org/Organization">
@@ -52,7 +27,7 @@
         </ul>
 
         <client-only>
-          <v-next-meeting />
+          <v-next-meeting :preview="preview" />
         </client-only>
 
         <section>
@@ -79,18 +54,16 @@
               </span>
             </li>
             <li v-for="talk in talks" :key="talk.id" class="talk">
-              <strong class="item__title">{{ $t('education.speakerAt', { conf: talk.data.conference }) }}</strong>
+              <strong class="item__title">{{ $t('education.speakerAt', { conf: talk.content.conference }) }}</strong>
               {{ $t('education.organizer') }}
               <em>
-                <a :href="talk.data.organizer_site.url" :target="talk.data.organizer_site.target" rel="noreferrer">{{
-                  talk.data.organizer[0].text
-                }}</a>
-                , {{ talk.data.venue }} - 2017
+                <a :href="talk.content.organizer_site.url" target="_blank" rel="noreferrer">{{ talk.content.organizer }}</a>
+                , {{ talk.content.venue }} - 2017
               </em>
               <br />
               <span>
                 {{ $t('education.topic') }}:
-                <a :href="talk.data.slide.url" :target="talk.data.slide.target" rel="noreferrer">{{ talk.data.title[0].text }}</a>
+                <a :href="talk.content.slides.url" target="_blank" rel="noreferrer">{{ talk.content.title }}</a>
               </span>
             </li>
             <li>
@@ -201,7 +174,7 @@ export default {
     'v-agenda': Agenda,
     'v-meter': Meter
   },
-  async asyncData({ $prismic, $storyapi, error, app, isDev }) {
+  async asyncData({ $storyapi, error, app, isDev }) {
     const currentLocale = app.i18n.locales.find(lang => lang.code === app.i18n.locale)
     let sbLocaleSingle = ''
     let sbLocaleMulti = ''
@@ -227,10 +200,16 @@ export default {
     /**
      * Get talks
      */
-    const talks = await $prismic.api.query($prismic.predicates.at('document.type', 'talk'), {
-      orderings: '[my.talks.date desc]',
-      lang: currentLocale.iso.toLowerCase()
-    })
+    const talks = await $storyapi
+      .get(`cdn/stories?starts_with=${sbLocaleMulti}talks/&is_startpage=0`, {
+        version: isDev ? 'draft' : 'published'
+      })
+      .then(res => {
+        return res.data.stories
+      })
+      .catch(res => {
+        return null
+      })
 
     /**
      * Get projects
@@ -246,17 +225,11 @@ export default {
         return null
       })
 
-    /**
-     * Get skills
-     */
-    const skills = await $prismic.api.getSingle('skills')
-
     if (story) {
       return {
         home: story.content,
-        talks: talks ? talks.results || talks : {},
+        talks,
         projects,
-        skills: skills ? skills.data || skills : {},
         preview: isDev
       }
     } else {
@@ -267,19 +240,18 @@ export default {
     home: null,
     talks: null,
     projects: null,
-    skills: null,
     preview: false
   }),
   computed: {
-    languages() {
-      const languages = this.getBlok('languages')
-      if (!languages) return null
-      return languages
-    },
     summary() {
       const summary = this.getBlok('summary')
       if (!summary) return null
       return summary
+    },
+    skills() {
+      const skills = this.getBlok('skills')
+      if (!skills) return null
+      return skills
     },
     hobbies() {
       const hobbies = this.getBlok('hobbies')
@@ -290,6 +262,11 @@ export default {
       const insights = this.getBlok('insights')
       if (!insights) return null
       return insights
+    },
+    languages() {
+      const languages = this.getBlok('languages')
+      if (!languages) return null
+      return languages
     }
   },
   methods: {

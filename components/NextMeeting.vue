@@ -10,7 +10,7 @@
       </span>
       {{ new Date(meeting.date).toLocaleDateString(currentLocale.iso, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) }}
       {{ $t('misc.for') }}
-      <a v-if="meeting.url" :href="meeting.url.url" :target="meeting.url.target" itemprop="url" rel="nofollow noreferrer">
+      <a v-if="meeting.url" :href="meeting.url.url" target="_blank" itemprop="url" rel="nofollow noreferrer">
         <strong itemprop="name">{{ meeting.name }}</strong>
       </a>
       <strong v-else itemprop="name">{{ meeting.name }}</strong>
@@ -21,6 +21,12 @@
 
 <script>
 export default {
+  props: {
+    preview: {
+      type: Boolean,
+      default: false
+    }
+  },
   data() {
     return {
       meeting: null
@@ -35,13 +41,39 @@ export default {
     }
   },
   async created() {
-    const meetings = await this.$prismic.api.query(this.$prismic.predicates.at('document.type', 'event'), {
-      orderings: '[my.event.date]',
-      lang: this.currentLocale.iso.toLowerCase()
-    })
-    if (meetings.results_size > 0) {
-      const nextMeetings = meetings.results.filter(e => Date.parse(new Date(e.data.date).toDateString()) - Date.parse(new Date().toDateString()) >= 0)
-      if (nextMeetings.length > 0) this.meeting = nextMeetings[0].data
+    let sbLocaleMulti = ''
+    if (this.currentLocale.code !== this.$i18n.defaultLocale) {
+      sbLocaleMulti = `${this.currentLocale.code}/`
+    }
+
+    const today = new Date()
+    const yesterday = new Date()
+    const tomorrow = new Date()
+
+    yesterday.setDate(today.getDate() - 1)
+    tomorrow.setDate(today.getDate() + 1)
+
+    const parsedYesterday = yesterday.toISOString().split('T')[0]
+    const parsedTomorrow = tomorrow.toISOString().split('T')[0]
+
+    const meetings = await this.$storyapi
+      .get(
+        `cdn/stories?starts_with=${sbLocaleMulti}events/&filter_query[date][gt_date]=${parsedYesterday}&filter_query[date][lt_date]=${parsedTomorrow}&is_startpage=0`,
+        {
+          version: this.preview ? 'draft' : 'published'
+        }
+      )
+      .then(res => {
+        return res.data.stories.sort((a, b) => {
+          return new Date(a.content.date) - new Date(b.content.date)
+        })
+      })
+      .catch(res => {
+        return null
+      })
+
+    if (meetings.length > 0) {
+      this.meeting = meetings[0].content
     }
   }
 }
@@ -49,11 +81,11 @@ export default {
 
 <style lang="scss">
 .event {
+  position: relative;
   &--today {
     padding: 1em;
     border: dashed 1px var(--color-main);
     margin: 1em 0;
-    position: relative;
   }
   p {
     margin-bottom: 0;

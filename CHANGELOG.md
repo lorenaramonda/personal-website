@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file. (http://keepachangelog.com/)
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.6.0] - 2022-03-02
+
+- Replaced Prismic with Storyblok (sorry Prismic 🙏)
+- Changed certification component position
+
 ## [1.5.0] - 2021-11-29
 
 - Added publications section
