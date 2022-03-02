@@ -43,10 +43,10 @@ export default {
     teacherOf: 'docente per un corso {course}',
     teacherFor: 'tramite',
     teacherTo: 'per',
-    magento: {
-      logoTitle: 'Logo ufficiale della certificazione Magento per front end developer',
-      linkTitle: 'Certificazione Magento Front End Developer di Lorena Ramonda',
-      title: 'certificazione Magento Front End Developer'
+    certification: {
+      logoTitle: 'Logo ufficiale della certificazione {certification}',
+      linkTitle: 'Certificazione {certification} di Lorena Ramonda',
+      title: 'certificazione {certification}'
     },
     topic: 'Argomento',
     material: 'Materiale',
@@ -63,7 +63,7 @@ export default {
     title: 'Contributi'
   },
   nextEvent: {
-    title: 'Mi troverai a'
+    title: 'Oggi mi trovi a'
   },
   projects: {
     title: 'Progetti personali'

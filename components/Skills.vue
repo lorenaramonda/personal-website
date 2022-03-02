@@ -1,10 +1,16 @@
 <template>
-  <div class="section row">
+  <div v-editable="skills" class="section row">
     <article v-if="orderedSkills.length > 0" id="skills" class="cv column p-skill">
-      <h2 class="section__title">{{ $t('skills.title') }}</h2>
-      <section v-for="(slice, i) in orderedSkills" :key="i">
-        <ul v-if="slice.items.length > 0" class="tags">
-          <li v-for="item in slice.items" :key="item.name" v-tooltip="getLabel(item.rate)" :class="`tags__single--${item.rate}`" class="tags__single">
+      <h2 class="section__title">{{ skills.title }}</h2>
+      <section>
+        <ul v-if="orderedSkills.length > 0" class="tags">
+          <li
+            v-for="item in orderedSkills"
+            :key="item.name"
+            v-tooltip="getLabel(item.rate)"
+            :class="`tags__single--${item.rate}`"
+            class="tags__single"
+          >
             <span>{{ item.name }}</span>
           </li>
         </ul>
@@ -22,7 +28,7 @@ export default {
     },
     max: {
       type: Number,
-      default: 12
+      default: 14
     },
     minimunRate: {
       type: Number,
@@ -31,16 +37,8 @@ export default {
   },
   computed: {
     orderedSkills() {
-      if (!this.skills.body) return []
-      const newArray = []
-      this.skills.body.forEach((slice, index) => {
-        const items = slice.items
-          .filter(e => e.rate >= this.minimunRate)
-          // .sort((a, b) => b.rate - a.rate)
-          .slice(0, this.max)
-        newArray.push({ ...slice, items })
-      })
-      return newArray
+      if (!this.skills.items) return []
+      return this.skills.items.filter(e => e.rate >= this.minimunRate).slice(0, this.max)
     }
   },
   methods: {
@@ -52,4 +50,9 @@ export default {
 }
 </script>
 
-<style></style>
+<style scoped>
+section {
+  max-width: 1090px;
+  margin: 0 auto;
+}
+</style>

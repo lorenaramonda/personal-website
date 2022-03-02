@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="job">
     <dt>
       <strong class="p-role item__title">{{ blok.job_title }}</strong>
       {{ $t('misc.at') }}
@@ -15,12 +15,22 @@
           <span>{{ skill.name }}</span>
         </li>
       </ul>
+      <ul v-if="blok.certifications && blok.certifications.length > 0" class="job__certifications">
+        <li v-for="certification in blok.certifications" :key="certification._uid">
+          <certification-card :blok="certification" />
+        </li>
+      </ul>
     </dd>
   </div>
 </template>
 
 <script>
+import CertificationCard from './CertificationCard.vue'
+
 export default {
+  components: {
+    'certification-card': CertificationCard
+  },
   props: {
     blok: {
       type: Object,
@@ -33,24 +43,37 @@ export default {
       const parsedDate = new Date(startDate.substring(0, 10))
       return parsedDate.getFullYear()
     },
-    getEndDate(endDate, startDate) {
+    getEndDate(end, start) {
       const today = new Date()
-      const parsedStartDate = new Date(startDate.substring(0, 10))
-      const duration = this.blok.show_duration ? ` (${this.$tc('misc.years', parseInt(today.getFullYear() - parsedStartDate.getFullYear()))})` : ''
-      if (!endDate) return `/...${duration}`
-      const parsedDate = new Date(endDate.substring(0, 10))
-      if (!parsedDate || !parsedStartDate) return endDate
-      if (parsedStartDate.getFullYear() === parsedDate.getFullYear()) {
+      const startDate = new Date(start)
+      const millisecondsPerYear = 1000 * 60 * 60 * 24 * 365
+      const millisecondsPerMonth = millisecondsPerYear / 12
+
+      const duration = this.blok.show_duration ? ` (${this.$tc('misc.years', Math.floor((today - startDate) / millisecondsPerYear))})` : ''
+      // if current position, don't return end date
+      if (!end) return `/...${duration}`
+
+      const endDate = new Date(end)
+      const yearsWorked = Math.floor((endDate - startDate) / millisecondsPerYear)
+      if (yearsWorked === 0) {
+        // returns years worked...
         if (this.blok.show_duration) {
-          return ` (${this.$tc('misc.months', parsedDate.getMonth() - parsedStartDate.getMonth())})`
+          return ` (${this.$tc('misc.months', Math.floor((endDate - startDate) / millisecondsPerMonth))})`
         }
       } else {
-        const duration = this.blok.show_duration ? ` (${this.$tc('misc.years', parsedDate.getFullYear() - parsedStartDate.getFullYear())})` : ''
-        return `/${parsedDate.getFullYear()}${duration}`
+        // ... otherwise returns months worked
+        const duration = this.blok.show_duration ? ` (${this.$tc('misc.years', yearsWorked)})` : ''
+        return `/${endDate.getFullYear()}${duration}`
       }
     }
   }
 }
 </script>
 
-<style></style>
+<style lang="scss">
+.job {
+  &__certifications {
+    margin: 1rem 0 4rem;
+  }
+}
+</style>

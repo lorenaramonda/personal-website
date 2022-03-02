@@ -5,16 +5,16 @@
       <p>{{ $t('Mi troverai qui') }}</p>
       <ul class="meetings">
         <li v-for="meeting in meetings" :key="meeting.id">
-          <time :datetime="meeting.data.date">
-            <span class="day">{{ meeting.data.date | getDay }}</span>
-            <span class="month">{{ getMonth(meeting.data.date) }}</span>
+          <time :datetime="meeting.content.date">
+            <span class="day">{{ meeting.content.date | getDay }}</span>
+            <span class="month">{{ getMonth(meeting.content.date) }}</span>
           </time>
           <p>
-            <a v-if="meeting.data.url.url" :href="meeting.data.url.url" target="_blank" rel="nofollow noreferrer" class="event__name">{{
-              meeting.data.name
+            <a v-if="meeting.content.url.url" :href="meeting.content.url.url" target="_blank" rel="nofollow noreferrer" class="event__name">{{
+              meeting.content.name
             }}</a>
-            <span v-else class="event__name">{{ meeting.data.name }}</span>
-            <span>{{ $t('a') }} {{ meeting.data.city }}</span>
+            <span v-else class="event__name">{{ meeting.content.name }}</span>
+            <span>{{ $t('a') }} {{ meeting.content.city }}</span>
           </p>
         </li>
       </ul>
@@ -28,6 +28,12 @@ export default {
     getDay: value => {
       if (!value) return ''
       return new Date(Date.parse(value)).getDate()
+    }
+  },
+  props: {
+    preview: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -47,11 +53,27 @@ export default {
     }
   },
   async created() {
-    const meetings = await this.$prismic.api.query(this.$prismic.predicates.at('document.type', 'event'), {
-      orderings: '[my.event.date]',
-      lang: this.currentLocale.iso.toLowerCase()
-    })
-    const nextMeetings = meetings.results.filter(e => Date.parse(new Date(e.data.date).toDateString()) - Date.parse(new Date().toDateString()) >= 0)
+    let sbLocaleMulti = ''
+    if (this.currentLocale.code !== this.$i18n.defaultLocale) {
+      sbLocaleMulti = `${this.currentLocale.code}/`
+    }
+
+    const today = new Date().toISOString().split('T')[0]
+
+    const meetings = await this.$storyapi
+      .get(`cdn/stories?starts_with=${sbLocaleMulti}events/&filter_query[date][gt_date]=${today}&is_startpage=0`, {
+        version: this.preview ? 'draft' : 'published'
+      })
+      .then(res => {
+        return res.data.stories.sort((a, b) => {
+          return new Date(a.content.date) - new Date(b.content.date)
+        })
+      })
+      .catch(res => {
+        return null
+      })
+
+    const nextMeetings = meetings.filter(e => Date.parse(new Date(e.content.date).toDateString()) - Date.parse(new Date().toDateString()) >= 0)
     if (nextMeetings.length > 0) this.meetings = nextMeetings
   },
   methods: {
