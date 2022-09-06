@@ -1,7 +1,5 @@
 {
   "name": "personal-website",
-  "version": "1.0.0",
-  "description": "Lorena Ramonda, Front End Developer",
   "author": "Lorena Ramonda",
   "private": true,
   "scripts": {
