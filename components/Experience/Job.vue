@@ -9,7 +9,7 @@
       </em>
     </dt>
     <dd>
-      <rich-text-renderer v-if="blok.job_description" :document="blok.job_description" />
+      <RichtextRenderer v-if="blok.job_description" :document="blok.job_description" />
       <ul v-if="blok.skills && blok.skills.length > 0" class="tags tags--left">
         <li v-for="skill in blok.skills" :key="skill.name" class="tags__single tags__single--small">
           <span>{{ skill.name }}</span>

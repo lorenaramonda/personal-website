@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. (http://keepachangelog.com/)
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [unreleased]
+
+- Upgraded Nuxt to 2.15
+- Removed node-sass and add dart-sass
+- Fixed lint errors
+- Removed prismic link resolver
+
 ## [1.6.0] - 2022-03-02
 
 - Replaced Prismic with Storyblok (sorry Prismic 🙏)

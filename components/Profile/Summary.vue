@@ -1,7 +1,7 @@
 <template>
   <article class="column summary p-summary">
     <h2 v-if="title" class="section__title">{{ title }}</h2>
-    <rich-text-renderer v-if="content" :document="content" />
+    <RichtextRenderer v-if="content" :document="content" />
   </article>
 </template>
 

@@ -12,7 +12,7 @@
             >)
           </template>
         </p>
-        <rich-text-renderer v-if="prj.content" :document="prj.content" />
+        <RichtextRenderer v-if="prj.content" :document="prj.content" />
       </li>
     </ul>
   </article>

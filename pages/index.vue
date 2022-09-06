@@ -13,7 +13,7 @@
     </div>
 
     <div class="section row">
-      <v-jobs :preview="preview" />
+      <v-jobs :jobs="jobs" :preview="preview" />
       <article id="study" :data-readmore="$t('misc.showMore')" class="medium-6 column p-education textfade">
         <h2 class="section__title">{{ $t('education.title') }}</h2>
         <ul>
@@ -267,7 +267,38 @@ export default {
       const languages = this.getBlok('languages')
       if (!languages) return null
       return languages
+    },
+    jobs() {
+      const jobs = this.getBlok('jobs')
+      if (!jobs) return null
+      return jobs.items
     }
+  },
+
+  mounted() {
+    this.$storybridge(
+      () => {
+        // eslint-disable-next-line no-undef
+        const storyblokInstance = new StoryblokBridge()
+
+        storyblokInstance.on(['input', 'published', 'change'], event => {
+          if (event.action === 'input') {
+            if (event.story.slug === 'home') {
+              this.home = event.story.content
+            }
+          } else {
+            this.$nuxt.$router.go({
+              path: this.$nuxt.$router.currentRoute,
+              force: true
+            })
+          }
+        })
+      },
+      error => {
+        // eslint-disable-next-line no-console
+        console.warn(error)
+      }
+    )
   },
   methods: {
     getBlok(name) {

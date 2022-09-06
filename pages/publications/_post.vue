@@ -3,7 +3,7 @@
     <div v-if="post" class="section row">
       <article v-editable="post.content" class="column">
         <h2 v-if="post.content.title" class="section__title">{{ post.content.title }}</h2>
-        <rich-text-renderer v-if="post.content.long_text" :document="post.content.long_text" />
+        <RichtextRenderer v-if="post.content.long_text" :document="post.content.long_text" />
       </article>
     </div>
   </main>
@@ -37,8 +37,29 @@ export default {
   },
   data: () => ({
     post: null
-  })
+  }),
+  mounted() {
+    this.$storybridge(
+      () => {
+        // eslint-disable-next-line no-undef
+        const storyblokInstance = new StoryblokBridge()
+
+        storyblokInstance.on(['input', 'published', 'change'], event => {
+          if (event.action === 'input') {
+            this.post = event.story
+          } else {
+            this.$nuxt.$router.go({
+              path: this.$nuxt.$router.currentRoute,
+              force: true
+            })
+          }
+        })
+      },
+      error => {
+        // eslint-disable-next-line no-console
+        console.warn(error)
+      }
+    )
+  }
 }
 </script>
-
-<style></style>
