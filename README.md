@@ -25,8 +25,12 @@ Original Git Flow with some rules:
 
 - Every featured branch must be **squashed** into one descriptive commit before **rebasing** it into develop
 
+## Package manager
+
+Use [Yarn](https://yarnpkg.com/cli/install)
+
 ## Upgrading
 
-👉 https://nuxtjs.org/guide/upgrading/
+👉 https://nuxtjs.org/docs/get-started/upgrading/
 
 Check Nuxt version: `npm view nuxt version`

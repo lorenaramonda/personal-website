@@ -44,10 +44,10 @@ $small-only: 'only screen and (max-width: #{$small-breakpoint - 1})';
 
 $medium-down: 'only screen and (max-width:#{$medium-breakpoint - 1})';
 $medium-up: 'only screen and (min-width:#{$medium-breakpoint})';
-$medium-only: 'only screen and (min-width:#{$medium-breakpoint)}) and (max-width:#{$medium-breakpoint - 1})';
+$medium-only: 'only screen and (min-width:#{$medium-breakpoint}) and (max-width:#{$medium-breakpoint - 1})';
 
 $large-up: 'only screen and (min-width:#{$large-breakpoint})';
-$large-only: 'only screen and (min-width:#{$large-breakpoint)}) and (max-width:#{$large-breakpoint - 1})';
+$large-only: 'only screen and (min-width:#{$large-breakpoint}) and (max-width:#{$large-breakpoint - 1})';
 
 $xlarge-up: 'only screen and (min-width:#{$xlarge-breakpoint})';
-$xlarge-only: 'only screen and (min-width:#{$xlarge-breakpoint)}) and (max-width:#{$xlarge-breakpoint - 1})';
+$xlarge-only: 'only screen and (min-width:#{$xlarge-breakpoint}) and (max-width:#{$xlarge-breakpoint - 1})';

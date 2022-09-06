@@ -16,61 +16,14 @@ export default {
     job: Job
   },
   props: {
+    jobs: {
+      type: Array,
+      default: () => []
+    },
     preview: {
       type: Boolean,
       default: false
     }
-  },
-  async fetch() {
-    const currentLocale = this.$i18n.locales.find(lang => lang.code === this.$i18n.locale)
-    const apiLocale = currentLocale.code === this.$i18n.defaultLocale ? '' : `?language=${currentLocale.code}`
-    /**
-     * Get jobs
-     */
-    const story = await this.$storyapi
-      .get(`cdn/stories/career${apiLocale}`, {
-        version: this.preview ? 'draft' : 'published'
-      })
-      .then(res => {
-        return res.data.story
-      })
-      .catch(res => {
-        return null
-      })
-    this.story = story
-  },
-  data: () => ({
-    story: null
-  }),
-  computed: {
-    jobs() {
-      return this.story ? this.story.content.body : []
-    }
-  },
-  mounted() {
-    this.$storybridge(
-      () => {
-        // eslint-disable-next-line no-undef
-        const storyblokInstance = new StoryblokBridge()
-
-        storyblokInstance.on(['input', 'published', 'change'], event => {
-          if (event.action === 'input') {
-            if (event.story.id === this.story.id) {
-              this.story.content = event.story.content
-            }
-          } else {
-            this.$nuxt.$router.go({
-              path: this.$nuxt.$router.currentRoute,
-              force: true
-            })
-          }
-        })
-      },
-      error => {
-        // eslint-disable-next-line no-console
-        console.warn(error)
-      }
-    )
   }
 }
 </script>

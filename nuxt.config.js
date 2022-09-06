@@ -57,12 +57,12 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['~/plugins/filters', '~/plugins/tooltip', '~/plugins/composition-api.js', '~/plugins/storyblok-rich-text-renderer.js'],
+  plugins: ['~/plugins/filters', '~/plugins/tooltip'],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
    */
-  components: false,
+  components: [{ path: '~/storyblok', extensions: ['vue'] }],
   /*
    ** Nuxt.js dev-modules
    */
