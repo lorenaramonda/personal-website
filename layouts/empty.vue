@@ -6,12 +6,6 @@
 
 <script>
 export default {
-  head: {
-    htmlAttrs: {
-      class: 'error404'
-    }
-  }
+  name: 'EmptyLayout'
 }
 </script>
-
-<style lang="scss"></style>

@@ -45,7 +45,6 @@ export default {
   background: none;
   border: none;
   cursor: pointer;
-  font-size: inherit;
   font-family: inherit;
   margin: 2rem auto 0;
   background-color: var(--color-main);

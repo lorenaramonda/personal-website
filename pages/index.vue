@@ -1,19 +1,19 @@
 <template>
-  <main v-editable="home">
+  <main v-editable="page">
     <div class="section row">
-      <v-summary v-if="summary" v-editable="summary" :title="summary.title" :content="summary.content" />
+      <MySummary v-if="summary" v-editable="summary" :title="summary.title" :content="summary.content" />
     </div>
 
     <client-only>
-      <v-agenda :preview="preview" />
+      <BaseAgenda :preview="preview" />
     </client-only>
 
     <div class="section row">
-      <v-posts :preview="preview" />
+      <PostsList :preview="preview" />
     </div>
 
     <div class="section row">
-      <v-jobs :jobs="jobs" :preview="preview" />
+      <JobsList :jobs="jobs" :preview="preview" />
       <article id="study" :data-readmore="$t('misc.showMore')" class="medium-6 column p-education textfade">
         <h2 class="section__title">{{ $t('education.title') }}</h2>
         <ul>
@@ -27,7 +27,7 @@
         </ul>
 
         <client-only>
-          <v-next-meeting :preview="preview" />
+          <NextMeeting :preview="preview" />
         </client-only>
 
         <section>
@@ -91,15 +91,15 @@
       </article>
     </div>
 
-    <v-quote author="Albert Einstein">
+    <BaseQuote author="Albert Einstein">
       {{ $t('quote.einstein') }}
-    </v-quote>
+    </BaseQuote>
 
-    <v-skills v-if="skills" :skills="skills" />
+    <SkillsList v-if="skills" :skills="skills" />
 
-    <v-quote>
+    <BaseQuote>
       {{ $t('quote.anonymous') }}
-    </v-quote>
+    </BaseQuote>
 
     <div class="section row">
       <article id="contributions" class="medium-6 column">
@@ -115,20 +115,20 @@
           </li>
         </ul>
       </article>
-      <v-projects v-if="projects && projects.length > 0" :projects="projects" />
+      <ProjectsList v-if="projects && projects.length > 0" :projects="projects" />
     </div>
 
-    <v-quote author="Confucio">
+    <BaseQuote author="Confucio">
       {{ $t('quote.confucio') }}
-    </v-quote>
+    </BaseQuote>
 
     <div class="section row">
-      <v-insights v-if="insights" v-editable="insights" :title="insights.title" :list="insights.items" />
+      <InsightsList v-if="insights" v-editable="insights" :title="insights.title" :list="insights.items" />
       <article v-if="languages" id="languages" v-editable="languages" class="medium-6 column">
         <h2 class="section__title">{{ languages.title }}</h2>
         <ul class="graph">
           <li v-for="lang in languages.items" :key="lang.name" v-editable="lang">
-            <v-meter :value="parseInt(lang.rate)" />
+            <BaseMeter :value="parseInt(lang.rate)" />
             {{ lang.name }}
             <small v-if="lang.info">{{ lang.info }}</small>
           </li>
@@ -150,29 +150,30 @@
 </template>
 
 <script>
-import Summary from '@/components/Profile/Summary'
-import Posts from '@/components/Publications/Posts'
-import Jobs from '@/components/Experience/Jobs'
-import Insights from '@/components/Education/Insights'
-import Skills from '@/components/Skills'
-import Quote from '@/components/Quote'
-import Projects from '@/components/Projects'
+import MySummary from '@/components/Profile/MySummary'
+import PostsList from '@/components/Publications/PostsList'
+import JobsList from '@/components/Experience/JobsList'
+import InsightsList from '@/components/Education/InsightsList'
+import SkillsList from '@/components/SkillsList'
+import BaseQuote from '@/components/BaseQuote'
+import ProjectsList from '@/components/ProjectsList'
 import NextMeeting from '@/components/NextMeeting'
-import Agenda from '@/components/Agenda'
-import Meter from '@/components/Meter'
+import BaseAgenda from '@/components/BaseAgenda'
+import BaseMeter from '@/components/BaseMeter'
 
 export default {
+  name: 'HomePage',
   components: {
-    'v-summary': Summary,
-    'v-posts': Posts,
-    'v-jobs': Jobs,
-    'v-skills': Skills,
-    'v-quote': Quote,
-    'v-insights': Insights,
-    'v-projects': Projects,
-    'v-next-meeting': NextMeeting,
-    'v-agenda': Agenda,
-    'v-meter': Meter
+    MySummary,
+    PostsList,
+    JobsList,
+    SkillsList,
+    BaseQuote,
+    InsightsList,
+    ProjectsList,
+    NextMeeting,
+    BaseAgenda,
+    BaseMeter
   },
   async asyncData({ $storyapi, error, app, isDev }) {
     const currentLocale = app.i18n.locales.find(lang => lang.code === app.i18n.locale)
@@ -227,7 +228,7 @@ export default {
 
     if (story) {
       return {
-        home: story.content,
+        page: story.content,
         talks,
         projects,
         preview: isDev
@@ -237,7 +238,7 @@ export default {
     }
   },
   data: () => ({
-    home: null,
+    page: null,
     talks: null,
     projects: null,
     preview: false
@@ -284,7 +285,7 @@ export default {
         storyblokInstance.on(['input', 'published', 'change'], event => {
           if (event.action === 'input') {
             if (event.story.slug === 'home') {
-              this.home = event.story.content
+              this.page = event.story.content
             }
           } else {
             this.$nuxt.$router.go({
@@ -302,8 +303,8 @@ export default {
   },
   methods: {
     getBlok(name) {
-      if (!this.home || this.home.body.length === 0) return null
-      return this.home.body.find(blok => blok.component === name)
+      if (!this.page || this.page.body.length === 0) return null
+      return this.page.body.find(blok => blok.component === name)
     }
   },
   head() {
@@ -325,5 +326,3 @@ export default {
   }
 }
 </script>
-
-<style></style>

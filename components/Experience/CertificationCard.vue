@@ -22,7 +22,7 @@
     <em itemscope itemtype="http://schema.org/Organization">
       <span itemprop="name">
         <a :href="blok.institution_url.url" target="_blank" :title="blok.institution" rel="noreferrer">{{ blok.institution }}</a> </span
-      >, <span itemprop="address">{{ blok.city }}</span> - {{ new Date(blok.released_at).getFullYear() }}
+      >, <span itemprop="address">{{ blok.city }}</span> - {{ releasedAt }}{{ expiredAt }}
     </em>
   </div>
 </template>
@@ -34,8 +34,14 @@ export default {
       type: Object,
       required: true
     }
+  },
+  computed: {
+    releasedAt() {
+      return new Date(this.blok.released_at).getFullYear()
+    },
+    expiredAt() {
+      return this.blok.expired_at ? `/${new Date(this.blok.expired_at).getFullYear()}` : ''
+    }
   }
 }
 </script>
-
-<style></style>

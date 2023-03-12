@@ -12,24 +12,24 @@
     <address itemprop="address" itemscope="itemscope" itemtype="http://schema.org/PostalAddress" class="p-adr">
       <span itemprop="addressLocality" class="p-locality">Caraglio</span> • <span itemprop="addressRegion" class="p-region">Cuneo</span>
     </address>
-    <v-birthday />
+    <MyBirthday />
     <client-only>
-      <v-email />
+      <MyEmail />
     </client-only>
-    <v-palette />
+    <PaletteSwitcher />
   </aside>
 </template>
 
 <script>
-import Palette from '@/components/PaletteSwitcher'
-import Birthday from './Birthday'
-import Email from './Email'
+import PaletteSwitcher from '@/components/PaletteSwitcher'
+import MyBirthday from './MyBirthday'
+import MyEmail from './MyEmail'
 
 export default {
   components: {
-    'v-birthday': Birthday,
-    'v-email': Email,
-    'v-palette': Palette
+    MyBirthday,
+    MyEmail,
+    PaletteSwitcher
   },
   computed: {
     otherLanguages() {
@@ -42,7 +42,6 @@ export default {
 
 <style lang="scss">
 .profile-address {
-  text-align: left;
   line-height: 1.5em;
   text-align: center;
   @media #{$medium-up} {

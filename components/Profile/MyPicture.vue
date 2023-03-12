@@ -23,15 +23,11 @@ export default {}
   img {
     width: 100%;
     height: auto;
-    /* @media #{$medium-up} { */
-    outline: dashed 1px var(--color-main);
     max-width: 200px;
-    outline: none;
     border-radius: 1000px;
     padding: 5px;
     margin-top: 0.5em;
     border: dashed 2px var(--color-main);
-    /* } */
   }
   figcaption {
     display: none;

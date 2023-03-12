@@ -1,17 +1,18 @@
 <template>
   <main>
     <div class="section row">
-      <v-posts :preview="preview" />
+      <PostsList :preview="preview" />
     </div>
   </main>
 </template>
 
 <script>
-import Posts from '@/components/Publications/Posts'
+import PostsList from '@/components/Publications/PostsList'
 
 export default {
+  name: 'PublicationsPage',
   components: {
-    'v-posts': Posts
+    PostsList
   },
   asyncData({ isDev }) {
     return {
@@ -20,5 +21,3 @@ export default {
   }
 }
 </script>
-
-<style></style>

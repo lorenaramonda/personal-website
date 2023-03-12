@@ -25,6 +25,11 @@ export default {
       type: Object,
       default: () => ({})
     }
+  },
+  head: {
+    htmlAttrs: {
+      class: 'error404'
+    }
   }
 }
 </script>

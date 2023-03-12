@@ -78,11 +78,4 @@ export default {
     }
   }
 }
-
-@media #{$small-only} {
-}
-@media #{$medium-up} {
-}
-@media #{$large-up} {
-}
 </style>
