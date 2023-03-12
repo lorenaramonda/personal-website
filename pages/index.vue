@@ -141,7 +141,7 @@
         <h2 class="section__title section__title--minor">{{ hobbies.title }}</h2>
         <ul>
           <li v-for="hobby in hobbies.items" :key="hobby.name" v-editable="hobby">
-            <img v-if="hobby.icon" v-tooltip="hobby.name" :src="hobby.icon.filename" :title="hobby.name" alt="" />
+            <img v-if="hobby.icon" v-tooltip="hobby.name" :src="hobby.icon.filename" :title="hobby.name" width="60" height="60" alt="" />
           </li>
         </ul>
       </div>
