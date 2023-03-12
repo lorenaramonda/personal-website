@@ -114,7 +114,9 @@ export default {
         accessToken: process.env.STORYBLOK_TOKEN,
         cacheProvider: 'memory'
       }
-    ]
+    ],
+    // Doc: https://sitemap.nuxtjs.org/guide/configuration
+    '@nuxtjs/sitemap'
   ],
   /*
    ** Axios module configuration
@@ -181,6 +183,15 @@ export default {
    */
   generate: {
     dir: 'public'
+  },
+  sitemap: {
+    hostname: 'https://lorena.ramonda.me',
+    i18n: true,
+    defaults: {
+      changefreq: 'weekly',
+      priority: 1,
+      lastmod: new Date()
+    }
   },
   pwa: {
     manifest: {
