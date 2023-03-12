@@ -1,18 +1,21 @@
 <template>
-  <header class="row column layout__header layout__header--base hcard">
+  <header class="row column layout__header hcard">
+    <BaseLogo />
     <MyPicture />
-    <BaseLogo :heading="false" />
+    <MyAddress />
   </header>
 </template>
 
 <script>
 import BaseLogo from '@/components/BaseLogo'
 import MyPicture from '@/components/Profile/MyPicture'
+import MyAddress from '@/components/Profile/MyAddress'
 
 export default {
   components: {
     BaseLogo,
-    MyPicture
+    MyPicture,
+    MyAddress
   }
 }
 </script>

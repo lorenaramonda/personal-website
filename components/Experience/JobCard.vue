@@ -17,7 +17,7 @@
       </ul>
       <ul v-if="blok.certifications && blok.certifications.length > 0" class="job__certifications">
         <li v-for="certification in blok.certifications" :key="certification._uid">
-          <certification-card :blok="certification" />
+          <CertificationCard :blok="certification" />
         </li>
       </ul>
     </dd>
@@ -29,7 +29,7 @@ import CertificationCard from './CertificationCard.vue'
 
 export default {
   components: {
-    'certification-card': CertificationCard
+    CertificationCard
   },
   props: {
     blok: {

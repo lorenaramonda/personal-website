@@ -1,38 +1,37 @@
 <template>
   <div class="layout" itemscope itemtype="http://schema.org/Person">
-    <v-cookies v-if="false" />
+    <CookiesPolicy v-if="false" />
     <div class="stage">
       <component :is="header" />
       <nuxt />
-      <v-socials />
+      <SocialsLinks />
       <div class="stage__bottom">
-        <v-magic-button />
+        <MagicButton />
       </div>
     </div>
-    <!-- <v-nav />-->
     <div class="fixed">
-      <v-footer />
+      <TheFooter />
     </div>
-    <!-- <v-overlay />-->
   </div>
 </template>
 
 <script>
-import Header from '@/components/Header'
+import TheHeader from '@/components/TheHeader'
 import BaseHeader from '@/components/BaseHeader'
-import Footer from '@/components/Footer'
-import Socials from '@/components/Socials'
+import TheFooter from '@/components/TheFooter'
+import SocialsLinks from '@/components/SocialsLinks'
 import MagicButton from '@/components/MagicButton'
-import Cookie from '@/components/Cookie'
+import CookiesPolicy from '@/components/CookiesPolicy'
 
 export default {
+  name: 'DefaultLayout',
   components: {
-    'v-header': Header,
-    'v-base-header': BaseHeader,
-    'v-footer': Footer,
-    'v-socials': Socials,
-    'v-magic-button': MagicButton,
-    'v-cookies': Cookie
+    TheHeader,
+    BaseHeader,
+    TheFooter,
+    SocialsLinks,
+    MagicButton,
+    CookiesPolicy
   },
   data: () => ({
     isNavOpen: false
@@ -42,7 +41,7 @@ export default {
       return this.$route.name.substring(0, 5) === 'index'
     },
     header() {
-      return this.isHomePage ? 'v-header' : 'v-base-header'
+      return this.isHomePage ? 'TheHeader' : 'BaseHeader'
     }
   },
   head() {

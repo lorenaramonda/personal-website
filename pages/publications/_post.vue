@@ -11,6 +11,7 @@
 
 <script>
 export default {
+  name: 'PostPage',
   async asyncData({ $storyapi, params, error, app, isDev }) {
     const currentLocale = app.i18n.locales.find(lang => lang.code === app.i18n.locale)
     const apiLocale = currentLocale.code === app.i18n.defaultLocale ? '' : `?language=${currentLocale.code}`
