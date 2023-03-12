@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file. (http://keepachangelog.com/)
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.8.1] - 2023-03-12
+
+- Add sitemap nuxt module
+
 ## [1.8.0] - 2023-03-12
 
 - Refactor components names into pascal case
