@@ -1,5 +1,5 @@
 <template>
-  <main v-editable="home">
+  <main v-editable="page">
     <div class="section row">
       <MySummary v-if="summary" v-editable="summary" :title="summary.title" :content="summary.content" />
     </div>
@@ -228,7 +228,7 @@ export default {
 
     if (story) {
       return {
-        home: story.content,
+        page: story.content,
         talks,
         projects,
         preview: isDev
@@ -238,7 +238,7 @@ export default {
     }
   },
   data: () => ({
-    home: null,
+    page: null,
     talks: null,
     projects: null,
     preview: false
@@ -285,7 +285,7 @@ export default {
         storyblokInstance.on(['input', 'published', 'change'], event => {
           if (event.action === 'input') {
             if (event.story.slug === 'home') {
-              this.home = event.story.content
+              this.page = event.story.content
             }
           } else {
             this.$nuxt.$router.go({
@@ -303,8 +303,8 @@ export default {
   },
   methods: {
     getBlok(name) {
-      if (!this.home || this.home.body.length === 0) return null
-      return this.home.body.find(blok => blok.component === name)
+      if (!this.page || this.page.body.length === 0) return null
+      return this.page.body.find(blok => blok.component === name)
     }
   },
   head() {
