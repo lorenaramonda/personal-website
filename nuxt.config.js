@@ -200,6 +200,7 @@ export default {
       start_url: '../index.html',
       display: 'fullscreen',
       background_color: '#fff',
+      theme_color: '#000000',
       description: 'Interact with Lorena',
       lang: 'it-IT'
     },
