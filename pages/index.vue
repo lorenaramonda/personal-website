@@ -141,7 +141,16 @@
         <h2 class="section__title section__title--minor">{{ hobbies.title }}</h2>
         <ul>
           <li v-for="hobby in hobbies.items" :key="hobby.name" v-editable="hobby">
-            <img v-if="hobby.icon" v-tooltip="hobby.name" :src="hobby.icon.filename" :title="hobby.name" width="512" height="512" alt="" />
+            <NuxtImg
+              v-if="hobby.icon"
+              v-tooltip="hobby.name"
+              provider="storyblok"
+              :src="hobby.icon.filename"
+              :title="hobby.name"
+              width="512"
+              height="512"
+              alt=""
+            />
           </li>
         </ul>
       </div>

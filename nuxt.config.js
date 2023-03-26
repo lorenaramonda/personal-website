@@ -68,7 +68,9 @@ export default {
    */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module'
+    '@nuxtjs/eslint-module',
+    // Doc: https://image.nuxtjs.org/getting-started/installation
+    '@nuxt/image'
   ],
   /*
    ** Nuxt.js modules
@@ -161,6 +163,11 @@ export default {
    */
   svgSprite: {
     input: '~/assets/images/icons'
+  },
+  image: {
+    storyblok: {
+      baseURL: 'https://a.storyblok.com'
+    }
   },
   /**
    * Sentry module configuration
