@@ -4,7 +4,7 @@
       <source media="(max-width: 1024px)" srcset="~/assets/images/lorena-ramonda.jpg" />
       <img src="~/assets/images/lorena-ramonda_400x400.jpg" width="400" height="400" alt="Lorena Ramonda" itemprop="image" class="u-photo" />
     </picture>
-    <figcaption class="show-for-medium-up">Lorena Ramonda</figcaption>
+    <figcaption>Lorena Ramonda</figcaption>
   </figure>
 </template>
 
@@ -16,7 +16,6 @@ export default {}
 .profile-picture {
   min-width: 200px;
   min-height: 200px;
-  margin-bottom: 1em;
   position: relative;
   display: inline-block;
   margin: 0 auto;
@@ -31,7 +30,7 @@ export default {}
   }
   figcaption {
     display: none;
-    @media #{$medium-up} {
+    @include mq($from: tablet) {
       line-height: 2em;
       text-align: center;
       background-color: var(--color-main);

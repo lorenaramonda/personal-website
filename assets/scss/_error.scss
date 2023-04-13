@@ -4,4 +4,24 @@
   body {
     background-image: none;
   }
+
+  .row {
+    text-align: center;
+    padding-top: 40vh;
+    padding-bottom: 40vh;
+  }
+  h1 {
+    font-size: 5em;
+    font-weight: bold;
+    line-height: 1.3;
+  }
+  .button {
+    background-color: var(--color-main);
+    color: var(--color-bg);
+    padding: 0.5em 1em;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 1em auto;
+  }
 }

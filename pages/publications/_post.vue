@@ -1,8 +1,8 @@
 <template>
   <main>
     <div v-if="post" class="section row">
-      <article v-editable="post.content" class="column">
-        <h2 v-if="post.content.title" class="section__title">{{ post.content.title }}</h2>
+      <article v-editable="post.content">
+        <BaseHeading v-if="post.content.title">{{ post.content.title }}</BaseHeading>
         <RichtextRenderer v-if="post.content.long_text" :document="post.content.long_text" />
       </article>
     </div>
@@ -10,8 +10,11 @@
 </template>
 
 <script>
+import BaseHeading from '@/components/BaseHeading'
+
 export default {
   name: 'PostPage',
+  components: { BaseHeading },
   async asyncData({ $storyapi, params, error, app, isDev }) {
     const currentLocale = app.i18n.locales.find(lang => lang.code === app.i18n.locale)
     const apiLocale = currentLocale.code === app.i18n.defaultLocale ? '' : `?language=${currentLocale.code}`

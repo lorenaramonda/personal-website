@@ -1,47 +1,150 @@
-$noPalette: (
-  color-main: #000000,
-  color-main-rgb: '0, 0, 0',
-  color-main-darkest: darken(#000000, 20),
-  color-main-darker: darken(#000000, 15),
-  color-main-dark: darken(#000000, 5),
-  color-main-light: lighten(#000000, 15),
-  color-main-lighter: lighten(#000000, 18),
-  color-main-lightest: lighten(#000000, 25),
-  color-background: lighten(#000000, 18),
-  color-bg: #ffffff,
-  color-text: #292828,
-  color-text-minor: #666666
-);
+/*
+Define font faces
+*/
+@mixin fontDownloadTime {
+  font-display: block;
+}
 
-$originalPalette: (
-  color-main: $color-main-original,
-  color-main-rgb: '135, 222, 215',
-  color-main-darkest: darken($color-main-original, 20),
-  color-main-darker: darken($color-main-original, 15),
-  color-main-dark: darken($color-main-original, 5),
-  color-main-light: lighten($color-main-original, 15),
-  color-main-lighter: lighten($color-main-original, 18),
-  color-main-lightest: lighten($color-main-original, 25),
-  color-background: lighten($color-main-original, 18),
-  color-bg: #ffffff,
-  color-text: #292828,
-  color-text-minor: #666666
-);
+@font-face {
+  @include fontDownloadTime;
+  font-family: 'BookEnd';
+  font-weight: normal;
+  font-style: normal;
+  src: url('#{$path__fonts}/bookendswithaccents.woff2') format('woff2'), url('#{$path__fonts}/bookendswithaccents.woff') format('woff'),
+    url('#{$path__fonts}/bookendswithaccents.ttf') format('truetype');
+}
 
-$allyPalette: (
-  color-main: $color-main-ally,
-  color-main-rgb: '161, 17, 64',
-  color-main-darkest: darken($color-main-ally, 20),
-  color-main-darker: darken($color-main-ally, 15),
-  color-main-dark: darken($color-main-ally, 2),
-  color-main-light: lighten($color-main-ally, 15),
-  color-main-lighter: lighten($color-main-ally, 40),
-  color-main-lightest: lighten($color-main-ally, 25),
-  color-background: lighten($color-main-ally, 18),
-  color-bg: #ffffff,
-  color-text: #292828,
-  color-text-minor: #ffffff
-);
+@font-face {
+  @include fontDownloadTime;
+  font-family: 'Ruda';
+  font-weight: normal;
+  font-style: normal;
+  src: url('#{$path__fonts}/ruda-regular.woff2') format('woff2'), url('#{$path__fonts}/ruda-regular.woff') format('woff'),
+    url('#{$path__fonts}/ruda-regular.ttf') format('truetype');
+}
+@font-face {
+  @include fontDownloadTime;
+  font-family: 'Ruda';
+  font-weight: 700;
+  font-style: normal;
+  src: url('#{$path__fonts}/ruda-bold.woff2') format('woff2'), url('#{$path__fonts}/ruda-bold.woff') format('woff'),
+    url('#{$path__fonts}/ruda-bold.ttf') format('truetype');
+}
+@font-face {
+  @include fontDownloadTime;
+  font-family: 'Ruda';
+  font-weight: 900;
+  font-style: normal;
+  src: url('#{$path__fonts}/ruda-black.woff2') format('woff2'), url('#{$path__fonts}/ruda-black.woff') format('woff'),
+    url('#{$path__fonts}/ruda-black.ttf') format('truetype');
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+/*fieldset,*/
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+ol,
+ul {
+  list-style-type: none;
+}
+blockquote,
+q {
+  quotes: none;
+
+  &:before,
+  &:after {
+    content: '';
+    content: none;
+  }
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
 
 // :root custom properties generator
 :root {
@@ -101,90 +204,4 @@ code {
   border: 1px solid var(--color-main-lighter);
   padding: 2px 4px;
   font: 12px $font-family-monospace;
-}
-
-.section {
-  &__title {
-    font-family: $font-family-title;
-    font-size: 3.3em;
-    line-height: normal;
-    text-transform: uppercase;
-    margin-bottom: 0.35em;
-    max-width: 100%;
-    overflow: hidden;
-    @media #{$medium-up} {
-      font-size: 4em;
-    }
-    &--minor {
-      text-transform: none;
-    }
-  }
-  &__subtitle {
-    font-family: $font-family-title;
-    font-size: 3em;
-    line-height: normal;
-    color: var(--color-main);
-    text-transform: uppercase;
-    margin-bottom: 0.35em;
-    @media #{$medium-up} {
-      font-size: 2.5em;
-    }
-  }
-
-  .item__title {
-    font-weight: bold;
-    display: block;
-  }
-
-  // misc section typography
-  ul,
-  dl {
-    li,
-    dd {
-      margin-bottom: 1em;
-      clear: both;
-      P {
-        line-height: normal;
-        font-size: 0.85em;
-      }
-      small {
-        display: block;
-        color: lighten($color-text, 20%);
-        line-height: 1.5;
-        font-size: 0.8em;
-      }
-      img {
-        float: left;
-        margin-right: 0.5em;
-        max-width: 32px;
-        height: auto;
-      }
-      &.talk SPAN {
-        font-size: 0.9em;
-        font-weight: bold;
-        color: lighten($color-text, 20%);
-        &:before {
-          content: '>';
-          color: var(--color-main);
-          margin-right: 0.3em;
-        }
-        A {
-          color: var(--color-main);
-        }
-      }
-    }
-  }
-  a {
-    text-decoration: none;
-    border-bottom: dashed 1px #cccccc;
-  }
-}
-
-.icon--pen {
-  width: 16px;
-  height: 16px;
-  fill: var(--color-main);
-  vertical-align: middle;
-  margin-right: 0.5rem;
-  display: inline-block;
 }

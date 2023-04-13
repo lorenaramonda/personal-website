@@ -184,17 +184,15 @@
       .row {
         max-width: 1200px;
         margin: 0 auto;
+        text-align: center;
+        padding-top: 40vh;
+        padding-bottom: 40vh;
       }
       .error404 {
         height: 100%;
       }
       .error404 body {
         background-image: none;
-      }
-      .column {
-        text-align: center;
-        flex: 0 0 100%;
-        padding: 40vh 0;
       }
       h1 {
         font-size: 5em;
@@ -215,11 +213,9 @@
   </head>
   <body>
     <div class="row">
-      <div class="column">
-        <h1>404</h1>
-        <p id="error"></p>
-        <a href="/" class="button nuxt-link-active">Home page</a>
-      </div>
+      <h1>404</h1>
+      <p id="error"></p>
+      <a href="/" class="button nuxt-link-active">Home page</a>
     </div>
     <script>
       document.getElementById('error').innerHTML = '👉 ' + document.location.pathname + ' 🚫 🤷‍♀️'

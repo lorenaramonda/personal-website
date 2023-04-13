@@ -3,9 +3,9 @@
     <p v-if="otherLanguages.length > 0">
       <template v-for="lang in otherLanguages">
         |
-        <n-link :key="lang.iso" v-tooltip.top="lang.name" :to="switchLocalePath(lang.code)" class="lang">
+        <NuxtLink :key="lang.iso" v-tooltip.top="lang.name" :to="switchLocalePath(lang.code)" class="lang">
           {{ lang.code }}
-        </n-link>
+        </NuxtLink>
       </template>
       |
     </p>
@@ -44,7 +44,7 @@ export default {
 .profile-address {
   line-height: 1.5em;
   text-align: center;
-  @media #{$medium-up} {
+  @include mq($from: tablet) {
     margin-top: 0;
     padding: 2em 0;
     text-align: right;

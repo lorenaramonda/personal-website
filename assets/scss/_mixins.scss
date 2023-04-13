@@ -1,9 +1,0 @@
-@mixin animateMe() {
-  transition: all 200ms ease-in-out;
-}
-
-@mixin colors($palette) {
-  @each $prop, $val in $palette {
-    --#{$prop}: #{$val};
-  }
-}

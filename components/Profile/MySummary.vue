@@ -1,12 +1,15 @@
 <template>
-  <article class="column summary p-summary">
-    <h2 v-if="title" class="section__title">{{ title }}</h2>
+  <article class="summary p-summary">
+    <BaseHeading v-if="title">{{ title }}</BaseHeading>
     <RichtextRenderer v-if="content" :document="content" />
   </article>
 </template>
 
 <script>
+import BaseHeading from '@/components/BaseHeading'
+
 export default {
+  components: { BaseHeading },
   props: {
     title: {
       type: String,

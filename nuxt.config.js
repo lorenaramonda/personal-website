@@ -52,7 +52,7 @@ export default {
    * Nuxtjs Style Resources configuration
    */
   styleResources: {
-    scss: './assets/scss/_variables.scss'
+    scss: './assets/scss/variables/_index.scss'
   },
   /*
    ** Plugins to load before mounting the App

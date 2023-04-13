@@ -1,20 +1,23 @@
 <template>
-  <article v-if="posts && posts.length > 0" id="publications" class="column publications">
-    <h2 class="section__title">{{ $t('publications.title') }}</h2>
+  <article v-if="posts && posts.length > 0" id="publications" class="publications">
+    <BaseHeading>{{ $t('publications.title') }}</BaseHeading>
     <ul v-for="post in posts.filter(e => !!e.content.title)" :key="post.uuid">
       <li v-if="post.content.link || (post.content.long_text && post.content.long_text.content[0].content)">
         <svg-icon name="pen" class="icon--pen" />
         <a v-if="post.content.link" :href="post.content.link.url" rel="noreferrer" target="_blank">
           {{ post.content.title }}
         </a>
-        <n-link v-else :to="localePath({ name: 'publications-post', params: { post: post.slug } })">{{ post.content.title }}</n-link>
+        <NuxtLink v-else :to="localePath({ name: 'publications-post', params: { post: post.slug } })">{{ post.content.title }}</NuxtLink>
       </li>
     </ul>
   </article>
 </template>
 
 <script>
+import BaseHeading from '@/components/BaseHeading'
+
 export default {
+  components: { BaseHeading },
   props: {
     preview: {
       type: Boolean,

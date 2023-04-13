@@ -5,7 +5,7 @@
       <h2 itemprop="jobTitle" class="p-job-title">{{ $t('job.title') }}</h2>
     </template>
     <template v-else>
-      <n-link :to="localePath({ name: 'index' })"> <strong>lorena</strong>.ramonda.me </n-link>
+      <NuxtLink :to="localePath({ name: 'index' })"> <strong>lorena</strong>.ramonda.me </NuxtLink>
     </template>
   </div>
 </template>
@@ -53,7 +53,7 @@ export default {
     font-size: 3.5em;
     text-align: center;
     text-transform: uppercase;
-    @media #{$large-up} {
+    @include mq($from: desktop) {
       font-size: 6.5em;
       text-align: left;
     }
@@ -67,11 +67,11 @@ export default {
     color: var(--color-main);
     font-size: 2em; //1.5em;
     font-weight: bold;
-    @media #{$medium-up} {
+    @include mq($from: tablet) {
       font-size: 2.5em;
       font-weight: normal;
     }
-    @media #{$small-only} {
+    @include mq($until: mobile) {
       span {
         display: none;
       }

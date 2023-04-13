@@ -55,8 +55,9 @@
     "jest": "^26.1.0",
     "lint-staged": "^10.2.11",
     "prettier": "^2.0.5",
-    "sass": "^1.53.0",
+    "sass": "^1.58.0",
     "sass-loader": "10",
+    "sass-mq": "^6.0.0",
     "storyblok-nuxt": "^2.0.1",
     "vue-jest": "^3.0.4"
   }

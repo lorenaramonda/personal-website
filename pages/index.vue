@@ -12,10 +12,10 @@
       <PostsList :preview="preview" />
     </div>
 
-    <div class="section row">
+    <div class="section section--column2 row">
       <JobsList :jobs="jobs" :preview="preview" />
-      <article id="study" :data-readmore="$t('misc.showMore')" class="medium-6 column p-education textfade">
-        <h2 class="section__title">{{ $t('education.title') }}</h2>
+      <article id="study" class="p-education textfade">
+        <BaseHeading>{{ $t('education.title') }}</BaseHeading>
         <ul>
           <li>
             <strong class="item__title">{{ $t('education.coursePost') }} {{ $t('education.coursePostTitle') }} (600 {{ $t('misc.hours') }})</strong>
@@ -101,9 +101,9 @@
       {{ $t('quote.anonymous') }}
     </BaseQuote>
 
-    <div class="section row">
-      <article id="contributions" class="medium-6 column">
-        <h2 class="section__title">{{ $t('contributions.title') }}</h2>
+    <div class="section section--column2 row">
+      <article id="contributions">
+        <BaseHeading>{{ $t('contributions.title') }}</BaseHeading>
         <ul>
           <li>
             <svg-icon name="pen" class="icon--pen" />
@@ -122,39 +122,23 @@
       {{ $t('quote.confucio') }}
     </BaseQuote>
 
-    <div class="section row">
+    <div class="section section--column2 row">
       <InsightsList v-if="insights" v-editable="insights" :title="insights.title" :list="insights.items" />
-      <article v-if="languages" id="languages" v-editable="languages" class="medium-6 column">
-        <h2 class="section__title">{{ languages.title }}</h2>
+      <article v-if="languages" id="languages" v-editable="languages">
+        <BaseHeading>{{ languages.title }}</BaseHeading>
         <ul class="graph">
           <li v-for="lang in languages.items" :key="lang.name" v-editable="lang">
             <BaseMeter :value="parseInt(lang.rate)" />
-            {{ lang.name }}
-            <small v-if="lang.info">{{ lang.info }}</small>
+            <p>
+              {{ lang.name }}
+              <small v-if="lang.info">{{ lang.info }}</small>
+            </p>
           </li>
         </ul>
       </article>
     </div>
 
-    <div v-if="hobbies" id="hobbies" v-editable="hobbies" class="section row hobbies">
-      <div class="column">
-        <h2 class="section__title section__title--minor">{{ hobbies.title }}</h2>
-        <ul>
-          <li v-for="hobby in hobbies.items" :key="hobby.name" v-editable="hobby">
-            <NuxtImg
-              v-if="hobby.icon"
-              v-tooltip="hobby.name"
-              provider="storyblok"
-              :src="hobby.icon.filename"
-              :title="hobby.name"
-              width="512"
-              height="512"
-              alt=""
-            />
-          </li>
-        </ul>
-      </div>
-    </div>
+    <HobbiesList v-if="hobbies" :hobbies="hobbies" class="row" />
   </main>
 </template>
 
@@ -164,11 +148,13 @@ import PostsList from '@/components/Publications/PostsList'
 import JobsList from '@/components/Experience/JobsList'
 import InsightsList from '@/components/Education/InsightsList'
 import SkillsList from '@/components/SkillsList'
+import HobbiesList from '@/components/HobbiesList'
 import BaseQuote from '@/components/BaseQuote'
 import ProjectsList from '@/components/ProjectsList'
 import NextMeeting from '@/components/NextMeeting'
 import BaseAgenda from '@/components/BaseAgenda'
 import BaseMeter from '@/components/BaseMeter'
+import BaseHeading from '@/components/BaseHeading'
 
 export default {
   name: 'HomePage',
@@ -177,12 +163,14 @@ export default {
     PostsList,
     JobsList,
     SkillsList,
+    HobbiesList,
     BaseQuote,
     InsightsList,
     ProjectsList,
     NextMeeting,
     BaseAgenda,
-    BaseMeter
+    BaseMeter,
+    BaseHeading
   },
   async asyncData({ $storyapi, error, app, isDev }) {
     const currentLocale = app.i18n.locales.find(lang => lang.code === app.i18n.locale)
@@ -335,3 +323,41 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.graph li {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  margin-bottom: 0.9em;
+  span {
+    float: right;
+    background-color: var(--color-main);
+    color: var(--color-bg);
+    border-radius: 10px;
+    padding: 0 0.5em;
+    font-weight: bold;
+  }
+
+  p {
+    margin: 0 1.5em 0 0;
+    font-size: 1em;
+  }
+
+  small {
+    display: block;
+    color: lighten($color-text, 20%);
+    line-height: 2;
+    font-size: 0.8em;
+  }
+}
+
+.icon--pen {
+  width: 16px;
+  height: 16px;
+  fill: var(--color-main);
+  vertical-align: middle;
+  margin-right: 0.5rem;
+  display: inline-block;
+}
+</style>

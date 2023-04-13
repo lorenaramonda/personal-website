@@ -1,0 +1,69 @@
+// Define corporate colors:
+// green summer: #87ded7 | rgb(135,222,215)
+// pink fashion: #A11140 | rgb(161, 17, 64)
+
+$color-main-original: #87ded7;
+$color-text-original: #292828;
+$color-background-original: lighten($color-main-original, 18);
+$color-background-lightest-original: #ffffff;
+
+$color-main-ally: #a11140;
+
+$color-main: $color-main-original;
+$color-text: $color-text-original;
+$color-background: $color-background-original;
+$color-background-lightest: $color-background-lightest-original;
+// fallback
+$color-bg: $color-background-lightest;
+
+// Define colors map
+$noPalette: (
+  color-main: #000000,
+  color-main-rgb: '0, 0, 0',
+  color-main-darkest: darken(#000000, 20),
+  color-main-darker: darken(#000000, 15),
+  color-main-dark: darken(#000000, 5),
+  color-main-light: lighten(#000000, 15),
+  color-main-lighter: lighten(#000000, 18),
+  color-main-lightest: lighten(#000000, 25),
+  color-background: lighten(#000000, 18),
+  color-bg: #ffffff,
+  color-text: #292828,
+  color-text-minor: #666666
+);
+
+$originalPalette: (
+  color-main: $color-main-original,
+  color-main-rgb: '135, 222, 215',
+  color-main-darkest: darken($color-main-original, 20),
+  color-main-darker: darken($color-main-original, 15),
+  color-main-dark: darken($color-main-original, 5),
+  color-main-light: lighten($color-main-original, 15),
+  color-main-lighter: lighten($color-main-original, 18),
+  color-main-lightest: lighten($color-main-original, 25),
+  color-background: lighten($color-main-original, 18),
+  color-bg: #ffffff,
+  color-text: #292828,
+  color-text-minor: #666666
+);
+
+$allyPalette: (
+  color-main: $color-main-ally,
+  color-main-rgb: '161, 17, 64',
+  color-main-darkest: darken($color-main-ally, 20),
+  color-main-darker: darken($color-main-ally, 15),
+  color-main-dark: darken($color-main-ally, 2),
+  color-main-light: lighten($color-main-ally, 15),
+  color-main-lighter: lighten($color-main-ally, 40),
+  color-main-lightest: lighten($color-main-ally, 25),
+  color-background: lighten($color-main-ally, 18),
+  color-bg: #ffffff,
+  color-text: #292828,
+  color-text-minor: #ffffff
+);
+
+@mixin colors($palette) {
+  @each $prop, $val in $palette {
+    --#{$prop}: #{$val};
+  }
+}
