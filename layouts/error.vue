@@ -26,7 +26,8 @@ export default {
   },
   head: {
     htmlAttrs: {
-      class: 'error404'
+      class: 'error404',
+      lang: 'en'
     }
   }
 }
