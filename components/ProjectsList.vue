@@ -1,6 +1,6 @@
 <template>
-  <article v-if="projects" id="projects" class="medium-6 column">
-    <h2 class="section__title">{{ $t('projects.title') }}</h2>
+  <article v-if="projects" id="projects">
+    <BaseHeading>{{ $t('projects.title') }}</BaseHeading>
     <ul v-for="(prj, i) in projectsData" :key="i">
       <li v-editable="prj">
         <p>
@@ -19,7 +19,10 @@
 </template>
 
 <script>
+import BaseHeading from '@/components/BaseHeading'
+
 export default {
+  components: { BaseHeading },
   filters: {
     stripProtocol(url) {
       return url.replace(/(http[s]?):\/\//g, '')

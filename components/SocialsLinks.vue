@@ -1,6 +1,6 @@
 <template>
   <div class="socials row">
-    <div class="tw-follow medium-6 column">
+    <div class="tw-follow">
       <p>
         <a
           href="https://twitter.com/loreenaramonda?ref_src=twsrc%5Etfw"
@@ -15,7 +15,7 @@
         </a>
       </p>
     </div>
-    <div class="socials__list medium-6 column">
+    <div class="socials__list">
       <ul>
         <li class="gh">
           <a
@@ -78,7 +78,7 @@ export default {
   margin-top: 2em;
   margin-bottom: 2em;
   text-shadow: none !important;
-  @media #{$medium-up} {
+  @include mq($from: desktop) {
     margin-bottom: 0;
     display: flex;
     justify-content: space-between;
@@ -100,7 +100,7 @@ export default {
     font-size: 0.8em;
     text-decoration: none;
   }
-  @media #{$medium-up} {
+  @include mq($from: desktop) {
     &__list {
       display: flex;
       justify-content: flex-end;
@@ -110,7 +110,7 @@ export default {
   ul {
     display: table;
     margin: 1em auto;
-    @media #{$medium-up} {
+    @include mq($from: desktop) {
       float: right;
       margin: 0;
     }
@@ -118,7 +118,7 @@ export default {
       float: left;
       font-size: 0;
       margin-left: 10px;
-      @media #{$medium-up} {
+      @include mq($from: desktop) {
         margin-left: 5px;
       }
       a {
@@ -175,7 +175,7 @@ export default {
     p {
       margin: 0.7em 0;
     }
-    @media #{$medium-down} {
+    @include mq($until: desktop) {
       text-align: center;
     }
   }

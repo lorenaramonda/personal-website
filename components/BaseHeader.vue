@@ -1,5 +1,5 @@
 <template>
-  <header class="row column layout__header layout__header--base hcard">
+  <header class="row layout__header layout__header--base hcard">
     <MyPicture />
     <BaseLogo :heading="false" />
   </header>

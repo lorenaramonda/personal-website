@@ -1,0 +1,11 @@
+// Define variables
+$base-font-size: 10px;
+$base-font-family: sans-serif;
+$font-family-title: 'BookEnd', Trebuchet, sans-serif;
+$font-family-text: 'Ruda', Verdana, sans-serif;
+$font-family-monospace: Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace;
+
+%text-link {
+  text-decoration: none;
+  border-bottom: dashed 1px #cccccc;
+}

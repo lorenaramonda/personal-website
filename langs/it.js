@@ -71,7 +71,6 @@ export default {
   misc: {
     years: '{count} anno | {count} anni',
     months: '{count} mese | {count} mesi',
-    showMore: 'Mostra di più',
     denmark: 'Danimarca',
     day: 'giorno',
     days: 'giornate',

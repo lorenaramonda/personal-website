@@ -1,12 +1,5 @@
 @import 'variables';
-@import 'fonts';
-@import 'reset';
-@import 'mixins';
-@import 'animations';
-
 @import 'typography';
 @import 'layout';
-@import 'error';
 
-@import 'skills';
-@import 'tooltip';
+@import 'plugins/_tooltip';

@@ -1,6 +1,6 @@
 <template>
-  <article id="work" class="medium-6 column p-experience textfade" data-readmore="Mostra di più">
-    <h2 class="section__title">{{ $t('jobs.title') }}</h2>
+  <article id="work" class="p-experience textfade">
+    <BaseHeading>{{ $t('jobs.title') }}</BaseHeading>
     <dl v-if="jobs && jobs.length > 0">
       <JobCard v-for="(job, index) in jobs" :key="index" v-editable="job" :blok="job" />
     </dl>
@@ -9,11 +9,13 @@
 </template>
 
 <script>
+import BaseHeading from '@/components/BaseHeading'
 import JobCard from './JobCard'
 
 export default {
   components: {
-    JobCard
+    JobCard,
+    BaseHeading
   },
   props: {
     jobs: {

@@ -63,7 +63,7 @@ export default {
     font-size: 0;
   }
 }
-@media #{$medium-up} {
+@include mq($from: tablet) {
   .palette-switcher {
     margin: 2rem 0 0 auto;
   }

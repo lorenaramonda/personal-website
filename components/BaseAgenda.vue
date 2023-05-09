@@ -1,7 +1,7 @@
 <template>
   <div v-if="meetings.length > 0" class="section row">
-    <article class="agenda column">
-      <h2 class="section__title">{{ title }}</h2>
+    <article class="agenda">
+      <BaseHeading>{{ title }}</BaseHeading>
       <p>{{ $t('Mi troverai qui') }}</p>
       <ul class="meetings">
         <li v-for="meeting in meetings" :key="meeting.id">
@@ -23,7 +23,10 @@
 </template>
 
 <script>
+import BaseHeading from '@/components/BaseHeading'
+
 export default {
+  components: { BaseHeading },
   filters: {
     getDay: value => {
       if (!value) return ''

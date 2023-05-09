@@ -6,6 +6,13 @@
 
 <script>
 export default {
-  name: 'EmptyLayout'
+  name: 'EmptyLayout',
+  head() {
+    return {
+      htmlAttrs: {
+        lang: this.$i18n.locale
+      }
+    }
+  }
 }
 </script>

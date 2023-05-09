@@ -23,12 +23,11 @@ export default {
     },
     title: 'Lorena Ramonda',
     meta: [
-      { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {
         hid: 'description',
         name: 'description',
-        content: 'Front End Developer'
+        content: 'Lorena Ramonda is a Front-End Developer based in Italy'
       }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
@@ -52,7 +51,7 @@ export default {
    * Nuxtjs Style Resources configuration
    */
   styleResources: {
-    scss: './assets/scss/_variables.scss'
+    scss: './assets/scss/variables/_index.scss'
   },
   /*
    ** Plugins to load before mounting the App
@@ -68,7 +67,9 @@ export default {
    */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module'
+    '@nuxtjs/eslint-module',
+    // Doc: https://image.nuxtjs.org/getting-started/installation
+    '@nuxt/image'
   ],
   /*
    ** Nuxt.js modules
@@ -161,6 +162,11 @@ export default {
    */
   svgSprite: {
     input: '~/assets/images/icons'
+  },
+  image: {
+    storyblok: {
+      baseURL: 'https://a.storyblok.com'
+    }
   },
   /**
    * Sentry module configuration
