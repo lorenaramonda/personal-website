@@ -3,19 +3,25 @@
 All notable changes to this project will be documented in this file. (http://keepachangelog.com/)
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.8.3] - 2023-05-09
+
+- Removed remaing Foundation styles
+- Refactored css
+- Cleaned code and folders from no more used files
+
 ## [1.8.2] - 2023-03-12
 
-- Fix Lighthouse Audit errors
+- Fixed Lighthouse Audit errors
 
 ## [1.8.1] - 2023-03-12
 
-- Add sitemap nuxt module
+- Added sitemap nuxt module
 
 ## [1.8.0] - 2023-03-12
 
-- Refactor components names into pascal case
-- Add and show the certifications expired date
-- Hotfix: add meta description again
+- Refactored components names into pascal case
+- Added and show the certifications expired date
+- 🐛 Hotfix: added meta description again
 
 ## [1.7.0] - 2022-09-06
 
