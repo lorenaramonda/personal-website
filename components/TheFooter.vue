@@ -55,7 +55,7 @@ export default {
   color: var(--color-main-darker);
   position: relative;
 
-  @include mq($until: desktop) {
+  @include mq($until: tablet) {
     text-align: center;
   }
 
@@ -100,13 +100,13 @@ export default {
     &:hover {
       text-decoration: underline;
     }
-    @include mq($from: desktop) {
+    @include mq($from: tablet) {
       margin: 1em 0;
       display: inline-block;
       text-align: right;
     }
   }
-  @include mq($from: desktop) {
+  @include mq($from: tablet) {
     display: flex;
     justify-content: space-between;
     .right {

@@ -39,7 +39,7 @@ export default {
       font-weight: normal;
     }
   }
-  @include mq($until: desktop) {
+  @include mq($until: tablet) {
     flex-direction: column;
     .logo {
       width: 100%;
@@ -48,7 +48,7 @@ export default {
       order: -1;
     }
   }
-  @include mq($from: desktop) {
+  @include mq($from: tablet) {
     padding-top: 0;
     .hgroup {
       flex: 0 0 50%;
@@ -90,7 +90,7 @@ export default {
         display: none;
       }
     }
-    @include mq($until: desktop) {
+    @include mq($until: tablet) {
       flex-direction: row;
     }
   }

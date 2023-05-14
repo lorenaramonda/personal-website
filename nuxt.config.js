@@ -188,7 +188,7 @@ export default {
    ** When launching nuxt generate Nuxt.js will use the configuration defined in the generate property.
    */
   generate: {
-    dir: 'public'
+    dir: 'dist'
   },
   sitemap: {
     hostname: 'https://lorena.ramonda.me',

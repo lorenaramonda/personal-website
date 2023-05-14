@@ -86,7 +86,7 @@ export default {
       position: relative;
     }
   }
-  @include mq($from: desktop) {
+  @include mq($from: tablet) {
     margin-bottom: 110px;
     min-height: calc(100vh - 110px);
     padding-bottom: 100px;
