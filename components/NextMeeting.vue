@@ -47,29 +47,14 @@ export default {
     }
 
     const today = new Date()
-    const yesterday = new Date()
-    const tomorrow = new Date()
-
-    yesterday.setDate(today.getDate() - 1)
-    tomorrow.setDate(today.getDate() + 1)
-
-    const parsedYesterday = yesterday.toISOString().split('T')[0]
-    const parsedTomorrow = tomorrow.toISOString().split('T')[0]
+    const parsedToday = today.toISOString().split('T')[0]
 
     const meetings = await this.$storyapi
-      .get(
-        `cdn/stories?starts_with=${sbLocaleMulti}events/&filter_query[date][gt_date]=${parsedYesterday}&filter_query[date][lt_date]=${parsedTomorrow}&is_startpage=0`,
-        {
-          version: this.preview ? 'draft' : 'published'
-        }
-      )
-      .then(res => {
-        return res.data.stories.sort((a, b) => {
-          return new Date(a.content.date) - new Date(b.content.date)
-        })
+      .get(`cdn/stories?starts_with=${sbLocaleMulti}events/&filter_query[date][like]=${parsedToday}*&is_startpage=0`, {
+        version: this.preview ? 'draft' : 'published'
       })
-      .catch(res => {
-        return null
+      .then(res => {
+        return res.data.stories
       })
 
     if (meetings.length > 0) {

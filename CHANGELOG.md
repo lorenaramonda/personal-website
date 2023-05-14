@@ -3,7 +3,13 @@
 All notable changes to this project will be documented in this file. (http://keepachangelog.com/)
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [1.8.3] - 2023-05-09
+## [1.9.1] - 2023-05-14
+
+- Changed generated folder
+- Fixed desktop style
+- Refactored dirty code
+
+## [1.9.0] - 2023-05-09
 
 - Removed remaing Foundation styles
 - Refactored css
