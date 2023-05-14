@@ -22,11 +22,6 @@ export default {
       type: Array,
       required: true
     }
-  },
-  methods: {
-    renderedText(content) {
-      return this.$storyapi.richTextResolver.render(content)
-    }
   }
 }
 </script>

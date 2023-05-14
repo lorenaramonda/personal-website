@@ -22,7 +22,7 @@ body {
 }
 
 .section {
-  @include mq($from: 'desktop') {
+  @include mq($from: tablet) {
     display: grid;
     gap: 10px;
     @for $i from 2 through 3 {
