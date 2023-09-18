@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file. (http://keepachangelog.com/)
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.9.2] - 2023-09-18
+
+- Fixed Sentry error for `TypeError f.isHomePage Cannot read properties of null (reading 'substring')`
+- Upgraded to Nuxt 2.17
+
 ## [1.9.1] - 2023-05-14
 
 - Changed generated folder

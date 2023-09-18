@@ -14,6 +14,7 @@ import BaseHeading from '@/components/BaseHeading'
 
 export default {
   name: 'PostPage',
+  layout: 'blog',
   components: { BaseHeading },
   async asyncData({ $storyapi, params, error, app, isDev }) {
     const currentLocale = app.i18n.locales.find(lang => lang.code === app.i18n.locale)
