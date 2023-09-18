@@ -81,8 +81,8 @@ export default {
     '@nuxt/content',
     // Doc: https://pwa.nuxtjs.org/
     '@nuxtjs/pwa',
-    // Doc: https://nuxt-community.github.io/nuxt-i18n/
-    'nuxt-i18n',
+    // Doc: https://i18n.nuxtjs.org/
+    '@nuxtjs/i18n',
     // Doc: https://www.npmjs.com/package/@nuxtjs/style-resources
     '@nuxtjs/style-resources',
     // Doc: https://www.npmjs.com/package/cookie-universal-nuxt
@@ -134,6 +134,7 @@ export default {
    * See https://nuxt-community.github.io/nuxt-i18n/options-reference.html
    */
   i18n: {
+    baseUrl: 'https://lorena.ramonda.me',
     locales: [
       {
         name: 'Italiano',
@@ -145,7 +146,8 @@ export default {
         name: 'English',
         code: 'en',
         iso: 'en-US',
-        file: 'en.js'
+        file: 'en.js',
+        isCatchallLocale: true
       }
     ],
     lazy: true,
