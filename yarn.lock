@@ -273,7 +273,7 @@
     chalk "^2.4.2"
     js-tokens "^4.0.0"
 
-"@babel/parser@^7.1.0", "@babel/parser@^7.14.7", "@babel/parser@^7.14.9", "@babel/parser@^7.18.4", "@babel/parser@^7.20.7", "@babel/parser@^7.22.15", "@babel/parser@^7.22.16", "@babel/parser@^7.7.0", "@babel/parser@^7.9.6":
+"@babel/parser@^7.1.0", "@babel/parser@^7.14.7", "@babel/parser@^7.18.10", "@babel/parser@^7.18.4", "@babel/parser@^7.20.7", "@babel/parser@^7.22.15", "@babel/parser@^7.22.16", "@babel/parser@^7.7.0", "@babel/parser@^7.9.6":
   version "7.22.16"
   resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.22.16.tgz#180aead7f247305cce6551bea2720934e2fa2c95"
   integrity sha512-+gPfKv8UWeKKeJTUxe59+OobVcrYHETCsORl61EmSkmgymguYk/X5bp7GuUIXaFsc6y++v8ZxPsLSSuujqDphA==
@@ -1017,7 +1017,7 @@
     "@babel/parser" "^7.22.15"
     "@babel/types" "^7.22.15"
 
-"@babel/traverse@^7.1.0", "@babel/traverse@^7.14.9", "@babel/traverse@^7.22.15", "@babel/traverse@^7.22.20", "@babel/traverse@^7.7.0":
+"@babel/traverse@^7.1.0", "@babel/traverse@^7.18.10", "@babel/traverse@^7.22.15", "@babel/traverse@^7.22.20", "@babel/traverse@^7.7.0":
   version "7.22.20"
   resolved "https://registry.yarnpkg.com/@babel/traverse/-/traverse-7.22.20.tgz#db572d9cb5c79e02d83e5618b82f6991c07584c9"
   integrity sha512-eU260mPZbU7mZ0N+X10pxXhQFMGTeLb9eFS0mxehS8HZp9o1uSnFeWQuG1UPrlxgA7QoUzFhOnilHDp0AXCyHw==
@@ -1945,7 +1945,7 @@
     "@types/webpack-bundle-analyzer" "3.9.5"
     "@types/webpack-hot-middleware" "2.25.5"
 
-"@nuxt/utils@2.17.1":
+"@nuxt/utils@2.17.1", "@nuxt/utils@2.x":
   version "2.17.1"
   resolved "https://registry.yarnpkg.com/@nuxt/utils/-/utils-2.17.1.tgz#648e354f4f2a35fd77f3cdb11676382d94a5d4ae"
   integrity sha512-6wzFb13zMgQnIS/HQ0uA04iKfme1aIGJVk7rLlEeyDqCjNqsGmzn4QNn3CTNqS7G6KY1Vtc8RHlbXFHHEu3vdw==
@@ -2101,6 +2101,25 @@
   dependencies:
     chalk "^4.1.0"
     semver "^7.3.2"
+
+"@nuxtjs/i18n@^7.3.1":
+  version "7.3.1"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/i18n/-/i18n-7.3.1.tgz#b8654783cced280899697458186a0bf38be4d4b8"
+  integrity sha512-DZP6xR8zZA1ApcNjLnukH3BhMRCfi3r236epuXVuPWWOObPf5vkp+VamewnPiSU+zs0Age+PbaaIUryFv/6pDA==
+  dependencies:
+    "@babel/parser" "^7.18.10"
+    "@babel/traverse" "^7.18.10"
+    "@intlify/vue-i18n-extensions" "^1.0.2"
+    "@intlify/vue-i18n-loader" "^1.1.0"
+    "@nuxt/utils" "2.x"
+    cookie "^0.5.0"
+    devalue "^2.0.1"
+    is-https "^4.0.0"
+    js-cookie "^3.0.1"
+    klona "^2.0.5"
+    lodash.merge "^4.6.2"
+    ufo "^0.8.5"
+    vue-i18n "^8.27.2"
 
 "@nuxtjs/proxy@^2.1.0":
   version "2.1.0"
@@ -4514,6 +4533,11 @@ cookie@^0.4.0, cookie@^0.4.1:
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.4.2.tgz#0e41f24de5ecf317947c82fc789e06a884824432"
   integrity sha512-aSWTXFzaKWkvHO1Ny/s+ePFpvKsPnjc551iI41v3ny/ow6tBG5Vd+FuqGNhh1LxOmVzOlGUriIlOaokOvhaStA==
+
+cookie@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.5.0.tgz#d1f5d71adec6558c58f389987c366aa47e994f8b"
+  integrity sha512-YZ3GUyn/o8gfKJlnlX7g7xq4gyO6OSuhGPKaaGssGB2qgDUS0gPgtTvoyZLTt9Ab6dC4hfc9dV5arkvc/OCmrw==
 
 copy-concurrently@^1.0.0:
   version "1.0.5"
@@ -8023,7 +8047,7 @@ js-beautify@^1.6.12, js-beautify@^1.6.14:
     glob "^8.1.0"
     nopt "^6.0.0"
 
-js-cookie@^3.0.0:
+js-cookie@^3.0.1:
   version "3.0.5"
   resolved "https://registry.yarnpkg.com/js-cookie/-/js-cookie-3.0.5.tgz#0b7e2fd0c01552c58ba86e0841f94dc2557dcdbc"
   integrity sha512-cEiJEAEoIbWfCZYKWhVwFuvPX1gETRYPw6LlaTKoxD3s2AkXzkCjnp6h0V77ozyqj0jakteJ4YqDJT830+lVGw==
@@ -8195,7 +8219,7 @@ kleur@^3.0.3:
   resolved "https://registry.yarnpkg.com/kleur/-/kleur-3.0.3.tgz#a79c9ecc86ee1ce3fa6206d1216c501f147fc07e"
   integrity sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==
 
-klona@^2.0.4:
+klona@^2.0.4, klona@^2.0.5:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/klona/-/klona-2.0.6.tgz#85bffbf819c03b2f53270412420a4555ef882e22"
   integrity sha512-dhG34DXATL5hSxJbIexCft8FChFXtmskoZYnoPWjXQuebWYCNkVeV3KkGegCK9CP1oswI/vQibS2GY7Em/sJJA==
@@ -9382,24 +9406,6 @@ nth-check@^2.0.1:
   integrity sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==
   dependencies:
     boolbase "^1.0.0"
-
-nuxt-i18n@^6.13.1:
-  version "6.28.1"
-  resolved "https://registry.yarnpkg.com/nuxt-i18n/-/nuxt-i18n-6.28.1.tgz#63e3e809fa41d855c5c7c443c0074eecaa97d273"
-  integrity sha512-JKRs8AmixVZ7k90Rrwq468McfnInP1ymuejYHRGA4VV0nZCLYsdDQXZxXl3JXaER9VatM9C24GM3ArAYFOtUhg==
-  dependencies:
-    "@babel/parser" "^7.14.9"
-    "@babel/traverse" "^7.14.9"
-    "@intlify/vue-i18n-extensions" "^1.0.2"
-    "@intlify/vue-i18n-loader" "^1.1.0"
-    cookie "^0.4.1"
-    devalue "^2.0.1"
-    is-https "^4.0.0"
-    js-cookie "^3.0.0"
-    klona "^2.0.4"
-    lodash.merge "^4.6.2"
-    ufo "^0.7.7"
-    vue-i18n "^8.25.0"
 
 nuxt-lazy-load@^1.2.4:
   version "1.3.0"
@@ -12829,11 +12835,6 @@ ua-parser-js@^1.0.35:
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-1.0.36.tgz#a9ab6b9bd3a8efb90bb0816674b412717b7c428c"
   integrity sha512-znuyCIXzl8ciS3+y3fHJI/2OhQIXbXw9MWC/o3qwyR+RGppjZHrM27CGFSKCJXi2Kctiz537iOu2KnXs1lMQhw==
 
-ufo@^0.7.7:
-  version "0.7.11"
-  resolved "https://registry.yarnpkg.com/ufo/-/ufo-0.7.11.tgz#17defad497981290383c5d26357773431fdbadcb"
-  integrity sha512-IT3q0lPvtkqQ8toHQN/BkOi4VIqoqheqM1FnkNWT9y0G8B3xJhwnoKBu5OHx8zHDOvveQzfKuFowJ0VSARiIDg==
-
 ufo@^0.8.4, ufo@^0.8.5, ufo@^0.8.6:
   version "0.8.6"
   resolved "https://registry.yarnpkg.com/ufo/-/ufo-0.8.6.tgz#c0ec89bc0e0c9fa59a683680feb0f28b55ec323b"
@@ -13238,7 +13239,7 @@ vue-hot-reload-api@^2.3.0:
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.3.4.tgz#532955cc1eb208a3d990b3a9f9a70574657e08f2"
   integrity sha512-BXq3jwIagosjgNVae6tkHzzIk6a8MHFtzAdwhnV5VlvPTFxDCvIttgSiHWjdGoTJvXtmRu5HacExfdarRcFhog==
 
-vue-i18n@^8.25.0:
+vue-i18n@^8.27.2:
   version "8.28.2"
   resolved "https://registry.yarnpkg.com/vue-i18n/-/vue-i18n-8.28.2.tgz#913558066e274395c0a9f40b2f3393d5c2636840"
   integrity sha512-C5GZjs1tYlAqjwymaaCPDjCyGo10ajUphiwA922jKt9n7KPpqR7oM1PCwYzhB/E7+nT3wfdG3oRre5raIT1rKA==

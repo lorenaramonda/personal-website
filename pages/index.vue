@@ -305,7 +305,11 @@ export default {
     }
   },
   head() {
+    const i18nHead = this.$nuxtI18nHead({ addSeoAttributes: true })
     return {
+      htmlAttrs: {
+        ...i18nHead.htmlAttrs
+      },
       title: this.page && this.page.meta_title ? this.page.meta_title : 'Lorena Ramonda - Front End Developer, Cuneo Italia',
       meta: [
         {
@@ -318,7 +322,8 @@ export default {
           name: 'keywords',
           content: this.page && this.page.meta_keywords ? this.page.meta_keywords : ''
         }
-      ]
+      ],
+      link: [...i18nHead.link]
     }
   }
 }
