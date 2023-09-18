@@ -1,14 +1,6 @@
 <template>
   <aside class="profile-address">
-    <p v-if="otherLanguages.length > 0">
-      <template v-for="lang in otherLanguages">
-        |
-        <NuxtLink :key="lang.iso" v-tooltip.top="lang.name" :to="switchLocalePath(lang.code)" class="lang">
-          {{ lang.code }}
-        </NuxtLink>
-      </template>
-      |
-    </p>
+    <BaseLanguageSwitcher />
     <address itemprop="address" itemscope="itemscope" itemtype="http://schema.org/PostalAddress" class="p-adr">
       <span itemprop="addressLocality" class="p-locality">Caraglio</span> • <span itemprop="addressRegion" class="p-region">Cuneo</span>
     </address>
@@ -22,6 +14,7 @@
 
 <script>
 import PaletteSwitcher from '@/components/PaletteSwitcher'
+import BaseLanguageSwitcher from '@/components/BaseLanguageSwitcher'
 import MyBirthday from './MyBirthday'
 import MyEmail from './MyEmail'
 
@@ -29,13 +22,8 @@ export default {
   components: {
     MyBirthday,
     MyEmail,
-    PaletteSwitcher
-  },
-  computed: {
-    otherLanguages() {
-      const langs = this.$i18n.locales.filter(lang => lang.code !== this.$i18n.locale)
-      return langs || []
-    }
+    PaletteSwitcher,
+    BaseLanguageSwitcher
   }
 }
 </script>
@@ -48,9 +36,6 @@ export default {
     margin-top: 0;
     padding: 2em 0;
     text-align: right;
-  }
-  .lang {
-    text-transform: uppercase;
   }
   p {
     margin: 1em 0;
