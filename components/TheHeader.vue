@@ -65,11 +65,11 @@ export default {
       text-align: left;
       border: none;
       margin: 2em 1em;
-    }
-    a {
-      font-family: $font-family-title;
-      text-decoration: none;
-      font-size: 2.5em;
+      a {
+        font-family: $font-family-title;
+        text-decoration: none;
+        font-size: 2.5em;
+      }
     }
     .palette--ally & .logo {
       &::after {

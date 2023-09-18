@@ -2,7 +2,7 @@
   <div class="layout" itemscope itemtype="http://schema.org/Person">
     <CookiesPolicy v-if="false" />
     <div class="stage">
-      <TheHeader />
+      <BaseHeader />
       <nuxt />
       <SocialsLinks />
       <div class="stage__bottom">
@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import TheHeader from '@/components/TheHeader'
+import BaseHeader from '@/components/BaseHeader'
 import TheFooter from '@/components/TheFooter'
 import SocialsLinks from '@/components/SocialsLinks'
 import MagicButton from '@/components/MagicButton'
@@ -25,7 +25,7 @@ import CookiesPolicy from '@/components/CookiesPolicy'
 export default {
   name: 'DefaultLayout',
   components: {
-    TheHeader,
+    BaseHeader,
     TheFooter,
     SocialsLinks,
     MagicButton,

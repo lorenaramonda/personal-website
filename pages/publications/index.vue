@@ -11,6 +11,7 @@ import PostsList from '@/components/Publications/PostsList'
 
 export default {
   name: 'PublicationsPage',
+  layout: 'blog',
   components: {
     PostsList
   },
