@@ -65,6 +65,9 @@ export default {
         console.warn(error)
       }
     )
+  },
+  head() {
+    return this.$nuxtI18nHead({ addSeoAttributes: true })
   }
 }
 </script>
