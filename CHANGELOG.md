@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file. (http://keepachangelog.com/)
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.9.4] - 2023-09-20
+
+- Fixed `TypeError: null is not an object (evaluating 'o.filter')`
+
 ## [1.9.3] - 2023-09-18
 
 - Upgraded i18n module to add canonicals to page (and try to fix SEO errors)
