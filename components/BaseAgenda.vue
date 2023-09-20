@@ -72,12 +72,12 @@ export default {
           return new Date(a.content.date) - new Date(b.content.date)
         })
       })
-      .catch(res => {
-        return null
+      .catch(e => {
+        console.error(e)
+        return []
       })
 
-    const nextMeetings = meetings.filter(e => Date.parse(new Date(e.content.date).toDateString()) - Date.parse(new Date().toDateString()) >= 0)
-    if (nextMeetings.length > 0) this.meetings = nextMeetings
+    this.meetings = meetings.filter(e => Date.parse(new Date(e.content.date).toDateString()) - Date.parse(new Date().toDateString()) >= 0)
   },
   methods: {
     getMonth(date) {
