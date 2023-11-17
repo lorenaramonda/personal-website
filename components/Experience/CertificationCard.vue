@@ -13,7 +13,7 @@
         :title="$t('education.certification.linkTitle', { certification: blok.title })"
         :href="blok.certification_url.url"
         target="_blank"
-        rel="noreferrer"
+        rel="noopener"
       >
         {{ $t('education.certification.title', { certification: blok.title }) }}
       </a>
@@ -21,7 +21,7 @@
     {{ $t('misc.at') }}
     <em itemscope itemtype="http://schema.org/Organization">
       <span itemprop="name">
-        <a :href="blok.institution_url.url" target="_blank" :title="blok.institution" rel="noreferrer">{{ blok.institution }}</a> </span
+        <a :href="blok.institution_url.url" target="_blank" :title="blok.institution" rel="noopener">{{ blok.institution }}</a> </span
       >, <span itemprop="address">{{ blok.city }}</span> - {{ releasedAt }}{{ expiredAt }}
     </em>
   </div>
@@ -32,8 +32,8 @@ export default {
   props: {
     blok: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   computed: {
     releasedAt() {
@@ -41,7 +41,7 @@ export default {
     },
     expiredAt() {
       return this.blok.expired_at ? `/${new Date(this.blok.expired_at).getFullYear()}` : ''
-    }
-  }
+    },
+  },
 }
 </script>

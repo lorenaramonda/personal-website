@@ -1,42 +1,37 @@
 <template>
-  <button v-tooltip.left-start="text" class="palette-switcher" @click="togglePalette">
-    <svg-icon name="sun" /> <span>{{ text }}</span>
+  <button v-tooltip.left-start="text" class="palette-switcher" type="button" @click="togglePalette">
+    <SvgIcon name="sun" /> <span class="palette-switcher__label">{{ text }}</span>
   </button>
 </template>
 
-<script>
-export default {
-  data: () => ({
-    ally: null,
-    cookieName: 'palette-version',
-    cookieDomain: '.ramonda.me'
-  }),
-  computed: {
-    text() {
-      return this.ally ? this.$i18n.t('palette.original') : this.$i18n.t('palette.ally')
-    }
-  },
-  mounted() {
-    this.ally = this.$cookies.get(this.cookieName) === 'ally' || !this.$cookies.get(this.cookieName)
-  },
-  methods: {
-    togglePalette() {
-      this.ally = !this.ally
-      // save cookie
-      this.$cookies.set(this.cookieName, this.ally ? 'ally' : 'default', {
-        domain: this.cookieDomain,
-        maxAge: 60 * 60 * 24 * 365
-      })
-    }
-  },
-  head() {
-    return {
-      htmlAttrs: {
-        class: this.ally === null ? '' : this.ally ? 'palette--ally' : 'palette--original'
-      }
-    }
-  }
+<script setup>
+const { t } = useI18n()
+const cookie = useCookie('palette-version', {
+  // domain: '.ramonda.me',
+  maxAge: 60 * 60 * 24 * 365,
+})
+
+const ally = ref(null)
+
+const text = computed(() => {
+  return ally.value ? t('palette.original') : t('palette.ally')
+})
+
+function togglePalette() {
+  ally.value = !ally.value
+  // save cookie
+  cookie.value = ally.value ? 'ally' : 'default'
 }
+
+onMounted(() => {
+  ally.value = cookie.value === 'ally' || !cookie
+})
+
+useHead(() => ({
+  htmlAttrs: {
+    class: ally.value === null ? '' : ally.value ? 'palette--ally' : 'palette--original',
+  },
+}))
 </script>
 
 <style lang="scss">
@@ -58,7 +53,7 @@ export default {
     vertical-align: middle;
     fill: white;
   }
-  span {
+  &__label {
     position: absolute;
     font-size: 0;
   }

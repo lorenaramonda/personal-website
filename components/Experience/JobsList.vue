@@ -1,31 +1,27 @@
 <template>
-  <article id="work" class="p-experience textfade">
+  <article v-if="jobs" id="work" class="p-experience textfade">
     <BaseHeading>{{ $t('jobs.title') }}</BaseHeading>
     <dl v-if="jobs && jobs.length > 0">
-      <JobCard v-for="(job, index) in jobs" :key="index" v-editable="job" :blok="job" />
+      <JobCard v-for="(job, index) in jobs" :key="index" :blok="job" />
     </dl>
     <p v-else>{{ $t('jobs.notFound') }}</p>
   </article>
 </template>
 
 <script>
-import BaseHeading from '@/components/BaseHeading'
 import JobCard from './JobCard'
+import BaseHeading from '@/components/BaseHeading'
 
 export default {
   components: {
     JobCard,
-    BaseHeading
+    BaseHeading,
   },
   props: {
     jobs: {
-      type: Array,
-      default: () => []
+      type: Object,
+      default: () => ({}),
     },
-    preview: {
-      type: Boolean,
-      default: false
-    }
-  }
+  },
 }
 </script>

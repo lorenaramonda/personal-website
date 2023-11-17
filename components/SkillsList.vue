@@ -2,19 +2,11 @@
   <div v-editable="skills" class="section row skills">
     <article v-if="orderedSkills.length > 0" id="skills" class="cv p-skill">
       <BaseHeading>{{ skills.title }}</BaseHeading>
-      <section>
-        <ul v-if="orderedSkills.length > 0" class="tags">
-          <li
-            v-for="item in orderedSkills"
-            :key="item.name"
-            v-tooltip="getLabel(item.rate)"
-            :class="`tags__single--${item.rate}`"
-            class="tags__single"
-          >
-            <span>{{ item.name }}</span>
-          </li>
-        </ul>
-      </section>
+      <ul v-if="orderedSkills.length > 0" class="tags">
+        <li v-for="item in orderedSkills" :key="item.name" v-tooltip="getLabel(item.rate)" :class="`tags__single--${item.rate}`" class="tags__single">
+          <span>{{ item.name }}</span>
+        </li>
+      </ul>
     </article>
   </div>
 </template>
@@ -27,41 +19,39 @@ export default {
   props: {
     skills: {
       type: Object,
-      required: true
+      required: true,
     },
     max: {
       type: Number,
-      default: 14
+      default: 14,
     },
     minimunRate: {
       type: Number,
-      default: 6
-    }
+      default: 6,
+    },
   },
   computed: {
     orderedSkills() {
       if (!this.skills.items) return []
       return this.skills.items.filter(e => e.rate >= this.minimunRate).slice(0, this.max)
-    }
+    },
   },
   methods: {
     getLabel(val) {
-      const str = this.$options.filters.rateLabel(val)
+      const str = this.$filters.rateLabel(val)
       return this.$t(str)
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style lang="scss">
-.skills section {
-  max-width: 1090px;
-  margin: 0 auto;
-}
 .tags {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  max-width: 1090px;
+  margin: 0 auto;
   &__single {
     line-height: 40px;
     padding: 0 1em;
@@ -125,6 +115,7 @@ export default {
   }
   &--left {
     justify-content: flex-start;
+    margin: 0 auto 0 0;
   }
 }
 </style>

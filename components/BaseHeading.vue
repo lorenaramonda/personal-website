@@ -7,8 +7,8 @@
 <script>
 export default {
   props: {
-    minor: Boolean
-  }
+    minor: Boolean,
+  },
 }
 </script>
 

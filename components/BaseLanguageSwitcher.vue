@@ -1,24 +1,27 @@
 <template>
-  <p v-if="otherLanguages.length > 0" class="language-switcher">
-    <template v-for="lang in otherLanguages">
-      |
-      <NuxtLink :key="lang.iso" v-tooltip.top="lang.name" :to="switchLocalePath(lang.code)" class="lang">
-        {{ lang.code }}
-      </NuxtLink>
+  <span v-if="availableLocales.length > 0" class="language-switcher">
+    <template v-for="lang in availableLocales" :key="lang.code">
+      | <NuxtLink v-tooltip.top="lang.name" :to="switchLocalePath(lang.code) || ''" class="lang">{{ lang.code }}</NuxtLink>
     </template>
-    |
-  </p>
+    {{ closingText }}
+  </span>
 </template>
 
-<script>
-export default {
-  computed: {
-    otherLanguages() {
-      const langs = this.$i18n.locales.filter(lang => lang.code !== this.$i18n.locale)
-      return langs || []
-    }
-  }
-}
+<script setup>
+const { locale, locales } = useI18n()
+const switchLocalePath = useSwitchLocalePath()
+
+const props = defineProps({
+  unwrapped: Boolean,
+})
+
+const availableLocales = computed(() => {
+  return locales.value.filter(lang => lang.code !== locale.value)
+})
+
+const closingText = computed(() => {
+  return props.unwrapped ? '' : '|'
+})
 </script>
 
 <style lang="scss">

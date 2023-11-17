@@ -2,11 +2,11 @@
   <div class="row">
     <template v-if="error.statusCode === 404">
       <h1>404</h1>
-      <i18n path="error.path" tag="p">
+      <i18n-t keypath="error.path" tag="p" scope="global">
         <template #path>
           {{ $route.path }}
         </template>
-      </i18n>
+      </i18n-t>
     </template>
     <template v-else>
       <h1>An error occurred</h1>
@@ -21,16 +21,19 @@ export default {
   props: {
     error: {
       type: Object,
-      default: () => ({})
-    }
+      default: () => ({}),
+    },
   },
-  head: {
-    htmlAttrs: {
-      class: 'error404',
-      lang: 'en'
-    }
-  }
 }
+</script>
+
+<script setup>
+useHead({
+  htmlAttrs: {
+    class: 'error404',
+    lang: 'en',
+  },
+})
 </script>
 
 <style lang="scss">

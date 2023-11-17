@@ -12,9 +12,9 @@ export default {
   props: {
     author: {
       type: String,
-      default: ''
-    }
-  }
+      default: '',
+    },
+  },
 }
 </script>
 

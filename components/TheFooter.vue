@@ -3,48 +3,41 @@
     <div class="left" role="contentinfo">
       <p>
         2020 . <a href="http://lorena.ramonda.me/" itemprop="url">lorena.ramonda.me</a>
-        <template v-if="otherLanguages.length > 0">
-          <template v-for="lang in otherLanguages">
-            |
-            <NuxtLink :key="lang.iso" :to="switchLocalePath(lang.code)" class="lang">
-              {{ lang.code }}
-            </NuxtLink>
-          </template>
-        </template>
+
+        <BaseLanguageSwitcher unwrapped />
         <br />
         <small>
-          <i18n path="site.tecnology" tag="span">
+          <i18n-t keypath="site.tecnology" tag="span" scope="global">
             <template #framework>
-              <a href="https://nuxtjs.org/" target="_blank" rel="noreferrer">Nuxt.js</a>
+              <a href="https://nuxt.com/" target="_blank" rel="noopener">Nuxt3</a>
             </template>
             <template #host>
-              <a href="https://www.netlify.com/" target="_blank" rel="noreferrer">Netlify</a>
+              <a href="https://www.netlify.com/" target="_blank" rel="noopener">Netlify</a>
             </template>
             <template #repo>
-              <a href="https://github.com/lorenaramonda/personal-website" target="_blank" rel="noreferrer">Github</a>
+              <a href="https://github.com/lorenaramonda/personal-website" target="_blank" rel="noopener">Github</a>
             </template>
-          </i18n>
+          </i18n-t>
         </small>
       </p>
     </div>
     <div class="right">
-      <p><a :href="$t('personality.link')" :title="$t('personality.title')">INFJ-T</a></p>
-      <a href="//www.iubenda.com/privacy-policy/262452" class="iubenda-white iubenda-embed" title="Privacy Policy" target="_blank" rel="noreferrer">
+      <p><a v-tooltip="$t('personality.title')" :href="$t('personality.link')" :title="$t('personality.title')" target="_blank">INFJ-T</a></p>
+      <a
+        href="https://www.iubenda.com/privacy-policy/262452"
+        class="iubenda-white iubenda-embed"
+        title="Privacy Policy"
+        target="_blank"
+        rel="noopener"
+      >
         {{ $t('site.privacy') }}
       </a>
     </div>
   </footer>
 </template>
 
-<script>
-export default {
-  computed: {
-    otherLanguages() {
-      const langs = this.$i18n.locales.filter(lang => lang.code !== this.$i18n.locale)
-      return langs || []
-    }
-  }
-}
+<script setup>
+import BaseLanguageSwitcher from '@/components/BaseLanguageSwitcher'
 </script>
 
 <style lang="scss">

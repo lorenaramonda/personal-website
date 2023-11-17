@@ -1,5 +1,5 @@
 <template>
-  <div class="job">
+  <div v-editable="blok" class="job">
     <dt>
       <strong class="p-role item__title">{{ blok.job_title }}</strong>
       {{ $t('misc.at') }}
@@ -24,48 +24,45 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import CertificationCard from './CertificationCard.vue'
 
-export default {
-  components: {
-    CertificationCard
-  },
-  props: {
-    blok: {
-      type: Object,
-      required: true
-    }
-  },
-  methods: {
-    getStartDate(startDate) {
-      if (!startDate) return ''
-      const parsedDate = new Date(startDate.substring(0, 10))
-      return parsedDate.getFullYear()
-    },
-    getEndDate(end, start) {
-      const today = new Date()
-      const startDate = new Date(start)
-      const millisecondsPerYear = 1000 * 60 * 60 * 24 * 365
-      const millisecondsPerMonth = millisecondsPerYear / 12
+const { t } = useI18n()
 
-      const duration = this.blok.show_duration ? ` (${this.$tc('misc.years', Math.floor((today - startDate) / millisecondsPerYear))})` : ''
-      // if current position, don't return end date
-      if (!end) return `/...${duration}`
+const props = defineProps({
+  blok: {
+    type: Object,
+    required: true,
+  },
+})
 
-      const endDate = new Date(end)
-      const yearsWorked = Math.floor((endDate - startDate) / millisecondsPerYear)
-      if (yearsWorked === 0) {
-        // returns years worked...
-        if (this.blok.show_duration) {
-          return ` (${this.$tc('misc.months', Math.floor((endDate - startDate) / millisecondsPerMonth))})`
-        }
-      } else {
-        // ... otherwise returns months worked
-        const duration = this.blok.show_duration ? ` (${this.$tc('misc.years', yearsWorked)})` : ''
-        return `/${endDate.getFullYear()}${duration}`
-      }
+function getStartDate(startDate) {
+  if (!startDate) return 0
+  const parsedDate = new Date(startDate.substring(0, 10))
+  return parsedDate.getFullYear()
+}
+
+function getEndDate(end, start) {
+  const today = new Date()
+  const startDate = new Date(start)
+  const millisecondsPerYear = 1000 * 60 * 60 * 24 * 365
+  const millisecondsPerMonth = millisecondsPerYear / 12
+
+  const duration = props.blok.show_duration ? ` (${t('misc.years', Math.floor((today - startDate) / millisecondsPerYear))})` : ''
+  // if current position, don't return end date
+  if (!end) return `/...${duration}`
+
+  const endDate = new Date(end)
+  const yearsWorked = Math.floor((endDate - startDate) / millisecondsPerYear)
+  if (yearsWorked === 0) {
+    // returns years worked...
+    if (props.blok.show_duration) {
+      return ` (${t('misc.months', Math.floor((endDate - startDate) / millisecondsPerMonth))})`
     }
+  } else {
+    // ... otherwise returns months worked
+    const duration = props.blok.show_duration ? ` (${t('misc.years', yearsWorked)})` : ''
+    return `/${endDate.getFullYear()}${duration}`
   }
 }
 </script>

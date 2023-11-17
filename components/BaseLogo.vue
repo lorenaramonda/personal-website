@@ -5,7 +5,7 @@
       <h2 itemprop="jobTitle" class="p-job-title">{{ $t('job.title') }}</h2>
     </template>
     <template v-else>
-      <NuxtLink :to="localePath({ name: 'index' })"> <strong>lorena</strong>.ramonda.me </NuxtLink>
+      <NuxtLink :to="localePath({ name: 'index' })"><strong>lorena</strong>.ramonda.me</NuxtLink>
     </template>
   </div>
 </template>
@@ -15,9 +15,9 @@ export default {
   props: {
     heading: {
       type: Boolean,
-      default: true
-    }
-  }
+      default: true,
+    },
+  },
 }
 </script>
 

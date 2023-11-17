@@ -1,16 +1,12 @@
 <template>
   <figure class="profile-picture">
     <picture>
-      <source media="(max-width: 1024px)" srcset="~/assets/images/lorena-ramonda.jpg" />
+      <source media="(max-width: 1024px)" srcset="~assets/images/lorena-ramonda.jpg" />
       <img src="~/assets/images/lorena-ramonda_400x400.jpg" width="400" height="400" alt="Lorena Ramonda" itemprop="image" class="u-photo" />
     </picture>
     <figcaption>Lorena Ramonda</figcaption>
   </figure>
 </template>
-
-<script>
-export default {}
-</script>
 
 <style lang="scss">
 .profile-picture {

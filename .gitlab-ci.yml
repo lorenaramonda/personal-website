@@ -1,23 +1,21 @@
-image: node:12
+image: node:current
 
 variables:
   NODE_ENV: production
-  CI_DEBUG_TRACE: "true"
+  # CI_DEBUG_TRACE: "false"
 
-before_script:
-  - npm install
+default:
+  before_script:
+    - yarn install --ignore-scripts # ignoro il post install che chiama nuxt e da errore not found
 
 cache:
   paths:
-    - node_modules/
+    - node_modules
 
-pages:
-  stage: deploy
+stages:
+  - test
+
+unit-tests:
+  stage: test
   script:
-    - npm run generate
-  artifacts:
-    paths:
-    - public
-  except:
-    - master
-  when: manual
+    - echo "Running unit tests..."

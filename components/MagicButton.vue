@@ -1,5 +1,5 @@
 <template>
-  <button class="magic-button" type="button" role="presentation" :title="$t('site.magicButton')" @click="doTheMagic">
+  <button class="magic-button" type="button" :title="$t('site.magicButton')" @click="doTheMagic">
     <span class="magic-button__inner">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -13,32 +13,20 @@
         width="512px"
         height="512px"
       >
-        <g>
-          <g>
-            <g>
-              <path
-                d="M396.742,102.088c-17.984-30.604-38.579-54.991-61.213-72.485C310.116,9.96,283.358,0,256,0    c-27.357,0-54.115,9.96-79.528,29.603c-22.634,17.494-43.23,41.882-61.213,72.485C80.813,160.703,60.25,236.26,60.25,304.201    c0,34.003,5.102,64.808,15.165,91.557c9.669,25.702,23.921,47.756,42.36,65.549C152.144,494.471,199.941,512,256,512    s103.856-17.529,138.226-50.693c18.439-17.793,32.691-39.847,42.359-65.549c10.063-26.749,15.165-57.554,15.165-91.557    C451.75,236.26,431.186,160.703,396.742,102.088z"
-                data-original="#000000"
-                class="active-path"
-                fill="#FFFFFF"
-              />
-            </g>
-          </g>
-        </g>
+        <path
+          d="M396.742,102.088c-17.984-30.604-38.579-54.991-61.213-72.485C310.116,9.96,283.358,0,256,0    c-27.357,0-54.115,9.96-79.528,29.603c-22.634,17.494-43.23,41.882-61.213,72.485C80.813,160.703,60.25,236.26,60.25,304.201    c0,34.003,5.102,64.808,15.165,91.557c9.669,25.702,23.921,47.756,42.36,65.549C152.144,494.471,199.941,512,256,512    s103.856-17.529,138.226-50.693c18.439-17.793,32.691-39.847,42.359-65.549c10.063-26.749,15.165-57.554,15.165-91.557    C451.75,236.26,431.186,160.703,396.742,102.088z"
+          data-original="#000000"
+          class="active-path"
+          fill="#FFFFFF"
+        />
       </svg>
     </span>
   </button>
 </template>
 
-<script>
-export default {
-  methods: {
-    doTheMagic() {
-      this.$gtm.push({ event: 'magicButton' })
-      // eslint-disable-next-line no-console
-      console.log('COMING SOON BABE! :)')
-    }
-  }
+<script setup>
+function doTheMagic() {
+  console.log('COMING SOON BABE! :)')
 }
 </script>
 
