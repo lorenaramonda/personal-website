@@ -5,22 +5,19 @@
   </article>
 </template>
 
-<script>
+<script setup>
 import BaseHeading from '@/components/BaseHeading'
 
-export default {
-  components: { BaseHeading },
-  props: {
-    title: {
-      type: String,
-      required: true
-    },
-    content: {
-      type: Object,
-      required: true
-    }
-  }
-}
+defineProps({
+  title: {
+    type: String,
+    required: true,
+  },
+  content: {
+    type: Object,
+    required: true,
+  },
+})
 </script>
 
 <style lang="scss">

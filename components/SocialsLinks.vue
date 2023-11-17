@@ -9,7 +9,7 @@
           data-dnt="true"
           data-show-count="true"
           :data-lang="currentLocale"
-          rel="noreferrer"
+          rel="noopener"
         >
           {{ $t('site.follow') }} @loreenaramonda
         </a>
@@ -18,59 +18,40 @@
     <div class="socials__list">
       <ul>
         <li class="gh">
-          <a
-            lazy-background="~/assets/images/sprite_socials.png"
-            href="https://github.com/lorenaramonda"
-            target="_blank"
-            rel="noreferrer"
-            title="Lorena su GitHub"
-            >GitHub</a
-          >
+          <a v-tooltip="$t('social.github')" href="https://github.com/lorenaramonda" target="_blank" rel="noopener" :title="$t('social.github')">
+            GitHub
+          </a>
         </li>
         <li class="tw">
-          <a
-            lazy-background="~/assets/images/sprite_socials.png"
-            href="https://twitter.com/loreenaramonda"
-            target="_blank"
-            rel="noreferrer"
-            title="Lorena su Twitter"
-            >Twitter</a
-          >
+          <a v-tooltip="$t('social.twitter')" href="https://twitter.com/loreenaramonda" target="_blank" rel="noopener" :title="$t('social.twitter')">
+            Twitter
+          </a>
         </li>
         <li class="li">
           <a
-            lazy-background="~/assets/images/sprite_socials.png"
+            v-tooltip="$t('social.linkedin')"
             href="http://it.linkedin.com/in/lorenaramonda"
             target="_blank"
-            rel="noreferrer"
-            title="Lorena su LinkedIn"
-            >LinkedIn</a
+            rel="noopener"
+            :title="$t('social.linkedin')"
           >
+            LinkedIn
+          </a>
         </li>
         <li class="sk">
-          <a
-            lazy-background="~/assets/images/sprite_socials.png"
-            href="skype:lorena.ramonda?call"
-            target="_blank"
-            rel="noreferrer"
-            title="Contatta Lorena su Skype"
-            >Skype</a
-          >
+          <a v-tooltip="$t('social.skype')" href="skype:lorena.ramonda?call" target="_blank" rel="noopener" :title="$t('social.skype')">Skype</a>
         </li>
       </ul>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  computed: {
-    currentLocale() {
-      const lang = this.$i18n.locales.find(lang => lang.code === this.$i18n.locale)
-      return lang.code || this.$i18n.locale
-    }
-  }
-}
+<script setup>
+const { locale, locales } = useI18n()
+const currentLocale = computed(() => {
+  const lang = locales.value.find(lang => lang.code === locale.value)
+  return lang.code || locale.value
+})
 </script>
 
 <style lang="scss">
@@ -78,7 +59,7 @@ export default {
   margin-top: 2em;
   margin-bottom: 2em;
   text-shadow: none !important;
-  @include mq($from: desktop) {
+  @include mq($from: tablet) {
     margin-bottom: 0;
     display: flex;
     justify-content: space-between;
@@ -100,7 +81,7 @@ export default {
     font-size: 0.8em;
     text-decoration: none;
   }
-  @include mq($from: desktop) {
+  @include mq($from: tablet) {
     &__list {
       display: flex;
       justify-content: flex-end;
@@ -110,7 +91,7 @@ export default {
   ul {
     display: table;
     margin: 1em auto;
-    @include mq($from: desktop) {
+    @include mq($from: tablet) {
       float: right;
       margin: 0;
     }
@@ -118,11 +99,11 @@ export default {
       float: left;
       font-size: 0;
       margin-left: 10px;
-      @include mq($from: desktop) {
+      @include mq($from: tablet) {
         margin-left: 5px;
       }
       a {
-        /* background: url($path__img+'sprite_socials.png') no-repeat top left; */
+        background: url($path__img + 'sprite_socials.png') no-repeat top left;
         background-repeat: no-repeat;
         background-position: top left;
         width: 37px;
@@ -175,7 +156,7 @@ export default {
     p {
       margin: 0.7em 0;
     }
-    @include mq($until: desktop) {
+    @include mq($until: tablet) {
       text-align: center;
     }
   }

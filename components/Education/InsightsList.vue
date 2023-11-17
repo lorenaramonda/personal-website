@@ -16,13 +16,13 @@ export default {
   props: {
     title: {
       type: [String, Object, Array],
-      required: true
+      required: true,
     },
     list: {
       type: Array,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 }
 </script>
 

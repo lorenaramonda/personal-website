@@ -1,6 +1,8 @@
 <template>
   <aside class="profile-address">
-    <BaseLanguageSwitcher />
+    <p>
+      <BaseLanguageSwitcher />
+    </p>
     <address itemprop="address" itemscope="itemscope" itemtype="http://schema.org/PostalAddress" class="p-adr">
       <span itemprop="addressLocality" class="p-locality">Caraglio</span> • <span itemprop="addressRegion" class="p-region">Cuneo</span>
     </address>
@@ -12,20 +14,11 @@
   </aside>
 </template>
 
-<script>
-import PaletteSwitcher from '@/components/PaletteSwitcher'
-import BaseLanguageSwitcher from '@/components/BaseLanguageSwitcher'
+<script setup>
 import MyBirthday from './MyBirthday'
 import MyEmail from './MyEmail'
-
-export default {
-  components: {
-    MyBirthday,
-    MyEmail,
-    PaletteSwitcher,
-    BaseLanguageSwitcher
-  }
-}
+import PaletteSwitcher from '@/components/PaletteSwitcher'
+import BaseLanguageSwitcher from '@/components/BaseLanguageSwitcher'
 </script>
 
 <style lang="scss">

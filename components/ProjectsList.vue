@@ -8,7 +8,7 @@
             {{ prj.title }}
           </strong>
           <template v-if="prj.url">
-            (<a :href="prj.url.url" :target="prj.url.target" rel="noreferrer">{{ prj.url.url | stripProtocol }}</a
+            (<a :href="prj.url.url" :target="prj.url.target" rel="noopener">{{ stripProtocol(prj.url.url) }}</a
             >)
           </template>
         </p>
@@ -18,27 +18,22 @@
   </article>
 </template>
 
-<script>
+<script setup>
 import BaseHeading from '@/components/BaseHeading'
 
-export default {
-  components: { BaseHeading },
-  filters: {
-    stripProtocol(url) {
-      return url.replace(/(http[s]?):\/\//g, '')
-    }
+const props = defineProps({
+  projects: {
+    type: Array,
+    required: true,
   },
-  props: {
-    projects: {
-      type: Array,
-      required: true
-    }
-  },
-  computed: {
-    projectsData() {
-      return this.projects.map(e => e.content)
-    }
-  }
+})
+
+const projectsData = computed(() => {
+  return props.projects.map(e => e.content)
+})
+
+function stripProtocol(url) {
+  return url.replace(/(http|https):\/\//g, '')
 }
 </script>
 

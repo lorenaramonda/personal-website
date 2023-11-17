@@ -10,58 +10,54 @@
       </span>
       {{ new Date(meeting.date).toLocaleDateString(currentLocale.iso, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) }}
       {{ $t('misc.for') }}
-      <a v-if="meeting.url" :href="meeting.url.url" target="_blank" itemprop="url" rel="nofollow noreferrer">
+      <a v-if="meeting.url?.url" :href="meeting.url.url" target="_blank" itemprop="url" rel="nofollow noopener">
         <strong itemprop="name">{{ meeting.name }}</strong>
       </a>
       <strong v-else itemprop="name">{{ meeting.name }}</strong>
     </p>
-    <svg-icon name="coffee" />
+    <SvgIcon name="coffee" />
   </section>
 </template>
 
-<script>
-export default {
-  props: {
-    preview: {
-      type: Boolean,
-      default: false
-    }
-  },
-  data() {
-    return {
-      meeting: null
-    }
-  },
-  computed: {
-    isTodayConf() {
-      return new Date(this.meeting.date).toDateString() === new Date().toDateString()
+<script setup>
+const { locale, locales } = useI18n()
+
+const config = useRuntimeConfig()
+const sbOptions = config.public.storyblok.apiOptions
+
+const today = new Date()
+const parsedToday = today.toISOString().split('T')[0]
+
+const currentLocale = locales.value.find(lang => lang.code === locale.value)
+
+const storiesParams = {
+  ...sbOptions,
+  starts_with: 'events/',
+  filter_query: {
+    date: {
+      like: `${parsedToday}*`,
     },
-    currentLocale() {
-      return this.$i18n.locales.find(lang => lang.code === this.$i18n.locale)
-    }
   },
-  async created() {
-    let sbLocaleMulti = ''
-    if (this.currentLocale.code !== this.$i18n.defaultLocale) {
-      sbLocaleMulti = `${this.currentLocale.code}/`
-    }
-
-    const today = new Date()
-    const parsedToday = today.toISOString().split('T')[0]
-
-    const meetings = await this.$storyapi
-      .get(`cdn/stories?starts_with=${sbLocaleMulti}events/&filter_query[date][like]=${parsedToday}*&is_startpage=0`, {
-        version: this.preview ? 'draft' : 'published'
-      })
-      .then(res => {
-        return res.data.stories
-      })
-
-    if (meetings.length > 0) {
-      this.meeting = meetings[0].content
-    }
-  }
+  is_startpage: 0,
+  language: currentLocale.code,
 }
+
+const storyblokApi = useStoryblokApi()
+
+const { data: meetingsStories } = await useAsyncData(async () => await storyblokApi.get(`cdn/stories`, storiesParams), {
+  transform: value =>
+    value.data.stories.sort((a, b) => {
+      return new Date(a.content.date) - new Date(b.content.date)
+    }),
+})
+
+const meeting = computed(() => {
+  return meetingsStories.value ? meetingsStories.value[0]?.content : null
+})
+
+const isTodayConf = computed(() => {
+  return new Date(meeting.value.date).toDateString() === new Date().toDateString()
+})
 </script>
 
 <style lang="scss">

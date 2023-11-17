@@ -1,7 +1,7 @@
 <template>
   <p v-if="isBirthday">
     <a :title="$t('birthday.gifts')" href="http://www.amazon.it/gp/registry/wishlist/3FUUIXHWG95T2/ref=topnav_lists_2" target="_blank">
-      <strong><svg-icon name="gift" /> {{ $t('birthday.annoncement') }} :)</strong>
+      <strong><SvgIcon name="gift" /> {{ $t('birthday.annoncement') }} :)</strong>
     </a>
     <br />
   </p>
@@ -13,8 +13,8 @@ export default {
     isBirthday() {
       const today = new Date()
       return today.getDate() + '-' + (today.getMonth() + 1) === '20-2'
-    }
-  }
+    },
+  },
 }
 </script>
 

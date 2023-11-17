@@ -11,7 +11,7 @@
           :title="hobby.name"
           width="512"
           height="512"
-          alt=""
+          :alt="hobby.name"
         />
       </li>
     </ul>
@@ -24,14 +24,14 @@ import BaseHeading from '@/components/BaseHeading'
 export default {
   name: 'HobbiesList',
   components: {
-    BaseHeading
+    BaseHeading,
   },
   props: {
     hobbies: {
       type: Object,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 }
 </script>
 

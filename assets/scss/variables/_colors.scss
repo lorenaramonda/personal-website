@@ -29,7 +29,7 @@ $noPalette: (
   color-background: lighten(#000000, 18),
   color-bg: #ffffff,
   color-text: #292828,
-  color-text-minor: #666666
+  color-text-minor: #666666,
 );
 
 $originalPalette: (
@@ -44,7 +44,7 @@ $originalPalette: (
   color-background: lighten($color-main-original, 18),
   color-bg: #ffffff,
   color-text: #292828,
-  color-text-minor: #666666
+  color-text-minor: #666666,
 );
 
 $allyPalette: (
@@ -59,7 +59,7 @@ $allyPalette: (
   color-background: lighten($color-main-ally, 18),
   color-bg: #ffffff,
   color-text: #292828,
-  color-text-minor: #ffffff
+  color-text-minor: #ffffff,
 );
 
 @mixin colors($palette) {
