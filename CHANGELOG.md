@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file. (http://keepachangelog.com/)
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.1.1] - 2023-11-24
+
+- Enabled cookie policy
+
 ## [2.1.0] - 2023-11-24
 
 - Redesigned the website entirely
