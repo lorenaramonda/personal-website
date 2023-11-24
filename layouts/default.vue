@@ -8,7 +8,7 @@
       <TheNavigationToggle class="navigation-toggle navigation__toggle--desktop" :dark="open" @click="open = !open" />
     </div>
     <TheFooter class="layout__footer" />
-    <!-- <CookiesPolicy /> -->
+    <CookiesPolicy />
   </NuxtLayout>
 </template>
 

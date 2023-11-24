@@ -6,5 +6,6 @@
     </main>
 
     <TheFooter />
+    <CookiesPolicy />
   </NuxtLayout>
 </template>
