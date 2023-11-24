@@ -1,6 +1,6 @@
 <template>
   <div id="hobbies" v-editable="hobbies" class="hobbies">
-    <BaseHeading minor>{{ hobbies.title }}</BaseHeading>
+    <BaseHeading>{{ hobbies.title }}</BaseHeading>
     <ul>
       <li v-for="hobby in hobbies.items" :key="hobby.name" v-editable="hobby">
         <NuxtImg

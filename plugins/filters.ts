@@ -9,8 +9,8 @@ export default defineNuxtPlugin(() => {
          * 7-8 = intermediate
          * 9-10 = expert
          */
-        rateLabel: (rate: string) => {
-          switch (parseInt(rate)) {
+        rateLabel: (rate: number) => {
+          switch (rate) {
             case 1:
             case 2:
             case 3:
@@ -25,6 +25,8 @@ export default defineNuxtPlugin(() => {
             case 9:
             case 10:
               return 'rate.expert'
+            default:
+              return ''
           }
         },
       },

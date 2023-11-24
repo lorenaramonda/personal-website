@@ -20,15 +20,13 @@
 </template>
 
 <script setup>
-const { locale, locales } = useI18n()
+const { localeProperties: currentLocale } = useI18n()
 
 const config = useRuntimeConfig()
 const sbOptions = config.public.storyblok.apiOptions
 
 const today = new Date()
 const parsedToday = today.toISOString().split('T')[0]
-
-const currentLocale = locales.value.find(lang => lang.code === locale.value)
 
 const storiesParams = {
   ...sbOptions,
@@ -38,14 +36,14 @@ const storiesParams = {
       like: `${parsedToday}*`,
     },
   },
-  is_startpage: 0,
-  language: currentLocale.code,
+  is_startpage: false,
+  language: currentLocale.value.code,
 }
 
 const storyblokApi = useStoryblokApi()
 
 const { data: meetingsStories } = await useAsyncData(async () => await storyblokApi.get(`cdn/stories`, storiesParams), {
-  transform: value =>
+  transform: (value) =>
     value.data.stories.sort((a, b) => {
       return new Date(a.content.date) - new Date(b.content.date)
     }),

@@ -15,19 +15,21 @@
   </div>
 </template>
 
-<script>
-export default {
-  layout: 'empty',
-  props: {
-    error: {
-      type: Object,
-      default: () => ({}),
-    },
-  },
-}
-</script>
+<script setup lang="ts">
+const localePath = useLocalePath()
 
-<script setup>
+type PageError = {
+  statusCode: number
+}
+
+definePageMeta({
+  layout: 'empty',
+})
+
+defineProps<{
+  error?: PageError
+}>()
+
 useHead({
   htmlAttrs: {
     class: 'error404',

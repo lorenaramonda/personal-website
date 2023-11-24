@@ -3,127 +3,30 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body {
   margin: 0;
   padding: 0;
-  height: auto;
 }
 
 body {
   background-color: var(--color-bg);
-  background-image: linear-gradient(to bottom, var(--color-bg) 20%, var(--color-main-lighter) 80%);
-  background-repeat: no-repeat;
 }
 
-.row {
-  padding: 0 $gutter;
-  max-width: 1200px;
-  margin: 0 auto;
+img {
+  vertical-align: middle;
 }
 
-.section {
-  @include mq($from: tablet) {
-    display: grid;
-    gap: 10px;
-    @for $i from 2 through 3 {
-      &--column#{$i} {
-        grid-template-columns: repeat(#{$i}, 1fr);
-      }
-    }
-  }
-  &__subtitle {
-    font-family: $font-family-title;
-    font-size: 3em;
-    line-height: normal;
-    color: var(--color-main);
-    text-transform: uppercase;
-    margin-bottom: 0.35em;
-    @include mq($from: tablet) {
-      font-size: 2.5em;
-    }
-  }
-
-  .item__title {
-    font-weight: bold;
-    display: block;
-  }
-
-  // misc section typography
-  li,
-  dd {
-    margin-bottom: 1em;
-    clear: both;
-    P {
-      line-height: normal;
-      font-size: 0.85em;
-    }
-    small {
-      display: block;
-      color: lighten($color-text, 20%);
-      line-height: 1.5;
-      font-size: 0.8em;
-    }
-    img {
-      float: left;
-      margin-right: 0.5em;
-      max-width: 32px;
-      height: auto;
-    }
-    &.talk SPAN {
-      font-size: 0.9em;
-      font-weight: bold;
-      color: lighten($color-text, 20%);
-      &:before {
-        content: '>';
-        color: var(--color-main);
-        margin-right: 0.3em;
-      }
-      A {
-        color: var(--color-main);
-      }
-    }
-  }
-  a {
-    text-decoration: none;
-    border-bottom: dashed 1px #cccccc;
-  }
+.row,
+.container {
+  @include container;
 }
 
-.site-wrapper {
-  transition: all 0.2s linear;
-  &--open {
-    transform: translateX(250px);
-  }
-}
-.fixed {
-  width: 100%;
-  bottom: 0;
-  left: 0;
-  position: fixed;
-  z-index: -1;
-}
-.stage {
-  background-color: var(--color-bg);
-  box-shadow: 0 2px 15px 3px rgba(var(--color-main-rgb), 0.8);
-  margin-bottom: 190px;
-  min-height: calc(100vh - 190px);
-  border-bottom: solid 1px var(--color-main-darker);
-  position: relative;
-  &__bottom {
-    text-align: center;
-    max-height: 10px;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    .magic-button {
-      top: -15px;
-      position: relative;
-    }
-  }
-  @include mq($from: tablet) {
-    margin-bottom: 110px;
-    min-height: calc(100vh - 110px);
-    padding-bottom: 100px;
-  }
+.container-page {
+  @include container;
+  padding-top: 6rem;
 }

@@ -1,28 +1,72 @@
 <template>
   <NuxtLayout name="empty">
-    <div class="layout" itemscope itemtype="http://schema.org/Person">
-      <div class="stage">
-        <!-- <TheNavigation /> -->
-        <TheHeader />
+    <div class="layout" :class="{ 'layout--full-width': open }">
+      <main>
         <slot />
-        <SocialsLinks />
-        <div class="stage__bottom">
-          <MagicButton />
-        </div>
-      </div>
-      <div class="fixed">
-        <TheFooter />
-      </div>
+      </main>
+      <TheNavigation />
+      <TheNavigationToggle class="navigation-toggle navigation__toggle--desktop" :dark="open" @click="open = !open" />
     </div>
-    <CookiesPolicy />
+    <TheFooter class="layout__footer" />
+    <!-- <CookiesPolicy /> -->
   </NuxtLayout>
 </template>
 
-<script setup>
-// import TheNavigation from '@/components/TheNavigation'
-import TheHeader from '@/components/TheHeader'
-import TheFooter from '@/components/TheFooter'
-import SocialsLinks from '@/components/SocialsLinks'
-import MagicButton from '@/components/MagicButton'
-import CookiesPolicy from '@/components/CookiesPolicy'
+<script setup lang="ts">
+const open = ref(false)
 </script>
+
+<style lang="scss">
+.layout {
+  @include mq($from: tablet) {
+    display: grid;
+    grid-template-columns: 370px auto;
+    grid-template-rows: 100vh;
+    grid-template-areas: 'navigation main';
+    overflow: hidden;
+    transition: all 0.8s ease-in-out;
+
+    main {
+      grid-area: main;
+      position: relative;
+    }
+    .navigation,
+    main {
+      overflow: auto;
+    }
+    &__footer {
+      display: none;
+    }
+    .navigation {
+      grid-area: navigation;
+      border-right: solid 1px var(--color-main-lighter);
+      padding-top: 3rem;
+    }
+
+    &--full-width {
+      grid-template-areas: 'main';
+      grid-template-columns: 100%;
+      .navigation-toggle {
+        left: -25px;
+      }
+      .navigation {
+        display: none;
+      }
+    }
+  }
+
+  @include mq($until: tablet) {
+    .navigation__toggle--desktop {
+      display: none;
+    }
+  }
+
+  main {
+    display: grid;
+    @include mq($until: tablet) {
+      min-height: 100vh;
+      padding-top: $mobile-toggle-height;
+    }
+  }
+}
+</style>

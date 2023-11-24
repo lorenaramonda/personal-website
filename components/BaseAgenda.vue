@@ -25,15 +25,13 @@
 <script setup>
 import BaseHeading from '@/components/BaseHeading'
 
-const { locale, locales } = useI18n()
+const { localeProperties: currentLocale } = useI18n()
 const storyblokApi = useStoryblokApi()
 
 const config = useRuntimeConfig()
 const sbOptions = config.public.storyblok.apiOptions
 
 const today = new Date().toISOString().split('T')[0]
-
-const currentLocale = locales.value.find(lang => lang.code === locale.value)
 
 const storiesParams = {
   ...sbOptions,
@@ -43,8 +41,8 @@ const storiesParams = {
       gt_date: today,
     },
   },
-  is_startpage: 0,
-  language: currentLocale.code,
+  is_startpage: false,
+  language: currentLocale.value.code,
 }
 
 function getDay(value) {
@@ -54,13 +52,13 @@ function getDay(value) {
 
 function getMonth(date) {
   if (!date) return date
-  return new Date(date).toLocaleDateString(currentLocale.iso, {
+  return new Date(date).toLocaleDateString(currentLocale.value.iso, {
     month: 'short',
   })
 }
 
 const { data: meetingsStories } = await useAsyncData(async () => await storyblokApi.get(`cdn/stories`, storiesParams), {
-  transform: value =>
+  transform: (value) =>
     value.data.stories.sort((a, b) => {
       return new Date(a.content.date) - new Date(b.content.date)
     }),

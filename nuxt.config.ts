@@ -1,3 +1,5 @@
+import type { ISbStoriesParams } from 'storyblok-js-client'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   runtimeConfig: {
@@ -7,12 +9,18 @@ export default defineNuxtConfig({
       SENTRY_DNS: process.env.SENTRY_DNS,
     },
   },
+  app: {
+    head: {
+      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    },
+  },
   css: ['@/assets/scss/main.scss'],
   modules: [
     // Doc: https://nuxt.com/modules/i18n
-    '@nuxtjs/i18n', // Doc: https://nuxt.com/modules/gtag
-    'nuxt-gtag', // Doc: https://github.com/kiwilan/nuxt-svg-transformer (replaces svg-sprite)
-    'nuxt-svg-transformer', // Doc: https://nuxt.com/modules/image
+    '@nuxtjs/i18n',
+    // Doc: https://nuxt.com/modules/gtag
+    'nuxt-gtag',
+    // Doc: https://nuxt.com/modules/image
     [
       '@nuxt/image-edge',
       {
@@ -29,21 +37,22 @@ export default defineNuxtConfig({
         devtools: true,
         apiOptions: {
           version: process.env.NODE_ENV === 'production' ? 'published' : 'draft',
-        },
+        } as ISbStoriesParams,
       },
     ],
     '@nuxt/image',
+    // Doc: https://pinia.vuejs.org/ssr/nuxt.html
+    '@pinia/nuxt',
+    // Doc: https://google-fonts.nuxtjs.org/getting-started/setup
+    '@nuxtjs/google-fonts',
+    // Doc: https://lucide.dev/packages
+    'nuxt-lucide-icons',
   ],
-  /**
-   * Nuxt Svg Transformer module configuration
-   */
-  svgTransformer: {
-    display: false,
+  router: {
+    options: {
+      scrollBehaviorType: 'smooth',
+    },
   },
-  /**
-   * NuxtImage module configuration
-   */
-  // image: ,
   /**
    * Nuxt I18n module configuration
    */
@@ -64,6 +73,12 @@ export default defineNuxtConfig({
         iso: 'en-US',
         file: 'en.js',
       },
+      {
+        name: 'Español',
+        code: 'es',
+        iso: 'es-ES',
+        file: 'es.js',
+      },
     ],
     lazy: false,
     langDir: 'langs/',
@@ -76,6 +91,17 @@ export default defineNuxtConfig({
   gtag: {
     id: process.env.GTM,
     initialConsent: false,
+  },
+  googleFonts: {
+    families: {
+      Kristi: [400],
+      Inter: [100, 400, 600, 700],
+      // 'Source+Sans+3': [200, 400, 700],
+      'Source+Serif+4': [200, 400, 700],
+    },
+  },
+  routeRules: {
+    '/publications/what-i-love-about-vuejs': { redirect: { to: '/', statusCode: 301 } },
   },
   sourcemap: {
     server: false,
