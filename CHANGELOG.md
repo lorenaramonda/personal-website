@@ -3,9 +3,14 @@
 All notable changes to this project will be documented in this file. (http://keepachangelog.com/)
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.1.0] - 2023-11-24
+
+- Redesigned the website entirely
+  - Moved from one page website to multiple pages
+
 ## [2.0.0] - 2023-11-17
 
-- Upgrade to Nuxt 3
+- Upgraded to Nuxt 3
 
 ## [1.9.4] - 2023-09-20
 
