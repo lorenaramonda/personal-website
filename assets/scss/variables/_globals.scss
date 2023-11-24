@@ -1,9 +1,14 @@
 //* URL */
-$path__img: 'assets/images/';
 $path__fonts: 'assets/fonts/';
 
 //* LAYOUT */
 $gutter: 1.5rem;
-$gutter-inner: 0.9375rem;
 
-$row-width: 1200px;
+$mobile-toggle-height: 4rem;
+
+@mixin container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 $gutter;
+  margin: 0 auto;
+}

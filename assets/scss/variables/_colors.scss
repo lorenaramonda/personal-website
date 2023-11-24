@@ -3,11 +3,14 @@
 // pink fashion: #A11140 | rgb(161, 17, 64)
 
 $color-main-original: #87ded7;
+$color-main-ally: #a11140;
+$color-secondary: #ffd875;
+$color-neutral: #9a8f95; //#292828;
+
 $color-text-original: #292828;
+
 $color-background-original: lighten($color-main-original, 18);
 $color-background-lightest-original: #ffffff;
-
-$color-main-ally: #a11140;
 
 $color-main: $color-main-original;
 $color-text: $color-text-original;
@@ -27,8 +30,6 @@ $noPalette: (
   color-main-lighter: lighten(#000000, 18),
   color-main-lightest: lighten(#000000, 25),
   color-background: lighten(#000000, 18),
-  color-bg: #ffffff,
-  color-text: #292828,
   color-text-minor: #666666,
 );
 
@@ -42,9 +43,23 @@ $originalPalette: (
   color-main-lighter: lighten($color-main-original, 18),
   color-main-lightest: lighten($color-main-original, 25),
   color-background: lighten($color-main-original, 18),
-  color-bg: #ffffff,
-  color-text: #292828,
   color-text-minor: #666666,
+);
+
+$genericPalette: (
+  color-bg: #ffffff,
+  color-text: $color-text-original,
+  color-text-rgb: '41, 40, 40',
+);
+
+$secondaryPalette: (
+  color-secondary: $color-secondary,
+  color-secondary-darkest: darken($color-secondary, 20),
+  color-secondary-darker: darken($color-secondary, 15),
+  color-secondary-dark: darken($color-secondary, 5),
+  color-secondary-light: lighten($color-secondary, 15),
+  color-secondary-lighter: lighten($color-secondary, 18),
+  color-secondary-lightest: lighten($color-secondary, 25),
 );
 
 $allyPalette: (
@@ -57,9 +72,17 @@ $allyPalette: (
   color-main-lighter: lighten($color-main-ally, 40),
   color-main-lightest: lighten($color-main-ally, 25),
   color-background: lighten($color-main-ally, 18),
-  color-bg: #ffffff,
-  color-text: #292828,
   color-text-minor: #ffffff,
+);
+
+$neutralPalette: (
+  color-neutral: $color-neutral,
+  color-neutral-darkest: darken($color-neutral, 20),
+  color-neutral-darker: darken($color-neutral, 15),
+  color-neutral-dark: darken($color-neutral, 5),
+  color-neutral-light: lighten($color-neutral, 15),
+  color-neutral-lighter: lighten($color-neutral, 30),
+  color-neutral-lightest: lighten($color-neutral, 35),
 );
 
 @mixin colors($palette) {

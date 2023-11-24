@@ -1,55 +1,51 @@
 <template>
   <div v-tooltip="label" class="meter">
-    <SvgIcon v-for="star in stars" :key="star.id" class="meter__icon" :class="{ 'meter__icon--full': star.full }" :name="icon" />
+    <component :is="icon" v-for="item in items" :key="item.id" class="meter__icon" :class="{ 'meter__icon--full': item.full }" />
     <span class="meter__text">{{ label }}</span>
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    icon: {
-      type: String,
-      default: 'star', // star | heart
-    },
-    min: {
-      type: Number,
-      default: 0,
-    },
-    max: {
-      type: Number,
-      default: 10,
-    },
-    low: {
-      type: Number,
-      default: 5,
-    },
-    high: {
-      type: Number,
-      default: 8,
-    },
-    value: {
-      type: Number,
-      required: true,
-    },
+<script setup lang="ts">
+import * as icons from 'lucide-vue-next'
+
+const { t } = useI18n()
+const { $filters } = useNuxtApp()
+const { $capitalize } = useNuxtApp()
+
+const props = withDefaults(
+  defineProps<{
+    value: number
+    icon?: 'star' | 'heart'
+    min?: number
+    max?: number
+    low?: number
+    high?: number
+  }>(),
+  {
+    icon: 'star',
+    min: 0,
+    max: 10,
+    low: 5,
+    high: 8,
   },
-  computed: {
-    stars() {
-      const stars = []
-      for (let i = 1; i <= this.max; i++) {
-        stars.push({
-          id: i,
-          full: i <= this.value,
-        })
-      }
-      return stars
-    },
-    label() {
-      const str = this.$filters.rateLabel(this.value)
-      return this.$t(str)
-    },
-  },
-}
+)
+
+const icon = computed(() => icons[$capitalize(props.icon)])
+
+const items = computed(() => {
+  const items = []
+  for (let i = 1; i <= props.max; i++) {
+    items.push({
+      id: i,
+      full: i <= props.value,
+    })
+  }
+  return items
+})
+const label = computed(() => {
+  const str = $filters.rateLabel(props.value)
+  return t(str)
+})
 </script>
 
 <style lang="scss">
@@ -61,9 +57,9 @@ export default {
     height: 20px;
     max-width: none;
     max-height: none;
-    fill: var(--color-main-light);
+    stroke: var(--color-main-light);
     &--full {
-      fill: var(--color-main-darker);
+      stroke: var(--color-main-darker);
     }
   }
   &__text {

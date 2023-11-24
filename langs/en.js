@@ -4,10 +4,10 @@ export default {
     description: 'Lorena Ramonda is a Front-End Developer based in Italy',
   },
   site: {
-    tecnology: 'Made with {framework} e hosted on {host} ♥ Source code on {repo}',
+    tecnology: 'Made with {framework} and {cms} e hosted on {host} ♥',
+    sourceCode: 'Source code on {repo}',
     privacy: 'Privacy Policy',
-    magicButton: 'Do the magic!',
-    follow: 'Follow',
+    follow: 'Follow me:',
   },
   error: {
     path: "The page {path} can't be found",
@@ -20,20 +20,22 @@ export default {
     annoncement: "Today's my birthday!",
     gifts: 'Wish you send me a gift?',
   },
-  cv: {
-    downloadable: 'Abridged and printable version',
-  },
   job: {
-    title: 'Front end developer',
+    title: 'Front-end developer',
   },
   quote: {
     einstein: 'I have no special talents. I am only passionately curious.',
     anonymous: 'Even the most experienced creative could give the best of themselves with crude and approximate instruments',
     confucio: 'Choose a job you love, and you will never have to work a day in your life.',
   },
-  jobs: {
-    title: 'Work experience',
+  experiences: {
+    title: 'Experience',
+    subtitle: 'Curriculum vitae',
     notFound: "I'm working on it..",
+    years: '{years} years of experience',
+    remoteYears: '{years} years of remote working',
+    remote: 'Remote working',
+    curiosity: '{number} curiosity',
   },
   education: {
     title: 'Education',
@@ -59,6 +61,7 @@ export default {
   },
   publications: {
     title: 'Publications',
+    subtitle: 'Blog and surroundings',
     meta_title: 'Publications by Lorena Ramonda',
     meta_description: 'Publications and blog posts written by Lorena Ramonda',
     meta_keywords: 'publications, blog post, blog, post',
@@ -78,8 +81,14 @@ export default {
   },
   projects: {
     title: 'Side projects',
+    subtitle: 'Projects',
+  },
+  hobbies: {
+    title: 'Hobbies',
+    subtitle: "Likes and don'ts",
   },
   misc: {
+    age: '{age} years old',
     years: '{count} year | {count} years',
     months: '{count} month | {count} months',
     denmark: 'Denmark',
@@ -88,6 +97,11 @@ export default {
     hours: 'hours',
     for: 'for',
     at: 'at',
+    externalLink: 'External link',
+    visitLink: 'View website',
+    present: 'present',
+    endPage: 'You reach the end of the page',
+    toggleMenu: 'Toggle the navigation',
   },
   rate: {
     beginner: 'Beginner',
@@ -100,9 +114,9 @@ export default {
     title: 'Personality Advocate',
   },
   social: {
-    github: 'Lorena on GitHub',
-    twitter: 'Lorena on Twitter',
-    linkedin: 'Lorena on LinkedIn',
+    github: 'Porjects made by Lorena Ramonda on Github',
+    twitter: 'Post by Lorena Ramonda on Twitter',
+    linkedin: 'Curriculum Vitae of Lorena Ramonda on LinkedIn',
     skype: 'Contact Lorena on Skype',
   },
   policy: {
@@ -118,4 +132,8 @@ export default {
   agenda: {
     title: 'Agenda',
   },
+  languages: {
+    current: 'Site current language: {lang}',
+  },
+  Italia: 'Italy',
 }

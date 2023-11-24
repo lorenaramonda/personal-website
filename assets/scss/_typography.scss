@@ -7,17 +7,6 @@ Define font faces
 
 @font-face {
   @include fontDownloadTime;
-  font-family: 'BookEnd';
-  font-weight: normal;
-  font-style: normal;
-  src:
-    url('#{$path__fonts}/bookendswithaccents.woff2') format('woff2'),
-    url('#{$path__fonts}/bookendswithaccents.woff') format('woff'),
-    url('#{$path__fonts}/bookendswithaccents.ttf') format('truetype');
-}
-
-@font-face {
-  @include fontDownloadTime;
   font-family: 'Ruda';
   font-weight: normal;
   font-style: normal;
@@ -35,16 +24,6 @@ Define font faces
     url('#{$path__fonts}/ruda-bold.woff2') format('woff2'),
     url('#{$path__fonts}/ruda-bold.woff') format('woff'),
     url('#{$path__fonts}/ruda-bold.ttf') format('truetype');
-}
-@font-face {
-  @include fontDownloadTime;
-  font-family: 'Ruda';
-  font-weight: 900;
-  font-style: normal;
-  src:
-    url('#{$path__fonts}/ruda-black.woff2') format('woff2'),
-    url('#{$path__fonts}/ruda-black.woff') format('woff'),
-    url('#{$path__fonts}/ruda-black.ttf') format('truetype');
 }
 
 html,
@@ -156,7 +135,11 @@ table {
 
 // :root custom properties generator
 :root {
-  @include colors($allyPalette);
+  // @include colors($allyPalette);
+  @include colors($originalPalette);
+  @include colors($secondaryPalette);
+  @include colors($neutralPalette);
+  @include colors($genericPalette);
 }
 
 html {

@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const { t } = useI18n()
 const head = useLocaleHead({
   addDirAttribute: true,
@@ -9,7 +9,10 @@ const title = computed(() => t('meta.title'))
 const description = computed(() => t('meta.description'))
 
 useHead({
-  meta: [{ name: 'description', content: description }],
+  meta: [
+    { name: 'description', content: description },
+    { name: 'og:type', content: 'website' },
+  ],
 })
 </script>
 

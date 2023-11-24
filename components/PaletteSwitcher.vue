@@ -41,7 +41,6 @@ useHead(() => ({
   border: none;
   cursor: pointer;
   font-family: inherit;
-  margin: 2rem auto 0;
   background-color: var(--color-main);
   color: var(--color-bg);
   font-size: 0.8em;
@@ -56,11 +55,6 @@ useHead(() => ({
   &__label {
     position: absolute;
     font-size: 0;
-  }
-}
-@include mq($from: tablet) {
-  .palette-switcher {
-    margin: 2rem 0 0 auto;
   }
 }
 </style>

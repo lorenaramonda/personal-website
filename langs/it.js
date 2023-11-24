@@ -4,10 +4,10 @@ export default {
     description: 'Lorena Ramonda è una Front-End Developer con sede in Italia',
   },
   site: {
-    tecnology: 'Fatto con {framework} e ospitato su {host} ♥ Codice sorgente su {repo}',
+    tecnology: 'Fatto con {framework} e {cms} e ospitato su {host} ♥',
+    sourceCode: 'Codice sorgente su {repo}',
     privacy: 'Privacy Policy',
-    magicButton: 'Fai la magia!',
-    follow: 'Segui',
+    follow: 'Seguimi:',
   },
   error: {
     path: 'La pagina {path} non esiste',
@@ -20,20 +20,22 @@ export default {
     annoncement: 'Oggi è il mio compleanno!',
     gifts: 'Sai cosa mi piacerebbe ricevere per il mio compleanno?',
   },
-  cv: {
-    downloadable: 'Versione ridotta e stampabile',
-  },
   job: {
-    title: 'Sviluppatrice front end',
+    title: 'Sviluppatrice front-end',
   },
   quote: {
     einstein: 'Non ho nessuno talento speciale. Sono solo appassionatamente curioso.',
     anonymous: 'Nemmeno il creativo più esperto dà il meglio di sé con strumenti rozzi e approssimativi',
     confucio: 'Scegli il lavoro che ami e non lavorerai mai, neanche per un giorno in tutta la tua vita.',
   },
-  jobs: {
+  experiences: {
     title: 'Esperienza',
+    subtitle: 'Curriculum vitae',
     notFound: 'Ci sto lavorando...',
+    years: '{years} anni di esperienza',
+    remoteYears: '{years} anni di lavoro in remoto',
+    remote: 'Lavoro in remoto',
+    curiosity: '{number} curiosità',
   },
   education: {
     title: 'Formazione',
@@ -59,6 +61,7 @@ export default {
   },
   publications: {
     title: 'Pubblicazioni',
+    subtitle: 'Blog e dintorni',
     meta_title: 'Pubblicazioni di Lorena Ramonda',
     meta_description: 'Pubblicazioni e blog post scritti da Lorena Ramonda',
     meta_keywords: 'pubblicazioni, blog post, blog, posts',
@@ -78,8 +81,14 @@ export default {
   },
   projects: {
     title: 'Progetti personali',
+    subtitle: 'Progetti',
+  },
+  hobbies: {
+    title: 'Interessi',
+    subtitle: 'Ciò che mi piace fare',
   },
   misc: {
+    age: '{age} anni',
     years: '{count} anno | {count} anni',
     months: '{count} mese | {count} mesi',
     denmark: 'Danimarca',
@@ -88,6 +97,11 @@ export default {
     hours: 'ore',
     for: 'per',
     at: 'presso',
+    externalLink: 'Link esterno',
+    visitLink: 'Visita il sito',
+    present: 'presente',
+    endPage: 'Hai raggiunto la fine della pagina',
+    toggleMenu: 'Mostra/Nascondi la navigazione',
   },
   rate: {
     beginner: 'Conoscenza base',
@@ -100,9 +114,9 @@ export default {
     title: 'Personalità Sostenitore',
   },
   social: {
-    github: 'Lorena su GitHub',
-    twitter: 'Lorena su Twitter',
-    linkedin: 'Lorena su LinkedIn',
+    github: 'Progetti di Lorena Ramonda su Github',
+    twitter: 'Post di Lorena Ramonda su Twitter',
+    linkedin: 'Curriculum Vitae di Lorena Ramonda su LinkedIn',
     skype: 'Contatta Lorena su Skype',
   },
   policy: {
@@ -118,4 +132,8 @@ export default {
   agenda: {
     title: 'Agenda',
   },
+  languages: {
+    current: 'Stai visualizzando il sito in {lang}',
+  },
+  Italia: 'Italia',
 }

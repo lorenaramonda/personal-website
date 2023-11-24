@@ -1,68 +1,62 @@
 <template>
-  <main>
-    <div v-if="post" class="section row">
-      <article v-editable="post">
-        <BaseHeading v-if="post.title">{{ post.title }}</BaseHeading>
-        <RichtextRenderer v-if="post.long_text" :document="post.long_text" />
+  <div class="section-publications">
+    <div v-if="post" class="container-page">
+      <article v-editable="post" class="section-publications__post-article">
+        <BaseHeading v-if="post.content.title" primary :label="$t('publications.title')">{{ post.content.title }}</BaseHeading>
+        <time class="post-lists__item-date" :datetime="post.first_published_at">
+          <LucideCalendar :size="16" /> {{ $getDate(post.first_published_at, currentLocale?.iso) }}
+        </time>
+        <RichtextRenderer v-if="post.content.long_text" :document="post.content.long_text" class="section-publications__post-content" />
+        <EndOfPage />
       </article>
     </div>
-  </main>
+  </div>
 </template>
 
-<script setup>
-import BaseHeading from '@/components/BaseHeading'
+<script setup lang="ts">
+import type { ISbStoryData } from 'storyblok-js-client'
 
-const metadata = {
-  meta: [],
-}
+import { useLocalizedStoryParams } from '@/composables/useLocalizedStoryParams'
 
-const post = ref(null)
-
-const { locale, locales } = useI18n()
-const { params } = useRoute()
-const storyblokApi = useStoryblokApi()
-
-const config = useRuntimeConfig()
-const sbOptions = config.public.storyblok.apiOptions
-
-const currentLocale = locales.value.find(lang => lang.code === locale.value)
-
-const storiesParams = {
-  ...sbOptions,
-  language: currentLocale.code,
-}
-
-definePageMeta({
-  layout: 'blog',
+defineOptions({
+  name: 'PostPage',
 })
 
-// const story = await useAsyncStoryblok(`cdn/stories/publications/${params.post}`, storiesParams)
-const { data: story } = await useAsyncData('post', async () => await storyblokApi.get(`cdn/stories/publications/${params.post}`, storiesParams), {
-  transform: value => value.data.story.content,
+const { localeProperties: currentLocale } = useI18n()
+const { params } = useRoute()
+const storyblokApi = useStoryblokApi()
+const { $getDate, $getMetadataFromStory, $setMetadata } = useNuxtApp()
+
+const { getParams } = useLocalizedStoryParams()
+
+const post: Ref<ISbStoryData> = ref()
+
+const { data: story } = await useAsyncData('post', async () => await storyblokApi.get(`cdn/stories/publications/${params.post}`, getParams()), {
+  transform: (value) => value.data.story,
 })
 post.value = story.value
 
 if (!post) error({ statusCode: 404, message: 'Page not found' })
 
 onMounted(() => {
-  useStoryblokBridge(post.value.id, updatedStory => (post.value = updatedStory))
+  useStoryblokBridge(post.value?.id, (updatedStory) => (post.value = updatedStory))
 })
 
-metadata.title = post.value && post.value.meta_title ? post.value.meta_title : post.value.title
+if (post.value?.content) $setMetadata($getMetadataFromStory(post.value.content))
 
-if (post.value && post.value.meta_description) {
-  metadata.meta.push({
-    name: 'description',
-    content: post.value.meta_description,
-  })
-}
-
-if (post.value && post.value.meta_keywords) {
-  metadata.meta.push({
-    name: 'keywords',
-    content: post.value.meta_keywords,
-  })
-}
-
-useHead(metadata)
+useHead({
+  meta: [{ name: 'og:type', content: 'article' }],
+})
 </script>
+
+<style lang="scss">
+.section-publications {
+  &__post-content {
+    font-family: $font-family-title;
+    line-height: 1.8;
+    font-size: 1.2em;
+    font-weight: 200;
+    max-width: 1000px;
+  }
+}
+</style>
