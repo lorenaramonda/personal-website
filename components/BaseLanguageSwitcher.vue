@@ -68,11 +68,31 @@ const foodPerLang = {
     }
     a {
       display: block;
+      position: relative;
+      &::before {
+        content: '';
+        width: 2px;
+        height: 2px;
+        display: block;
+        background-color: var(--color-main-light);
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      &:hover::before {
+        transition: all 0.5s ease-in;
+        transform: scale(25);
+        opacity: 0;
+      }
     }
     img {
       width: 20px;
       height: auto;
       cursor: pointer;
+      position: relative;
+      z-index: 1;
     }
   }
 }

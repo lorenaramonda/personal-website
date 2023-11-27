@@ -82,13 +82,6 @@ $mobile-height: 643px;
   padding: 1rem;
   background-color: var(--color-bg);
 
-  &__top {
-    display: flex;
-    flex-direction: column;
-  }
-  &__bottom {
-  }
-
   &__gohome {
     text-decoration: none;
   }
@@ -112,9 +105,9 @@ $mobile-height: 643px;
     font-weight: 500;
     font-family: $font-family-text;
     position: relative;
-    &--active::before {
+    &::before {
       content: '';
-      width: 120%;
+      width: 13px;
       height: 13px;
       border-radius: 10px;
       position: absolute;
@@ -122,6 +115,17 @@ $mobile-height: 643px;
       top: 1rem;
       z-index: 0;
       background-color: var(--color-secondary);
+      opacity: 0;
+      transition: all 0.3s ease-in-out;
+    }
+    @include mq($from: tablet) {
+      &:hover::before {
+        opacity: 1;
+      }
+    }
+    &--active::before {
+      width: 120%;
+      opacity: 1;
     }
     span {
       position: relative;
