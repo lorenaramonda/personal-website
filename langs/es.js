@@ -120,13 +120,14 @@ export default {
     skype: 'Contacta a Lorena por Skype',
   },
   policy: {
-    text: '¿Quieres galletas? Las galletas son buenas para tu dieta. Nosotros, en Europa, nos preocupamos por tu salud :) Danos permiso para tratarte como a un jefe.',
+    text: 'Utilizo cookies para recopilar datos sobre las secciones visitadas y el idioma de origen, esto me ayuda a comprender qué priorizar al publicar funciones. ¿Quieres ayudarme?',
     link: {
-      text: '¿Qué demonios dices?',
+      text: 'Detalles',
       title: 'Política de cookies',
     },
-    button: {
-      text: '¡Se aceptan galletas!',
+    buttonText: {
+      ok: '¡Por cierto!',
+      ko: 'Hoy no',
     },
   },
   agenda: {

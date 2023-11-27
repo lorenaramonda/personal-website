@@ -5,7 +5,8 @@
         {{ $t('policy.text') }}
         <a :href="privacyLink" :title="$t('policy.link.text')" target="_blank" rel="nofollow">{{ $t('policy.link.text') }}</a>
       </p>
-      <button @click="acceptTracking">{{ $t('policy.button.text') }}<span class="cookie-emoji">🍪</span></button>
+      <button class="cookies__button cookies__button--primary" @click="acceptTracking">{{ $t('policy.buttonText.ok') }}</button>
+      <button class="cookies__button" @click="refuseTracking">{{ $t('policy.buttonText.ko') }}</button>
     </div>
   </div>
 </template>
@@ -16,6 +17,9 @@ const { locale } = useI18n()
 const showWarning = ref(false)
 const cookieAccepted = useCookie('gtm-consent', {
   maxAge: 60 * 60 * 24 * 365,
+})
+const cookieDenied = useCookie('gtm-consent', {
+  maxAge: 60 * 60 * 24,
 })
 
 const privacyLink = computed(() => {
@@ -28,11 +32,18 @@ function acceptTracking() {
   showWarning.value = false
 }
 
+function refuseTracking() {
+  cookieDenied.value = '0'
+  showWarning.value = false
+}
+
 onMounted(() => {
-  if (cookieAccepted.value) {
-    acceptTracking()
-  } else {
+  if (cookieAccepted.value === undefined) {
     showWarning.value = true
+  } else if (cookieAccepted.value) {
+    useGtagConsent(true)
+  } else {
+    showWarning.value = false
   }
 })
 </script>
@@ -44,10 +55,14 @@ onMounted(() => {
   bottom: 0px;
   width: 100%;
   box-shadow: 0 -2px 10px 1px rgba(var(--color-main-rgb), 0.8);
+  @include mq($from: tablet) {
+    right: 0;
+    max-width: 300px;
+  }
   &__content {
     position: relative;
     font-family: $font-family-text;
-    background-color: var(--color-main-lightest); //#cff2ef;
+    background-color: var(--color-main-lightest);
     text-align: center;
     padding: 1em;
     a {
@@ -58,22 +73,21 @@ onMounted(() => {
       font-size: 0.75em;
     }
   }
-  button {
-    background-color: var(--color-main-dark);
-    color: var(--color-text);
+  &__button {
     border: none;
     font-family: $font-family-text;
     border-radius: 20px;
-    border-bottom: solid 3px var(--color-main-darkest);
+    background-color: var(--color-bg);
+    border-bottom: solid 3px var(--color-main-lighter);
     padding: 0.5em 1.5em;
     cursor: pointer;
     position: relative;
+    margin: 0 0.5rem;
   }
-  .cookie-emoji {
-    position: absolute;
-    top: -10px;
-    right: -4px;
-    font-size: 2.5rem;
+  &__button--primary {
+    color: var(--color-text);
+    background-color: var(--color-main-dark);
+    border-bottom: solid 3px var(--color-main-darkest);
   }
 }
 
