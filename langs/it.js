@@ -138,6 +138,7 @@ export default {
     goto: 'Visualizza il sito in {lang}',
     spoken: 'So parlare in',
     others: 'e altre...',
+    othersLabel: 'Lista di tutte le lingue che conosco',
     it: 'Italiano',
     en: 'Inglese',
     es: 'Spagnolo',

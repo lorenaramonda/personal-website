@@ -9,6 +9,7 @@
           v-tooltip.top="$t('languages.others')"
           :to="localePath({ name: 'hobbies', hash: '#languages' })"
           :title="$t('languages.others')"
+          :aria-label="$t('languages.othersLabel')"
           @click="toggleMenu(false)"
         >
           <span>{{ $t('languages.others') }}</span>
