@@ -12,7 +12,13 @@
       </div>
 
       <div class="onepage-intro__right">
-        <StoryblokImage v-if="blok.image_background?.filename" :image="blok.image_background" class="onepage-intro__background" />
+        <StoryblokImage
+          v-if="blok.image_background?.filename"
+          :image="blok.image_background"
+          :width="512"
+          :height="512"
+          class="onepage-intro__background"
+        />
         <svg v-else class="onepage-intro__background" width="680" height="701" viewBox="0 0 680 701" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="384" cy="406" r="295" fill="currentColor" />
           <path d="M1 557.656C1 557.656 361.283 778.271 426.143 497.286C491.004 216.302 679 191 679 191" stroke="black" stroke-width="2" />
@@ -35,10 +41,7 @@
         </svg>
 
         <picture v-if="blok.image">
-          <!-- <source media="(max-width: 1024px)" srcset="~assets/images/lorena-ramonda.jpg" /> -->
-          <!-- <img src="~/assets/images/me-800x800.png" width="400" height="400" alt="Lorena Ramonda" itemprop="image" class="u-photo" /> -->
-
-          <StoryblokImage :image="blok.image" itemprop="image" class="onepage-intro__image u-photo" />
+          <StoryblokImage :image="blok.image" itemprop="image" :width="512" :height="512" class="onepage-intro__image u-photo" />
         </picture>
       </div>
 
@@ -53,7 +56,6 @@
 import type { GenericObject } from '@/types'
 
 const store = useStore()
-await useAsyncData('jobs', () => store.fetchJobs())
 
 const props = defineProps<{
   blok: GenericObject

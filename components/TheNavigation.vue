@@ -4,7 +4,12 @@
       <NuxtLink :to="localePath({ name: 'index' })" class="navigation__gohome" @click="toggleMenu(!open)">
         <MyPicture />
       </NuxtLink>
-      <BaseLanguageSwitcher @click="toggleMenu(!open)" />
+      <BaseLanguageSwitcher @click="toggleMenu(false)">
+        <NuxtLink v-tooltip.top="$t('languages.others')" :to="localePath({ name: 'hobbies', hash: '#languages' })" @click="toggleMenu(false)">
+          <span>{{ $t('languages.others') }}</span>
+          <LucidePlus />
+        </NuxtLink>
+      </BaseLanguageSwitcher>
       <nav>
         <ul>
           <li class="navigation__item">

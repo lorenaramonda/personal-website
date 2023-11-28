@@ -134,7 +134,15 @@ export default {
     title: 'Agenda',
   },
   languages: {
-    current: 'Estás viendo el sitio en {lang}',
+    current: '{lang} (idioma actual del sitio)',
+    goto: 'Ver el sitio en {lang}',
+    spoken: 'Puedo hablar',
+    others: 'y otros...',
+    it: 'Italiano',
+    en: 'Inglés',
+    es: 'Español',
+    fr: 'Francés',
+    pt: 'Portugués',
   },
   Italia: 'Italia',
 }

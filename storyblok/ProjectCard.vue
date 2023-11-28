@@ -14,7 +14,7 @@
       </h2>
 
       <picture v-if="blok.image?.filename && blok.show_image" class="project-card__image">
-        <StoryblokImage :image="blok.image" />
+        <StoryblokImage :image="blok.image" :width="400" />
       </picture>
 
       <RichtextRenderer v-if="blok.content" :document="blok.content" class="project-card__content" />

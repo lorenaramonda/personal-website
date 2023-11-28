@@ -1,15 +1,18 @@
-import type { ISbStoriesParams } from 'storyblok-js-client'
-
 import { getDurationInYears } from '~/helpers'
 import { useLocalizedStoryParams } from '@/composables/useLocalizedStoryParams'
 
 export const useStore = defineStore('store', {
   state: () => {
     return {
+      space: {},
       jobs: [],
     }
   },
   getters: {
+    spaceLanguages: (state) => {
+      const defaultLocale = ['it']
+      return state.space?.language_codes ? [defaultLocale].concat(state.space?.language_codes).flat() : defaultLocale
+    },
     lastJobTitle: (state) => state.jobs.find((item) => !item.end_date)?.job_title,
     careerBeginning: (state) => state.jobs.slice().reverse()[0].start_date,
     remoteBeginning: (state) =>
@@ -30,6 +33,18 @@ export const useStore = defineStore('store', {
     },
   },
   actions: {
+    async fetchSpace() {
+      const storyblokApi = useStoryblokApi()
+
+      const { getParams } = useLocalizedStoryParams()
+
+      this.space = await storyblokApi
+        .get(`cdn/spaces/me/`, {
+          ...getParams(),
+          token: 'rFyQruRV73H58z005tfA3Att',
+        })
+        .then((response) => response.data.space)
+    },
     async fetchJobs() {
       const storyblokApi = useStoryblokApi()
 

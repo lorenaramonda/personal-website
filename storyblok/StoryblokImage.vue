@@ -1,20 +1,37 @@
 <template>
-  <img :src="filename" :alt="image.alt" :title="title" />
+  <NuxtImg
+    v-tooltip="title"
+    provider="storyblok"
+    :src="props.image.filename"
+    :modifiers="modifiers"
+    :title="title"
+    :alt="image.alt"
+    :width="calculatedWidth"
+    :height="calculatedHeight"
+  />
 </template>
 
 <script setup lang="ts">
 import type { StoryblokImage } from '@/types'
 
-const store = useStore()
-await useAsyncData('jobs', () => store.fetchJobs())
+const props = withDefaults(
+  defineProps<{
+    image: StoryblokImage
+    width?: number
+    height?: number
+  }>(),
+  {
+    width: 0,
+    height: 0,
+  },
+)
 
-const props = defineProps<{
-  image: StoryblokImage
-}>()
-
-const filename = computed(() => {
-  return props.image.focus ? `${props.image.filename}/m/800x800/filters:focal(${props.image.focus})` : props.image.filename
+const modifiers = computed(() => {
+  return { filters: { focal: props.image.focus } }
 })
+
+const calculatedWidth = computed(() => props.width || undefined)
+const calculatedHeight = computed(() => props.height || undefined)
 
 const title = computed(() => {
   const imageInfo = [props.image.title, props.image.copyright, props.image.source].filter((item) => !!item)

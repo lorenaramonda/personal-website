@@ -3,8 +3,8 @@
     <StoryblokImage
       v-if="blok.badge?.filename"
       :image="blok.badge"
-      width="128"
-      height="228"
+      :width="128"
+      :height="228"
       :alt="$t('education.certification.logoTitle', { certification: blok.title })"
     />
     <p>
