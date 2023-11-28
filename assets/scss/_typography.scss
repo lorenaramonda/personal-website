@@ -1,6 +1,5 @@
-/*
-Define font faces
-*/
+@use 'variables' as *;
+
 @mixin fontDownloadTime {
   font-display: block;
 }
@@ -75,7 +74,7 @@ dd,
 ol,
 ul,
 li,
-/*fieldset,*/
+fieldset,
 form,
 label,
 legend,
@@ -110,7 +109,6 @@ video {
   margin: 0;
   padding: 0;
   border: 0;
-  font-size: 100%;
   font: inherit;
   vertical-align: baseline;
 }

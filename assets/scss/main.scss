@@ -1,5 +1,6 @@
-@import 'variables';
-@import 'typography';
-@import 'layout';
+@forward 'typography';
+@forward 'layout';
 
-@import 'plugins/_tooltip';
+@forward 'plugins/_tooltip';
+
+@use 'variables' as *;

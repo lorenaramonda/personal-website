@@ -1,4 +1,4 @@
-@import 'globals';
-@import 'typography';
-@import 'colors';
-@import 'mediaqueries';
+@forward 'globals';
+@forward 'typography';
+@forward 'colors';
+@forward 'mediaqueries';
