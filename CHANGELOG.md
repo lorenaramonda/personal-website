@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file. (http://keepachangelog.com/)
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.2.1] - 2023-11-28
+
+- Fixed forward with overwrite in scss
+
 ## [2.2.0] - 2023-11-28
 
 - The language switcher now retrives the list based on the language set on Storyblok

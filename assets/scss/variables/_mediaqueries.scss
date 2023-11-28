@@ -1,15 +1,11 @@
 // Doc: https://github.com/sass-mq/sass-mq
-@forward 'sass-mq/mq';
-
-$breakpoints: (
-  // small
-  mobile: 640px,
-  // medium
-  tablet: 1024px,
-  // large
-  desktop: 1200px,
-  // xlarge
-  wide: 1920px
+@use 'sass-mq/mq' as * with (
+  $breakpoints: (
+    mobile: 640px,
+    tablet: 1024px,
+    desktop: 1200px,
+    wide: 1920px,
+  )
 );
 
-$mq-breakpoints: $breakpoints;
+@forward 'sass-mq/mq';
