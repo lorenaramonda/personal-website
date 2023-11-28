@@ -77,6 +77,7 @@ onMounted(() => {
     border: none;
     font-family: $font-family-text;
     border-radius: 20px;
+    color: var(--color-text);
     background-color: var(--color-bg);
     border-bottom: solid 3px var(--color-main-lighter);
     padding: 0.5em 1.5em;
@@ -85,7 +86,6 @@ onMounted(() => {
     margin: 0 0.5rem;
   }
   &__button--primary {
-    color: var(--color-text);
     background-color: var(--color-main-dark);
     border-bottom: solid 3px var(--color-main-darkest);
   }
