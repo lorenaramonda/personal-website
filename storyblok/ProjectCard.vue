@@ -1,5 +1,5 @@
 <template>
-  <div v-editable="blok" class="project-card">
+  <div v-editable="blok" class="project-card" itemscope itemtype="https://schema.org/WebSite">
     <div>
       <span class="project-card__index">
         {{ index }}
@@ -8,16 +8,16 @@
         {{ blok.title }}
 
         <span v-if="blok.url" class="project-card__link">
-          (<a :href="blok.url.url" :target="blok.url.target" rel="noopener">{{ $getURLDomain(blok.url.url) }}</a
+          (<a :href="blok.url.url" :target="blok.url.target" rel="noopener" itemprop="url">{{ $getURLDomain(blok.url.url) }}</a
           >)
         </span>
       </h2>
 
       <picture v-if="blok.image?.filename && blok.show_image" class="project-card__image">
-        <StoryblokImage :image="blok.image" :width="400" />
+        <StoryblokImage :image="blok.image" :width="400" itemprop="thumbnail" />
       </picture>
 
-      <RichtextRenderer v-if="blok.content" :document="blok.content" class="project-card__content" />
+      <RichtextRenderer v-if="blok.content" :document="blok.content" class="project-card__content" itemprop="abstract" />
     </div>
 
     <ActionButton v-if="blok.url" :blok="link" class="project-card__action" />

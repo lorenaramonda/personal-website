@@ -1,10 +1,10 @@
 <template>
-  <div class="onepage-intro-wrapper">
+  <div class="onepage-intro-wrapper" itemscope itemtype="http://schema.org/Person">
     <section id="intro" v-editable="blok" class="onepage-intro">
-      <div class="onepage-intro__left" itemscope itemtype="http://schema.org/Person">
+      <div class="onepage-intro__left">
         <span v-if="blok.greetings" class="onepage-intro__text">{{ blok.greetings }}</span>
-        <h1 class="onepage-intro__title p-name" itemprop="name">{{ name }}</h1>
-        <h2 class="onepage-intro__subtitle p-job-title" itemprop="jobTitle">{{ jobTitle }}</h2>
+        <h1 class="onepage-intro__title" itemprop="name">{{ name }}</h1>
+        <h2 class="onepage-intro__subtitle" itemprop="jobTitle">{{ jobTitle }}</h2>
         <RichtextRenderer :document="blok.description" class="onepage-intro__text" />
         <div class="onepage-intro__actions">
           <StoryblokComponent v-for="action in blok.actions" :key="action._uid" :blok="action" />
@@ -41,7 +41,7 @@
         </svg>
 
         <picture v-if="blok.image">
-          <StoryblokImage :image="blok.image" itemprop="image" :width="512" :height="512" class="onepage-intro__image u-photo" />
+          <StoryblokImage :image="blok.image" itemprop="image" :width="512" :height="512" class="onepage-intro__image" />
         </picture>
       </div>
 

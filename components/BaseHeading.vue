@@ -1,6 +1,6 @@
 <template>
   <span v-if="label" class="section-title__label">{{ label }}</span>
-  <component :is="tag" class="section-title">
+  <component :is="tag" class="section-title" v-bind="$attrs">
     <slot />
   </component>
 </template>

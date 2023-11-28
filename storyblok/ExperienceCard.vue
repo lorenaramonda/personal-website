@@ -1,11 +1,11 @@
 <template>
-  <div v-editable="blok" class="experience-card">
+  <div v-editable="blok" class="experience-card" itemscope itemtype="http://schema.org/Person">
     <span class="experience-card__duration">{{ getStartDate(blok.start_date) }}{{ getEndDate(blok.end_date, blok.start_date) }}</span>
-    <h2 class="experience-card__job-title p-role">{{ blok.job_title }}</h2>
+    <h2 class="experience-card__job-title" :itemprop="schemaJobTitle">{{ blok.job_title }}</h2>
 
     {{ $t('misc.at') }}
     <em>
-      <span itemprop="affiliation" class="p-org">{{ blok.company_name }}</span
+      <span :itemprop="schemaWorksFor">{{ blok.company_name }}</span
       >, {{ place }}
     </em>
 
@@ -37,6 +37,13 @@ const props = defineProps<{
 const place = computed(() => {
   const isRemote = props.blok.is_remote ? `, ${t('experiences.remote')}` : ''
   return `${props.blok.company_city}${isRemote}`
+})
+
+const schemaJobTitle = computed(() => {
+  return !props.blok.end_date ? 'jobTitle' : undefined
+})
+const schemaWorksFor = computed(() => {
+  return !props.blok.end_date ? 'worksFor' : undefined
 })
 
 function getStartDate(startDate: string) {

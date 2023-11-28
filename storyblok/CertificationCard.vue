@@ -19,10 +19,10 @@
         </a>
       </strong>
       {{ $t('misc.at') }}
-      <em itemscope itemtype="http://schema.org/Organization">
-        <span itemprop="name">
+      <em>
+        <span>
           <a :href="blok.institution_url.url" target="_blank" :title="blok.institution" rel="noopener">{{ blok.institution }}</a> </span
-        >, <span itemprop="address">{{ blok.city }}</span> - {{ releasedAt }}{{ expiredAt }}
+        >, <span>{{ blok.city }}</span> - {{ releasedAt }}{{ expiredAt }}
       </em>
     </p>
   </div>

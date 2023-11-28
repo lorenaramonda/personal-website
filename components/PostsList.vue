@@ -5,21 +5,23 @@
         v-if="post.content.link || (post.content.long_text && post.content.long_text.content[0].content)"
         class="post-lists__item"
         :class="{ 'post-lists__item--internal': !post.content.link }"
+        itemscope
+        itemtype="https://schema.org/Article"
       >
         <time v-if="post.first_published_at" class="post-lists__item-date" :datetime="post.first_published_at">
-          <LucideCalendar :size="16" /> {{ $getDate(post.first_published_at, currentLocale?.iso) }}
+          <LucideCalendar :size="16" /> <span itemprop="datePublished">{{ $getDate(post.first_published_at, currentLocale?.iso) }}</span>
         </time>
         <h2 class="post-lists__item-title">
           <template v-if="post.content.link">
             <a :href="post.content.link.url" rel="noopener" target="_blank" :hreflang="getLinkLang(post.lang)">
-              {{ post.content.title }}
+              <span itemprop="name">{{ post.content.title }}</span>
             </a>
             <span class="post-lists__item-source">
               {{ $getURLDomain(post.content.link.url) }} <LucideExternalLink v-tooltip.top="$t('misc.externalLink')" :size="16" />
             </span>
           </template>
           <NuxtLink v-else :to="`/${post.full_slug}`" :hreflang="getLinkLang(post.lang)" :title="post.content.title">
-            {{ post.content.title }}
+            <span itemprop="name">{{ post.content.title }}</span>
           </NuxtLink>
         </h2>
       </li>
