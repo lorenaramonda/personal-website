@@ -22,10 +22,6 @@ type PageError = {
   statusCode: number
 }
 
-definePageMeta({
-  layout: 'empty',
-})
-
 defineProps<{
   error?: PageError
 }>()

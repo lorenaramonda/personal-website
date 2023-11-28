@@ -1,5 +1,5 @@
 <template>
-  <div class="experience-summary">
+  <div class="experience-summary" itemscope itemtype="http://schema.org/Person">
     <div class="experience-summary__intro">
       <MyPicture />
     </div>

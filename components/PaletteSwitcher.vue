@@ -1,6 +1,6 @@
 <template>
   <button v-tooltip.left-start="text" class="palette-switcher" type="button" @click="togglePalette">
-    <SvgIcon name="sun" /> <span class="palette-switcher__label">{{ text }}</span>
+    <LucideSun /> <span class="palette-switcher__label">{{ text }}</span>
   </button>
 </template>
 

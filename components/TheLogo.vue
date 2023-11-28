@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink :to="localePath({ name: 'home' })">
+  <NuxtLink :to="localePath({ name: 'home' })" title="Logo">
     <svg
       width="260"
       height="82"

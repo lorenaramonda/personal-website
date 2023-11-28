@@ -1,7 +1,7 @@
 <template>
-  <address class="contact-email u-email">
+  <address class="contact-email" itemscope itemtype="http://schema.org/ContactPoint">
     <LucideMail />
-    <span>
+    <span itemprop="email">
       {{ getEmail }}
     </span>
   </address>
@@ -14,8 +14,3 @@ const getEmail = computed(() => {
   return email + '@' + emailHost
 })
 </script>
-
-<style lang="scss">
-.contact-email {
-}
-</style>

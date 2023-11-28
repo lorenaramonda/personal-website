@@ -2,7 +2,7 @@
   <figure class="profile-picture">
     <FlipBox @mouseenter="toggleTitle(true)" @mouseleave="toggleTitle(false)">
       <template #front>
-        <img src="~/assets/images/lorena-ramonda_400x400.jpg" width="400" height="400" alt="Lorena Ramonda" itemprop="image" class="u-photo" />
+        <img src="~/assets/images/lorena-ramonda_400x400.jpg" width="400" height="400" alt="Lorena Ramonda" itemprop="image" />
       </template>
       <template #back>
         <img src="~/assets/images/rocket.png" width="512" height="512" alt="Logo The Rocket Dev" />
@@ -10,7 +10,7 @@
     </FlipBox>
     <div class="profile-picture__title" :class="{ 'profile-picture__title--highlighted': highlightTitle }">
       <span>the rocket dev</span>
-      <figcaption>Lorena Ramonda</figcaption>
+      <figcaption itemprop="name"><span itemprop="givenName">Lorena</span> <span itemprop="familyName">Ramonda</span></figcaption>
     </div>
   </figure>
 </template>

@@ -120,20 +120,30 @@ export default {
     skype: 'Contatta Lorena su Skype',
   },
   policy: {
-    text: 'Hai voglia di biscotti? I biscotti fanno bene alla tua dieta. Noi, in Europa, ci preoccupiamo della tua salute :) Dacci il permesso di trattarti come un capo.',
+    text: 'Uso i cookie per raccogliere dati sulle sezioni visitate e la lingua di provenienza, questo mi aiuta a capire a cosa dare priorità quando rilascio funzionalità. Ti va di aiutarmi?',
     link: {
-      text: 'Cosa diavolo stai dicendo?',
+      text: 'Dettagli',
       title: 'Informativa sui Cookie',
     },
-    button: {
-      text: 'Biscotti accettati!',
+    buttonText: {
+      ok: 'Certo!',
+      ko: 'Non oggi',
     },
   },
   agenda: {
     title: 'Agenda',
   },
   languages: {
-    current: 'Stai visualizzando il sito in {lang}',
+    current: '{lang} (lingua attuale del sito)',
+    goto: 'Visualizza il sito in {lang}',
+    spoken: 'So parlare in',
+    others: 'e altre...',
+    othersLabel: 'Lista di tutte le lingue che conosco',
+    it: 'Italiano',
+    en: 'Inglese',
+    es: 'Spagnolo',
+    fr: 'Francese',
+    pt: 'Portoghese',
   },
   Italia: 'Italia',
 }

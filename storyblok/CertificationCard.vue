@@ -3,8 +3,8 @@
     <StoryblokImage
       v-if="blok.badge?.filename"
       :image="blok.badge"
-      width="128"
-      height="228"
+      :width="128"
+      :height="228"
       :alt="$t('education.certification.logoTitle', { certification: blok.title })"
     />
     <p>
@@ -19,10 +19,10 @@
         </a>
       </strong>
       {{ $t('misc.at') }}
-      <em itemscope itemtype="http://schema.org/Organization">
-        <span itemprop="name">
+      <em>
+        <span>
           <a :href="blok.institution_url.url" target="_blank" :title="blok.institution" rel="noopener">{{ blok.institution }}</a> </span
-        >, <span itemprop="address">{{ blok.city }}</span> - {{ releasedAt }}{{ expiredAt }}
+        >, <span>{{ blok.city }}</span> - {{ releasedAt }}{{ expiredAt }}
       </em>
     </p>
   </div>

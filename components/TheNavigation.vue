@@ -4,11 +4,28 @@
       <NuxtLink :to="localePath({ name: 'index' })" class="navigation__gohome" @click="toggleMenu(!open)">
         <MyPicture />
       </NuxtLink>
-      <BaseLanguageSwitcher @click="toggleMenu(!open)" />
+      <BaseLanguageSwitcher @click="toggleMenu(false)">
+        <NuxtLink
+          v-tooltip.top="$t('languages.others')"
+          :to="localePath({ name: 'hobbies', hash: '#languages' })"
+          :title="$t('languages.others')"
+          :aria-label="$t('languages.othersLabel')"
+          @click="toggleMenu(false)"
+        >
+          <span>{{ $t('languages.others') }}</span>
+          <LucidePlus />
+        </NuxtLink>
+      </BaseLanguageSwitcher>
       <nav>
         <ul>
           <li class="navigation__item">
-            <NuxtLink :to="localePath({ name: 'index' })" class="navigation__link" active-class="navigation__link--active" @click="toggleMenu(false)">
+            <NuxtLink
+              :to="localePath({ name: 'index' })"
+              class="navigation__link"
+              active-class="navigation__link--active"
+              title="Home"
+              @click="toggleMenu(false)"
+            >
               <span>Home</span>
             </NuxtLink>
           </li>
@@ -17,6 +34,7 @@
               :to="localePath({ name: 'experiences' })"
               class="navigation__link"
               active-class="navigation__link--active"
+              :title="$t('experiences.title')"
               @click="toggleMenu(false)"
             >
               <span>{{ $t('experiences.title') }}</span>
@@ -27,6 +45,7 @@
               :to="localePath({ name: 'publications' })"
               class="navigation__link"
               active-class="navigation__link--active"
+              :title="$t('publications.title')"
               @click="toggleMenu(false)"
             >
               <span>{{ $t('publications.title') }}</span>
@@ -37,6 +56,7 @@
               :to="localePath({ name: 'projects' })"
               class="navigation__link"
               active-class="navigation__link--active"
+              :title="$t('projects.title')"
               @click="toggleMenu(false)"
             >
               <span>{{ $t('projects.title') }}</span>
@@ -47,6 +67,7 @@
               :to="localePath({ name: 'hobbies' })"
               class="navigation__link"
               active-class="navigation__link--active"
+              :title="$t('hobbies.title')"
               @click="toggleMenu(false)"
             >
               <span>{{ $t('hobbies.title') }}</span>
@@ -82,13 +103,6 @@ $mobile-height: 643px;
   padding: 1rem;
   background-color: var(--color-bg);
 
-  &__top {
-    display: flex;
-    flex-direction: column;
-  }
-  &__bottom {
-  }
-
   &__gohome {
     text-decoration: none;
   }
@@ -112,9 +126,9 @@ $mobile-height: 643px;
     font-weight: 500;
     font-family: $font-family-text;
     position: relative;
-    &--active::before {
+    &::before {
       content: '';
-      width: 120%;
+      width: 13px;
       height: 13px;
       border-radius: 10px;
       position: absolute;
@@ -122,6 +136,17 @@ $mobile-height: 643px;
       top: 1rem;
       z-index: 0;
       background-color: var(--color-secondary);
+      opacity: 0;
+      transition: all 0.3s ease-in-out;
+    }
+    @include mq($from: tablet) {
+      &:hover::before {
+        opacity: 1;
+      }
+    }
+    &--active::before {
+      width: 120%;
+      opacity: 1;
     }
     span {
       position: relative;

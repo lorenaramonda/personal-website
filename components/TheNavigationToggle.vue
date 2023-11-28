@@ -67,7 +67,7 @@ defineProps<{
     }
 
     &--dark {
-      box-shadow: 0 4px 5px 1px rgba(var(--color-text-rgb), 0.2);
+      color: var(--color-main-darker);
     }
   }
 }

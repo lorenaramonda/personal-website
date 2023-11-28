@@ -1,6 +1,6 @@
-@import 'floating-vue/dist/style.css';
+@forward 'floating-vue/dist/style.css';
 
-$opacity: 0.8;
+$opacity: 1;
 
 .v-popper--theme-tooltip .v-popper__inner {
   color: var(--color-main-lightest);

@@ -120,20 +120,30 @@ export default {
     skype: 'Contact Lorena on Skype',
   },
   policy: {
-    text: 'Do you want to eat cookies? Cookies are good for your diet. We, in Europe, just care about your health :) Give us the permission to treat you like a boss.',
+    text: 'I use cookies to collect data on the sections visited and the language of origin, this helps me understand what to prioritize when releasing features. Do you want to help me?',
     link: {
-      text: "What the hell are u sayin'?",
+      text: 'Details',
       title: 'Information about Cookies Privacy law',
     },
-    button: {
-      text: 'Cookie accepted!',
+    buttonText: {
+      ok: 'Sure!',
+      ko: 'Not today',
     },
   },
   agenda: {
     title: 'Agenda',
   },
   languages: {
-    current: 'Site current language: {lang}',
+    current: '{lang} (current site language)',
+    goto: 'View website in {lang}',
+    spoken: 'I can speak',
+    others: 'and more...',
+    othersLabel: 'List of all the languages I can speak',
+    it: 'Italian',
+    en: 'English',
+    es: 'Spanish',
+    fr: 'French',
+    pt: 'Portuguese',
   },
   Italia: 'Italy',
 }

@@ -14,6 +14,9 @@
 
 <script setup lang="ts">
 const open = ref(false)
+const store = useStore()
+await useAsyncData('jobs', () => store.fetchJobs())
+await useAsyncData('space', () => store.fetchSpace())
 </script>
 
 <style lang="scss">

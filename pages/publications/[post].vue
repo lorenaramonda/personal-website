@@ -1,12 +1,18 @@
 <template>
   <div class="section-publications">
     <div v-if="post" class="container-page">
-      <article v-editable="post" class="section-publications__post-article">
-        <BaseHeading v-if="post.content.title" primary :label="$t('publications.title')">{{ post.content.title }}</BaseHeading>
+      <article v-editable="post" class="section-publications__post-article" itemscope itemtype="https://schema.org/Article">
+        <BaseHeading v-if="post.content.title" primary :label="$t('publications.title')" itemprop="name">{{ post.content.title }}</BaseHeading>
         <time class="post-lists__item-date" :datetime="post.first_published_at">
-          <LucideCalendar :size="16" /> {{ $getDate(post.first_published_at, currentLocale?.iso) }}
+          <LucideCalendar :size="16" /> <span itemprop="datePublished">{{ $getDate(post.first_published_at, currentLocale?.iso) }}</span>
         </time>
-        <RichtextRenderer v-if="post.content.long_text" :document="post.content.long_text" class="section-publications__post-content" />
+        <RichtextRenderer
+          v-if="post.content.long_text"
+          :document="post.content.long_text"
+          class="section-publications__post-content"
+          itemprop="description"
+        />
+        <span itemprop="author">Lorena Ramonda</span>
         <EndOfPage />
       </article>
     </div>
