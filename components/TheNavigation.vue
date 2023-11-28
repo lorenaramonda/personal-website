@@ -5,7 +5,12 @@
         <MyPicture />
       </NuxtLink>
       <BaseLanguageSwitcher @click="toggleMenu(false)">
-        <NuxtLink v-tooltip.top="$t('languages.others')" :to="localePath({ name: 'hobbies', hash: '#languages' })" @click="toggleMenu(false)">
+        <NuxtLink
+          v-tooltip.top="$t('languages.others')"
+          :to="localePath({ name: 'hobbies', hash: '#languages' })"
+          :title="$t('languages.others')"
+          @click="toggleMenu(false)"
+        >
           <span>{{ $t('languages.others') }}</span>
           <LucidePlus />
         </NuxtLink>
@@ -13,7 +18,13 @@
       <nav>
         <ul>
           <li class="navigation__item">
-            <NuxtLink :to="localePath({ name: 'index' })" class="navigation__link" active-class="navigation__link--active" @click="toggleMenu(false)">
+            <NuxtLink
+              :to="localePath({ name: 'index' })"
+              class="navigation__link"
+              active-class="navigation__link--active"
+              title="Home"
+              @click="toggleMenu(false)"
+            >
               <span>Home</span>
             </NuxtLink>
           </li>
@@ -22,6 +33,7 @@
               :to="localePath({ name: 'experiences' })"
               class="navigation__link"
               active-class="navigation__link--active"
+              :title="$t('experiences.title')"
               @click="toggleMenu(false)"
             >
               <span>{{ $t('experiences.title') }}</span>
@@ -32,6 +44,7 @@
               :to="localePath({ name: 'publications' })"
               class="navigation__link"
               active-class="navigation__link--active"
+              :title="$t('publications.title')"
               @click="toggleMenu(false)"
             >
               <span>{{ $t('publications.title') }}</span>
@@ -42,6 +55,7 @@
               :to="localePath({ name: 'projects' })"
               class="navigation__link"
               active-class="navigation__link--active"
+              :title="$t('projects.title')"
               @click="toggleMenu(false)"
             >
               <span>{{ $t('projects.title') }}</span>
@@ -52,6 +66,7 @@
               :to="localePath({ name: 'hobbies' })"
               class="navigation__link"
               active-class="navigation__link--active"
+              :title="$t('hobbies.title')"
               @click="toggleMenu(false)"
             >
               <span>{{ $t('hobbies.title') }}</span>

@@ -12,7 +12,7 @@
       {{ blok.label }}
       <component :is="icon" v-if="blok.icon" />
     </a>
-    <NuxtLink v-else v-editable="blok" :to="blok.link.cached_url" class="action-button" :class="cssClasses" v-bind="$attrs">
+    <NuxtLink v-else v-editable="blok" :to="blok.link.cached_url" class="action-button" :class="cssClasses" v-bind="$attrs" :title="blok.link.title">
       {{ blok.label }}
       <component :is="icon" v-if="blok.icon" />
     </NuxtLink>
