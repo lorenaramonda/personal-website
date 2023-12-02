@@ -1,14 +1,14 @@
 <template>
   <ComingSoon v-if="!page">{{ $t('experiences.title') }}</ComingSoon>
   <template v-else>
-    <div class="container-page">
-      <header class="section-experiences__title">
-        <BaseHeading primary :label="$t('experiences.subtitle')">{{ $t('experiences.title') }}</BaseHeading>
-      </header>
-    </div>
     <div class="section-experiences">
       <div class="container-page">
-        <div class="section-experiences__content">
+        <header class="section-experiences__title">
+          <BaseHeading primary :label="$t('experiences.subtitle')">{{ $t('experiences.title') }}</BaseHeading>
+        </header>
+      </div>
+      <div class="section-experiences__content">
+        <div class="container-page">
           <StoryblokComponent v-for="blok in bloks" :key="blok._uid" :blok="blok" class="section-experiences__blok" />
           <EndOfPage />
         </div>
@@ -47,8 +47,8 @@ $setMetadata($getMetadataFromStory(content.value))
 
 <style lang="scss">
 .section-experiences {
-  background-color: var(--color-main-lightest);
   &__content {
+    background-color: var(--color-main-lightest);
     display: grid;
     .section-title {
       margin-bottom: 2rem;
