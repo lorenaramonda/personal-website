@@ -44,6 +44,7 @@
             <NuxtLink
               :to="localePath({ name: 'publications' })"
               class="navigation__link"
+              :class="{ 'navigation__link--active': routeName.startsWith('publications') }"
               active-class="navigation__link--active"
               :title="$t('publications.title')"
               @click="toggleMenu(false)"
@@ -86,7 +87,12 @@
 
 <script setup lang="ts">
 const localePath = useLocalePath()
+const route = useRoute()
 const open = ref(false)
+
+const routeName = computed((): string => {
+  return route.name?.toString() ?? ''
+})
 
 function toggleMenu(isOpen?: boolean) {
   open.value = typeof isOpen === 'boolean' ? isOpen : !open.value
