@@ -15,7 +15,7 @@
 <script setup lang="ts">
 const { $getDurationInYears } = useNuxtApp()
 
-const age = computed(() => $getDurationInYears('', '1983-02-20'))
+const age = computed(() => $getDurationInYears('1983-02-20'))
 
 const isBirthday = computed(() => {
   const today = new Date()
