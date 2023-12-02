@@ -52,7 +52,7 @@ function getDay(value) {
 
 function getMonth(date) {
   if (!date) return date
-  return new Date(date).toLocaleDateString(currentLocale.value.iso, {
+  return new Date(date.split(' ')[0]).toLocaleDateString(currentLocale.value.iso, {
     month: 'short',
   })
 }
@@ -60,7 +60,7 @@ function getMonth(date) {
 const { data: meetingsStories } = await useAsyncData(async () => await storyblokApi.get(`cdn/stories`, storiesParams), {
   transform: (value) =>
     value.data.stories.sort((a, b) => {
-      return new Date(a.content.date) - new Date(b.content.date)
+      return new Date(a.content.date.split(' ')[0]) - new Date(b.content.date.split(' ')[0])
     }),
 })
 

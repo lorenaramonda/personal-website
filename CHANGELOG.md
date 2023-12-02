@@ -3,13 +3,17 @@
 All notable changes to this project will be documented in this file. (http://keepachangelog.com/)
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.2.2] - 2023-12-02
+
+- Fixed dates manipulations results in Safari
+
 ## [2.2.1] - 2023-11-28
 
 - Fixed forward with overwrite in scss
 
 ## [2.2.0] - 2023-11-28
 
-- The language switcher now retrives the list based on the language set on Storyblok
+- The language switcher now retrieves the list based on the language set on Storyblok
 - Improved microdata
 - Improved cookie policy warning
 - Refactored scss imports
