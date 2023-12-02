@@ -36,10 +36,10 @@ const props = defineProps<{
 }>()
 
 const releasedAt = computed(() => {
-  return new Date(props.blok.released_at).getFullYear()
+  return new Date(props.blok.released_at.split(' ')[0]).getFullYear()
 })
 const expiredAt = computed(() => {
-  return props.blok.expired_at ? `/${new Date(props.blok.expired_at).getFullYear()}` : ''
+  return props.blok.expired_at ? `/${new Date(props.blok.expired_at.split(' ')[0]).getFullYear()}` : ''
 })
 </script>
 

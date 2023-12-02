@@ -48,18 +48,18 @@ const schemaWorksFor = computed(() => {
 
 function getStartDate(startDate: string) {
   if (!startDate) return 0
-  const parsedDate = new Date(startDate.substring(0, 10))
+  const parsedDate = new Date(startDate.split(' ')[0])
   return parsedDate.getFullYear()
 }
 
 function getEndDate(end: string, start: string) {
-  const yearsWorked = $getDurationInYears(end, start)
+  const yearsWorked = $getDurationInYears(start, end)
 
   const duration = props.blok.show_duration ? ` (${t('misc.years', yearsWorked)})` : ''
   // if current position, don't return end date
   if (!end) return `-${t('misc.present')} ${duration}`
 
-  const endDate = new Date(end)
+  const endDate = new Date(end.split(' ')[0])
 
   if (yearsWorked === 0) {
     // returns months worked...

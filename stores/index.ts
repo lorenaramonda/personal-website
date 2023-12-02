@@ -21,15 +21,13 @@ export const useStore = defineStore('store', {
         .reverse()
         .find((item) => item.is_remote).start_date,
     yearsOfExperience: (state) => {
-      const today = new Date()
-      const exactYears = getDurationInYears(today, state.careerBeginning)
+      const exactYears = getDurationInYears(state.careerBeginning)
       const multipleOf5 = exactYears % 5
       const sign = multipleOf5 ? '+' : ''
       return `${exactYears - multipleOf5}${sign}`
     },
     yearsOfRemote: (state) => {
-      const today = new Date()
-      return getDurationInYears(today, state.remoteBeginning)
+      return getDurationInYears(state.remoteBeginning)
     },
   },
   actions: {
