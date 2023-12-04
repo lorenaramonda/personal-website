@@ -5,7 +5,7 @@
   "scripts": {
     "build": "nuxt build",
     "dev-http": "nuxt dev",
-    "dev": "nuxt dev --https --ssl-cert localhost.pem --ssl-key localhost-key.pem --host",
+    "dev": "nuxt dev --https --ssl-cert localhost.pem --ssl-key localhost-key.pem --dotenv .env.local --host",
     "serve": "nuxt generate && nuxt preview",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
