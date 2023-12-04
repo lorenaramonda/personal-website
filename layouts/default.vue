@@ -1,15 +1,13 @@
 <template>
-  <NuxtLayout name="empty">
-    <div class="layout" :class="{ 'layout--full-width': open }">
-      <main>
-        <slot />
-      </main>
-      <TheNavigation />
-      <TheNavigationToggle class="navigation-toggle navigation__toggle--desktop" :dark="open" @click="open = !open" />
-    </div>
-    <TheFooter class="layout__footer" />
-    <CookiesPolicy />
-  </NuxtLayout>
+  <div class="layout" :class="{ 'layout--full-width': open }">
+    <main>
+      <slot />
+    </main>
+    <TheNavigation />
+    <TheNavigationToggle class="navigation-toggle navigation__toggle--desktop" :dark="open" @click="open = !open" />
+  </div>
+  <TheFooter class="layout__footer" />
+  <CookiesPolicy />
 </template>
 
 <script setup lang="ts">
@@ -17,6 +15,9 @@ const open = ref(false)
 const store = useStore()
 await useAsyncData('jobs', () => store.fetchJobs())
 await useAsyncData('space', () => store.fetchSpace())
+
+const { $setMetadata } = useNuxtApp()
+$setMetadata()
 </script>
 
 <style lang="scss">
