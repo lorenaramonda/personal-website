@@ -1,11 +1,11 @@
 {
   "name": "@lorenaramonda/personal-website",
   "private": true,
-  "version": "2.2.2",
+  "version": "2.2.3",
   "scripts": {
     "build": "nuxt build",
     "dev-http": "nuxt dev",
-    "dev": "nuxt dev --https --ssl-cert localhost.pem --ssl-key localhost-key.pem --host",
+    "dev": "nuxt dev --https --ssl-cert localhost.pem --ssl-key localhost-key.pem --dotenv .env.local --host",
     "serve": "nuxt generate && nuxt preview",
     "generate": "nuxt generate",
     "preview": "nuxt preview",

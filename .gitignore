@@ -5,12 +5,10 @@ node_modules
 .cache
 .output
 .env
+.env.local
 dist
 .DS_Store
 coverage
-
-assets/icons/cache
-assets/svg-transformer-list.ts
 
 # Local Netlify folder
 .netlify

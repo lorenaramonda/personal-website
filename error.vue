@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <template v-if="error.statusCode === 404">
+    <template v-if="error?.statusCode === 404">
       <h1>404</h1>
       <i18n-t keypath="error.path" tag="p" scope="global">
         <template #path>
@@ -10,6 +10,8 @@
     </template>
     <template v-else>
       <h1>An error occurred</h1>
+      <p v-if="error?.message" @click="showError = !showError">{{ error.message }}</p>
+      <pre v-show="showError">{{ error }}</pre>
     </template>
     <nuxt-link :to="localePath({ name: 'index' })" class="button">Home page</nuxt-link>
   </div>
@@ -25,6 +27,8 @@ type PageError = {
 defineProps<{
   error?: PageError
 }>()
+
+const showError = ref(false)
 
 useHead({
   htmlAttrs: {

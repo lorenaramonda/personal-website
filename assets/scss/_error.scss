@@ -24,4 +24,19 @@
     display: inline-block;
     margin: 1em auto;
   }
+
+  p {
+    cursor: pointer;
+  }
+
+  pre {
+    max-width: 700px;
+    margin: 1rem auto;
+    text-align: left;
+    font-family: $font-family-monospace;
+    background: var(--color-neutral-lighter);
+    font-size: 1rem;
+    padding: 2em;
+    overflow: auto;
+  }
 }
