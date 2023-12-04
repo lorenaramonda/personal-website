@@ -3,8 +3,8 @@
     <StoryblokImage
       v-if="blok.badge?.filename"
       :image="blok.badge"
-      :width="128"
-      :height="228"
+      :width="40"
+      :height="40"
       :alt="$t('education.certification.logoTitle', { certification: blok.title })"
     />
     <p>
@@ -45,11 +45,12 @@ const expiredAt = computed(() => {
 
 <style lang="scss">
 .certification-card {
-  display: grid;
-  grid-template-columns: 60px auto;
-  grid-template-areas:
-    'logo text'
-    'logo text';
+  // display: grid;
+  // grid-template-columns: 60px auto;
+  // grid-template-areas:
+  //   'logo text'
+  //   'logo text';
+  display: flex;
   gap: 1rem;
 
   img {
