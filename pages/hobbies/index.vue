@@ -20,8 +20,7 @@ defineOptions({
   name: 'HobbiesPage',
 })
 
-const { t } = useI18n()
-const { $setMetadata } = useNuxtApp()
+const { $setMetadata, $getMetadataFromStory } = useNuxtApp()
 
 const { getParams } = useLocalizedStoryParams()
 
@@ -33,9 +32,7 @@ const bloks = computed(() => {
   return page.body
 })
 
-$setMetadata({
-  title: t('hobbies.title'),
-})
+$setMetadata($getMetadataFromStory(page))
 </script>
 
 <style lang="scss">

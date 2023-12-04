@@ -1,13 +1,12 @@
-import { useSeoMeta } from 'unhead'
-
 type MetadataPayload = {
-  title: string
+  title?: string
   description?: string
   keywords?: string
   image?: {
     filename: string
     alt: string
   }
+  ogType: string
 }
 
 type SeoMetadata = {
@@ -40,18 +39,24 @@ export default defineNuxtPlugin(() => {
     provide: {
       getMetadataFromStory(content: StorySeoContent) {
         const metadata: MetadataPayload = {
-          title: content.meta_title,
+          title: content?.meta_title,
         }
-        if (content.meta_description) metadata.description = content.meta_description
-        if (content.meta_keywords) metadata.keywords = content.meta_keywords
-        if (content.meta_image) metadata.image = content.meta_image
+        if (content?.meta_description) metadata.description = content.meta_description
+        if (content?.meta_keywords) metadata.keywords = content.meta_keywords
+        if (content?.meta_image) metadata.image = content.meta_image
 
         return metadata
       },
-      setMetadata({ title, description, keywords, image }: MetadataPayload) {
+      setMetadata({ title, description, keywords, image }: MetadataPayload = {}) {
+        const { t } = useI18n()
+        const fallbackTitle = computed(() => t('meta.title'))
+        const fallbackDescription = computed(() => t('meta.description'))
+
         // Doc: https://nuxt.com/docs/getting-started/seo-meta#types
         const metadata: SeoMetadata = {
-          title,
+          title: title || fallbackTitle.value,
+          description: fallbackDescription.value,
+          ogType: 'website',
           ogTitle: title,
           twitterCard: 'summary',
           twitterTitle: title,
@@ -72,6 +77,7 @@ export default defineNuxtPlugin(() => {
         }
         if (image?.alt) metadata.ogImageAlt = image.alt
 
+        useServerSeoMeta(metadata)
         useSeoMeta(metadata)
       },
     },
