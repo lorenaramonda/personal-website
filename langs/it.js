@@ -146,4 +146,12 @@ export default {
     pt: 'Portoghese',
   },
   Italia: 'Italia',
+  link: {
+    lorena: 'Sito personale di Lorena Ramonda',
+    rocket: "The rocket dev è l'alias di Lorena - sito alternativo",
+    nuxt: 'Sito ufficiale di Nuxt3',
+    storyblok: 'Sito ufficiale di Storyblok',
+    netlify: 'Sito ufficiale di Netlify',
+    github: 'Codice sorgente di questo sito',
+  },
 }

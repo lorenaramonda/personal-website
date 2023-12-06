@@ -146,4 +146,12 @@ export default {
     pt: 'Portugués',
   },
   Italia: 'Italia',
+  link: {
+    lorena: 'Sitio web personal de Lorena Ramonda',
+    rocket: 'The rocket dev es el sitio web alias de Lorena',
+    nuxt: 'Sitio web oficial de Nuxt3',
+    storyblok: 'Sitio web oficial de Storyblok',
+    netlify: 'Sitio web oficial de Netlify',
+    github: 'Código fuente de este sitio web',
+  },
 }
