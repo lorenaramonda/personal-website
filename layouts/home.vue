@@ -12,7 +12,4 @@
 const store = useStore()
 await useAsyncData('jobs', () => store.fetchJobs())
 await useAsyncData('space', () => store.fetchSpace())
-
-const { $setMetadata } = useNuxtApp()
-$setMetadata()
 </script>

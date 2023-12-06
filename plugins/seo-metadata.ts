@@ -6,7 +6,7 @@ type MetadataPayload = {
     filename: string
     alt: string
   }
-  ogType: string
+  ogType?: string
 }
 
 type SeoMetadata = {
@@ -17,6 +17,9 @@ type SeoMetadata = {
   ogDescription?: string
   ogImage?: string
   ogImageAlt?: string
+  ogType?: string
+  ogUrl?: string
+  ogSiteName?: string
   twitterCard?: string
   twitterTitle?: string
   twitterDescription?: string
@@ -47,8 +50,9 @@ export default defineNuxtPlugin(() => {
 
         return metadata
       },
-      setMetadata({ title, description, keywords, image }: MetadataPayload = {}) {
+      setMetadata({ title, description, keywords, image, ogType = 'website' }: MetadataPayload = {}) {
         const { t } = useI18n()
+        const { fullPath } = useRoute()
         const fallbackTitle = computed(() => t('meta.title'))
         const fallbackDescription = computed(() => t('meta.description'))
 
@@ -56,8 +60,10 @@ export default defineNuxtPlugin(() => {
         const metadata: SeoMetadata = {
           title: title || fallbackTitle.value,
           description: fallbackDescription.value,
-          ogType: 'website',
+          ogType,
           ogTitle: title,
+          ogUrl: `https://lorena.ramonda.me${fullPath}`,
+          ogSiteName: 'Lorena Ramonda',
           twitterCard: 'summary',
           twitterTitle: title,
           twitterCreator: 'Lorena Ramonda',

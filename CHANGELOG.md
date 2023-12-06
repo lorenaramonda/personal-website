@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file. (http://keepachangelog.com/)
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.2.4] - 2023-12-06
+
+- Added again canonical links and SEO meta in a better way
+
 ## [2.2.3] - 2023-12-04
 
 - Fixed social metadatas that were previously only generated client side

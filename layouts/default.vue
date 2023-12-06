@@ -15,9 +15,6 @@ const open = ref(false)
 const store = useStore()
 await useAsyncData('jobs', () => store.fetchJobs())
 await useAsyncData('space', () => store.fetchSpace())
-
-const { $setMetadata } = useNuxtApp()
-$setMetadata()
 </script>
 
 <style lang="scss">
