@@ -16,6 +16,7 @@ const i18nHead = useLocaleHead({
   identifierAttribute: 'id',
   addSeoAttributes: true,
 })
+
 useHead({
   htmlAttrs: {
     lang: i18nHead.value.htmlAttrs!.lang,
