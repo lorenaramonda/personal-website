@@ -107,6 +107,8 @@ export default {
     present: 'presente',
     endPage: 'Hai raggiunto la fine della pagina',
     toggleMenu: 'Mostra/Nascondi la navigazione',
+    credits: 'Crediti',
+    source: 'Fonte',
   },
   rate: {
     beginner: 'Conoscenza base',

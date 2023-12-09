@@ -26,6 +26,8 @@ const props = withDefaults(
   },
 )
 
+const { t } = useI18n()
+
 const modifiers = computed(() => {
   return { filters: { focal: props.image.focus } }
 })
@@ -34,7 +36,9 @@ const calculatedWidth = computed(() => props.width || undefined)
 const calculatedHeight = computed(() => props.height || undefined)
 
 const title = computed(() => {
-  const imageInfo = [props.image.title, props.image.copyright, props.image.source].filter((item) => !!item)
+  const imageInfo = props.image.title ? [props.image.title] : []
+  if (props.image.copyright) imageInfo.push(`${t('misc.credits')}: ${props.image.copyright}`)
+  if (props.image.source) imageInfo.push(`${t('misc.source')}: ${props.image.source}`)
   return imageInfo.join(' / ')
 })
 </script>

@@ -107,6 +107,8 @@ export default {
     present: 'present',
     endPage: 'You reach the end of the page',
     toggleMenu: 'Toggle the navigation',
+    credits: 'Credits',
+    source: 'Source',
   },
   rate: {
     beginner: 'Beginner',
