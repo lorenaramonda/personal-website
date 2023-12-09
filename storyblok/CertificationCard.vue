@@ -45,11 +45,6 @@ const expiredAt = computed(() => {
 
 <style lang="scss">
 .certification-card {
-  // display: grid;
-  // grid-template-columns: 60px auto;
-  // grid-template-areas:
-  //   'logo text'
-  //   'logo text';
   display: flex;
   gap: 1rem;
 

@@ -1,3 +1,5 @@
+import type { UseSeoMetaInput } from '@unhead/vue'
+
 type MetadataPayload = {
   title?: string
   description?: string
@@ -6,25 +8,19 @@ type MetadataPayload = {
     filename: string
     alt: string
   }
-  ogType?: string
-}
-
-type SeoMetadata = {
-  title: string
-  description?: string
-  keywords?: string
-  ogTitle?: string
-  ogDescription?: string
-  ogImage?: string
-  ogImageAlt?: string
-  ogType?: string
-  ogUrl?: string
-  ogSiteName?: string
-  twitterCard?: string
-  twitterTitle?: string
-  twitterDescription?: string
-  twitterCreator?: string
-  twitterImage?: string
+  ogType?:
+    | 'website'
+    | 'article'
+    | 'book'
+    | 'profile'
+    | 'music.song'
+    | 'music.album'
+    | 'music.playlist'
+    | 'music.radio_status'
+    | 'video.movie'
+    | 'video.episode'
+    | 'video.tv_show'
+    | 'video.other'
 }
 
 type StorySeoContent = {
@@ -57,7 +53,7 @@ export default defineNuxtPlugin(() => {
         const fallbackDescription = computed(() => t('meta.description'))
 
         // Doc: https://nuxt.com/docs/getting-started/seo-meta#types
-        const metadata: SeoMetadata = {
+        const metadata: UseSeoMetaInput = {
           title: title || fallbackTitle.value,
           description: fallbackDescription.value,
           ogType,

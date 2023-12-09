@@ -1,5 +1,9 @@
 <template>
-  <span v-if="label" class="section-title__label">{{ label }}</span>
+  <span v-if="label || $slots.breadcrumbs" class="section-title__label">
+    <slot name="breadcrumbs">
+      {{ label }}
+    </slot>
+  </span>
   <component :is="tag" class="section-title" v-bind="$attrs">
     <slot />
   </component>

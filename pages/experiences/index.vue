@@ -19,6 +19,7 @@
 
 <script setup lang="ts">
 import { useLocalizedStoryParams } from '@/composables/useLocalizedStoryParams'
+import type { StoryblokComponent } from '@/types'
 
 defineOptions({
   name: 'ProjectPage',
@@ -34,8 +35,8 @@ const store = useStore()
 
 const content = computed(() => page.value.content)
 const bloks = computed(() =>
-  content.value.body.map((item) => {
-    if (item.component === 'ItemsList') item.items = store.jobs
+  content.value.body.map((item: StoryblokComponent) => {
+    if (item.component === 'ItemsList' && store.jobs?.length) item.items = store.jobs
     if (item.component === 'LongText') item.component = 'ExperienceSummary'
 
     return item

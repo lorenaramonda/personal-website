@@ -65,6 +65,11 @@ export default {
     meta_title: 'Pubblicazioni di Lorena Ramonda',
     meta_description: 'Pubblicazioni e blog post scritti da Lorena Ramonda',
     meta_keywords: 'pubblicazioni, blog post, blog, posts',
+    read: 'Lee',
+  },
+  blog: {
+    complete: 'Completo',
+    ongoing: 'En curso',
   },
   skills: {
     title: 'Conoscenze tecniche',

@@ -1,6 +1,6 @@
 <template>
   <BaseHeading v-if="blok.title"> {{ blok.title }}</BaseHeading>
-  <ul v-editable="blok" class="item-list" :class="`item-list--${blok.layout}`" v-bind="$attrs">
+  <ul v-if="itemsMapped" v-editable="blok" class="items-list" :class="`items-list--${blok.layout}`" v-bind="$attrs">
     <li v-for="(item, index) in items" :key="item.uid">
       <StoryblokComponent :key="item._uid" :blok="item" :index="prependZero(index + 1)" />
     </li>
@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import type { GenericObject } from '@/types'
+import type { GenericObject, StoryblokComponent } from '@/types'
 
 const { $capitalize } = useNuxtApp()
 
@@ -17,8 +17,8 @@ const props = defineProps<{
 }>()
 
 const itemsMapped = computed(() => {
-  return props.blok.items.map((item) => {
-    return { ...item, component: $capitalize(`${item.component}-card`) }
+  return props.blok.items?.map((item: StoryblokComponent) => {
+    return { ...item, component: item.component ? $capitalize(`${item.component}-card`) : 'ItemsListCard' }
   })
 })
 
@@ -33,7 +33,7 @@ function prependZero(number: number) {
 </script>
 
 <style lang="scss">
-.item-list {
+.items-list {
   display: grid;
   grid-template-columns: 100%;
   gap: 4rem;
@@ -43,7 +43,7 @@ function prependZero(number: number) {
     }
   }
   &--grid {
-    @include mq($from: tablet) {
+    @include mq($from: mobile) {
       grid-template-columns: repeat(2, 1fr);
     }
     @include mq($from: desktop) {

@@ -42,6 +42,7 @@ const link = computed(() => {
     label: t('misc.visitLink'),
     link: props.blok.url,
     icon: 'external-link',
+    type: 'ghost',
   }
 })
 </script>

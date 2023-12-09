@@ -6,6 +6,10 @@
 
 <script setup lang="ts">
 const nuxtApp = useNuxtApp()
+const store = useStore()
+
+await useAsyncData('jobs', () => store.fetchJobs())
+await useAsyncData('space', () => store.fetchSpace())
 
 nuxtApp.hook('page:finish', () => {
   window.scrollTo(0, 0)
@@ -16,6 +20,7 @@ const i18nHead = useLocaleHead({
   identifierAttribute: 'id',
   addSeoAttributes: true,
 })
+
 useHead({
   htmlAttrs: {
     lang: i18nHead.value.htmlAttrs!.lang,

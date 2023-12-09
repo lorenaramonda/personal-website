@@ -29,7 +29,7 @@
               <span>Home</span>
             </NuxtLink>
           </li>
-          <li class="navigation__item">
+          <li v-if="localePath({ name: 'experiences' })" class="navigation__item">
             <NuxtLink
               :to="localePath({ name: 'experiences' })"
               class="navigation__link"
@@ -40,7 +40,7 @@
               <span>{{ $t('experiences.title') }}</span>
             </NuxtLink>
           </li>
-          <li class="navigation__item">
+          <li v-if="localePath({ name: 'publications' })" class="navigation__item">
             <NuxtLink
               :to="localePath({ name: 'publications' })"
               class="navigation__link"
@@ -52,7 +52,7 @@
               <span>{{ $t('publications.title') }}</span>
             </NuxtLink>
           </li>
-          <li class="navigation__item">
+          <li v-if="localePath({ name: 'projects' })" class="navigation__item">
             <NuxtLink
               :to="localePath({ name: 'projects' })"
               class="navigation__link"
@@ -63,7 +63,7 @@
               <span>{{ $t('projects.title') }}</span>
             </NuxtLink>
           </li>
-          <li class="navigation__item">
+          <li v-if="localePath({ name: 'hobbies' })" class="navigation__item">
             <NuxtLink
               :to="localePath({ name: 'hobbies' })"
               class="navigation__link"
