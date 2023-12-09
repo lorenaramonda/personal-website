@@ -39,7 +39,7 @@ export const useStore = defineStore('store', {
       this.space = await storyblokApi
         .get(`cdn/spaces/me/`, {
           ...getParams(),
-          token: 'rFyQruRV73H58z005tfA3Att',
+          token: process.env.STORYBLOK_TOKEN,
         })
         .then((response) => response.data.space)
     },
