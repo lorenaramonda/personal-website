@@ -33,6 +33,8 @@ const page = await useAsyncStoryblok('experiences', getParams()).catch(() => nul
 
 const store = useStore()
 
+await useAsyncData('jobs', () => store.fetchJobs())
+
 const content = computed(() => page.value.content)
 const bloks = computed(() =>
   content.value.body.map((item: StoryblokComponent) => {

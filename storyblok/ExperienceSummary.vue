@@ -16,7 +16,7 @@
       </p>
     </div>
 
-    <div class="badges">
+    <div v-if="yearsOfExperience !== '0' && yearsOfRemote" class="badges">
       <i18n-t keypath="experiences.years" tag="div" scope="global" class="badge-stat">
         <template #years>
           <span>{{ yearsOfExperience }}</span>

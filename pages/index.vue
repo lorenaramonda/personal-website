@@ -12,8 +12,11 @@ import { useLocalizedStoryParams } from '@/composables/useLocalizedStoryParams'
 // })
 
 const { $getMetadataFromStory, $setMetadata } = useNuxtApp()
+const store = useStore()
 
 const { getParams } = useLocalizedStoryParams()
+
+await useAsyncData('jobs', () => store.fetchJobs())
 
 let page = ref()
 
