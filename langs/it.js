@@ -23,11 +23,6 @@ export default {
   job: {
     title: 'Sviluppatrice front-end',
   },
-  quote: {
-    einstein: 'Non ho nessuno talento speciale. Sono solo appassionatamente curioso.',
-    anonymous: 'Nemmeno il creativo più esperto dà il meglio di sé con strumenti rozzi e approssimativi',
-    confucio: 'Scegli il lavoro che ami e non lavorerai mai, neanche per un giorno in tutta la tua vita.',
-  },
   experiences: {
     title: 'Esperienza',
     subtitle: 'Curriculum vitae',
@@ -38,26 +33,11 @@ export default {
     curiosity: '{number} curiosità',
   },
   education: {
-    title: 'Formazione',
-    subtitle: 'Partecipazioni',
-    conference: 'conferenza',
-    course: 'corso',
-    coursePost: 'corso post-diploma',
-    coursePostTitle: 'Tecnico di Grafica per Internet',
-    organizer: 'tenuto da',
-    speakerAt: 'relatrice alla conferenza {conf}',
-    teacherOf: 'docente per un corso {course}',
-    teacherFor: 'tramite',
-    teacherTo: 'per',
     certification: {
       logoTitle: 'Logo ufficiale della certificazione {certification}',
       linkTitle: 'Certificazione {certification} di Lorena Ramonda',
       title: 'certificazione {certification}',
     },
-    topic: 'Argomento',
-    material: 'Materiale',
-    vueCourseName: 'Corso Vue.js base',
-    vueCourse: 'base di Vue.js',
   },
   publications: {
     title: 'Pubblicazioni',
@@ -70,9 +50,6 @@ export default {
   blog: {
     complete: 'Completo',
     ongoing: 'In corso',
-  },
-  skills: {
-    title: 'Conoscenze tecniche',
   },
   contributions: {
     title: 'Contributi',
