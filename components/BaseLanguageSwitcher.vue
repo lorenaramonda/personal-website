@@ -6,22 +6,24 @@
         v-for="lang in availableLocales"
         :key="lang.code"
         class="language-switcher__item"
-        :class="{ 'language-switcher__item--current': lang.code === locale }"
+        :class="{ 'language-switcher__item--current': lang.code === locale, 'language-switcher__item--hide': !switchLocalePath(lang.code) }"
       >
-        <span class="language-switcher__lang">{{ lang.name }}</span>
-        <NuxtLink
-          v-if="lang.code !== locale"
-          v-tooltip.top="$t(`languages.${lang.code}`)"
-          :to="switchLocalePath(lang.code) || ''"
-          :title="$t('languages.goto', { lang: $t(`languages.${lang.code}`) })"
-          exact
-          @click="emit('click')"
-        >
-          <img :src="`/images/flags/${lang.code}.png`" width="32" height="32" :alt="lang.name" />
-        </NuxtLink>
-        <span v-else v-tooltip.top="$t('languages.current', { lang: lang.name })">
-          {{ foodPerLang[lang.code] }}
-        </span>
+        <template v-if="switchLocalePath(lang.code)">
+          <span class="language-switcher__lang">{{ lang.name }}</span>
+          <NuxtLink
+            v-if="lang.code !== locale"
+            v-tooltip.top="$t(`languages.${lang.code}`)"
+            :to="switchLocalePath(lang.code) || ''"
+            :title="$t('languages.goto', { lang: $t(`languages.${lang.code}`) })"
+            exact
+            @click="emit('click')"
+          >
+            <img :src="`/images/flags/${lang.code}.png`" width="32" height="32" :alt="lang.name" />
+          </NuxtLink>
+          <span v-else v-tooltip.top="$t('languages.current', { lang: lang.name })">
+            {{ foodPerLang[lang.code] }}
+          </span>
+        </template>
       </li>
       <li v-if="$slots.default" class="language-switcher__item language-switcher__others">
         <slot />
@@ -31,11 +33,13 @@
 </template>
 
 <script setup lang="ts">
+import type { LocaleObject } from '@nuxtjs/i18n/dist/runtime/composables'
+
 const { locale, locales } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
 const store = useStore()
 
-const foodPerLang = {
+const foodPerLang: Record<string, string> = {
   it: '🍝',
   en: '🌭',
   es: '🌮',
@@ -48,7 +52,9 @@ const emit = defineEmits<{
 }>()
 
 const availableLocales = computed(() => {
-  return locales.value.filter((item) => store.spaceLanguages.includes(item.code || item.iso))
+  return locales.value
+    .map((item): LocaleObject => (typeof item === 'string' ? { code: item } : item))
+    .filter((item) => store.spaceLanguages.map((code) => code.substring(0, 2)).includes(item.code))
 })
 </script>
 
@@ -80,6 +86,9 @@ const availableLocales = computed(() => {
       span {
         cursor: help;
       }
+    }
+    &--hide {
+      display: none;
     }
     a {
       display: block;

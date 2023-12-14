@@ -1,3 +1,4 @@
+import type { LocaleObject } from '@nuxtjs/i18n/dist/runtime/composables'
 import type { ISbStoriesParams } from 'storyblok-js-client'
 
 export function useLocalizedStoryParams() {
@@ -10,7 +11,9 @@ export function useLocalizedStoryParams() {
     const currentLocaleValue = withFallback && !languagesAllowed.includes(locale.value) ? 'en' : locale.value
 
     const storiesParams = { ...(config.public.storyblok.apiOptions as ISbStoriesParams) }
-    const currentLocale = locales.value.find((lang) => lang.code === currentLocaleValue)
+    const currentLocale = locales.value
+      .map((item): LocaleObject => (typeof item === 'string' ? { code: item } : item))
+      .find((lang) => lang.code === currentLocaleValue)
 
     if (currentLocale) storiesParams.language = currentLocale.code
 

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file. (http://keepachangelog.com/)
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.3.0] - 2023-12-14
+
+- Enabled the blog section to handle dynamic subpages
+- Added page transitions
+- Fixed certification card style
+- Improved title on SbImage component
+- Fixed translations
+
 ## [2.2.5] - 2023-12-09
 
 - Restored jobs API call inside the singles pages to fix content get by current locale

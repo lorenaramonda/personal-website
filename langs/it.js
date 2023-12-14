@@ -23,11 +23,6 @@ export default {
   job: {
     title: 'Sviluppatrice front-end',
   },
-  quote: {
-    einstein: 'Non ho nessuno talento speciale. Sono solo appassionatamente curioso.',
-    anonymous: 'Nemmeno il creativo più esperto dà il meglio di sé con strumenti rozzi e approssimativi',
-    confucio: 'Scegli il lavoro che ami e non lavorerai mai, neanche per un giorno in tutta la tua vita.',
-  },
   experiences: {
     title: 'Esperienza',
     subtitle: 'Curriculum vitae',
@@ -38,26 +33,11 @@ export default {
     curiosity: '{number} curiosità',
   },
   education: {
-    title: 'Formazione',
-    subtitle: 'Partecipazioni',
-    conference: 'conferenza',
-    course: 'corso',
-    coursePost: 'corso post-diploma',
-    coursePostTitle: 'Tecnico di Grafica per Internet',
-    organizer: 'tenuto da',
-    speakerAt: 'relatrice alla conferenza {conf}',
-    teacherOf: 'docente per un corso {course}',
-    teacherFor: 'tramite',
-    teacherTo: 'per',
     certification: {
       logoTitle: 'Logo ufficiale della certificazione {certification}',
       linkTitle: 'Certificazione {certification} di Lorena Ramonda',
       title: 'certificazione {certification}',
     },
-    topic: 'Argomento',
-    material: 'Materiale',
-    vueCourseName: 'Corso Vue.js base',
-    vueCourse: 'base di Vue.js',
   },
   publications: {
     title: 'Pubblicazioni',
@@ -65,9 +45,11 @@ export default {
     meta_title: 'Pubblicazioni di Lorena Ramonda',
     meta_description: 'Pubblicazioni e blog post scritti da Lorena Ramonda',
     meta_keywords: 'pubblicazioni, blog post, blog, posts',
+    read: 'Leggi',
   },
-  skills: {
-    title: 'Conoscenze tecniche',
+  blog: {
+    complete: 'Completo',
+    ongoing: 'In corso',
   },
   contributions: {
     title: 'Contributi',
@@ -102,6 +84,8 @@ export default {
     present: 'presente',
     endPage: 'Hai raggiunto la fine della pagina',
     toggleMenu: 'Mostra/Nascondi la navigazione',
+    credits: 'Crediti',
+    source: 'Fonte',
   },
   rate: {
     beginner: 'Conoscenza base',
@@ -146,4 +130,12 @@ export default {
     pt: 'Portoghese',
   },
   Italia: 'Italia',
+  link: {
+    lorena: 'Sito personale di Lorena Ramonda',
+    rocket: "The rocket dev è l'alias di Lorena - sito alternativo",
+    nuxt: 'Sito ufficiale di Nuxt3',
+    storyblok: 'Sito ufficiale di Storyblok',
+    netlify: 'Sito ufficiale di Netlify',
+    github: 'Codice sorgente di questo sito',
+  },
 }

@@ -29,7 +29,7 @@
               <span>Home</span>
             </NuxtLink>
           </li>
-          <li class="navigation__item">
+          <li v-if="localePath({ name: 'experiences' })" class="navigation__item">
             <NuxtLink
               :to="localePath({ name: 'experiences' })"
               class="navigation__link"
@@ -40,10 +40,11 @@
               <span>{{ $t('experiences.title') }}</span>
             </NuxtLink>
           </li>
-          <li class="navigation__item">
+          <li v-if="localePath({ name: 'publications' })" class="navigation__item">
             <NuxtLink
               :to="localePath({ name: 'publications' })"
               class="navigation__link"
+              :class="{ 'navigation__link--active': routeName.startsWith('publications') }"
               active-class="navigation__link--active"
               :title="$t('publications.title')"
               @click="toggleMenu(false)"
@@ -51,7 +52,7 @@
               <span>{{ $t('publications.title') }}</span>
             </NuxtLink>
           </li>
-          <li class="navigation__item">
+          <li v-if="localePath({ name: 'projects' })" class="navigation__item">
             <NuxtLink
               :to="localePath({ name: 'projects' })"
               class="navigation__link"
@@ -62,7 +63,7 @@
               <span>{{ $t('projects.title') }}</span>
             </NuxtLink>
           </li>
-          <li class="navigation__item">
+          <li v-if="localePath({ name: 'hobbies' })" class="navigation__item">
             <NuxtLink
               :to="localePath({ name: 'hobbies' })"
               class="navigation__link"
@@ -86,7 +87,12 @@
 
 <script setup lang="ts">
 const localePath = useLocalePath()
+const route = useRoute()
 const open = ref(false)
+
+const routeName = computed((): string => {
+  return route.name?.toString() ?? ''
+})
 
 function toggleMenu(isOpen?: boolean) {
   open.value = typeof isOpen === 'boolean' ? isOpen : !open.value

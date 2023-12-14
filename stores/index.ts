@@ -1,8 +1,16 @@
-import { getDurationInYears } from '~/helpers'
+import type { ISbStoryData } from 'storyblok-js-client'
+import type { SbBlokData } from '@storyblok/js'
+import { getDurationInYears } from '@/helpers'
 import { useLocalizedStoryParams } from '@/composables/useLocalizedStoryParams'
+import type { StoryblokSpace } from '@/types'
+
+type State = {
+  space: StoryblokSpace
+  jobs: SbBlokData[]
+}
 
 export const useStore = defineStore('store', {
-  state: () => {
+  state: (): State => {
     return {
       space: {},
       jobs: [],
@@ -13,21 +21,24 @@ export const useStore = defineStore('store', {
       const defaultLocale = ['it']
       return state.space?.language_codes ? [defaultLocale].concat(state.space?.language_codes).flat() : defaultLocale
     },
-    lastJobTitle: (state) => state.jobs.find((item) => !item.end_date)?.job_title,
-    careerBeginning: (state) => state.jobs.slice().reverse()[0].start_date,
-    remoteBeginning: (state) =>
-      state.jobs
-        .slice()
-        .reverse()
-        .find((item) => item.is_remote).start_date,
-    yearsOfExperience: (state) => {
-      const exactYears = getDurationInYears(state.careerBeginning)
+    lastJobTitle: (state) => state.jobs.find((item) => !item.end_date)?.job_title ?? '',
+    careerBeginning: (state) => state.jobs.slice().reverse()[0]?.start_date ?? '',
+    remoteBeginning: (state) => {
+      return (
+        state.jobs
+          .slice()
+          .reverse()
+          .find((item) => item.is_remote)?.start_date ?? ''
+      )
+    },
+    yearsOfExperience() {
+      const exactYears = getDurationInYears(typeof this.careerBeginning === 'string' ? this.careerBeginning : '')
       const multipleOf5 = exactYears % 5
       const sign = multipleOf5 ? '+' : ''
       return `${exactYears - multipleOf5}${sign}`
     },
-    yearsOfRemote: (state) => {
-      return getDurationInYears(state.remoteBeginning)
+    yearsOfRemote() {
+      return getDurationInYears(typeof this.remoteBeginning === 'string' ? this.remoteBeginning : '')
     },
   },
   actions: {
@@ -55,7 +66,7 @@ export const useStore = defineStore('store', {
           starts_with: 'experiences/',
           sort_by: 'content.start_date:desc',
         })
-        .then((response) => response.data.stories.map((item) => item.content) ?? [])
+        .then((response) => response.data.stories.map((item: ISbStoryData) => item.content) ?? [])
     },
   },
 })

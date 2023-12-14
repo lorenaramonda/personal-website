@@ -10,10 +10,10 @@
     </template>
     <template v-else>
       <h1>An error occurred</h1>
-      <p v-if="error?.message" @click="showError = !showError">{{ error.message }}</p>
+      <p v-if="error?.message" @click="toggleError()">{{ error.message }}</p>
       <pre v-show="showError">{{ error }}</pre>
     </template>
-    <nuxt-link :to="localePath({ name: 'index' })" class="button">Home page</nuxt-link>
+    <NuxtLink :to="localePath({ name: 'index' })" class="button" @click="clearError()">Home page</NuxtLink>
   </div>
 </template>
 
@@ -22,6 +22,7 @@ const localePath = useLocalePath()
 
 type PageError = {
   statusCode: number
+  message: string
 }
 
 defineProps<{
@@ -29,6 +30,10 @@ defineProps<{
 }>()
 
 const showError = ref(false)
+
+function toggleError(value?: boolean) {
+  showError.value = value || !showError.value
+}
 
 useHead({
   htmlAttrs: {

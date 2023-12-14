@@ -23,11 +23,6 @@ export default {
   job: {
     title: 'Front-end developer',
   },
-  quote: {
-    einstein: 'I have no special talents. I am only passionately curious.',
-    anonymous: 'Even the most experienced creative could give the best of themselves with crude and approximate instruments',
-    confucio: 'Choose a job you love, and you will never have to work a day in your life.',
-  },
   experiences: {
     title: 'Experience',
     subtitle: 'Curriculum vitae',
@@ -38,26 +33,11 @@ export default {
     curiosity: '{number} curiosity',
   },
   education: {
-    title: 'Education',
-    subtitle: 'Sharing',
-    conference: 'conference',
-    course: 'course',
-    coursePost: 'postgraduate course',
-    coursePostTitle: 'Technical Graphics for Internet',
-    organizer: 'held by',
-    speakerAt: 'speaker at {conf} conference',
-    teacherOf: 'teacher for a {course} course',
-    teacherFor: 'via',
-    teacherTo: 'for',
     certification: {
-      logoTitle: 'Official Magento Front End Developer Certification logo',
-      linkTitle: 'Magento Front End Developer Certification of Lorena Ramonda',
-      title: 'Magento Front End Developer certification',
+      logoTitle: 'Official {certification} Certification logo',
+      linkTitle: '{certification} Certification of Lorena Ramonda',
+      title: '{certification} certification',
     },
-    topic: 'Topic',
-    material: 'Study material',
-    vueCourseName: 'Base Vue.js course',
-    vueCourse: 'base Vue.js',
   },
   publications: {
     title: 'Publications',
@@ -65,9 +45,11 @@ export default {
     meta_title: 'Publications by Lorena Ramonda',
     meta_description: 'Publications and blog posts written by Lorena Ramonda',
     meta_keywords: 'publications, blog post, blog, post',
+    read: 'Read',
   },
-  skills: {
-    title: 'Skills',
+  blog: {
+    complete: 'Complete',
+    ongoing: 'On going',
   },
   contributions: {
     title: 'Contributions',
@@ -102,6 +84,8 @@ export default {
     present: 'present',
     endPage: 'You reach the end of the page',
     toggleMenu: 'Toggle the navigation',
+    credits: 'Credits',
+    source: 'Source',
   },
   rate: {
     beginner: 'Beginner',
@@ -114,7 +98,7 @@ export default {
     title: 'Personality Advocate',
   },
   social: {
-    github: 'Porjects made by Lorena Ramonda on Github',
+    github: 'Projects made by Lorena Ramonda on Github',
     twitter: 'Post by Lorena Ramonda on Twitter',
     linkedin: 'Curriculum Vitae of Lorena Ramonda on LinkedIn',
     skype: 'Contact Lorena on Skype',
@@ -146,4 +130,12 @@ export default {
     pt: 'Portuguese',
   },
   Italia: 'Italy',
+  link: {
+    lorena: 'Lorena Ramonda personal website',
+    rocket: "The rocket dev is Lorena's alias website",
+    nuxt: 'Nuxt3 official website',
+    storyblok: 'Storyblok official website',
+    netlify: 'Netlify official website',
+    github: 'Source code of this website',
+  },
 }

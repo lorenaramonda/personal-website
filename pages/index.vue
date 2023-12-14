@@ -1,5 +1,7 @@
 <template>
-  <StoryblokComponent v-for="blok in bloks" :key="blok._uid" :blok="blok" />
+  <div class="home">
+    <StoryblokComponent v-for="blok in bloks" :key="blok._uid" :blok="blok" />
+  </div>
 </template>
 
 <script setup lang="ts">

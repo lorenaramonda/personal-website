@@ -14,6 +14,7 @@
 </template>
 
 <script setup lang="ts">
+import type { SbBlokData } from '@storyblok/js'
 import { useLocalizedStoryParams } from '@/composables/useLocalizedStoryParams'
 
 defineOptions({
@@ -29,15 +30,15 @@ const page = await useAsyncStoryblok('projects', getParams()).catch(() => null)
 const projects = await storyblokApi
   .get(`cdn/stories`, {
     ...getParams(),
-    is_startpage: 0,
+    is_startpage: false,
     starts_with: 'projects/',
     sort_by: 'first_published_at:asc',
   })
-  .then((response) => response.data.stories.map((item) => item.content) ?? [])
+  .then((response) => response.data.stories.map((item: SbBlokData) => item.content) ?? [])
 
 const content = computed(() => page.value.content)
 const bloks = computed(() =>
-  content.value.body.map((item) => {
+  content.value.body.map((item: SbBlokData) => {
     if (item.component === 'ItemsList') item.items = projects
 
     return item

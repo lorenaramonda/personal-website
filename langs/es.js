@@ -23,11 +23,6 @@ export default {
   job: {
     title: 'Desarrollador front-end',
   },
-  quote: {
-    einstein: 'Non ho nessuno talento speciale. Sono solo appassionatamente curioso.',
-    anonymous: 'Nemmeno il creativo più esperto dà il meglio di sé con strumenti rozzi e approssimativi',
-    confucio: 'Scegli il lavoro che ami e non lavorerai mai, neanche per un giorno in tutta la tua vita.',
-  },
   experiences: {
     title: 'Experiencia',
     subtitle: 'Curriculum vitae',
@@ -38,39 +33,26 @@ export default {
     curiosity: '{number} curiosidad',
   },
   education: {
-    title: 'Formazione',
-    subtitle: 'Partecipazioni',
-    conference: 'conferenza',
-    course: 'corso',
-    coursePost: 'corso post-diploma',
-    coursePostTitle: 'Tecnico di Grafica per Internet',
-    organizer: 'tenuto da',
-    speakerAt: 'relatrice alla conferenza {conf}',
-    teacherOf: 'docente per un corso {course}',
-    teacherFor: 'tramite',
-    teacherTo: 'per',
     certification: {
-      logoTitle: 'Logo ufficiale della certificazione {certification}',
-      linkTitle: 'Certificazione {certification} di Lorena Ramonda',
-      title: 'certificazione {certification}',
+      logoTitle: 'Logotipo de certificación oficial {certification}',
+      linkTitle: 'Certificación {certification} de Lorena Ramonda',
+      title: 'certificación {certification}',
     },
-    topic: 'Argomento',
-    material: 'Materiale',
-    vueCourseName: 'Corso Vue.js base',
-    vueCourse: 'base di Vue.js',
   },
   publications: {
     title: 'Publicaciones',
     subtitle: 'Blog y alrededores',
-    meta_title: 'Pubblicazioni di Lorena Ramonda',
-    meta_description: 'Pubblicazioni e blog post scritti da Lorena Ramonda',
-    meta_keywords: 'pubblicazioni, blog post, blog, posts',
+    meta_title: 'Publicaciones de Lorena Ramonda',
+    meta_description: 'Publicaciones y entradas de blog escritas por Lorena Ramonda',
+    meta_keywords: 'publicaciones, entrada de blog, blog, entradas',
+    read: 'Lee',
   },
-  skills: {
-    title: 'Conoscenze tecniche',
+  blog: {
+    complete: 'Completo',
+    ongoing: 'En curso',
   },
   contributions: {
-    title: 'Contributi',
+    title: 'Contribuciones',
   },
   nextEvent: {
     title: 'Oggi mi trovi a',
@@ -102,6 +84,8 @@ export default {
     present: 'presente',
     endPage: 'Has llegado al final de la página',
     toggleMenu: 'Mostrar/ocultar navegación',
+    credits: 'Créditos',
+    source: 'Fuente',
   },
   rate: {
     beginner: 'Conocimiento básico',
@@ -146,4 +130,12 @@ export default {
     pt: 'Portugués',
   },
   Italia: 'Italia',
+  link: {
+    lorena: 'Sitio web personal de Lorena Ramonda',
+    rocket: 'The rocket dev es el sitio web alias de Lorena',
+    nuxt: 'Sitio web oficial de Nuxt3',
+    storyblok: 'Sitio web oficial de Storyblok',
+    netlify: 'Sitio web oficial de Netlify',
+    github: 'Código fuente de este sitio web',
+  },
 }

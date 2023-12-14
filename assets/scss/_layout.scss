@@ -32,3 +32,18 @@ img {
   @include container;
   padding-top: 6rem;
 }
+
+@include mq($from: tablet) {
+  .page-enter-active,
+  .page-leave-active {
+    transition: all 0.3s ease-in-out;
+  }
+  .page-enter-from,
+  .page-leave-to {
+    opacity: 0;
+    // filter: blur(0.1rem) grayscale(1);
+    // filter: blur(0.1rem);
+    filter: grayscale(1);
+    transform: translateX(-20px);
+  }
+}

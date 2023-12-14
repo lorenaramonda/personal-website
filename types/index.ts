@@ -15,9 +15,22 @@ export type StoryblokImage = {
   is_external_url: boolean
 }
 
+export type StoryblokSpace = {
+  id?: number
+  name?: string
+  domain?: string
+  version?: number
+  language_codes?: string[]
+}
+
 export type Locale = {
   name: string
   code: string
   iso: string
   files: string[]
+}
+
+export type Breadcrumb = {
+  title: string
+  slug: string
 }
