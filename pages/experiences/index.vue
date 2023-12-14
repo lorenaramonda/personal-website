@@ -18,8 +18,8 @@
 </template>
 
 <script setup lang="ts">
+import type { SbBlokData } from '@storyblok/js'
 import { useLocalizedStoryParams } from '@/composables/useLocalizedStoryParams'
-import type { StoryblokComponent } from '@/types'
 
 defineOptions({
   name: 'ProjectPage',
@@ -37,7 +37,7 @@ await useAsyncData('jobs', () => store.fetchJobs())
 
 const content = computed(() => page.value.content)
 const bloks = computed(() =>
-  content.value.body.map((item: StoryblokComponent) => {
+  content.value.body.map((item: SbBlokData) => {
     if (item.component === 'ItemsList' && store.jobs?.length) item.items = store.jobs
     if (item.component === 'LongText') item.component = 'ExperienceSummary'
 

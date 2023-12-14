@@ -8,7 +8,8 @@
 </template>
 
 <script setup lang="ts">
-import type { GenericObject, StoryblokComponent } from '@/types'
+import type { SbBlokData } from '@storyblok/js'
+import type { GenericObject } from '@/types'
 
 const { $capitalize } = useNuxtApp()
 
@@ -17,7 +18,7 @@ const props = defineProps<{
 }>()
 
 const itemsMapped = computed(() => {
-  return props.blok.items?.map((item: StoryblokComponent) => {
+  return props.blok.items?.map((item: SbBlokData) => {
     return { ...item, component: item.component ? $capitalize(`${item.component}-card`) : 'ItemsListCard' }
   })
 })

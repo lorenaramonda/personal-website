@@ -1,4 +1,4 @@
-import { getDurationInYears, getDurationInMonth } from '~/helpers'
+import { getDurationInYears, getDurationInMonth } from '@/helpers'
 
 export default defineNuxtPlugin(() => {
   return {

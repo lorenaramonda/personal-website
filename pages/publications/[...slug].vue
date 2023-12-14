@@ -23,10 +23,11 @@
 </template>
 
 <script setup lang="ts">
+import type { SbBlokData } from '@storyblok/js'
 import type { ISbStoryData } from 'storyblok-js-client'
 
 import { useLocalizedStoryParams } from '@/composables/useLocalizedStoryParams'
-import type { GenericObject, StoryblokComponent } from '@/types'
+import type { GenericObject } from '@/types'
 
 defineOptions({
   name: 'DynamicBlogPage',
@@ -75,13 +76,11 @@ if (isStartpage.value) {
       excluding_slugs: `publications/${slugParams.value}`,
       sort_by: 'first_published_at:desc',
     })
-    .then(
-      (response) => response.data.stories.map((item: StoryblokComponent) => ({ ...item.content, full_slug: item.full_slug, lang: item.lang })) ?? [],
-    )
+    .then((response) => response.data.stories.map((item: SbBlokData) => ({ ...item.content, full_slug: item.full_slug, lang: item.lang })) ?? [])
     .catch(() => null)
 
   if (content.value.body?.length && posts) {
-    bloks.value = content.value.body.map((item: StoryblokComponent) => {
+    bloks.value = content.value.body.map((item: SbBlokData) => {
       if (item.component === 'ItemsList') item.items = posts.filter((e: GenericObject) => e.title)
       return item
     })

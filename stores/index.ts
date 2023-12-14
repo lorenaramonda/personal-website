@@ -1,12 +1,12 @@
-import { getDurationInYears } from '~/helpers'
+import type { ISbStoryData } from 'storyblok-js-client'
+import type { SbBlokData } from '@storyblok/js'
+import { getDurationInYears } from '@/helpers'
 import { useLocalizedStoryParams } from '@/composables/useLocalizedStoryParams'
-import type { StoryblokComponent, StoryblokSpace, StoryblokStory } from '~/types'
-
-type Job = StoryblokComponent & { is_remote: boolean; end_date?: string; job_title: string; start_date: string }
+import type { StoryblokSpace } from '@/types'
 
 type State = {
   space: StoryblokSpace
-  jobs: Job[]
+  jobs: SbBlokData[]
 }
 
 export const useStore = defineStore('store', {
@@ -32,13 +32,13 @@ export const useStore = defineStore('store', {
       )
     },
     yearsOfExperience() {
-      const exactYears = getDurationInYears(this.careerBeginning)
+      const exactYears = getDurationInYears(typeof this.careerBeginning === 'string' ? this.careerBeginning : '')
       const multipleOf5 = exactYears % 5
       const sign = multipleOf5 ? '+' : ''
       return `${exactYears - multipleOf5}${sign}`
     },
     yearsOfRemote() {
-      return getDurationInYears(this.remoteBeginning)
+      return getDurationInYears(typeof this.remoteBeginning === 'string' ? this.remoteBeginning : '')
     },
   },
   actions: {
@@ -66,7 +66,7 @@ export const useStore = defineStore('store', {
           starts_with: 'experiences/',
           sort_by: 'content.start_date:desc',
         })
-        .then((response) => response.data.stories.map((item: StoryblokStory) => item.content) ?? [])
+        .then((response) => response.data.stories.map((item: ISbStoryData) => item.content) ?? [])
     },
   },
 })

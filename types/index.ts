@@ -15,22 +15,12 @@ export type StoryblokImage = {
   is_external_url: boolean
 }
 
-export type StoryblokComponent = {
-  _uid: string
-  component: string
-  _editable: string
-} & GenericObject
-
 export type StoryblokSpace = {
   id?: number
   name?: string
   domain?: string
   version?: number
   language_codes?: string[]
-}
-
-export type StoryblokStory = {
-  content: Record<string, unknown>
 }
 
 export type Locale = {
