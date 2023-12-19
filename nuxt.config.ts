@@ -4,7 +4,6 @@ import type { ISbStoriesParams } from 'storyblok-js-client'
 export default defineNuxtConfig({
   runtimeConfig: {
     public: {
-      isDev: process.env.NODE_ENV !== 'production',
       NODE_ENV: process.env.NODE_ENV,
       SENTRY_DNS: process.env.SENTRY_DNS,
     },
@@ -91,7 +90,7 @@ export default defineNuxtConfig({
    */
   gtag: {
     id: process.env.GTM,
-    initialConsent: false,
+    initialConsent: process.env.GTM_CONSENT === 'true',
   },
   googleFonts: {
     families: {
