@@ -13,8 +13,8 @@ export default {
     path: "The page {path} can't be found",
   },
   palette: {
-    ally: 'Switch to ally palette',
-    original: 'Switch to original palette',
+    dark: 'Switch to dark mode',
+    light: 'Switch to light mode',
   },
   birthday: {
     annoncement: "Today's my birthday!",

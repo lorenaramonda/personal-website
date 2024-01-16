@@ -32,7 +32,7 @@ const bgColor = computed(() => {
 .onepage-contact-wrapper {
   background-color: v-bind(bgColor);
   &--dark {
-    color: var(--color-bg);
+    color: var(--color-background);
   }
 }
 .onepage-contacts {

@@ -83,13 +83,13 @@ function toggleHover(value: boolean) {
   }
   &__details {
     padding: 2rem;
-    background-color: var(--color-bg);
+    background-color: var(--color-background);
     @include mq($until: tablet) {
       border-radius: 0 0 1rem 1rem;
     }
     @include mq($from: desktop) {
       padding: 3rem;
-      background: var(--color-bg);
+      background: var(--color-background);
       position: absolute;
       bottom: 0;
       right: 0;
@@ -107,7 +107,7 @@ function toggleHover(value: boolean) {
     display: table;
     font-size: 1.2rem;
     padding: 0.2rem 0.7rem;
-    color: var(--color-bg);
+    color: var(--color-background);
     background-color: var(--color-main-darker);
 
     &--active {

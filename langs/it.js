@@ -13,8 +13,8 @@ export default {
     path: 'La pagina {path} non esiste',
   },
   palette: {
-    ally: 'Passa alla palette con contrasto',
-    original: 'Passa alla palette originale',
+    dark: 'Passa alla modalità scura',
+    light: 'Passa alla modalità chiara',
   },
   birthday: {
     annoncement: 'Oggi è il mio compleanno!',

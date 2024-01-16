@@ -84,7 +84,7 @@ onMounted(() => {
     font-family: $font-family-text;
     border-radius: 20px;
     color: var(--color-text);
-    background-color: var(--color-bg);
+    background-color: var(--color-background);
     border-bottom: solid 3px var(--color-main-lighter);
     padding: 0.5em 1.5em;
     cursor: pointer;

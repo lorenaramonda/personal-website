@@ -50,10 +50,10 @@ if (slugParts?.length) {
 <style lang="scss">
 .breadcrumbs {
   display: inline-flex;
+  flex-wrap: wrap;
   gap: 1rem;
   &__item {
     a {
-      display: inline-block;
       text-decoration: none;
       &:hover {
         text-decoration: underline;
@@ -67,6 +67,9 @@ if (slugParts?.length) {
         padding-left: 1rem;
       }
     }
+  }
+  @include mq($until: tablet) {
+    font-size: 1.3rem;
   }
 }
 </style>

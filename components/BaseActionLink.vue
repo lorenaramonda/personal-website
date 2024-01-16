@@ -70,7 +70,7 @@ const cssClasses = computed(() => (props.type ? `action-link--${props.type}` : '
   }
   &--primary {
     background-color: var(--color-main-dark);
-    color: var(--color-bg);
+    color: var(--color-background);
     &:hover {
       background-color: var(--color-main-darkest);
     }

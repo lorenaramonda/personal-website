@@ -57,9 +57,9 @@ const label = computed(() => {
     height: 20px;
     max-width: none;
     max-height: none;
-    stroke: var(--color-main-light);
+    stroke: var(--color-star-empty);
     &--full {
-      stroke: var(--color-main-darker);
+      stroke: var(--color-star-full);
     }
   }
   &__text {

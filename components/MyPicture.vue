@@ -33,7 +33,7 @@ function toggleTitle(shouldShow?: boolean) {
   figcaption {
     font-weight: bold;
     font-size: 2rem;
-    color: #130f49;
+    color: var(--color-text-logo);
     font-family: $font-family-text;
     position: absolute;
     top: 60%;
@@ -63,7 +63,7 @@ function toggleTitle(shouldShow?: boolean) {
       }
       figcaption {
         opacity: 0;
-        color: var(--color-bg);
+        color: var(--color-background);
       }
     }
   }

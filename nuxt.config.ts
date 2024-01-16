@@ -47,7 +47,13 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     // Doc: https://lucide.dev/packages
     'nuxt-lucide-icons',
+    // Doc: https://color-mode.nuxtjs.org/
+    '@nuxtjs/color-mode',
   ],
+  // Doce: https://color-mode.nuxtjs.org/
+  colorMode: {
+    storageKey: 'palette-version',
+  },
   router: {
     options: {
       scrollBehaviorType: 'smooth',

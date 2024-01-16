@@ -15,3 +15,9 @@ defineProps<{
   pages: GenericObject[]
 }>()
 </script>
+
+<style lang="scss">
+.blog-sections {
+  margin-bottom: 4rem;
+}
+</style>

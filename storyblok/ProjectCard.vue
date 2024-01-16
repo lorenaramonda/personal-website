@@ -53,7 +53,7 @@ const link = computed(() => {
   padding: 3rem;
   transition: all 0.3s ease-in-out;
   border: solid 1px var(--color-main-lighter);
-  background-color: var(--color-bg);
+  background-color: var(--color-background);
   height: 100%;
   display: flex;
   flex-direction: column;

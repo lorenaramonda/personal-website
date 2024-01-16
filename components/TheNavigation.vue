@@ -107,7 +107,7 @@ $mobile-height: 643px;
   flex-direction: column;
   justify-content: space-between;
   padding: 1rem;
-  background-color: var(--color-bg);
+  background-color: var(--color-background);
 
   &__gohome {
     text-decoration: none;
@@ -115,6 +115,10 @@ $mobile-height: 643px;
 
   &__copyrights {
     text-align: center;
+    color: var(--color-text-footer);
+    a {
+      color: currentColor;
+    }
   }
 
   &__item {
@@ -177,10 +181,10 @@ $mobile-height: 643px;
       transform: translateX(0);
       background-color: var(--color-main-lightest);
       box-shadow: 0 2px 3px 0px rgba(var(--color-text-rgb), 0.2);
-      background-color: var(--color-text);
-      color: var(--color-bg);
+      background-color: var(--color-background-navigation);
+      color: var(--color-text-navigation);
       .navigation__link {
-        color: var(--color-bg);
+        color: var(--color-text-navigation);
         &--active:before {
           background-color: var(--color-secondary-darkest);
         }
@@ -193,7 +197,7 @@ $mobile-height: 643px;
       }
       .socials-links__link {
         background-color: transparent;
-        color: var(--color-bg);
+        color: var(--color-text-navigation);
       }
     }
 

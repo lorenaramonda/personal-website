@@ -35,7 +35,7 @@ defineProps<{
 
   small {
     display: block;
-    color: lighten($color-text, 20%);
+    color: var(--color-text-light);
     line-height: 2;
     font-size: 0.8em;
   }

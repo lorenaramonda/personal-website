@@ -1,89 +1,127 @@
-// Define corporate colors:
-// green summer: #87ded7 | rgb(135,222,215)
-// pink fashion: #A11140 | rgb(161, 17, 64)
+$color-dark: #292828;
+$color-light: #ffffff;
 
-$color-main-original: #87ded7;
-$color-main-ally: #a11140;
-$color-secondary: #ffd875;
-$color-neutral: #9a8f95; //#292828;
+$palette-light-main: #87ded7;
+$palette-light-main-darkest: darken($palette-light-main, 20);
+$palette-light-main-darker: darken($palette-light-main, 15);
+$palette-light-main-dark: darken($palette-light-main, 5);
+$palette-light-main-light: lighten($palette-light-main, 15);
+$palette-light-main-lighter: lighten($palette-light-main, 18);
+$palette-light-main-lightest: lighten($palette-light-main, 25);
+$palette-light-secondary: #ffd875;
+$palette-light-secondary-darkest: darken($palette-light-secondary, 20);
+$palette-light-secondary-darker: darken($palette-light-secondary, 15); // non usato
+$palette-light-secondary-dark: darken($palette-light-secondary, 5);
+$palette-light-secondary-light: lighten($palette-light-secondary, 15);
+$palette-light-secondary-lighter: lighten($palette-light-secondary, 18); // non usato
+$palette-light-secondary-lightest: lighten($palette-light-secondary, 25); // non usato
+$palette-light-neutral: #9a8f95;
+$palette-light-neutral-darkest: darken($palette-light-neutral, 20);
+$palette-light-neutral-darker: darken($palette-light-neutral, 15);
+$palette-light-neutral-dark: darken($palette-light-neutral, 5); // non usato
+$palette-light-neutral-light: lighten($palette-light-neutral, 15);
+$palette-light-neutral-lighter: lighten($palette-light-neutral, 30);
+$palette-light-neutral-lightest: lighten($palette-light-neutral, 35);
 
-$color-text-original: #292828;
+$palette-dark-main: #9a8f95;
+$palette-dark-main-darkest: darken($palette-dark-main, 5);
+$palette-dark-main-darker: darken($palette-dark-main, 2);
+$palette-dark-main-dark: lighten($palette-dark-main, 2);
+$palette-dark-main-light: darken($palette-dark-main, 20);
+$palette-dark-main-lighter: lighten($palette-dark-main, 20);
+$palette-dark-main-lightest: darken($palette-dark-main, 50);
+$palette-dark-secondary: #a11111;
+$palette-dark-secondary-darkest: lighten($palette-dark-secondary, 20);
+$palette-dark-secondary-darker: lighten($palette-dark-secondary, 15);
+$palette-dark-secondary-dark: lighten($palette-dark-secondary, 5);
+$palette-dark-secondary-light: darken($palette-dark-secondary, 15);
+$palette-dark-secondary-lighter: darken($palette-dark-secondary, 18);
+$palette-dark-secondary-lightest: darken($palette-dark-secondary, 25);
+$palette-dark-neutral: #9a8f95;
+$palette-dark-neutral-lightest: darken($palette-dark-neutral, 30);
+$palette-dark-neutral-lighter: darken($palette-dark-neutral, 25);
+$palette-dark-neutral-light: darken($palette-dark-neutral, 5);
+$palette-dark-neutral-dark: lighten($palette-dark-neutral, 15);
+$palette-dark-neutral-darker: lighten($palette-dark-neutral, 30);
+$palette-dark-neutral-darkest: lighten($palette-dark-neutral, 35);
+$palette-dark-special: #e0dfe2;
 
-$color-background-original: lighten($color-main-original, 18);
-$color-background-lightest-original: #ffffff;
-
-$color-main: $color-main-original;
-$color-text: $color-text-original;
-$color-background: $color-background-original;
-$color-background-lightest: $color-background-lightest-original;
-// fallback
-$color-bg: $color-background-lightest;
-
-// Define colors map
-$noPalette: (
-  color-main: #000000,
-  color-main-rgb: '0, 0, 0',
-  color-main-darkest: darken(#000000, 20),
-  color-main-darker: darken(#000000, 15),
-  color-main-dark: darken(#000000, 5),
-  color-main-light: lighten(#000000, 15),
-  color-main-lighter: lighten(#000000, 18),
-  color-main-lightest: lighten(#000000, 25),
-  color-background: lighten(#000000, 18),
-  color-text-minor: #666666,
-);
-
-$originalPalette: (
-  color-main: $color-main-original,
+$lightPalette: (
   color-main-rgb: '135, 222, 215',
-  color-main-darkest: darken($color-main-original, 20),
-  color-main-darker: darken($color-main-original, 15),
-  color-main-dark: darken($color-main-original, 5),
-  color-main-light: lighten($color-main-original, 15),
-  color-main-lighter: lighten($color-main-original, 18),
-  color-main-lightest: lighten($color-main-original, 25),
-  color-background: lighten($color-main-original, 18),
-  color-text-minor: #666666,
-);
-
-$genericPalette: (
-  color-bg: #ffffff,
-  color-text: $color-text-original,
+  color-main: $palette-light-main,
+  color-main-darkest: $palette-light-main-darkest,
+  color-main-darker: $palette-light-main-darker,
+  color-main-dark: $palette-light-main-dark,
+  color-main-light: $palette-light-main-light,
+  color-main-lighter: $palette-light-main-lighter,
+  color-main-lightest: $palette-light-main-lightest,
+  color-secondary: $palette-light-secondary,
+  color-secondary-darkest: $palette-light-secondary-darkest,
+  color-secondary-darker: $palette-light-secondary-darker,
+  color-secondary-dark: $palette-light-secondary-dark,
+  color-secondary-light: $palette-light-secondary-light,
+  color-secondary-lighter: $palette-light-secondary-lighter,
+  color-secondary-lightest: $palette-light-secondary-lightest,
+  color-neutral: $palette-light-neutral,
+  color-neutral-darkest: $palette-light-neutral-darkest,
+  color-neutral-darker: $palette-light-neutral-darker,
+  color-neutral-dark: $palette-light-neutral-dark,
+  color-neutral-light: $palette-light-neutral-light,
+  color-neutral-lighter: $palette-light-neutral-lighter,
+  color-neutral-lightest: $palette-light-neutral-lightest,
+  color-background: $color-light,
+  color-background-rgb: '255, 255, 255',
   color-text-rgb: '41, 40, 40',
+  color-text: $color-dark,
+  color-text-light: lighten($color-dark, 20),
+  color-text-footer: #666666,
+  color-text-logo: $palette-light-neutral-darkest,
   color-tag-active: rgb(255, 0, 0),
+  color-border-navigation: $palette-light-main-lighter,
+  color-background-navigation: $color-dark,
+  color-text-navigation: $color-light,
+  color-star-full: darken($palette-light-main, 15),
+  color-star-empty: lighten($palette-light-main, 15),
+  color-post-internal: $palette-light-main,
 );
 
-$secondaryPalette: (
-  color-secondary: $color-secondary,
-  color-secondary-darkest: darken($color-secondary, 20),
-  color-secondary-darker: darken($color-secondary, 15),
-  color-secondary-dark: darken($color-secondary, 5),
-  color-secondary-light: lighten($color-secondary, 15),
-  color-secondary-lighter: lighten($color-secondary, 18),
-  color-secondary-lightest: lighten($color-secondary, 25),
-);
-
-$allyPalette: (
-  color-main: $color-main-ally,
-  color-main-rgb: '161, 17, 64',
-  color-main-darkest: darken($color-main-ally, 20),
-  color-main-darker: darken($color-main-ally, 15),
-  color-main-dark: darken($color-main-ally, 2),
-  color-main-light: lighten($color-main-ally, 15),
-  color-main-lighter: lighten($color-main-ally, 40),
-  color-main-lightest: lighten($color-main-ally, 25),
-  color-background: lighten($color-main-ally, 18),
-  color-text-minor: #ffffff,
-);
-
-$neutralPalette: (
-  color-neutral: $color-neutral,
-  color-neutral-darkest: darken($color-neutral, 20),
-  color-neutral-darker: darken($color-neutral, 15),
-  color-neutral-dark: darken($color-neutral, 5),
-  color-neutral-light: lighten($color-neutral, 15),
-  color-neutral-lighter: lighten($color-neutral, 30),
-  color-neutral-lightest: lighten($color-neutral, 35),
+$darkPalette: (
+  color-main-rgb: '154, 143, 149',
+  color-main: $palette-dark-main,
+  color-main-darkest: $palette-dark-main-darkest,
+  color-main-darker: $palette-dark-main-darker,
+  color-main-dark: $palette-dark-main-dark,
+  color-main-light: $palette-dark-main-light,
+  color-main-lighter: $palette-dark-main-lighter,
+  color-main-lightest: $palette-dark-main-lightest,
+  color-secondary: $palette-dark-secondary,
+  color-secondary-darkest: $palette-dark-secondary-darkest,
+  color-secondary-darker: $palette-dark-secondary-darker,
+  color-secondary-dark: $palette-dark-secondary-dark,
+  color-secondary-light: $palette-dark-secondary-light,
+  color-secondary-lighter: $palette-dark-secondary-lighter,
+  color-secondary-lightest: $palette-dark-secondary-lightest,
+  color-neutral: $palette-dark-neutral,
+  color-neutral-lightest: $palette-dark-neutral-lightest,
+  color-neutral-lighter: $palette-dark-neutral-lighter,
+  color-neutral-light: $palette-dark-neutral-light,
+  color-neutral-dark: $palette-dark-neutral-dark,
+  color-neutral-darker: $palette-dark-neutral-darker,
+  color-neutral-darkest: $palette-dark-neutral-darkest,
+  color-background: $color-dark,
+  color-background-rgb: '41, 40, 40',
+  color-text-rgb: '255, 255, 255',
+  color-text: $color-light,
+  color-text-light: darken($color-light, 30),
+  color-text-footer: #666666,
+  color-text-logo: darken($color-light, 5),
+  color-tag-active: rgb(255, 0, 0),
+  color-border-navigation: darken($palette-dark-neutral, 30),
+  color-background-navigation: darken($palette-dark-secondary, 40),
+  color-text-navigation: $color-light,
+  color-star-full: $palette-dark-secondary-darkest,
+  color-star-empty: darken($palette-dark-neutral, 30),
+  color-post-internal: $palette-dark-secondary-darker,
 );
 
 @mixin colors($palette) {
