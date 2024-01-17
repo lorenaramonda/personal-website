@@ -10,7 +10,14 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
+        { rel: 'icon', sizes: '32x32', href: '/favicon-32x32.png' },
+        { rel: 'icon', sizes: '16x16', href: '/favicon-16x16.png' },
+        { rel: 'mask-icon', color: '#73D9D0', href: '/safari-pinned-tab.svg' },
+      ],
+      meta: [{ name: 'msapplication-TileColor', content: '#2b5797' }],
     },
     pageTransition: { name: 'page', mode: 'out-in' },
   },
