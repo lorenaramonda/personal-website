@@ -16,6 +16,11 @@ export default {
     dark: 'Switch to dark mode',
     light: 'Switch to light mode',
   },
+  pwa: {
+    updatesWarning: '{emphasis} available! ~ Reload to get the latest version of the website!',
+    updatesWarningEmphasis: 'New content',
+    reload: 'Reload',
+  },
   birthday: {
     annoncement: "Today's my birthday!",
     gifts: 'Wish you send me a gift?',

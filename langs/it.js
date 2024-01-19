@@ -16,6 +16,11 @@ export default {
     dark: 'Passa alla modalità scura',
     light: 'Passa alla modalità chiara',
   },
+  pwa: {
+    updatesWarning: 'Sono disponibili {emphasis}! ~ Ricarica il sito per ottenere la versione più aggiornata!',
+    updatesWarningEmphasis: 'nuovi contenuti',
+    reload: 'Ricarica',
+  },
   birthday: {
     annoncement: 'Oggi è il mio compleanno!',
     gifts: 'Sai cosa mi piacerebbe ricevere per il mio compleanno?',
