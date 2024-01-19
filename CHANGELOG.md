@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. (http://keepachangelog.com/)
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.4.0] - 2024-01-19
+
+- Implemented dark mode
+- Added missing required favicons per devices
+- Added manifest
+- Enabled PWA
+
 ## [2.3.0] - 2023-12-14
 
 - Enabled the blog section to handle dynamic subpages
