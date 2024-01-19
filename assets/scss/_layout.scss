@@ -16,7 +16,7 @@ body {
 }
 
 body {
-  background-color: var(--color-bg);
+  background-color: var(--color-background);
 }
 
 img {
@@ -41,8 +41,6 @@ img {
   .page-enter-from,
   .page-leave-to {
     opacity: 0;
-    // filter: blur(0.1rem) grayscale(1);
-    // filter: blur(0.1rem);
     filter: grayscale(1);
     transform: translateX(-20px);
   }

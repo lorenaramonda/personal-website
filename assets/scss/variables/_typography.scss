@@ -16,3 +16,20 @@ $font-family-monospace: Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', mon
   font-weight: 700;
   text-decoration: none;
 }
+
+%button {
+  appearance: none;
+  border-radius: 10px;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  justify-content: space-between;
+  font-size: 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  height: 45px;
+  white-space: nowrap;
+  padding: 1rem 2rem;
+}

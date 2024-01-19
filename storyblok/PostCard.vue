@@ -24,7 +24,7 @@ defineProps<{
 
 <style lang="scss">
 .post-card {
-  background-color: var(--color-bg);
+  background-color: var(--color-background);
   border-radius: 2rem;
   padding: 2rem;
 

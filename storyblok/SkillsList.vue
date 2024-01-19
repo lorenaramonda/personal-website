@@ -108,7 +108,7 @@ function getLabel(val: string) {
         }
         &:hover {
           span {
-            color: var(--color-bg);
+            color: var(--color-background);
           }
           &::before {
             width: #{$i * 10%};

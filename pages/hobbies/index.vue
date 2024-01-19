@@ -24,7 +24,10 @@ const { $setMetadata, $getMetadataFromStory } = useNuxtApp()
 
 const { getParams } = useLocalizedStoryParams()
 
-const page = await useAsyncStoryblok('hobbies', getParams())
+const page = await useAsyncStoryblok('hobbies', {
+  ...getParams(),
+  resolve_relations: 'HobbiesList.items',
+})
   .then((data) => data.value.content)
   .catch(() => null)
 

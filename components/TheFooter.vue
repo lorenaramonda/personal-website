@@ -47,10 +47,10 @@
     }
   }
   small {
-    color: var(--color-text-minor);
+    color: var(--color-text-footer);
   }
   .iubenda-white {
-    color: var(--color-text-minor);
+    color: var(--color-text-footer);
     font-size: 0.75em;
     margin: 1em auto;
     text-decoration: none;

@@ -2,8 +2,8 @@
   <div id="hobbies" v-editable="blok" class="hobbies">
     <BaseHeading>{{ blok.title }}</BaseHeading>
     <ul>
-      <li v-for="hobby in blok.items" :key="hobby.name" v-editable="hobby">
-        <StoryblokImage v-if="hobby.icon" v-tooltip="hobby.name" :image="hobby.icon" :width="512" :height="512" />
+      <li v-for="hobby in items" :key="hobby.title" v-editable="hobby">
+        <StoryblokImage v-if="hobby.icon" v-tooltip="hobby.title" :image="hobby.icon" :width="512" :height="512" />
       </li>
     </ul>
   </div>
@@ -12,9 +12,13 @@
 <script setup lang="ts">
 import type { GenericObject } from '@/types'
 
-defineProps<{
+const { blok } = defineProps<{
   blok: GenericObject
 }>()
+
+const items = computed(() => {
+  return blok.items.map((item) => item.content)
+})
 </script>
 
 <style lang="scss">

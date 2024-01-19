@@ -15,7 +15,7 @@ defineProps<{
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-bg);
+  background-color: var(--color-background);
   color: var(--color-main-darker);
   width: $mobile-toggle-height;
   height: $mobile-toggle-height;
@@ -35,7 +35,7 @@ defineProps<{
     &::before {
       content: '';
       height: $mobile-toggle-height;
-      background-color: var(--color-bg);
+      background-color: var(--color-background);
       position: fixed;
       top: 0;
       right: 0;

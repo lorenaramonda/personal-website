@@ -30,22 +30,12 @@ const cssClasses = computed(() => (props.type ? `action-link--${props.type}` : '
 
 <style lang="scss">
 .action-link {
+  @extend %button;
   background-color: transparent;
   color: var(--color-text);
-  border-radius: 10px;
-  border: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  justify-content: space-between;
-  font-size: 1.5rem;
-  font-weight: 600;
-  cursor: pointer;
-  text-decoration: none;
-  height: 45px;
-  white-space: nowrap;
 
   &--link {
+    padding: 0;
     transition: all 0.2s ease-in-out;
     svg {
       width: 16px;
@@ -63,14 +53,13 @@ const cssClasses = computed(() => (props.type ? `action-link--${props.type}` : '
 
   &--primary,
   &--ghost {
-    padding: 1rem 2rem;
     &:hover {
       background-color: var(--color-main-lightest);
     }
   }
   &--primary {
     background-color: var(--color-main-dark);
-    color: var(--color-bg);
+    color: var(--color-background);
     &:hover {
       background-color: var(--color-main-darkest);
     }

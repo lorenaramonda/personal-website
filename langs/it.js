@@ -13,8 +13,13 @@ export default {
     path: 'La pagina {path} non esiste',
   },
   palette: {
-    ally: 'Passa alla palette con contrasto',
-    original: 'Passa alla palette originale',
+    dark: 'Passa alla modalità scura',
+    light: 'Passa alla modalità chiara',
+  },
+  pwa: {
+    updatesWarning: 'Sono disponibili {emphasis}! ~ Ricarica il sito per ottenere la versione più aggiornata!',
+    updatesWarningEmphasis: 'nuovi contenuti',
+    reload: 'Ricarica',
   },
   birthday: {
     annoncement: 'Oggi è il mio compleanno!',

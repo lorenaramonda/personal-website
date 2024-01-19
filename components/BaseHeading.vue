@@ -34,7 +34,6 @@ const tag = computed(() => (props.primary ? 'h1' : 'h2'))
   &__label {
     display: flex;
     text-transform: uppercase;
-    display: flex;
     align-items: center;
     gap: 10px;
     &:before {

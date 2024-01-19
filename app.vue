@@ -1,7 +1,9 @@
 <template>
+  <NuxtPwaManifest />
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>
+  <BasePwaUpdate />
 </template>
 
 <script setup lang="ts">

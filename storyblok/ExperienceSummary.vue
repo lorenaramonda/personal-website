@@ -136,10 +136,10 @@ defineProps<{
   }
   &:nth-of-type(2) {
     background-color: var(--color-main-dark);
-    color: var(--color-bg);
+    color: var(--color-background);
   }
   &:last-of-type {
-    background-color: var(--color-bg);
+    background-color: var(--color-background);
     color: var(--color-neutral-darker);
 
     &::before {

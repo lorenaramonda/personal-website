@@ -13,8 +13,10 @@
 
 <script setup lang="ts">
 const { locale } = useI18n()
+const { $config } = useNuxtApp()
 
-const showWarning = ref(false)
+const shouldShowWarning = ref(false)
+
 const cookieAccepted = useCookie('gtm-consent', {
   maxAge: 60 * 60 * 24 * 365,
 })
@@ -29,21 +31,25 @@ const privacyLink = computed(() => {
 function acceptTracking() {
   useGtagConsent(true)
   cookieAccepted.value = '1'
-  showWarning.value = false
+  shouldShowWarning.value = false
 }
 
 function refuseTracking() {
   cookieDenied.value = '0'
-  showWarning.value = false
+  shouldShowWarning.value = false
 }
+
+const showWarning = computed(() => {
+  if ($config?.public.gtag?.initialConsent) return false
+  return shouldShowWarning.value
+})
 
 onMounted(() => {
   if (cookieAccepted.value === undefined) {
-    showWarning.value = true
-  } else if (cookieAccepted.value) {
-    useGtagConsent(true)
+    shouldShowWarning.value = true
   } else {
-    showWarning.value = false
+    if (cookieAccepted.value) useGtagConsent(true)
+    shouldShowWarning.value = false
   }
 })
 </script>
@@ -78,7 +84,7 @@ onMounted(() => {
     font-family: $font-family-text;
     border-radius: 20px;
     color: var(--color-text);
-    background-color: var(--color-bg);
+    background-color: var(--color-background);
     border-bottom: solid 3px var(--color-main-lighter);
     padding: 0.5em 1.5em;
     cursor: pointer;

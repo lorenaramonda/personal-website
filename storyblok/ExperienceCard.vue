@@ -76,7 +76,7 @@ function getEndDate(end: string, start: string) {
 
 <style lang="scss">
 .experience-card {
-  background-color: var(--color-bg);
+  background-color: var(--color-background);
   border-radius: 2rem;
   padding: 3rem;
 

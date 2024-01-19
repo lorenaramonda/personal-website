@@ -131,23 +131,25 @@ table {
   border-spacing: 0;
 }
 
-// :root custom properties generator
 :root {
-  // @include colors($allyPalette);
-  @include colors($originalPalette);
-  @include colors($secondaryPalette);
-  @include colors($neutralPalette);
-  @include colors($genericPalette);
+  @include colors($lightPalette);
+  @media (prefers-color-scheme: light) {
+    @include colors($lightPalette);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    @include colors($darkPalette);
+  }
 }
 
 html {
   font-size: $base-font-size;
   font-family: $base-font-family;
-  &.palette--ally {
-    @include colors($allyPalette);
+  &.dark-mode {
+    @include colors($darkPalette);
   }
-  &.palette--original {
-    @include colors($originalPalette);
+  &.light-mode {
+    @include colors($lightPalette);
   }
 }
 
@@ -155,10 +157,11 @@ body {
   font-family: $font-family-text;
   font-size: 1.6em;
   line-height: 1.5;
+  color: var(--color-text);
 }
 
 a {
-  color: $color-text;
+  color: var(--color-text);
 }
 strong,
 b {
