@@ -54,9 +54,8 @@ $setMetadata($getMetadataFromStory(content.value))
     background-color: var(--color-main-lightest);
     display: grid;
     .section-title {
-      margin-bottom: 2rem;
-      text-shadow: 0px 0px 1px var(--color-text);
-      color: var(--color-main-lightest);
+      margin: 3rem 0;
+      color: var(--color-main-darkest);
       font-size: 2em;
     }
   }

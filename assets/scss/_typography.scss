@@ -132,13 +132,13 @@ table {
 }
 
 :root {
-  @include colors($lightPalette);
+  @include mode($light);
   @media (prefers-color-scheme: light) {
-    @include colors($lightPalette);
+    @include mode($light);
   }
 
   @media (prefers-color-scheme: dark) {
-    @include colors($darkPalette);
+    @include mode($dark);
   }
 }
 
@@ -146,10 +146,10 @@ html {
   font-size: $base-font-size;
   font-family: $base-font-family;
   &.dark-mode {
-    @include colors($darkPalette);
+    @include mode($dark);
   }
   &.light-mode {
-    @include colors($lightPalette);
+    @include mode($light);
   }
 }
 
