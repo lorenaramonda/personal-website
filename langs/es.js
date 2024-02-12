@@ -86,6 +86,7 @@ export default {
     at: 'en',
     externalLink: 'Enlace externo',
     visitLink: 'Visita el sitio',
+    more: '¿Quieres saber más?',
     present: 'presente',
     endPage: 'Has llegado al final de la página',
     toggleMenu: 'Mostrar/ocultar navegación',
@@ -97,6 +98,12 @@ export default {
     improving: 'Conocimiento suficiente',
     intermediate: 'Buen conocimiento',
     expert: 'Excelente conocimiento',
+  },
+  language: {
+    speaking: 'Hablado',
+    writing: 'Escrito',
+    listening: 'Escuchado',
+    reading: 'Leído',
   },
   personality: {
     link: 'https://www.16personalities.com/it/personalita-infj',

@@ -86,6 +86,7 @@ export default {
     at: 'presso',
     externalLink: 'Link esterno',
     visitLink: 'Visita il sito',
+    more: 'Maggiori dettagli',
     present: 'presente',
     endPage: 'Hai raggiunto la fine della pagina',
     toggleMenu: 'Mostra/Nascondi la navigazione',
@@ -133,6 +134,12 @@ export default {
     es: 'Spagnolo',
     fr: 'Francese',
     pt: 'Portoghese',
+  },
+  language: {
+    speaking: 'Parlato',
+    writing: 'Scritto',
+    listening: 'Ascoltato',
+    reading: 'Letto',
   },
   Italia: 'Italia',
   link: {

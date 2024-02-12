@@ -14,6 +14,8 @@
 </template>
 
 <script setup lang="ts">
+import type { SbBlokData } from '@storyblok/js'
+import type { ISbStoryData } from 'storyblok-js-client'
 import { useLocalizedStoryParams } from '@/composables/useLocalizedStoryParams'
 
 defineOptions({
@@ -32,7 +34,17 @@ const page = await useAsyncStoryblok('hobbies', {
   .catch(() => null)
 
 const bloks = computed(() => {
-  return page.body
+  if (!page.body) return []
+  return page.body.map((item: SbBlokData) => {
+    if (item.component === 'HobbiesList') {
+      return {
+        ...item,
+        items: Array.isArray(item.items) ? item.items.map((story: ISbStoryData) => ({ ...story.content, full_slug: story.full_slug })) : [],
+      }
+    }
+
+    return item
+  })
 })
 
 $setMetadata($getMetadataFromStory(page))

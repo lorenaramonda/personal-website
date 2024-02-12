@@ -7,7 +7,7 @@
       <BaseLanguageSwitcher @click="toggleMenu(false)">
         <NuxtLink
           v-tooltip.top="$t('languages.others')"
-          :to="localePath({ name: 'hobbies', hash: '#languages' })"
+          :to="localePath({ name: 'hobbies-slug', params: { slug: 'learning-new-languages' } })"
           :title="$t('languages.others')"
           :aria-label="$t('languages.othersLabel')"
           @click="toggleMenu(false)"
@@ -56,6 +56,7 @@
             <NuxtLink
               :to="localePath({ name: 'projects' })"
               class="navigation__link"
+              :class="{ 'navigation__link--active': routeName.startsWith('projects') }"
               active-class="navigation__link--active"
               :title="$t('projects.title')"
               @click="toggleMenu(false)"
@@ -67,6 +68,7 @@
             <NuxtLink
               :to="localePath({ name: 'hobbies' })"
               class="navigation__link"
+              :class="{ 'navigation__link--active': routeName.startsWith('hobbies') }"
               active-class="navigation__link--active"
               :title="$t('hobbies.title')"
               @click="toggleMenu(false)"

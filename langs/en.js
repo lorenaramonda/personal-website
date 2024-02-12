@@ -86,6 +86,7 @@ export default {
     at: 'at',
     externalLink: 'External link',
     visitLink: 'View website',
+    more: 'Wanna know more?',
     present: 'present',
     endPage: 'You reach the end of the page',
     toggleMenu: 'Toggle the navigation',
@@ -97,6 +98,12 @@ export default {
     improving: 'Improving',
     intermediate: 'Intermediate',
     expert: 'Expert',
+  },
+  language: {
+    speaking: 'Speaking',
+    writing: 'Writing',
+    listening: 'Listening',
+    reading: 'Reading',
   },
   personality: {
     link: 'https://www.16personalities.com/infj-personality',

@@ -29,15 +29,16 @@ const { $getMetadataFromStory, $setMetadata } = useNuxtApp()
 
 const { getParams } = useLocalizedStoryParams()
 
-const page = await useAsyncStoryblok('experiences', getParams()).catch(() => null)
+const page = await useAsyncStoryblok('experiences', getParams())
+  .then((data) => data.value.content)
+  .catch(() => null)
 
 const store = useStore()
 
 await useAsyncData('jobs', () => store.fetchJobs())
 
-const content = computed(() => page.value.content)
 const bloks = computed(() =>
-  content.value.body.map((item: SbBlokData) => {
+  page.body.map((item: SbBlokData) => {
     if (item.component === 'ItemsList' && store.jobs?.length) item.items = store.jobs
     if (item.component === 'LongText') item.component = 'ExperienceSummary'
 
@@ -45,7 +46,7 @@ const bloks = computed(() =>
   }),
 )
 
-$setMetadata($getMetadataFromStory(content.value))
+$setMetadata($getMetadataFromStory(page))
 </script>
 
 <style lang="scss">

@@ -12,6 +12,7 @@
 </template>
 
 <script setup lang="ts">
+// Icons: https://lucide.dev/icons/
 import * as icons from 'lucide-vue-next'
 
 const { $capitalize } = useNuxtApp()
