@@ -26,7 +26,9 @@ const { $getMetadataFromStory, $setMetadata } = useNuxtApp()
 
 const { getParams } = useLocalizedStoryParams()
 
-const page = await useAsyncStoryblok('projects', getParams()).catch(() => null)
+const page = await useAsyncStoryblok('projects', getParams())
+  .then((data) => data.value.content)
+  .catch(() => null)
 const projects = await storyblokApi
   .get(`cdn/stories`, {
     ...getParams(),
@@ -36,16 +38,15 @@ const projects = await storyblokApi
   })
   .then((response) => response.data.stories.map((item: SbBlokData) => item.content) ?? [])
 
-const content = computed(() => page.value.content)
 const bloks = computed(() =>
-  content.value.body.map((item: SbBlokData) => {
+  page.body.map((item: SbBlokData) => {
     if (item.component === 'ItemsList') item.items = projects
 
     return item
   }),
 )
 
-$setMetadata($getMetadataFromStory(content.value))
+$setMetadata($getMetadataFromStory(page))
 </script>
 
 <style lang="scss">

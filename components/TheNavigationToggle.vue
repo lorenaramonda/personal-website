@@ -39,7 +39,7 @@ defineProps<{
       position: fixed;
       top: 0;
       right: 0;
-      width: 100vh;
+      width: 100vw;
       z-index: 0;
     }
     svg {

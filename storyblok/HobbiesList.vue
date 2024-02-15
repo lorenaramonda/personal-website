@@ -1,24 +1,13 @@
 <template>
-  <div id="hobbies" v-editable="blok" class="hobbies">
-    <BaseHeading>{{ blok.title }}</BaseHeading>
-    <ul>
-      <li v-for="hobby in items" :key="hobby.title" v-editable="hobby">
-        <StoryblokImage v-if="hobby.icon" v-tooltip="hobby.title" :image="hobby.icon" :width="512" :height="512" />
-      </li>
-    </ul>
-  </div>
+  <ItemsList v-if="blok" :blok="blok" />
 </template>
 
 <script setup lang="ts">
-import type { GenericObject } from '@/types'
+import type { ItemListSchema } from '@/types'
 
 const { blok } = defineProps<{
-  blok: GenericObject
+  blok: ItemListSchema
 }>()
-
-const items = computed(() => {
-  return blok.items.map((item) => item.content)
-})
 </script>
 
 <style lang="scss">

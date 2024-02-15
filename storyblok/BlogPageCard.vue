@@ -9,8 +9,8 @@
     </picture>
     <div class="blog-section-card__details" @mouseenter="toggleHover(true)" @mouseleave="toggleHover(false)">
       <p class="blog-section-card__tags">
-        <span v-if="blok.ended_at" class="blog-section-card__tag">{{ $t('blog.complete') }}</span>
-        <span v-else class="blog-section-card__tag blog-section-card__tag--active">{{ $t('blog.ongoing') }}</span>
+        <BlogTag v-if="blok.ended_at" :label="$t('blog.complete')" />
+        <BlogTag v-else :label="$t('blog.ongoing')" active />
       </p>
       <h2 v-if="blok.title" class="blog-section-card__title">
         <NuxtLink :to="`/${blok.full_slug}`" :hreflang="$getPostLang(blok.lang)" :title="blok.title">

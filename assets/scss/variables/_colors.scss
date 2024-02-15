@@ -1,131 +1,115 @@
 $color-dark: #292828;
 $color-light: #ffffff;
 
-$palette-light-main: #87ded7;
-$palette-light-main-darkest: darken($palette-light-main, 20);
-$palette-light-main-darker: darken($palette-light-main, 15);
-$palette-light-main-dark: darken($palette-light-main, 5);
-$palette-light-main-light: lighten($palette-light-main, 15);
-$palette-light-main-lighter: lighten($palette-light-main, 18);
-$palette-light-main-lightest: lighten($palette-light-main, 25);
-$palette-light-secondary: #ffd875;
-$palette-light-secondary-darkest: darken($palette-light-secondary, 20);
-$palette-light-secondary-darker: darken($palette-light-secondary, 15); // non usato
-$palette-light-secondary-dark: darken($palette-light-secondary, 5);
-$palette-light-secondary-light: lighten($palette-light-secondary, 15);
-$palette-light-secondary-lighter: lighten($palette-light-secondary, 18); // non usato
-$palette-light-secondary-lightest: lighten($palette-light-secondary, 25); // non usato
-$palette-light-neutral: #9a8f95;
-$palette-light-neutral-darkest: darken($palette-light-neutral, 20);
-$palette-light-neutral-darker: darken($palette-light-neutral, 15);
-$palette-light-neutral-dark: darken($palette-light-neutral, 5); // non usato
-$palette-light-neutral-light: lighten($palette-light-neutral, 15);
-$palette-light-neutral-lighter: lighten($palette-light-neutral, 30);
-$palette-light-neutral-lightest: lighten($palette-light-neutral, 35);
+$riptide-50: #f2fbfa;
+$riptide-100: #d2f5f0;
+$riptide-200: #a5eae2;
+$riptide-300: #87ded7; // primary main
+$riptide-400: #43beb8;
+$riptide-500: #29a39e;
+$riptide-600: #1f8282;
+$riptide-700: #1c6969;
+$riptide-800: #1b5454;
+$riptide-900: #1b4646;
+$riptide-950: #0a2729;
+$riptide-50-rgb: '242, 251, 250';
+$riptide-100-rgb: '210, 245, 240';
+$riptide-200-rgb: '165, 234, 226';
+$riptide-300-rgb: '135, 222, 215';
+$riptide-400-rgb: '67, 190, 184';
+$riptide-500-rgb: '41, 163, 158';
+$riptide-600-rgb: '31, 130, 130';
+$riptide-700-rgb: '28, 105, 105';
+$riptide-800-rgb: '27, 84, 84';
+$riptide-900-rgb: '27, 70, 70';
+$riptide-950-rgb: '10, 39, 41';
 
-$palette-dark-main: #9a8f95;
-$palette-dark-main-darkest: darken($palette-dark-main, 5);
-$palette-dark-main-darker: darken($palette-dark-main, 2);
-$palette-dark-main-dark: lighten($palette-dark-main, 2);
-$palette-dark-main-light: darken($palette-dark-main, 20);
-$palette-dark-main-lighter: lighten($palette-dark-main, 20);
-$palette-dark-main-lightest: darken($palette-dark-main, 50);
-$palette-dark-secondary: #a11111;
-$palette-dark-secondary-darkest: lighten($palette-dark-secondary, 20);
-$palette-dark-secondary-darker: lighten($palette-dark-secondary, 15);
-$palette-dark-secondary-dark: lighten($palette-dark-secondary, 5);
-$palette-dark-secondary-light: darken($palette-dark-secondary, 15);
-$palette-dark-secondary-lighter: darken($palette-dark-secondary, 18);
-$palette-dark-secondary-lightest: darken($palette-dark-secondary, 25);
-$palette-dark-neutral: #9a8f95;
-$palette-dark-neutral-lightest: darken($palette-dark-neutral, 30);
-$palette-dark-neutral-lighter: darken($palette-dark-neutral, 25);
-$palette-dark-neutral-light: darken($palette-dark-neutral, 5);
-$palette-dark-neutral-dark: lighten($palette-dark-neutral, 15);
-$palette-dark-neutral-darker: lighten($palette-dark-neutral, 30);
-$palette-dark-neutral-darkest: lighten($palette-dark-neutral, 35);
-$palette-dark-special: #e0dfe2;
+$goldenrod-50: #fff9eb;
+$goldenrod-100: #ffefc6;
+$goldenrod-200: #ffd875; // secondary main
+$goldenrod-300: #ffc64a;
+$goldenrod-400: #ffaf20;
+$goldenrod-500: #f98b07;
+$goldenrod-600: #dd6502;
+$goldenrod-700: #b74406;
+$goldenrod-800: #94340c;
+$goldenrod-900: #7a2b0d;
+$goldenrod-950: #461402;
+$goldenrod-50-rgb: '255, 249, 235';
+$goldenrod-100-rgb: '255, 239, 198';
+$goldenrod-200-rgb: '255, 216, 117';
+$goldenrod-300-rgb: '255, 198, 74';
+$goldenrod-400-rgb: '255, 175, 32';
+$goldenrod-500-rgb: '249, 139, 7';
+$goldenrod-600-rgb: '221, 101, 2';
+$goldenrod-700-rgb: '183, 68, 6';
+$goldenrod-800-rgb: '148, 52, 12';
+$goldenrod-900-rgb: '122, 43, 13';
+$goldenrod-950-rgb: '70, 20, 2';
 
-$lightPalette: (
-  color-main-rgb: '135, 222, 215',
-  color-main: $palette-light-main,
-  color-main-darkest: $palette-light-main-darkest,
-  color-main-darker: $palette-light-main-darker,
-  color-main-dark: $palette-light-main-dark,
-  color-main-light: $palette-light-main-light,
-  color-main-lighter: $palette-light-main-lighter,
-  color-main-lightest: $palette-light-main-lightest,
-  color-secondary: $palette-light-secondary,
-  color-secondary-darkest: $palette-light-secondary-darkest,
-  color-secondary-darker: $palette-light-secondary-darker,
-  color-secondary-dark: $palette-light-secondary-dark,
-  color-secondary-light: $palette-light-secondary-light,
-  color-secondary-lighter: $palette-light-secondary-lighter,
-  color-secondary-lightest: $palette-light-secondary-lightest,
-  color-neutral: $palette-light-neutral,
-  color-neutral-darkest: $palette-light-neutral-darkest,
-  color-neutral-darker: $palette-light-neutral-darker,
-  color-neutral-dark: $palette-light-neutral-dark,
-  color-neutral-light: $palette-light-neutral-light,
-  color-neutral-lighter: $palette-light-neutral-lighter,
-  color-neutral-lightest: $palette-light-neutral-lightest,
-  color-background: $color-light,
-  color-background-rgb: '255, 255, 255',
-  color-text-rgb: '41, 40, 40',
-  color-text: $color-dark,
-  color-text-light: lighten($color-dark, 20),
-  color-text-footer: #666666,
-  color-text-logo: $palette-light-neutral-darkest,
-  color-tag-active: rgb(255, 0, 0),
-  color-border-navigation: $palette-light-main-lighter,
-  color-background-navigation: $color-dark,
-  color-text-navigation: $color-light,
-  color-star-full: darken($palette-light-main, 15),
-  color-star-empty: lighten($palette-light-main, 15),
-  color-post-internal: $palette-light-main,
-);
+$dusty-gray-50: #f8f8f8;
+$dusty-gray-100: #f2f1f1;
+$dusty-gray-200: #e7e4e5;
+$dusty-gray-300: #d3ced1;
+$dusty-gray-400: #bab2b6;
+$dusty-gray-500: #9a8f95; // neutral main
+$dusty-gray-600: #857980;
+$dusty-gray-700: #6d6369;
+$dusty-gray-800: #5d545a;
+$dusty-gray-900: #514a4f;
+$dusty-gray-950: #2b262a;
+$dusty-gray-50-rgb: '248, 248, 248';
+$dusty-gray-100-rgb: '242, 241, 241';
+$dusty-gray-200-rgb: '231, 228, 229';
+$dusty-gray-300-rgb: '211, 206, 209';
+$dusty-gray-400-rgb: '186, 178, 182';
+$dusty-gray-500-rgb: '154, 143, 149';
+$dusty-gray-600-rgb: '133, 121, 128';
+$dusty-gray-700-rgb: '109, 99, 105';
+$dusty-gray-800-rgb: '93, 84, 90';
+$dusty-gray-900-rgb: '81, 74, 79';
+$dusty-gray-950-rgb: '43, 38, 42';
 
-$darkPalette: (
-  color-main-rgb: '154, 143, 149',
-  color-main: $palette-dark-main,
-  color-main-darkest: $palette-dark-main-darkest,
-  color-main-darker: $palette-dark-main-darker,
-  color-main-dark: $palette-dark-main-dark,
-  color-main-light: $palette-dark-main-light,
-  color-main-lighter: $palette-dark-main-lighter,
-  color-main-lightest: $palette-dark-main-lightest,
-  color-secondary: $palette-dark-secondary,
-  color-secondary-darkest: $palette-dark-secondary-darkest,
-  color-secondary-darker: $palette-dark-secondary-darker,
-  color-secondary-dark: $palette-dark-secondary-dark,
-  color-secondary-light: $palette-dark-secondary-light,
-  color-secondary-lighter: $palette-dark-secondary-lighter,
-  color-secondary-lightest: $palette-dark-secondary-lightest,
-  color-neutral: $palette-dark-neutral,
-  color-neutral-lightest: $palette-dark-neutral-lightest,
-  color-neutral-lighter: $palette-dark-neutral-lighter,
-  color-neutral-light: $palette-dark-neutral-light,
-  color-neutral-dark: $palette-dark-neutral-dark,
-  color-neutral-darker: $palette-dark-neutral-darker,
-  color-neutral-darkest: $palette-dark-neutral-darkest,
-  color-background: $color-dark,
-  color-background-rgb: '41, 40, 40',
-  color-text-rgb: '255, 255, 255',
-  color-text: $color-light,
-  color-text-light: darken($color-light, 30),
-  color-text-footer: #666666,
-  color-text-logo: darken($color-light, 5),
-  color-tag-active: rgb(255, 0, 0),
-  color-border-navigation: darken($palette-dark-neutral, 30),
-  color-background-navigation: darken($palette-dark-secondary, 40),
-  color-text-navigation: $color-light,
-  color-star-full: $palette-dark-secondary-darkest,
-  color-star-empty: darken($palette-dark-neutral, 30),
-  color-post-internal: $palette-dark-secondary-darker,
-);
+$palette-light-main: $riptide-300;
+$palette-light-main-darkest: $riptide-600;
+$palette-light-main-darker: $riptide-500;
+$palette-light-main-dark: $riptide-400;
+$palette-light-main-light: $riptide-200;
+$palette-light-main-lighter: $riptide-100;
+$palette-light-main-lightest: $riptide-50;
+$palette-light-secondary: $goldenrod-200;
+$palette-light-secondary-darkest: $goldenrod-500;
+$palette-light-secondary-darker: $goldenrod-400;
+$palette-light-secondary-dark: $goldenrod-300;
+$palette-light-secondary-light: $goldenrod-100;
+$palette-light-secondary-lighter: $goldenrod-50;
+$palette-light-secondary-lightest: $goldenrod-50; // non usato
+$palette-light-neutral: $dusty-gray-500;
+$palette-light-neutral-darkest: $dusty-gray-800;
+$palette-light-neutral-darker: $dusty-gray-700;
+$palette-light-neutral-dark: $dusty-gray-600;
+$palette-light-neutral-light: $dusty-gray-400;
+$palette-light-neutral-lighter: $dusty-gray-300;
+$palette-light-neutral-lightest: $dusty-gray-200; // non usato
 
-@mixin colors($palette) {
-  @each $prop, $val in $palette {
-    --#{$prop}: #{$val};
-  }
-}
+$palette-dark-main: $riptide-500;
+$palette-dark-main-darkest: $riptide-300;
+$palette-dark-main-darker: $riptide-400;
+$palette-dark-main-dark: $riptide-500;
+$palette-dark-main-light: $riptide-600;
+$palette-dark-main-lighter: $riptide-700;
+$palette-dark-main-lightest: $riptide-900;
+$palette-dark-secondary: $riptide-900;
+$palette-dark-secondary-darkest: $riptide-200;
+$palette-dark-secondary-darker: $riptide-700;
+$palette-dark-secondary-dark: $riptide-800;
+$palette-dark-secondary-light: darken($riptide-950, 5);
+$palette-dark-secondary-lighter: $riptide-900;
+$palette-dark-secondary-lightest: $riptide-950; // non usato
+$palette-dark-neutral: $riptide-300;
+$palette-dark-neutral-darkest: $riptide-50;
+$palette-dark-neutral-darker: $riptide-100;
+$palette-dark-neutral-dark: $riptide-300;
+$palette-dark-neutral-light: $riptide-100;
+$palette-dark-neutral-lighter: $riptide-900;
+$palette-dark-neutral-lightest: $riptide-950; // non usato

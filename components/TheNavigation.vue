@@ -7,7 +7,7 @@
       <BaseLanguageSwitcher @click="toggleMenu(false)">
         <NuxtLink
           v-tooltip.top="$t('languages.others')"
-          :to="localePath({ name: 'hobbies', hash: '#languages' })"
+          :to="localePath({ name: 'hobbies-slug', params: { slug: 'learning-new-languages' } })"
           :title="$t('languages.others')"
           :aria-label="$t('languages.othersLabel')"
           @click="toggleMenu(false)"
@@ -56,6 +56,7 @@
             <NuxtLink
               :to="localePath({ name: 'projects' })"
               class="navigation__link"
+              :class="{ 'navigation__link--active': routeName.startsWith('projects') }"
               active-class="navigation__link--active"
               :title="$t('projects.title')"
               @click="toggleMenu(false)"
@@ -67,6 +68,7 @@
             <NuxtLink
               :to="localePath({ name: 'hobbies' })"
               class="navigation__link"
+              :class="{ 'navigation__link--active': routeName.startsWith('hobbies') }"
               active-class="navigation__link--active"
               :title="$t('hobbies.title')"
               @click="toggleMenu(false)"
@@ -78,6 +80,7 @@
       </nav>
     </div>
     <div class="navigation__bottom">
+      <TheNavigationIllustration class="navigation__bg-image" />
       <SocialsLinks unlabelled />
       <TheCopyrights class="navigation__copyrights" />
     </div>
@@ -106,8 +109,8 @@ $mobile-height: 643px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 1rem;
-  background-color: var(--color-background);
+  padding: 1rem 1rem 0;
+  background-color: var(--color-background-navigation);
 
   &__gohome {
     text-decoration: none;
@@ -116,6 +119,7 @@ $mobile-height: 643px;
   &__copyrights {
     text-align: center;
     color: var(--color-text-footer);
+    position: relative;
     a {
       color: currentColor;
     }
@@ -164,6 +168,30 @@ $mobile-height: 643px;
     }
   }
 
+  &__bottom {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  &__bg-image {
+    position: absolute;
+    left: -1rem;
+    bottom: 0;
+    width: calc(100% + 2rem);
+    max-height: none;
+    opacity: var(--opacity-background-navigation);
+    transition: var(--transition-image-navigation);
+  }
+
+  > * {
+    z-index: 1;
+  }
+  > .navigation__bottom {
+    z-index: 0;
+  }
+
   @include mq($until: tablet) {
     position: fixed;
     top: $mobile-toggle-height;
@@ -179,14 +207,13 @@ $mobile-height: 643px;
 
     &--open {
       transform: translateX(0);
-      background-color: var(--color-main-lightest);
       box-shadow: 0 2px 3px 0px rgba(var(--color-text-rgb), 0.2);
-      background-color: var(--color-background-navigation);
+      background-color: var(--color-background-navigation-mobile);
       color: var(--color-text-navigation);
       .navigation__link {
         color: var(--color-text-navigation);
         &--active:before {
-          background-color: var(--color-secondary-darkest);
+          background-color: var(--color-secondary-darker);
         }
       }
       .profile-picture figcaption {
@@ -198,6 +225,9 @@ $mobile-height: 643px;
       .socials-links__link {
         background-color: transparent;
         color: var(--color-text-navigation);
+      }
+      .navigation__bg-image {
+        display: none;
       }
     }
 

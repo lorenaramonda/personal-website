@@ -2,11 +2,7 @@
   <article v-if="blok" id="languages" v-editable="blok" class="languages">
     <ul class="languages__list">
       <li v-for="lang in blok.items" :key="lang.name" v-editable="lang">
-        <BaseMeter :value="parseInt(lang.rate)" />
-        <p>
-          {{ lang.name }}
-          <small v-if="lang.info">{{ lang.info }}</small>
-        </p>
+        <LanguageCard :lang="lang" />
       </li>
     </ul>
   </article>

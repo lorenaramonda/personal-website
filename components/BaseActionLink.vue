@@ -12,6 +12,7 @@
 </template>
 
 <script setup lang="ts">
+// Icons: https://lucide.dev/icons/
 import * as icons from 'lucide-vue-next'
 
 const { $capitalize } = useNuxtApp()
@@ -39,14 +40,14 @@ const cssClasses = computed(() => (props.type ? `action-link--${props.type}` : '
     transition: all 0.2s ease-in-out;
     svg {
       width: 16px;
-      color: var(--color-main-dark);
+      color: var(--color-main);
       transition: all 0.2s ease-in-out;
     }
     &:hover {
       svg {
         width: 24px;
         transform: translateX(20%);
-        color: var(--color-main-darkest);
+        color: var(--color-main-dark);
       }
     }
   }
@@ -58,10 +59,13 @@ const cssClasses = computed(() => (props.type ? `action-link--${props.type}` : '
     }
   }
   &--primary {
-    background-color: var(--color-main-dark);
+    background-color: var(--color-background-button-primary);
     color: var(--color-background);
     &:hover {
-      background-color: var(--color-main-darkest);
+      background-color: var(--color-background-button-primary-hover);
+    }
+    &:active {
+      background-color: var(--color-background-button-primary-active);
     }
   }
 }

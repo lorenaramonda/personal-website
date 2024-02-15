@@ -14,6 +14,7 @@ const { $capitalize } = useNuxtApp()
 
 const props = withDefaults(
   defineProps<{
+    label: string
     value: number
     icon?: 'star' | 'heart'
     min?: number
@@ -42,9 +43,14 @@ const items = computed(() => {
   }
   return items
 })
+
 const label = computed(() => {
-  const str = $filters.rateLabel(props.value)
-  return t(str)
+  if (props.label) {
+    return props.label
+  } else {
+    const str = $filters.rateLabel(props.value)
+    return t(str)
+  }
 })
 </script>
 

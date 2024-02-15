@@ -1,56 +1,47 @@
 <template>
-  <div v-editable="blok" class="project-card" itemscope itemtype="https://schema.org/WebSite">
+  <div v-editable="blok" class="hobby-card">
     <div>
-      <span class="project-card__index">
+      <span class="hobby-card__index">
         {{ index }}
       </span>
-      <h2 class="project-card__title">
+      <h2 class="hobby-card__title">
         {{ blok.title }}
-
-        <span v-if="blok.url" class="project-card__link">
-          (<a :href="blok.url.url" :target="blok.url.target" rel="noopener" itemprop="url">{{ $getURLDomain(blok.url.url) }}</a
-          >)
-        </span>
       </h2>
 
-      <picture v-if="blok.image?.filename && blok.show_image" class="project-card__image">
-        <StoryblokImage :image="blok.image" :width="400" itemprop="thumbnail" />
+      <picture v-if="blok.icon?.filename" class="hobby-card__image">
+        <StoryblokImage :image="blok.icon" :width="imgHeight" />
       </picture>
 
-      <RichtextRenderer v-if="blok.content" :document="blok.content" class="project-card__content" itemprop="abstract" />
+      <RichtextRenderer v-if="blok.description" :document="blok.description" class="hobby-card__content" />
     </div>
 
-    <ActionButton v-if="blok.url" :blok="link" class="project-card__action" />
+    <BaseActionLink
+      v-if="blok.enable_content && blok.body.length"
+      :to="`/${blok.full_slug}`"
+      :title="blok.title"
+      class="hobby-card__action"
+      type="ghost"
+      icon="lightbulb"
+    >
+      <span>{{ $t('misc.more') }}</span>
+    </BaseActionLink>
   </div>
 </template>
 
 <script setup lang="ts">
 import type { GenericObject } from '@/types'
 
-const { $getURLDomain } = useNuxtApp()
-const { t } = useI18n()
-
-const props = defineProps<{
+defineProps<{
   blok: GenericObject
   index?: string
 }>()
 
-const imgHeight = 500
-
-const link = computed(() => {
-  return {
-    label: t('misc.visitLink'),
-    link: props.blok.url,
-    icon: 'external-link',
-    type: 'ghost',
-  }
-})
+const imgHeight = 150
 </script>
 
 <style lang="scss">
-.project-card {
-  border-radius: 2rem;
-  padding: 3rem;
+.hobby-card {
+  padding: 2rem;
   transition: all 0.3s ease-in-out;
   border: solid 1px var(--color-main-lighter);
   background-color: var(--color-background);
@@ -58,6 +49,8 @@ const link = computed(() => {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
+  text-align: center;
   &:hover {
     transform: translateY(-0.5rem);
   }
@@ -72,6 +65,7 @@ const link = computed(() => {
 
   &__title {
     @extend %item-title;
+    font-size: 2.3rem;
   }
   &__content {
     font-family: $font-family-title;
@@ -94,22 +88,13 @@ const link = computed(() => {
       @extend %text-link;
     }
   }
-  &__action {
-    align-self: flex-end;
-  }
   &__image {
     display: flex;
     justify-content: center;
     height: v-bind(imgHeight);
     margin: 1rem 0;
     img {
-      border-radius: 1rem;
       vertical-align: middle;
-      filter: grayscale(1);
-      transition: all 0.3s ease-in-out;
-      &:hover {
-        filter: none;
-      }
     }
   }
 }

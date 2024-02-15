@@ -72,7 +72,7 @@ onMounted(() => {
     text-align: center;
     padding: 1em;
     a {
-      color: var(--color-main-darkest);
+      color: var(--color-main-darker);
     }
     p {
       margin: 1em;
@@ -84,7 +84,7 @@ onMounted(() => {
     font-family: $font-family-text;
     border-radius: 20px;
     color: var(--color-text);
-    background-color: var(--color-background);
+    background-color: var(--color-main-lighter);
     border-bottom: solid 3px var(--color-main-lighter);
     padding: 0.5em 1.5em;
     cursor: pointer;
@@ -92,8 +92,8 @@ onMounted(() => {
     margin: 0 0.5rem;
   }
   &__button--primary {
-    background-color: var(--color-main-dark);
-    border-bottom: solid 3px var(--color-main-darkest);
+    background-color: var(--color-main);
+    border-bottom: solid 3px var(--color-main-dark);
   }
 }
 

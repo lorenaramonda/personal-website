@@ -2,7 +2,7 @@
   <div class="section-publications">
     <div class="container-page">
       <header class="section-publications__title">
-        <BaseHeading primary :label="$t('publications.subtitle')">{{ content.title }}</BaseHeading>
+        <BaseHeading primary :label="$t('publications.subtitle')">{{ page.title }}</BaseHeading>
         <BlogSections v-if="blogSections.length" :pages="blogSections" />
       </header>
       <div class="section-publications__content">
@@ -14,6 +14,7 @@
 </template>
 
 <script setup lang="ts">
+import type { ISbStoryData } from 'storyblok-js-client'
 import { useLocalizedStoryParams } from '@/composables/useLocalizedStoryParams'
 
 import PostsList from '@/components/PostsList.vue'
@@ -31,7 +32,9 @@ const { $getMetadataFromStory, $setMetadata } = useNuxtApp()
 
 const { getParams } = useLocalizedStoryParams()
 
-const page = await useAsyncStoryblok('publications', getParams()).catch(() => null)
+const page = await useAsyncStoryblok('publications', getParams())
+  .then((data) => data.value.content)
+  .catch(() => null)
 
 if (!page) {
   throw createError({
@@ -49,17 +52,15 @@ const posts = await storyblokApi
   .then((response) => response.data.stories ?? [])
   .catch(() => null)
 
-const content = computed(() => page.value.content)
-
 const postsWithContent = computed(() => {
-  return posts.filter((e) => !e.is_startpage && e.content.title)
+  return posts.filter((e: ISbStoryData) => !e.is_startpage && e.content.title)
 })
 
 const blogSections = computed(() => {
-  return posts.filter((e) => e.is_startpage && e.content.title)
+  return posts.filter((e: ISbStoryData) => e.is_startpage && e.content.title)
 })
 
-$setMetadata($getMetadataFromStory(content.value))
+$setMetadata($getMetadataFromStory(page))
 </script>
 
 <style lang="scss" scoped>

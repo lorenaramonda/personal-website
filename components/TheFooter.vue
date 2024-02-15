@@ -20,12 +20,12 @@
 
 <style lang="scss">
 .footer {
-  border-top: 1px solid var(--color-main-darker);
-  background-color: var(--color-main-lighter);
+  border-top: 1px solid var(--color-border-footer);
+  background-color: var(--color-background-footer);
   padding-top: 1.2em;
   padding-bottom: 1.2em;
   line-height: normal;
-  color: var(--color-main-darker);
+  color: var(--color-main-dark);
   position: relative;
 
   .lang {
@@ -38,7 +38,7 @@
     margin: 0;
     padding: 0;
     a {
-      color: var(--color-main-darker);
+      color: var(--color-main-dark);
       text-decoration: none;
       border-bottom: dashed 1px var(--color-main);
       &.nibbler {

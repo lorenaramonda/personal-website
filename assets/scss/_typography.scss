@@ -132,13 +132,13 @@ table {
 }
 
 :root {
-  @include colors($lightPalette);
+  @include mode($light);
   @media (prefers-color-scheme: light) {
-    @include colors($lightPalette);
+    @include mode($light);
   }
 
   @media (prefers-color-scheme: dark) {
-    @include colors($darkPalette);
+    @include mode($dark);
   }
 }
 
@@ -146,10 +146,10 @@ html {
   font-size: $base-font-size;
   font-family: $base-font-family;
   &.dark-mode {
-    @include colors($darkPalette);
+    @include mode($dark);
   }
   &.light-mode {
-    @include colors($lightPalette);
+    @include mode($light);
   }
 }
 
@@ -175,6 +175,10 @@ p {
   margin: 1.2em 0;
 }
 
+u {
+  text-decoration: none;
+}
+
 abbr[title] {
   border-bottom: dotted 1px #333;
   cursor: help;
@@ -192,8 +196,25 @@ svg {
 code {
   display: inline-block;
   vertical-align: middle;
-  border-radius: 5px;
-  border: 1px solid var(--color-main-lighter);
-  padding: 2px 4px;
-  font: 12px $font-family-monospace;
+  border-radius: 2px;
+  background-color: var(--color-main-lighter);
+  padding: 3px 4px;
+  font-size: 1.4rem;
+  font-family: $font-family-monospace;
+  font-weight: 400;
+}
+
+pre {
+  font-size: 1.4rem;
+  font-family: $font-family-monospace;
+  border: solid 1px var(--color-border-code);
+  background-color: var(--color-background-code);
+  margin: 1rem 0;
+  padding: 1em;
+  code {
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+  }
 }

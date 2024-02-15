@@ -1,7 +1,7 @@
 <template>
   <ol class="breadcrumbs">
     <li v-for="(breadcrumb, i) in breadcrumbs" :key="i" class="breadcrumbs__item">
-      <NuxtLink :to="`/${breadcrumb.slug}`" :title="breadcrumb.title">{{ breadcrumb.title }}</NuxtLink>
+      <NuxtLink :to="getSlug(breadcrumb.slug)" :title="breadcrumb.title">{{ breadcrumb.title }}</NuxtLink>
     </li>
   </ol>
 </template>
@@ -14,7 +14,8 @@ const { getParams } = useLocalizedStoryParams()
 const { localeCodes } = useI18n()
 
 const props = defineProps<{
-  slug: string
+  slug?: string
+  items?: Breadcrumb[]
 }>()
 
 const breadcrumbs: Ref<Breadcrumb[]> = ref([])
@@ -30,20 +31,28 @@ function getDefaultSlug(str: string) {
   return slugParts.length ? slugParts : []
 }
 
-const slugParts = getDefaultSlug(props.slug)
-slugParts.pop()
-if (slugParts?.length) {
-  while (slugParts.length > 0) {
-    const story = await storyblokApi
-      .get(`cdn/stories/${slugParts.join('/')}`, getParams())
-      .then((response) => response.data.story)
-      .catch(() => null)
-    breadcrumbs.value.unshift({
-      title: story?.content.title,
-      slug: story.full_slug,
-    })
-    slugParts.pop()
+function getSlug(slug: string) {
+  return slug.startsWith('/') ? slug : `/${slug}`
+}
+
+if (props.slug) {
+  const slugParts = getDefaultSlug(props.slug)
+  slugParts.pop()
+  if (slugParts?.length) {
+    while (slugParts.length > 0) {
+      const story = await storyblokApi
+        .get(`cdn/stories/${slugParts.join('/')}`, getParams())
+        .then((response) => response.data.story)
+        .catch(() => null)
+      breadcrumbs.value.unshift({
+        title: story?.content.title,
+        slug: story.full_slug,
+      })
+      slugParts.pop()
+    }
   }
+} else {
+  breadcrumbs.value = props.items
 }
 </script>
 

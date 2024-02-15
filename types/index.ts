@@ -1,3 +1,5 @@
+import type { SbBlokData } from '@storyblok/js'
+
 export type GenericObject = Record<string, any>
 
 export type StoryblokImage = {
@@ -34,3 +36,17 @@ export type Breadcrumb = {
   title: string
   slug: string
 }
+
+export type ItemListSchema = {
+  _uid: string
+  _editable: string
+  component: string
+  items: SbBlokData[]
+  title?: string
+  layout: 'grid.3columns' | 'grid.2columns' | 'list.accordion' | 'list.1column'
+  recent_on_top?: boolean
+  show_pagination?: boolean
+  enable_switch_layout?: boolean
+}
+
+export type LayoutMode = 'grid' | 'list'

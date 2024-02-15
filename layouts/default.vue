@@ -101,6 +101,7 @@ onMounted(() => {
     position: fixed;
     top: 6px;
     right: 40px;
+    z-index: 10;
     transition: all 0.2s ease-in-out;
     @include mq($from: tablet) {
       top: 10px;

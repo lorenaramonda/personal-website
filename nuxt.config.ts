@@ -116,10 +116,8 @@ export default defineNuxtConfig({
       Kristi: [400],
       Inter: [100, 400, 600, 700],
       'Source+Serif+4': [200, 400, 700],
+      'Source+Code+Pro': [200, 400],
     },
-  },
-  routeRules: {
-    '/publications/what-i-love-about-vuejs': { redirect: { to: '/', statusCode: 301 } },
   },
   pwa: {
     manifest: {

@@ -18,9 +18,7 @@ const { getParams } = useLocalizedStoryParams()
 
 await useAsyncData('jobs', () => store.fetchJobs())
 
-let page = ref()
-
-page = await useAsyncStoryblok('home', getParams()).catch(() => {})
+const page = await useAsyncStoryblok('home', getParams()).catch(() => {})
 
 const content = computed(() => page.value.content)
 const bloks = computed(() => content.value.body)
