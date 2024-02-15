@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file. (http://keepachangelog.com/)
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.5.1] - 2024-02-15
+
+- Removed temporarily the strip slash function
+- Fixed some invalid code
+
 ## [2.5.0] - 2024-02-15
 
 - Styled article page
