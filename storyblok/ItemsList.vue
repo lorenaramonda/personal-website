@@ -33,7 +33,7 @@ const { $capitalize } = useNuxtApp()
 const props = withDefaults(
   defineProps<{
     blok: ItemListSchema
-    order: 'desc' | 'asc'
+    order?: 'desc' | 'asc'
   }>(),
   {
     order: 'desc',

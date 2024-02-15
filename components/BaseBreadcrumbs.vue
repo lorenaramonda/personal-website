@@ -51,9 +51,7 @@ if (props.slug) {
       slugParts.pop()
     }
   }
-} else {
-  breadcrumbs.value = props.items
-}
+} else if (props.items) breadcrumbs.value = props.items
 </script>
 
 <style lang="scss">
