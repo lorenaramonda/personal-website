@@ -52,10 +52,6 @@ export default {
     meta_keywords: 'publicaciones, entrada de blog, blog, entradas',
     read: 'Lee',
   },
-  blog: {
-    complete: 'Completo',
-    ongoing: 'En curso',
-  },
   contributions: {
     title: 'Contribuciones',
   },

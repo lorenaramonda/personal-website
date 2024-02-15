@@ -11,7 +11,7 @@
           </BaseHeading>
         </header>
         <template v-if="bloks?.length">
-          <StoryblokComponent v-for="blok in bloks" :key="blok._uid" :blok="blok" />
+          <StoryblokComponent v-for="blok in bloks" :key="blok._uid" :blok="blok" order="asc" />
         </template>
       </template>
       <template v-else>
@@ -74,9 +74,17 @@ if (isStartpage.value) {
       is_startpage: content?.value.show_sections || false,
       starts_with: `publications/${slugParams.value}`,
       excluding_slugs: `publications/${slugParams.value}`,
-      sort_by: 'first_published_at:desc',
+      sort_by: 'first_published_at:asc,position:asc',
     })
-    .then((response) => response.data.stories.map((item: SbBlokData) => ({ ...item.content, full_slug: item.full_slug, lang: item.lang })) ?? [])
+    .then(
+      (response) =>
+        response.data.stories.map((item: SbBlokData) => ({
+          ...item.content,
+          full_slug: item.full_slug,
+          lang: item.lang,
+          first_published_at: item.first_published_at,
+        })) ?? [],
+    )
     .catch(() => null)
 
   if (content.value.body?.length && posts) {
@@ -100,12 +108,15 @@ if (content) $setMetadata({ ...$getMetadataFromStory(content.value), ogType: !is
 .section-publications {
   &--primary {
     background-color: var(--color-main-lighter);
+    .pagination {
+      background-color: var(--color-main-lighter);
+    }
   }
   &--secondary {
     background-color: var(--color-secondary-light);
-  }
-  .items-list {
-    gap: 3rem;
+    .pagination {
+      background-color: var(--color-secondary-light);
+    }
   }
 }
 </style>

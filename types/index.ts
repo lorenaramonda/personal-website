@@ -43,6 +43,10 @@ export type ItemListSchema = {
   component: string
   items: SbBlokData[]
   title?: string
-  layout: 'grid' | 'accordion' | 'columns'
+  layout: 'grid.3columns' | 'grid.2columns' | 'list.accordion' | 'list.1column'
   recent_on_top?: boolean
+  show_pagination?: boolean
+  enable_switch_layout?: boolean
 }
+
+export type LayoutMode = 'grid' | 'list'

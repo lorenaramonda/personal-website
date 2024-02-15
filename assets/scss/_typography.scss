@@ -196,8 +196,25 @@ svg {
 code {
   display: inline-block;
   vertical-align: middle;
-  border-radius: 5px;
-  border: 1px solid var(--color-main-lighter);
-  padding: 2px 4px;
-  font: 12px $font-family-monospace;
+  border-radius: 2px;
+  background-color: var(--color-main-lighter);
+  padding: 3px 4px;
+  font-size: 1.4rem;
+  font-family: $font-family-monospace;
+  font-weight: 400;
+}
+
+pre {
+  font-size: 1.4rem;
+  font-family: $font-family-monospace;
+  border: solid 1px var(--color-border-code);
+  background-color: var(--color-background-code);
+  margin: 1rem 0;
+  padding: 1em;
+  code {
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+  }
 }

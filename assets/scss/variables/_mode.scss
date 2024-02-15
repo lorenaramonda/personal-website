@@ -30,6 +30,9 @@ $light: (
   color-text-light: $dusty-gray-800,
   color-text-footer: $dusty-gray-700,
   color-text-logo: $dusty-gray-800,
+  color-text-link: $goldenrod-200,
+  color-background-code: $goldenrod-50,
+  color-border-code: $goldenrod-300,
   color-background-button-primary: $riptide-300,
   color-background-button-primary-hover: $riptide-400,
   color-background-button-primary-active: $riptide-500,
@@ -45,6 +48,7 @@ $light: (
   color-post-internal: $riptide-300,
   opacity-background-navigation: 0,
   transition-image-navigation: none,
+  color-background-brand: $goldenrod-50,
 );
 
 $dark: (
@@ -71,12 +75,15 @@ $dark: (
   color-neutral-darker: $palette-dark-neutral-darker,
   color-neutral-darkest: $palette-dark-neutral-darkest,
   color-background: $riptide-950,
-  color-background-rgb: '41, 40, 40',
+  color-background-rgb: $riptide-950-rgb,
   color-text-rgb: '255, 255, 255',
   color-text: $color-light,
   color-text-light: $riptide-200,
   color-text-footer: $riptide-200,
   color-text-logo: $riptide-50,
+  color-text-link: $goldenrod-400,
+  color-background-code: $riptide-900,
+  color-border-code: $riptide-700,
   color-background-button-primary: $riptide-500,
   color-background-button-primary-hover: $riptide-400,
   color-background-button-primary-active: $riptide-300,
@@ -92,6 +99,7 @@ $dark: (
   color-post-internal: $goldenrod-300,
   opacity-background-navigation: 1,
   transition-image-navigation: all 0.8s ease-in,
+  color-background-brand: $color-light,
 );
 
 @mixin mode($mode) {

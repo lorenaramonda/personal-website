@@ -55,6 +55,7 @@ export default {
   blog: {
     complete: 'Complete',
     ongoing: 'On going',
+    last: 'Last published',
   },
   contributions: {
     title: 'Contributions',
