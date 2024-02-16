@@ -172,6 +172,7 @@ export default defineNuxtConfig({
     },
     workbox: {
       globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
+      navigateFallbackDenylist: [/^(\/[a-z]+)?\/publications/],
     },
     devOptions: {
       enabled: true,

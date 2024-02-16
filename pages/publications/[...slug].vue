@@ -66,6 +66,7 @@ if (!page) {
 
 const content = computed(() => page.value.content)
 const isStartpage = computed(() => page.value.is_startpage)
+const excludedSlug = computed(() => (slugParams.value.endsWith('/') ? `publications/${slugParams.value}` : `publications/${slugParams.value}/`))
 
 if (isStartpage.value) {
   const posts = await storyblokApi
@@ -73,7 +74,7 @@ if (isStartpage.value) {
       ...getParams(),
       is_startpage: content?.value.show_sections || false,
       starts_with: `publications/${slugParams.value}`,
-      excluding_slugs: `publications/${slugParams.value}`,
+      excluding_slugs: excludedSlug.value,
       sort_by: 'first_published_at:asc,position:asc',
     })
     .then(
