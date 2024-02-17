@@ -120,6 +120,7 @@ export default defineNuxtConfig({
     },
   },
   pwa: {
+    selfDestroying: true,
     manifest: {
       name: 'Lorena Ramonda',
       short_name: 'theRocket.dev',
