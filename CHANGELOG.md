@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file. (http://keepachangelog.com/)
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.5.3] - 2024-02-17
+
+- Added unregistering PWA (this solves the redirect in home problems and in the end I only care about the manifest not the entire PWA service)
+
 ## [2.5.2] - 2024-02-16
 
 - Removed publications section from workbox to avoid unwanted redirects
