@@ -1,7 +1,7 @@
 {
   "name": "@lorenaramonda/personal-website",
   "private": true,
-  "version": "2.5.4",
+  "version": "2.5.5",
   "scripts": {
     "build": "nuxt build",
     "dev-http": "nuxt dev",

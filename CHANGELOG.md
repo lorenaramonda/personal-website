@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file. (http://keepachangelog.com/)
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.5.5] - 2024-02-21
+
+- Fixed sitemap links
+- Added Storyblok cache version to all API calls
+- Cleaned code from duplicated API calls
+
 ## [2.5.4] - 2024-02-19
 
 - Removed navigateFallbackDenylist setting (not needed since the sw is unregistered everytime)
