@@ -44,15 +44,7 @@ export const useStore = defineStore('store', {
   actions: {
     async fetchSpace() {
       const storyblokApi = useStoryblokApi()
-
-      const { getParams } = useLocalizedStoryParams()
-
-      this.space = await storyblokApi
-        .get(`cdn/spaces/me/`, {
-          ...getParams(),
-          token: process.env.STORYBLOK_TOKEN,
-        })
-        .then((response) => response.data.space)
+      this.space = await storyblokApi.get(`cdn/spaces/me/`).then((response) => response.data.space)
     },
     async fetchJobs() {
       const storyblokApi = useStoryblokApi()
