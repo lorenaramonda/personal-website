@@ -72,14 +72,14 @@ defineProps<{
     gap: 0.8rem;
   }
   &__link {
-    background-color: var(--color-main-lightest);
+    background-color: color('main-lightest');
     border-radius: 50%;
     width: 50px;
     height: 50px;
     display: block;
     overflow: hidden;
     border: none;
-    color: var(--color-text);
+    color: color('text');
     display: flex;
     padding: 1.5rem;
     justify-content: center;
@@ -90,7 +90,7 @@ defineProps<{
       display: block;
       width: 100%;
       height: 100%;
-      background-color: var(--color-main-light);
+      background-color: color('main-light');
       transform: translateY(100%);
       position: absolute;
       transition: all ease 0.3s;

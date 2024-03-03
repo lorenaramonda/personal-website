@@ -28,7 +28,7 @@
   margin: 2rem auto;
   border: 0;
   cursor: help;
-  color: var(--color-neutral-dark);
+  color: color('neutral-dark');
   opacity: 0.5;
 }
 </style>

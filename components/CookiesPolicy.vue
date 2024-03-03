@@ -68,11 +68,11 @@ onMounted(() => {
   &__content {
     position: relative;
     font-family: $font-family-text;
-    background-color: var(--color-main-lightest);
+    background-color: color('main-lightest');
     text-align: center;
     padding: 1em;
     a {
-      color: var(--color-main-darker);
+      color: color('main-darker');
     }
     p {
       margin: 1em;
@@ -83,17 +83,17 @@ onMounted(() => {
     border: none;
     font-family: $font-family-text;
     border-radius: 20px;
-    color: var(--color-text);
-    background-color: var(--color-main-lighter);
-    border-bottom: solid 3px var(--color-main-lighter);
+    color: color('text');
+    background-color: color('main-lighter');
+    border-bottom: solid 3px color('main-lighter');
     padding: 0.5em 1.5em;
     cursor: pointer;
     position: relative;
     margin: 0 0.5rem;
   }
   &__button--primary {
-    background-color: var(--color-main);
-    border-bottom: solid 3px var(--color-main-dark);
+    background-color: color('main');
+    border-bottom: solid 3px color('main-dark');
   }
 }
 

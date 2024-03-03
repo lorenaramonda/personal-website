@@ -96,7 +96,7 @@ defineProps<{
         white-space: nowrap;
         padding-right: 1rem;
         svg {
-          color: var(--color-main-darker);
+          color: color('main-darker');
           flex: 0 0 24px;
         }
       }
@@ -132,15 +132,15 @@ defineProps<{
   }
 
   &:first-of-type {
-    background-color: var(--color-secondary-dark);
+    background-color: color('secondary-dark');
   }
   &:nth-of-type(2) {
-    background-color: var(--color-main-dark);
-    color: var(--color-background);
+    background-color: color('main-dark');
+    color: color('background');
   }
   &:last-of-type {
-    background-color: var(--color-background);
-    color: var(--color-neutral-darker);
+    background-color: color('background');
+    color: color('neutral-darker');
 
     &::before {
       background-color: rgba(var(--color-main-rgb), 0.1);

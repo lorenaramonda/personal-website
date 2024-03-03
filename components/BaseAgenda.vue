@@ -87,11 +87,11 @@ const meetings = computed(() => {
       margin-right: 1.8rem;
       line-height: normal;
       width: 7rem;
-      border-right: solid 2px var(--color-text);
+      border-right: solid 2px color('text');
       padding-right: 1em;
       .day {
         font-size: 2.4em;
-        color: var(--color-main);
+        color: color('main');
       }
       .month {
         display: block;

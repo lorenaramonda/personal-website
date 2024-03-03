@@ -17,8 +17,8 @@
   }
   .button {
     appearance: none;
-    background-color: var(--color-main);
-    color: var(--color-background);
+    background-color: color('main');
+    color: color('background');
     padding: 0.5em 1em;
     text-decoration: none;
     border: 0;
@@ -40,7 +40,7 @@
     margin: 1rem auto;
     text-align: left;
     font-family: $font-family-monospace;
-    background: var(--color-neutral-lighter);
+    background: color('neutral-lighter');
     font-size: 1rem;
     padding: 2em;
     overflow: auto;

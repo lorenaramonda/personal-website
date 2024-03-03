@@ -12,13 +12,13 @@ defineProps<{
   text-transform: uppercase;
   font-size: 1.2rem;
   padding: 0.2rem 0.7rem;
-  color: var(--color-background);
-  background-color: var(--color-main-darker);
+  color: color('background');
+  background-color: color('main-darker');
   font-weight: normal;
   vertical-align: middle;
 
   &--active {
-    background-color: var(--color-tag-active);
+    background-color: color('tag-active');
   }
 }
 </style>

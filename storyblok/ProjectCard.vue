@@ -52,8 +52,8 @@ const link = computed(() => {
   border-radius: 2rem;
   padding: 3rem;
   transition: all 0.3s ease-in-out;
-  border: solid 1px var(--color-main-lighter);
-  background-color: var(--color-background);
+  border: solid 1px color('main-lighter');
+  background-color: color('background');
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -67,7 +67,7 @@ const link = computed(() => {
     margin-bottom: 1rem;
     font-family: $font-family-special;
     font-size: 4rem;
-    color: var(--color-main-darker);
+    color: color('main-darker');
   }
 
   &__title {
@@ -75,10 +75,10 @@ const link = computed(() => {
   }
   &__content {
     font-family: $font-family-title;
-    color: var(--color-neutral-darker);
+    color: color('neutral-darker');
     font-size: 0.9em;
     a {
-      color: var(--color-main-darker);
+      color: color('main-darker');
       text-decoration: none;
       font-weight: 700;
       &:hover {
@@ -87,7 +87,7 @@ const link = computed(() => {
     }
   }
   &__link {
-    color: var(--color-neutral);
+    color: color('neutral');
     font-size: 1.5rem;
     font-weight: normal;
     a {

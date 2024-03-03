@@ -64,7 +64,7 @@ const availableLocales = computed(() => {
     display: inline-block;
     margin-bottom: 1rem;
     font-style: italic;
-    color: var(--color-neutral);
+    color: color('neutral');
   }
   &__items {
     margin: 0;
@@ -82,7 +82,7 @@ const availableLocales = computed(() => {
     align-items: center;
     overflow: hidden;
     &--current {
-      background-color: var(--color-main-light);
+      background-color: color('main-light');
       span {
         cursor: help;
       }
@@ -98,7 +98,7 @@ const availableLocales = computed(() => {
         width: 2px;
         height: 2px;
         display: block;
-        background-color: var(--color-main-light);
+        background-color: color('main-light');
         border-radius: 50%;
         position: absolute;
         top: 50%;
@@ -125,8 +125,8 @@ const availableLocales = computed(() => {
   }
   &__others a {
     display: block;
-    background-color: var(--color-main-lighter);
-    color: var(--color-main-darkest);
+    background-color: color('main-lighter');
+    color: color('main-darkest');
     border-radius: 50%;
     width: 20px;
     height: 20px;

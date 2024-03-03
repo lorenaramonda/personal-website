@@ -81,7 +81,7 @@ const jobTitle = computed(() => props.blok.job_title || store.lastJobTitle || 'F
 }
 .onepage-intro {
   @include container;
-  background-color: var(--color-background);
+  background-color: color('background');
   padding: 2rem;
   font-family: $font-family-text;
   position: relative;
@@ -104,7 +104,7 @@ const jobTitle = computed(() => props.blok.job_title || store.lastJobTitle || 'F
     position: absolute;
     bottom: 0;
     z-index: 0;
-    color: var(--color-main);
+    color: color('main');
     display: none;
   }
 
@@ -127,14 +127,14 @@ const jobTitle = computed(() => props.blok.job_title || store.lastJobTitle || 'F
       content: '';
       width: 40px;
       height: 1px;
-      background-color: var(--color-text);
+      background-color: color('text');
       @include mq($from: tablet) {
         width: 80px;
       }
     }
   }
   &__text {
-    color: var(--color-neutral-darkest);
+    color: color('neutral-darkest');
   }
 
   &__actions {

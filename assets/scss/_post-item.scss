@@ -4,7 +4,7 @@
   padding: 2rem 0;
   &--internal {
     .post-item__date svg {
-      stroke: var(--color-post-internal);
+      stroke: color('post-internal');
     }
   }
   &__title {
@@ -16,11 +16,11 @@
     display: flex;
     align-items: center;
     gap: 1rem;
-    color: var(--color-neutral-light);
+    color: color('neutral-light');
   }
   &__source {
     display: block;
-    color: var(--color-neutral-light);
+    color: color('neutral-light');
     display: flex;
     gap: 0.5rem;
     align-items: center;

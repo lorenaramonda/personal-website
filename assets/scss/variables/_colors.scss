@@ -1,3 +1,7 @@
+@function color($color, $opacity: 1) {
+  @return var(--color-#{$color});
+}
+
 $color-dark: #292828;
 $color-light: #ffffff;
 
@@ -12,6 +16,7 @@ $riptide-700: #1c6969;
 $riptide-800: #1b5454;
 $riptide-900: #1b4646;
 $riptide-950: #0a2729;
+$riptide-1000: #051415;
 $riptide-50-rgb: '242, 251, 250';
 $riptide-100-rgb: '210, 245, 240';
 $riptide-200-rgb: '165, 234, 226';
@@ -83,14 +88,14 @@ $palette-light-secondary-darker: $goldenrod-400;
 $palette-light-secondary-dark: $goldenrod-300;
 $palette-light-secondary-light: $goldenrod-100;
 $palette-light-secondary-lighter: $goldenrod-50;
-$palette-light-secondary-lightest: $goldenrod-50; // non usato
+$palette-light-secondary-lightest: $goldenrod-50; // not used
 $palette-light-neutral: $dusty-gray-500;
 $palette-light-neutral-darkest: $dusty-gray-800;
 $palette-light-neutral-darker: $dusty-gray-700;
 $palette-light-neutral-dark: $dusty-gray-600;
 $palette-light-neutral-light: $dusty-gray-400;
 $palette-light-neutral-lighter: $dusty-gray-300;
-$palette-light-neutral-lightest: $dusty-gray-200; // non usato
+$palette-light-neutral-lightest: $dusty-gray-200; // not used
 
 $palette-dark-main: $riptide-500;
 $palette-dark-main-darkest: $riptide-300;
@@ -103,13 +108,13 @@ $palette-dark-secondary: $riptide-900;
 $palette-dark-secondary-darkest: $riptide-200;
 $palette-dark-secondary-darker: $riptide-700;
 $palette-dark-secondary-dark: $riptide-800;
-$palette-dark-secondary-light: darken($riptide-950, 5);
+$palette-dark-secondary-light: $riptide-1000;
 $palette-dark-secondary-lighter: $riptide-900;
-$palette-dark-secondary-lightest: $riptide-950; // non usato
+$palette-dark-secondary-lightest: $riptide-950; // not used
 $palette-dark-neutral: $riptide-300;
 $palette-dark-neutral-darkest: $riptide-50;
 $palette-dark-neutral-darker: $riptide-100;
 $palette-dark-neutral-dark: $riptide-300;
 $palette-dark-neutral-light: $riptide-100;
 $palette-dark-neutral-lighter: $riptide-900;
-$palette-dark-neutral-lightest: $riptide-950; // non usato
+$palette-dark-neutral-lightest: $riptide-950; // not used

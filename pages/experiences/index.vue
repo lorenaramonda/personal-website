@@ -50,11 +50,11 @@ $setMetadata($getMetadataFromStory(page))
 <style lang="scss">
 .section-experiences {
   &__content {
-    background-color: var(--color-main-lightest);
+    background-color: color('main-lightest');
     display: grid;
     .section-title {
       margin: 3rem 0;
-      color: var(--color-main-darkest);
+      color: color('main-darkest');
       font-size: 2em;
     }
   }

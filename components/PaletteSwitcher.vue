@@ -47,9 +47,9 @@ onMounted(() => {
       outline: none;
     }
     + .palette-switcher__slider {
-      background-color: rgba(var(--color-background-rgb), 0.5);
+      background-color: rgb(color('background'), 0.5);
       user-select: none;
-      border: solid 1px var(--color-neutral-lighter);
+      border: solid 1px color('neutral-lighter');
       height: 1em;
       width: 2em;
       border-radius: 1em;
@@ -58,7 +58,7 @@ onMounted(() => {
       transition: all 0.2s;
       text-align: left;
       .palette-switcher__label {
-        color: var(--color-background);
+        color: color('background');
         display: flex;
         justify-content: center;
         align-items: center;
@@ -81,9 +81,9 @@ onMounted(() => {
     }
     &:checked {
       + .palette-switcher__slider {
-        border-color: var(--color-main-light);
+        border-color: color('main-light');
         .palette-switcher__label {
-          background-color: var(--color-main);
+          background-color: color('main');
           transform: translateX(100%) scale(1.5);
         }
       }

@@ -1,18 +1,20 @@
 @forward 'floating-vue/dist/style.css';
 
+@use '../variables/colors' as *;
+
 $opacity: 1;
 
 .v-popper--theme-tooltip .v-popper__inner {
-  color: var(--color-main-lightest);
+  color: color('main-lightest');
   padding: 5px 10px;
   opacity: $opacity;
   border-radius: 4px;
-  border: solid 1px var(--color-main-dark);
-  background-color: var(--color-main-dark);
+  border: solid 1px color('main-dark');
+  background-color: color('main-dark');
   font-size: 1.2rem;
   text-align: center;
 }
 .v-popper--theme-tooltip .v-popper__arrow-outer {
-  border-color: var(--color-main-dark);
+  border-color: color('main-dark');
   opacity: $opacity;
 }

@@ -64,7 +64,7 @@ function getLabel(val: string) {
   &__skill {
     line-height: 40px;
     padding: 0 1em;
-    border: solid 2px var(--color-main);
+    border: solid 2px color('main');
     border-radius: 20px;
     position: relative;
     overflow: hidden;
@@ -83,7 +83,7 @@ function getLabel(val: string) {
       display: block;
       height: 100%;
       width: 0;
-      background-color: var(--color-main);
+      background-color: color('main');
       transition: width linear 0.2s;
       position: absolute;
       top: 0;
@@ -108,7 +108,7 @@ function getLabel(val: string) {
         }
         &:hover {
           span {
-            color: var(--color-background);
+            color: color('background');
           }
           &::before {
             width: #{$i * 10%};

@@ -40,7 +40,7 @@ const tag = computed(() => (props.primary ? 'h1' : 'h2'))
       content: '';
       width: 30px;
       height: 1px;
-      background-color: var(--color-text);
+      background-color: color('text');
     }
   }
 }

@@ -76,7 +76,7 @@ function getEndDate(end: string, start: string) {
 
 <style lang="scss">
 .experience-card {
-  background-color: var(--color-background);
+  background-color: color('background');
   border-radius: 2rem;
   padding: 3rem;
 
@@ -87,7 +87,7 @@ function getEndDate(end: string, start: string) {
 
   &__duration {
     font-weight: 600;
-    color: var(--color-main-dark);
+    color: color('main-dark');
   }
 
   .skills-list__skills {

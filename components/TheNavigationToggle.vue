@@ -15,8 +15,8 @@ defineProps<{
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-background);
-  color: var(--color-main-darker);
+  background-color: color('background');
+  color: color('main-darker');
   width: $mobile-toggle-height;
   height: $mobile-toggle-height;
   border-radius: 0 0 15px 15px;
@@ -25,7 +25,7 @@ defineProps<{
   margin: 0;
   padding: 0;
   &--dark {
-    color: var(--color-text);
+    color: color('text');
   }
 
   @include mq($until: tablet) {
@@ -35,7 +35,7 @@ defineProps<{
     &::before {
       content: '';
       height: $mobile-toggle-height;
-      background-color: var(--color-background);
+      background-color: color('background');
       position: fixed;
       top: 0;
       right: 0;
@@ -57,17 +57,17 @@ defineProps<{
     border-radius: 50%;
     box-shadow: 0 4px 5px 1px rgba(var(--color-main-rgb), 0.2);
     cursor: pointer;
-    color: var(--color-main-light);
+    color: color('main-light');
 
     &:active {
-      color: var(--color-text);
+      color: color('text');
     }
     &:hover {
-      color: var(--color-main-darker);
+      color: color('main-darker');
     }
 
     &--dark {
-      color: var(--color-main-darker);
+      color: color('main-darker');
     }
   }
 }

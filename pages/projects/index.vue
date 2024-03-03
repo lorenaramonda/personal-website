@@ -51,7 +51,7 @@ $setMetadata($getMetadataFromStory(page))
 
 <style lang="scss">
 .section-projects {
-  background-color: var(--color-main-lightest);
+  background-color: color('main-lightest');
 
   &__content {
     padding-bottom: 2rem;
