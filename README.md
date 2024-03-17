@@ -29,8 +29,12 @@ Original Git Flow with some rules:
 
 Use [Yarn](https://yarnpkg.com/cli/install)
 
-## Upgrading
+## Upgrade Nuxt
 
-👉 https://nuxtjs.org/docs/get-started/upgrading/
+To upgrade Nuxt and all depencencies always run:
+
+```bash
+nuxi upgrade --force
+```
 
 Check Nuxt version: `npm view nuxt version`
