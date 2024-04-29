@@ -35,6 +35,8 @@ const page = await useAsyncStoryblok('experiences', getParams())
 
 const store = useStore()
 
+await useAsyncData('jobs', () => store.fetchJobs())
+
 const bloks = computed(() =>
   page.body.map((item: SbBlokData) => {
     if (item.component === 'ItemsList' && store.jobs?.length) item.items = store.jobs
