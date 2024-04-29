@@ -95,7 +95,7 @@ function getLabel(val: string) {
       font-size: 0.85em;
       font-weight: normal;
       border: 0;
-      background-color: rgba(var(--color-main-rgb), 0.2);
+      background-color: color('main', 0.2);
     }
     @for $i from 1 through 10 {
       &--#{$i} {
@@ -117,7 +117,7 @@ function getLabel(val: string) {
         &:active {
           &::before {
             width: 100%;
-            background-color: rgba(var(--color-main-rgb), 0.5);
+            background-color: color('main', 0.5);
           }
         }
       }

@@ -21,9 +21,9 @@ const props = defineProps<{
 }>()
 
 const bgColor = computed(() => {
-  if (props.blok.bg_color === 'main') return 'var(--color-main-dark)'
-  if (props.blok.bg_color === 'secondary') return 'var(--color-secondary)'
-  if (props.blok.bg_color === 'dark') return 'var(--color-text)'
+  if (props.blok.bg_color === 'main') return 'rgb(var(--color-main-dark))'
+  if (props.blok.bg_color === 'secondary') return 'rgb(var(--color-secondary))'
+  if (props.blok.bg_color === 'dark') return 'rgb(var(--color-text))'
   return 'transparent'
 })
 </script>

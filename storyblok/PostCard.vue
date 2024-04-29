@@ -155,8 +155,8 @@ const intro = computed(() => {
   &--list {
     display: grid;
     border-bottom: solid 1px color('border-navigation');
-    background-color: rgba(color('background-rgb'), 0.5);
-    border-color: rgba(color('background-rgb'), 0.5);
+    background-color: color('background', 0.5);
+    border-color: color('background', 0.5);
 
     @include mq($from: desktop) {
       &:hover {

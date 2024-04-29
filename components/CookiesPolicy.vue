@@ -60,7 +60,7 @@ onMounted(() => {
   z-index: 3;
   bottom: 0px;
   width: 100%;
-  box-shadow: 0 -2px 10px 1px rgba(var(--color-main-rgb), 0.8);
+  box-shadow: 0 -2px 10px 1px color('main', 0.8);
   @include mq($from: tablet) {
     right: 0;
     max-width: 300px;
@@ -95,15 +95,5 @@ onMounted(() => {
     background-color: color('main');
     border-bottom: solid 3px color('main-dark');
   }
-}
-
-.overlay {
-  background-color: rgba(black, 0.2);
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 2;
 }
 </style>

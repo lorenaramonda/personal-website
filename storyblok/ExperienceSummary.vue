@@ -143,7 +143,7 @@ defineProps<{
     color: color('neutral-darker');
 
     &::before {
-      background-color: rgba(var(--color-main-rgb), 0.1);
+      background-color: color('main', 0.1);
     }
   }
 

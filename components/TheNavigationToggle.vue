@@ -55,7 +55,7 @@ defineProps<{
     width: 5rem;
     height: 5rem;
     border-radius: 50%;
-    box-shadow: 0 4px 5px 1px rgba(var(--color-main-rgb), 0.2);
+    box-shadow: 0 4px 5px 1px color('main', 0.2);
     cursor: pointer;
     color: color('main-light');
 

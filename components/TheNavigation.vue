@@ -207,7 +207,7 @@ $mobile-height: 643px;
 
     &--open {
       transform: translateX(0);
-      box-shadow: 0 2px 3px 0px rgba(var(--color-text-rgb), 0.2);
+      box-shadow: 0 2px 3px 0px color('text', 0.2);
       background-color: color('background-navigation-mobile');
       color: color('text-navigation');
       .navigation__link {

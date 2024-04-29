@@ -1,6 +1,6 @@
 @forward 'floating-vue/dist/style.css';
 
-@use '../variables/colors' as *;
+@use '../variables' as *;
 
 $opacity: 1;
 

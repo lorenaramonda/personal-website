@@ -47,7 +47,7 @@ onMounted(() => {
       outline: none;
     }
     + .palette-switcher__slider {
-      background-color: rgb(color('background'), 0.5);
+      background-color: color('background', 0.5);
       user-select: none;
       border: solid 1px color('neutral-lighter');
       height: 1em;

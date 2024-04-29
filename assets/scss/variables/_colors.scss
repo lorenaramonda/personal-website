@@ -1,79 +1,84 @@
 @function color($color, $opacity: 1) {
-  @return var(--color-#{$color});
+  @if $opacity < 1 {
+    @return rgba(var(--color-#{$color}), #{$opacity});
+  } @else {
+    @return rgb(var(--color-#{$color}));
+  }
 }
 
-$color-dark: #292828;
-$color-light: #ffffff;
+$color-dark: 41, 40, 40;
+$color-light: '255, 255, 255';
 
-$riptide-50: #f2fbfa;
-$riptide-100: #d2f5f0;
-$riptide-200: #a5eae2;
-$riptide-300: #87ded7; // primary main
-$riptide-400: #43beb8;
-$riptide-500: #29a39e;
-$riptide-600: #1f8282;
-$riptide-700: #1c6969;
-$riptide-800: #1b5454;
-$riptide-900: #1b4646;
-$riptide-950: #0a2729;
-$riptide-1000: #051415;
-$riptide-50-rgb: '242, 251, 250';
-$riptide-100-rgb: '210, 245, 240';
-$riptide-200-rgb: '165, 234, 226';
-$riptide-300-rgb: '135, 222, 215';
-$riptide-400-rgb: '67, 190, 184';
-$riptide-500-rgb: '41, 163, 158';
-$riptide-600-rgb: '31, 130, 130';
-$riptide-700-rgb: '28, 105, 105';
-$riptide-800-rgb: '27, 84, 84';
-$riptide-900-rgb: '27, 70, 70';
-$riptide-950-rgb: '10, 39, 41';
+$riptide-50-hex: #f2fbfa;
+$riptide-100-hex: #d2f5f0;
+$riptide-200-hex: #a5eae2;
+$riptide-300-hex: #87ded7; // primary main
+$riptide-400-hex: #43beb8;
+$riptide-500-hex: #29a39e;
+$riptide-600-hex: #1f8282;
+$riptide-700-hex: #1c6969;
+$riptide-800-hex: #1b5454;
+$riptide-900-hex: #1b4646;
+$riptide-950-hex: #0a2729;
+$riptide-50: '242, 251, 250';
+$riptide-100: '210, 245, 240';
+$riptide-200: '165, 234, 226';
+$riptide-300: '135, 222, 215';
+$riptide-400: '67, 190, 184';
+$riptide-500: '41, 163, 158';
+$riptide-600: '31, 130, 130';
+$riptide-700: '28, 105, 105';
+$riptide-800: '27, 84, 84';
+$riptide-900: '27, 70, 70';
+$riptide-925: '20 52 52';
+$riptide-950: '10, 39, 41';
+$riptide-1000: '5, 20, 21';
 
-$goldenrod-50: #fff9eb;
-$goldenrod-100: #ffefc6;
-$goldenrod-200: #ffd875; // secondary main
-$goldenrod-300: #ffc64a;
-$goldenrod-400: #ffaf20;
-$goldenrod-500: #f98b07;
-$goldenrod-600: #dd6502;
-$goldenrod-700: #b74406;
-$goldenrod-800: #94340c;
-$goldenrod-900: #7a2b0d;
-$goldenrod-950: #461402;
-$goldenrod-50-rgb: '255, 249, 235';
-$goldenrod-100-rgb: '255, 239, 198';
-$goldenrod-200-rgb: '255, 216, 117';
-$goldenrod-300-rgb: '255, 198, 74';
-$goldenrod-400-rgb: '255, 175, 32';
-$goldenrod-500-rgb: '249, 139, 7';
-$goldenrod-600-rgb: '221, 101, 2';
-$goldenrod-700-rgb: '183, 68, 6';
-$goldenrod-800-rgb: '148, 52, 12';
-$goldenrod-900-rgb: '122, 43, 13';
-$goldenrod-950-rgb: '70, 20, 2';
+$goldenrod-50-hex: #fff9eb;
+$goldenrod-100-hex: #ffefc6;
+$goldenrod-200-hex: #ffd875; // secondary main
+$goldenrod-300-hex: #ffc64a;
+$goldenrod-400-hex: #ffaf20;
+$goldenrod-500-hex: #f98b07;
+$goldenrod-600-hex: #dd6502;
+$goldenrod-700-hex: #b74406;
+$goldenrod-800-hex: #94340c;
+$goldenrod-900-hex: #7a2b0d;
+$goldenrod-950-hex: #461402;
+$goldenrod-50: '255, 249, 235';
+$goldenrod-100: '255, 239, 198';
+$goldenrod-200: '255, 216, 117';
+$goldenrod-300: '255, 198, 74';
+$goldenrod-400: '255, 175, 32';
+$goldenrod-500: '249, 139, 7';
+$goldenrod-600: '221, 101, 2';
+$goldenrod-700: '183, 68, 6';
+$goldenrod-800: '148, 52, 12';
+$goldenrod-900: '122, 43, 13';
+$goldenrod-950: '70, 20, 2';
 
-$dusty-gray-50: #f8f8f8;
-$dusty-gray-100: #f2f1f1;
-$dusty-gray-200: #e7e4e5;
-$dusty-gray-300: #d3ced1;
-$dusty-gray-400: #bab2b6;
-$dusty-gray-500: #9a8f95; // neutral main
-$dusty-gray-600: #857980;
-$dusty-gray-700: #6d6369;
-$dusty-gray-800: #5d545a;
-$dusty-gray-900: #514a4f;
-$dusty-gray-950: #2b262a;
-$dusty-gray-50-rgb: '248, 248, 248';
-$dusty-gray-100-rgb: '242, 241, 241';
-$dusty-gray-200-rgb: '231, 228, 229';
-$dusty-gray-300-rgb: '211, 206, 209';
-$dusty-gray-400-rgb: '186, 178, 182';
-$dusty-gray-500-rgb: '154, 143, 149';
-$dusty-gray-600-rgb: '133, 121, 128';
-$dusty-gray-700-rgb: '109, 99, 105';
-$dusty-gray-800-rgb: '93, 84, 90';
-$dusty-gray-900-rgb: '81, 74, 79';
-$dusty-gray-950-rgb: '43, 38, 42';
+$dusty-gray-50-hex: #f8f8f8;
+$dusty-gray-100-hex: #f2f1f1;
+$dusty-gray-200-hex: #e7e4e5;
+$dusty-gray-300-hex: #d3ced1;
+$dusty-gray-400-hex: #bab2b6;
+$dusty-gray-500-hex: #9a8f95; // neutral main
+$dusty-gray-600-hex: #857980;
+$dusty-gray-700-hex: #6d6369;
+$dusty-gray-800-hex: #5d545a;
+$dusty-gray-900-hex: #514a4f;
+$dusty-gray-950-hex: #2b262a;
+$dusty-gray-50: '248, 248, 248';
+$dusty-gray-100: '242, 241, 241';
+$dusty-gray-200: '231, 228, 229';
+$dusty-gray-300: '211, 206, 209';
+$dusty-gray-400: '186, 178, 182';
+$dusty-gray-500: '154, 143, 149';
+$dusty-gray-600: '133, 121, 128';
+$dusty-gray-700: '109, 99, 105';
+$dusty-gray-800: '93, 84, 90';
+$dusty-gray-900: '81, 74, 79';
+$dusty-gray-950: '43, 38, 42';
 
 $palette-light-main: $riptide-300;
 $palette-light-main-darkest: $riptide-600;

@@ -1,7 +1,6 @@
 @use 'colors' as *;
 
 $light: (
-  color-main-rgb: $riptide-300-rgb,
   color-main: $palette-light-main,
   color-main-darkest: $palette-light-main-darkest,
   color-main-darker: $palette-light-main-darker,
@@ -24,8 +23,6 @@ $light: (
   color-neutral-lighter: $palette-light-neutral-lighter,
   color-neutral-lightest: $palette-light-neutral-lightest,
   color-background: $color-light,
-  color-background-rgb: '255, 255, 255',
-  color-text-rgb: '41, 40, 40',
   color-text: $color-dark,
   color-text-light: $dusty-gray-800,
   color-text-footer: $dusty-gray-700,
@@ -52,7 +49,6 @@ $light: (
 );
 
 $dark: (
-  color-main-rgb: $riptide-500-rgb,
   color-main: $palette-dark-main,
   color-main-darkest: $palette-dark-main-darkest,
   color-main-darker: $palette-dark-main-darker,
@@ -75,8 +71,6 @@ $dark: (
   color-neutral-darker: $palette-dark-neutral-darker,
   color-neutral-darkest: $palette-dark-neutral-darkest,
   color-background: $riptide-950,
-  color-background-rgb: $riptide-950-rgb,
-  color-text-rgb: '255, 255, 255',
   color-text: $color-light,
   color-text-light: $riptide-200,
   color-text-footer: $riptide-200,
@@ -92,7 +86,7 @@ $dark: (
   color-background-navigation: $riptide-800,
   color-background-navigation-mobile: $riptide-950,
   color-text-navigation: $color-light,
-  color-background-footer: darken($riptide-900, 5),
+  color-background-footer: $riptide-925,
   color-border-footer: $riptide-600,
   color-star-full: $riptide-300,
   color-star-empty: $riptide-800,
