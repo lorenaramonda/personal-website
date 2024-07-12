@@ -93,6 +93,7 @@ export default {
     toggleMenu: 'Toggle the navigation',
     credits: 'Credits',
     source: 'Source',
+    bookBy: '{book} by {writer}',
   },
   rate: {
     beginner: 'Beginner',

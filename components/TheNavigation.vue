@@ -110,7 +110,7 @@ $mobile-height: 643px;
   flex-direction: column;
   justify-content: space-between;
   padding: 1rem 1rem 0;
-  background-color: var(--color-background-navigation);
+  background-color: color('background-navigation');
 
   &__gohome {
     text-decoration: none;
@@ -118,7 +118,7 @@ $mobile-height: 643px;
 
   &__copyrights {
     text-align: center;
-    color: var(--color-text-footer);
+    color: color('text-footer');
     position: relative;
     a {
       color: currentColor;
@@ -149,7 +149,7 @@ $mobile-height: 643px;
       left: -10%;
       top: 1rem;
       z-index: 0;
-      background-color: var(--color-secondary);
+      background-color: color('secondary');
       opacity: 0;
       transition: all 0.3s ease-in-out;
     }
@@ -207,13 +207,13 @@ $mobile-height: 643px;
 
     &--open {
       transform: translateX(0);
-      box-shadow: 0 2px 3px 0px rgba(var(--color-text-rgb), 0.2);
-      background-color: var(--color-background-navigation-mobile);
-      color: var(--color-text-navigation);
+      box-shadow: 0 2px 3px 0px color('text', 0.2);
+      background-color: color('background-navigation-mobile');
+      color: color('text-navigation');
       .navigation__link {
-        color: var(--color-text-navigation);
+        color: color('text-navigation');
         &--active:before {
-          background-color: var(--color-secondary-darker);
+          background-color: color('secondary-darker');
         }
       }
       .profile-picture figcaption {
@@ -224,7 +224,7 @@ $mobile-height: 643px;
       }
       .socials-links__link {
         background-color: transparent;
-        color: var(--color-text-navigation);
+        color: color('text-navigation');
       }
       .navigation__bg-image {
         display: none;

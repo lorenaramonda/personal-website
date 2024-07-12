@@ -52,7 +52,7 @@ function toggleHover(value: boolean) {
     width: 100%;
     overflow: hidden;
     transition: all 0.3s ease-in-out;
-    background-color: var(--color-main-darker);
+    background-color: color('main-darker');
 
     @include mq($from: desktop) {
       max-width: 800px;
@@ -83,13 +83,13 @@ function toggleHover(value: boolean) {
   }
   &__details {
     padding: 2rem;
-    background-color: var(--color-background);
+    background-color: color('background');
     @include mq($until: tablet) {
       border-radius: 0 0 1rem 1rem;
     }
     @include mq($from: desktop) {
       padding: 3rem;
-      background: var(--color-background);
+      background: color('background');
       position: absolute;
       bottom: 0;
       right: 0;
@@ -107,11 +107,11 @@ function toggleHover(value: boolean) {
     display: table;
     font-size: 1.2rem;
     padding: 0.2rem 0.7rem;
-    color: var(--color-background);
-    background-color: var(--color-main-darker);
+    color: color('background');
+    background-color: color('main-darker');
 
     &--active {
-      background-color: var(--color-tag-active);
+      background-color: color('tag-active');
     }
   }
   &__title {
@@ -121,7 +121,7 @@ function toggleHover(value: boolean) {
     }
   }
   &__duration {
-    color: var(--color-neutral);
+    color: color('neutral');
   }
   &__content {
     line-height: 1.5;

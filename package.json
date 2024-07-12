@@ -1,7 +1,7 @@
 {
   "name": "@lorenaramonda/personal-website",
   "private": true,
-  "version": "2.5.5",
+  "version": "2.6.0",
   "scripts": {
     "build": "nuxt build",
     "dev-http": "nuxt dev",
@@ -19,7 +19,7 @@
   "devDependencies": {
     "@nuxt/image": "^1.0.0",
     "@nuxt/image-edge": "^1.2.0-28417792.5fb7d0e",
-    "@nuxt/test-utils": "^3.5.3",
+    "@nuxt/test-utils": "^3.13.1",
     "@nuxtjs/color-mode": "^3.3.2",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@nuxtjs/google-fonts": "^3.0.2",
@@ -36,9 +36,9 @@
     "eslint": "^8.49.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
-    "floating-vue": "^2.0.0-beta.20",
+    "floating-vue": "^5.0.0",
     "happy-dom": "6.0.4",
-    "nuxt": "^3.7.0",
+    "nuxt": "^3.11.0",
     "nuxt-gtag": "^0.5.7",
     "nuxt-lazy-load": "^3.0.4",
     "nuxt-lucide-icons": "^1.0.3",
@@ -48,5 +48,6 @@
     "sass-mq": "^6.0.0",
     "typescript": "^5.2.2",
     "vitest": "^0.32.0"
-  }
+  },
+  "packageManager": "yarn@4.1.1"
 }

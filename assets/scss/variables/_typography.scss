@@ -1,3 +1,5 @@
+@use 'colors' as *;
+
 $base-font-size: 10px;
 $base-font-family: sans-serif;
 $font-family-title: 'Source Serif 4', Trebuchet, sans-serif;
@@ -8,7 +10,7 @@ $font-family-monospace: 'Source Code Pro', monospace;
 
 %text-link {
   text-decoration: none;
-  border-bottom: dashed 1px var(--color-neutral-light);
+  border-bottom: dashed 1px color('neutral-light');
 }
 
 %item-title {

@@ -108,15 +108,15 @@ if (content) $setMetadata({ ...$getMetadataFromStory(content.value), ogType: !is
 <style lang="scss">
 .section-publications {
   &--primary {
-    background-color: var(--color-main-lighter);
+    background-color: color('main-lighter');
     .pagination {
-      background-color: var(--color-main-lighter);
+      background-color: color('main-lighter');
     }
   }
   &--secondary {
-    background-color: var(--color-secondary-light);
+    background-color: color('secondary-light');
     .pagination {
-      background-color: var(--color-secondary-light);
+      background-color: color('secondary-light');
     }
   }
 }

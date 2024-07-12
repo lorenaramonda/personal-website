@@ -40,7 +40,7 @@ defineProps<{
   margin-bottom: 2rem;
   position: sticky;
   top: 4rem;
-  background-color: var(--color-background);
+  background-color: color('background');
   padding: 1rem 0;
 
   &__layout {
@@ -56,7 +56,7 @@ defineProps<{
     opacity: 0.2;
     margin: 0;
     padding: 0;
-    color: var(--color-text);
+    color: color('text');
 
     &--active {
       opacity: 1;

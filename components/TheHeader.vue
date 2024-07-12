@@ -17,8 +17,8 @@
   top: 0;
   width: 100%;
   padding: $gutter 0;
-  background-color: var(--color-background);
-  background-color: var(--color-main-lightest);
+  background-color: color('background');
+  background-color: color('main-lightest');
   height: 90px;
 
   .row {

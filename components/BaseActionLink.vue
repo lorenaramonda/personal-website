@@ -33,21 +33,21 @@ const cssClasses = computed(() => (props.type ? `action-link--${props.type}` : '
 .action-link {
   @extend %button;
   background-color: transparent;
-  color: var(--color-text);
+  color: color('text');
 
   &--link {
     padding: 0;
     transition: all 0.2s ease-in-out;
     svg {
       width: 16px;
-      color: var(--color-main);
+      color: color('main');
       transition: all 0.2s ease-in-out;
     }
     &:hover {
       svg {
         width: 24px;
         transform: translateX(20%);
-        color: var(--color-main-dark);
+        color: color('main-dark');
       }
     }
   }
@@ -55,17 +55,17 @@ const cssClasses = computed(() => (props.type ? `action-link--${props.type}` : '
   &--primary,
   &--ghost {
     &:hover {
-      background-color: var(--color-main-lightest);
+      background-color: color('main-lightest');
     }
   }
   &--primary {
-    background-color: var(--color-background-button-primary);
-    color: var(--color-background);
+    background-color: color('background-button-primary');
+    color: color('background');
     &:hover {
-      background-color: var(--color-background-button-primary-hover);
+      background-color: color('background-button-primary-hover');
     }
     &:active {
-      background-color: var(--color-background-button-primary-active);
+      background-color: color('background-button-primary-active');
     }
   }
 }

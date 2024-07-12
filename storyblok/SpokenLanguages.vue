@@ -31,7 +31,7 @@ defineProps<{
 
   small {
     display: block;
-    color: var(--color-text-light);
+    color: color('text-light');
     line-height: 2;
     font-size: 0.8em;
   }

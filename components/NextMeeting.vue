@@ -63,7 +63,7 @@ const isTodayConf = computed(() => {
   position: relative;
   &--today {
     padding: 1em;
-    border: dashed 1px var(--color-main);
+    border: dashed 1px color('main');
     margin: 1em 0;
   }
   p {
@@ -72,7 +72,7 @@ const isTodayConf = computed(() => {
   svg {
     max-height: 80px;
     width: 100px;
-    fill: var(--color-main);
+    fill: color('main');
     font-size: 6em;
     position: absolute;
     top: 0.2em;

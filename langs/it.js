@@ -93,6 +93,7 @@ export default {
     toggleMenu: 'Mostra/Nascondi la navigazione',
     credits: 'Crediti',
     source: 'Fonte',
+    bookBy: '{book} di {writer}',
   },
   rate: {
     beginner: 'Conoscenza base',

@@ -132,15 +132,15 @@ const intro = computed(() => {
   }
 
   &--grid {
-    background-color: var(--color-background);
-    border-color: var(--color-background);
+    background-color: color('background');
+    border-color: color('background');
     border-radius: 2rem;
     grid-template-rows: repeat(3, min-content) minmax(min-content, 1fr);
 
     &.post-card--highlighted {
       display: grid;
-      background-color: rgba(var(--color-background-rgb), 0.2);
-      border-color: var(--color-secondary-darker);
+      background-color: color('background', 0.2);
+      border-color: color('secondary-darker');
       .post-card__image {
         height: 220px;
         img {
@@ -154,13 +154,13 @@ const intro = computed(() => {
 
   &--list {
     display: grid;
-    border-bottom: solid 1px var(--color-border-navigation);
-    background-color: rgba(var(--color-background-rgb), 0.5);
-    border-color: rgba(var(--color-background-rgb), 0.5);
+    border-bottom: solid 1px color('border-navigation');
+    background-color: color('background', 0.5);
+    border-color: color('background', 0.5);
 
     @include mq($from: desktop) {
       &:hover {
-        background-color: var(--color-background);
+        background-color: color('background');
       }
     }
 

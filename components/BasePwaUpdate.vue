@@ -38,7 +38,7 @@ onMounted(() => {
   z-index: 10;
   width: 100%;
   padding: 1em 0;
-  background-color: var(--color-secondary);
+  background-color: color('secondary');
   text-align: center;
 
   &__image {
@@ -58,14 +58,14 @@ onMounted(() => {
     font-size: 0.8em;
 
     strong {
-      border-bottom: dashed 1px var(--color-text);
+      border-bottom: dashed 1px color('text');
     }
   }
 
   &__button {
     @extend %button;
-    background-color: var(--color-text);
-    color: var(--color-background);
+    background-color: color('text');
+    color: color('background');
   }
 
   @include mq($from: tablet) {

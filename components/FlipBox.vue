@@ -18,7 +18,7 @@
   perspective: 1000px;
   border-radius: 100%;
   padding: 5px;
-  border: dashed 2px var(--color-main);
+  border: dashed 2px color('main');
   margin: 0 auto;
 }
 

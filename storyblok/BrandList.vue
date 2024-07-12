@@ -27,7 +27,7 @@ const imgHeight = 50
   }
 
   &__item {
-    background-color: var(--color-background-brand);
+    background-color: color('background-brand');
     width: 100px;
     height: 100px;
     border-radius: 50%;

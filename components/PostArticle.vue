@@ -62,7 +62,7 @@ defineProps<{
           display: inline-block;
           width: 1rem;
           height: 1rem;
-          background-color: var(--color-secondary-darker);
+          background-color: color('secondary-darker');
           border-radius: 50%;
           left: 0;
           position: absolute;
@@ -76,10 +76,16 @@ defineProps<{
       font-weight: 500;
       line-height: 1.2;
     }
+    h3 {
+      font-size: 1.6em;
+      font-weight: 500;
+      line-height: 1.2;
+      color: color('neutral');
+    }
     a {
       text-decoration: none;
       font-weight: normal;
-      border-bottom: dashed 3px var(--color-text-link);
+      border-bottom: dashed 3px color('text-link');
       &:hover {
         border-style: solid;
       }
@@ -92,7 +98,7 @@ defineProps<{
       font-style: italic;
       font-size: 1.2em;
       position: relative;
-      color: var(--color-secondary-darkest);
+      color: color('secondary-darkest');
       display: grid;
       grid-template-rows: auto 7rem;
       margin: 1.2em 0;
@@ -100,7 +106,7 @@ defineProps<{
       &:after {
         content: '”';
         font-size: 5em;
-        color: var(--color-secondary-lighter);
+        color: color('secondary-lighter');
         line-height: 1;
         font-style: normal;
         font-weight: bold;
@@ -120,12 +126,12 @@ defineProps<{
   &__author {
     font-family: $font-family-special;
     font-size: 3em;
-    color: var(--color-neutral);
+    color: color('neutral');
     display: block;
   }
 
   .post-item__date {
-    color: var(--color-text);
+    color: color('text');
   }
 }
 </style>

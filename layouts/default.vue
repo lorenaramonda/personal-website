@@ -67,7 +67,7 @@ onMounted(() => {
     }
     .navigation {
       grid-area: navigation;
-      border-right: solid 1px var(--color-border-navigation);
+      border-right: solid 1px color('border-navigation');
       padding-top: 3rem;
     }
 

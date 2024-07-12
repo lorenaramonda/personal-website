@@ -35,6 +35,8 @@ const page = await useAsyncStoryblok('experiences', getParams())
 
 const store = useStore()
 
+await useAsyncData('jobs', () => store.fetchJobs())
+
 const bloks = computed(() =>
   page.body.map((item: SbBlokData) => {
     if (item.component === 'ItemsList' && store.jobs?.length) item.items = store.jobs
@@ -50,11 +52,11 @@ $setMetadata($getMetadataFromStory(page))
 <style lang="scss">
 .section-experiences {
   &__content {
-    background-color: var(--color-main-lightest);
+    background-color: color('main-lightest');
     display: grid;
     .section-title {
       margin: 3rem 0;
-      color: var(--color-main-darkest);
+      color: color('main-darkest');
       font-size: 2em;
     }
   }

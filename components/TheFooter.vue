@@ -20,12 +20,12 @@
 
 <style lang="scss">
 .footer {
-  border-top: 1px solid var(--color-border-footer);
-  background-color: var(--color-background-footer);
+  border-top: 1px solid color('border-footer');
+  background-color: color('background-footer');
   padding-top: 1.2em;
   padding-bottom: 1.2em;
   line-height: normal;
-  color: var(--color-main-dark);
+  color: color('main-dark');
   position: relative;
 
   .lang {
@@ -38,19 +38,19 @@
     margin: 0;
     padding: 0;
     a {
-      color: var(--color-main-dark);
+      color: color('main-dark');
       text-decoration: none;
-      border-bottom: dashed 1px var(--color-main);
+      border-bottom: dashed 1px color('main');
       &.nibbler {
         border: none;
       }
     }
   }
   small {
-    color: var(--color-text-footer);
+    color: color('text-footer');
   }
   .iubenda-white {
-    color: var(--color-text-footer);
+    color: color('text-footer');
     font-size: 0.75em;
     margin: 1em auto;
     text-decoration: none;

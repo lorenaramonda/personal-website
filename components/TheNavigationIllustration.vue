@@ -401,13 +401,13 @@
   }
 
   .s1 {
-    fill: var(--color-main-light);
+    fill: color('main-light');
   }
   .s2 {
-    fill: var(--color-main-lighter);
+    fill: color('main-lighter');
   }
   .s3 {
-    fill: var(--color-main-lightest);
+    fill: color('main-lightest');
   }
   .s4 {
     fill: #d1d1d1;
@@ -419,7 +419,7 @@
     fill: #ffe0b2;
   }
   .s7 {
-    fill: var(--color-neutral-darkest);
+    fill: color('neutral-darkest');
   }
   .s8 {
     fill: #bdbdbd;
@@ -428,7 +428,7 @@
     fill: #b0b0b0;
   }
   .s10 {
-    fill: var(--color-neutral-darkest);
+    fill: color('neutral-darkest');
   }
   .s11 {
     fill: #e0e1e1;
@@ -461,25 +461,25 @@
     fill: #8b5e3c;
   }
   .s22 {
-    fill: var(--color-main-darkest);
+    fill: color('main-darkest');
   }
   .s23 {
-    fill: var(--color-main-darker);
+    fill: color('main-darker');
   }
   .s24 {
     fill: #e5c08f;
   }
   .s25 {
-    fill: var(--color-neutral);
+    fill: color('neutral');
   }
   .s26 {
-    fill: var(--color-neutral-dark);
+    fill: color('neutral-dark');
   }
   .s27 {
-    fill: var(--color-neutral-darkest);
+    fill: color('neutral-darkest');
   }
   .s28 {
-    fill: var(--color-neutral-light);
+    fill: color('neutral-light');
   }
 }
 </style>
