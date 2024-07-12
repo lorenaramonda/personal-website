@@ -1,4 +1,4 @@
-image: node:current
+image: node:lts
 
 variables:
   NODE_ENV: production
@@ -6,7 +6,9 @@ variables:
 
 default:
   before_script:
-    - yarn install --ignore-scripts # ignoro il post install che chiama nuxt e da errore not found
+    - corepack enable # install Yarn 4
+    - yarn set version stable
+    - yarn
 
 cache:
   paths:
