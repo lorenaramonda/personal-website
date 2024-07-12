@@ -88,6 +88,7 @@ export default {
     toggleMenu: 'Mostrar/ocultar navegación',
     credits: 'Créditos',
     source: 'Fuente',
+    bookBy: '{book} de {writer}',
   },
   rate: {
     beginner: 'Conocimiento básico',

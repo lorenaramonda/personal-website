@@ -76,6 +76,12 @@ defineProps<{
       font-weight: 500;
       line-height: 1.2;
     }
+    h3 {
+      font-size: 1.6em;
+      font-weight: 500;
+      line-height: 1.2;
+      color: color('neutral');
+    }
     a {
       text-decoration: none;
       font-weight: normal;
