@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file. (http://keepachangelog.com/)
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.6.0] - 2024-07-12
+
+- Upgrade to Nuxt 3.9
+- Refactor colors using a function
+- Create a book list component
+
 ## [2.5.5] - 2024-02-21
 
 - Fixed sitemap links
