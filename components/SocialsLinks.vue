@@ -38,18 +38,6 @@
           <LucideLinkedin aria-label="LinkedIn" />
         </a>
       </li>
-      <li class="socials-links__item socials-links__item--sk">
-        <a
-          v-tooltip="$t('social.skype')"
-          class="socials-links__link"
-          href="skype:lorena.ramonda?call"
-          target="_blank"
-          rel="noopener"
-          :title="$t('social.skype')"
-        >
-          <LucidePhone aria-label="Skype" />
-        </a>
-      </li>
     </ul>
   </div>
 </template>
