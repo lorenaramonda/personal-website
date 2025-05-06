@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file. (http://keepachangelog.com/)
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.7.0] - 2025-05-06
+
+- Remove Skype link
+
 ## [2.6.0] - 2024-07-12
 
 - Upgrade to Nuxt 3.9
