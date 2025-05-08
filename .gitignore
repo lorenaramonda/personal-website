@@ -15,5 +15,3 @@ coverage
 
 # Yarn
 .pnp.*
-.yarn/*
-!.yarn/releases

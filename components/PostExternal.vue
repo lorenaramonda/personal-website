@@ -26,5 +26,5 @@ defineProps<{
 </script>
 
 <style lang="scss">
-@import 'assets/scss/post-item';
+@use 'assets/scss/post-item';
 </style>
