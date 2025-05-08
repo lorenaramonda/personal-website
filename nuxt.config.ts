@@ -84,24 +84,23 @@ export default defineNuxtConfig({
       {
         name: 'Italiano',
         code: 'it',
-        iso: 'it-IT',
+        language: 'it-IT',
         file: 'it.js',
       },
       {
         name: 'English',
         code: 'en',
-        iso: 'en-US',
+        language: 'en-US',
         file: 'en.js',
       },
       {
         name: 'Español',
         code: 'es',
-        iso: 'es-ES',
+        language: 'es-ES',
         file: 'es.js',
       },
     ],
     lazy: false,
-    langDir: 'langs/',
     // Doc: https://v8.i18n.nuxtjs.org/guide/browser-language-detection
     detectBrowserLanguage: false,
   },
@@ -190,6 +189,7 @@ export default defineNuxtConfig({
     payloadExtraction: false,
   },
   nitro: {
+    preset: 'netlify-static',
     prerender: {
       crawlLinks: true,
     },

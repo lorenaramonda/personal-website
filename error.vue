@@ -44,5 +44,5 @@ useHead({
 </script>
 
 <style lang="scss">
-@import 'assets/scss/error';
+@use 'assets/scss/error';
 </style>
