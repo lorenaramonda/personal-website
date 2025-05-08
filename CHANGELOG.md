@@ -3,15 +3,23 @@
 All notable changes to this project will be documented in this file. (http://keepachangelog.com/)
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.7.1] - 2025-05-08
+
+- Upgraded Yarn to 4.9.1
+- Moved sass-mq to local modules to fix import deprecations
+- Upgraded I18n module to fix import errors (https://i18n.nuxtjs.org/docs/guide/migrating#upgrading-from-nuxtjsi18n-v8x-to-v9x)
+- Upgraded Nuxt to 3.17.2
+- Fixed Netlify build
+
 ## [2.7.0] - 2025-05-06
 
-- Remove Skype link
+- Removed Skype link
 
 ## [2.6.0] - 2024-07-12
 
-- Upgrade to Nuxt 3.9
-- Refactor colors using a function
-- Create a book list component
+- Upgraded to Nuxt 3.9
+- Refactored colors using a function
+- Created a book list component
 
 ## [2.5.5] - 2024-02-21
 
