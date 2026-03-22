@@ -1,5 +1,5 @@
 <template>
-  <figure class="profile-picture">
+  <figure :class="$style.profilePicture">
     <FlipBox @mouseenter="toggleTitle(true)" @mouseleave="toggleTitle(false)">
       <template #front>
         <img src="~/assets/images/lorena-ramonda_400x400.jpg" width="400" height="400" alt="Lorena Ramonda" itemprop="image" />
@@ -8,10 +8,10 @@
         <img src="~/assets/images/rocket.png" width="512" height="512" alt="Logo The Rocket Dev" />
       </template>
     </FlipBox>
-    <div class="profile-picture__title" :class="{ 'profile-picture__title--highlighted': highlightTitle }">
+    <figcaption :class="[$style.profilePictureTitle, { [$style.profilePictureTitleHighlighted]: highlightTitle }]">
       <span>the rocket dev</span>
-      <figcaption itemprop="name"><span itemprop="givenName">Lorena</span> <span itemprop="familyName">Ramonda</span></figcaption>
-    </div>
+      <div :class="$style.pictureCaption" itemprop="name"><span itemprop="givenName">Lorena</span> <span itemprop="familyName">Ramonda</span></div>
+    </figcaption>
   </figure>
 </template>
 
@@ -23,49 +23,49 @@ function toggleTitle(shouldShow?: boolean) {
 }
 </script>
 
-<style lang="scss">
-.profile-picture {
+<style lang="scss" module>
+.profilePicture {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   margin: 0 auto;
+}
 
-  figcaption {
-    font-weight: bold;
-    font-size: 2rem;
-    color: color('text-logo');
-    font-family: $font-family-text;
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    white-space: nowrap;
+.pictureCaption {
+  font-weight: bold;
+  font-size: 2rem;
+  color: color('text-logo');
+  font-family: $font-family-text;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+
+.profilePictureTitle {
+  font-family: $font-family-special;
+  color: color('neutral-lighter');
+  font-size: 6rem;
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  line-height: 0.8;
+  text-align: center;
+  span {
+    transition: all 0.8s ease-in-out;
   }
-
-  &__title {
-    font-family: $font-family-special;
-    color: color('neutral-lighter');
-    font-size: 6rem;
-    position: relative;
-    display: block;
-    margin: 0 auto;
-    line-height: 0.8;
-    text-align: center;
-    span {
-      transition: all 0.8s ease-in-out;
-    }
-    figcaption {
-      transition: all 0.4s ease-in-out;
-    }
-    &--highlighted {
-      span {
-        color: color('main');
-      }
-      figcaption {
-        opacity: 0;
-        color: color('background');
-      }
-    }
+  .pictureCaption {
+    transition: all 0.4s ease-in-out;
+  }
+}
+.profilePictureTitleHighlighted {
+  span {
+    color: color('main');
+  }
+  .pictureCaption {
+    opacity: 0;
+    color: color('background');
   }
 }
 </style>
