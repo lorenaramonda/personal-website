@@ -13,8 +13,8 @@
     "test": "vitest --dom --coverage",
     "lint:js": "eslint --ext \".ts,.vue\" --ignore-path .gitignore .",
     "lint:prettier": "prettier --check .",
-    "lint": "yarn lint:js && yarn lint:prettier",
-    "lintfix": "prettier --write --list-different . && yarn lint:js --fix"
+    "lint": "pnpm lint:js && pnpm lint:prettier",
+    "lintfix": "prettier --write --list-different . && pnpm lint:js --fix"
   },
   "devDependencies": {
     "@nuxt/image": "^1.0.0",
@@ -29,7 +29,7 @@
     "@storyblok/nuxt": "^5.4.4",
     "@types/node": "^18",
     "@typescript-eslint/parser": "^6.7.0",
-    "@vite-pwa/nuxt": "^0.4.0",
+    "@vite-pwa/nuxt": "^1.1.1",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vitest/coverage-istanbul": "^0.32.0",
     "@vue/test-utils": "^2.3.2",
@@ -49,5 +49,5 @@
     "typescript": "^5.2.2",
     "vitest": "^0.32.0"
   },
-  "packageManager": "yarn@4.9.1"
+  "packageManager": "pnpm@10.9.0"
 }

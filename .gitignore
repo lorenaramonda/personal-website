@@ -12,6 +12,3 @@ coverage
 
 # Local Netlify folder
 .netlify
-
-# Yarn
-.pnp.*
