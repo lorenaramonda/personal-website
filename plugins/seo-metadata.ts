@@ -79,7 +79,6 @@ export default defineNuxtPlugin(() => {
         }
         if (image?.alt) metadata.ogImageAlt = image.alt
 
-        useServerSeoMeta(metadata)
         useSeoMeta(metadata)
       },
     },
