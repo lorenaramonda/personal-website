@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest'
 import { getDatesDiff, getDurationInYears, getDurationInMonth } from '~/helpers'
 
 describe('getDatesDiff', () => {
@@ -28,16 +29,16 @@ describe('getDurationInYears', () => {
   })
 
   it('should return 0 for empty startDate', () => {
-    expect(getDurationInYears('')).toBe(0)
+    expect(getDurationInYears('', '2024-06-01')).toBe(0)
   })
 })
 
 describe('getDurationInMonth', () => {
   it('should return correct number of months between two dates', () => {
-    expect(getDurationInMonth('2025-06-01', '2025-01-01')).toBe(4)
+    expect(getDurationInMonth('2025-01-01', '2025-06-01')).toBe(4)
   })
 
   it('should return 0 for empty startDate', () => {
-    expect(getDurationInMonth('2025-01-01', '')).toBe(0)
+    expect(getDurationInMonth('', '2024-06-01')).toBe(0)
   })
 })

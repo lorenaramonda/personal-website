@@ -1,3 +1,5 @@
+import { describe, it, expect } from 'vitest'
+
 // rateLabel is defined inside a Nuxt plugin, so we extract the logic for testing
 const rateLabel = (rate: number): string => {
   switch (rate) {

@@ -16,7 +16,7 @@ export const getDurationInYears = (startDate: string, endDate: string = '') => {
   })
 }
 
-export const getDurationInMonth = (endDate: string, startDate: string) => {
+export const getDurationInMonth = (startDate: string, endDate: string = '') => {
   return getDatesDiff({
     startDate,
     endDate,
