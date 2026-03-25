@@ -58,7 +58,7 @@ export default defineNuxtPlugin(() => {
           description: fallbackDescription.value,
           ogType,
           ogTitle: title,
-          ogUrl: `https://lorena.ramonda.me${fullPath}`,
+          ogUrl: `${useRequestURL().origin}${fullPath}`,
           ogSiteName: 'Lorena Ramonda',
           twitterCard: 'summary',
           twitterTitle: title,
