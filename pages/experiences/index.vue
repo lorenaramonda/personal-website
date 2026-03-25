@@ -35,7 +35,7 @@ const page = await useAsyncStoryblok('experiences', getParams())
 
 const store = useStore()
 
-await useAsyncData('jobs', () => store.fetchJobs())
+await store.fetchJobs()
 
 const bloks = computed(() =>
   page.body.map((item: SbBlokData) => {

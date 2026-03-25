@@ -39,17 +39,21 @@ const slugParams = computed(() => {
   return [params.slug].flat().join('/')
 })
 
-const data = await storyblokApi
-  .get(`cdn/stories/hobbies/${slugParams.value}`, {
-    ...getParams(),
-    resolve_relations: 'HobbiesList.items',
-  })
-  .then((response) => response.data)
-  .catch(() => null)
+const { data } = await useAsyncData(`hobby-${slugParams.value}`, () =>
+  storyblokApi
+    .get(`cdn/stories/hobbies/${slugParams.value}`, {
+      ...getParams(),
+      resolve_relations: 'HobbiesList.items',
+    })
+    .then((response) => response.data)
+    .catch(() => null),
+)
 
-page.value = data.story
+if (data.value) {
+  page.value = data.value.story
+}
 
-if (!page) {
+if (!page.value) {
   throw createError({
     statusCode: 404,
   })
@@ -65,11 +69,11 @@ const breadcrumbs = computed(() => [
 
 const bloks = computed(() => {
   if (!content.value.body) return []
-  return content.value.body.map((item: SbBlokData) => {
+  return content.value.body.map((item) => {
     if (item.component === 'HobbiesList') {
       return {
         ...item,
-        items: Array.isArray(item.items) ? item.items.map((story: ISbStoryData) => ({ ...story.content, full_slug: story.full_slug })) : [],
+        items: Array.isArray(item.items) ? item.items.map((story) => ({ ...story.content, full_slug: story.full_slug })) : [],
       }
     }
 

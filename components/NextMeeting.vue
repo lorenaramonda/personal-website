@@ -42,7 +42,7 @@ const storiesParams = {
 
 const storyblokApi = useStoryblokApi()
 
-const { data: meetingsStories } = await useAsyncData(async () => await storyblokApi.get(`cdn/stories`, storiesParams), {
+const { data: meetingsStories } = await useAsyncData('next-meeting', () => storyblokApi.get(`cdn/stories`, storiesParams), {
   transform: (value) =>
     value.data.stories.sort((a, b) => {
       return new Date(a.content.date) - new Date(b.content.date)

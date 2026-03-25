@@ -57,7 +57,7 @@ function getMonth(date) {
   })
 }
 
-const { data: meetingsStories } = await useAsyncData(async () => await storyblokApi.get(`cdn/stories`, storiesParams), {
+const { data: meetingsStories } = await useAsyncData('agenda-meetings', () => storyblokApi.get(`cdn/stories`, storiesParams), {
   transform: (value) =>
     value.data.stories.sort((a, b) => {
       return new Date(a.content.date.split(' ')[0]) - new Date(b.content.date.split(' ')[0])
