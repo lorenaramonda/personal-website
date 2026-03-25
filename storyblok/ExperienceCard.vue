@@ -64,6 +64,7 @@ function getEndDate(end: string, start: string) {
     if (props.blok.show_duration) {
       return ` (${t('misc.months', getDurationInMonth(start, end))})`
     }
+    return `-${endDate.getFullYear()}`
   } else {
     // ... otherwise returns years worked
     const duration = props.blok.show_duration ? ` (${t('misc.years', yearsWorked)})` : ''

@@ -17,11 +17,8 @@ const { $config } = useNuxtApp()
 
 const shouldShowWarning = ref(false)
 
-const cookieAccepted = useCookie('gtm-consent', {
+const cookieConsent = useCookie('gtm-consent', {
   maxAge: 60 * 60 * 24 * 365,
-})
-const cookieDenied = useCookie('gtm-consent', {
-  maxAge: 60 * 60 * 24,
 })
 
 const privacyLink = computed(() => {
@@ -30,12 +27,12 @@ const privacyLink = computed(() => {
 
 function acceptTracking() {
   useGtagConsent(true)
-  cookieAccepted.value = '1'
+  cookieConsent.value = '1'
   shouldShowWarning.value = false
 }
 
 function refuseTracking() {
-  cookieDenied.value = '0'
+  cookieConsent.value = '0'
   shouldShowWarning.value = false
 }
 
@@ -45,10 +42,10 @@ const showWarning = computed(() => {
 })
 
 onMounted(() => {
-  if (cookieAccepted.value === undefined) {
+  if (cookieConsent.value === undefined) {
     shouldShowWarning.value = true
   } else {
-    if (cookieAccepted.value) useGtagConsent(true)
+    if (cookieConsent.value === '1') useGtagConsent(true)
     shouldShowWarning.value = false
   }
 })

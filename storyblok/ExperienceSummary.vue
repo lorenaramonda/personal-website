@@ -5,7 +5,7 @@
     </div>
     <div class="experience-summary__content">
       <LongText :blok="blok" />
-      <p class="contact-info">
+      <div class="contact-info">
         <ClientOnly>
           <ContactAge class="contact-info__item" />
         </ClientOnly>
@@ -13,7 +13,7 @@
         <ClientOnly>
           <ContactEmail class="contact-info__item" />
         </ClientOnly>
-      </p>
+      </div>
     </div>
 
     <div v-if="yearsOfExperience !== '0' && yearsOfRemote" class="badges">

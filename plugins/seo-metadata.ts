@@ -57,11 +57,11 @@ export default defineNuxtPlugin(() => {
           title: title || fallbackTitle.value,
           description: fallbackDescription.value,
           ogType,
-          ogTitle: title,
+          ogTitle: title || fallbackTitle.value,
           ogUrl: `${useRequestURL().origin}${fullPath}`,
           ogSiteName: 'Lorena Ramonda',
           twitterCard: 'summary',
-          twitterTitle: title,
+          twitterTitle: title || fallbackTitle.value,
           twitterCreator: 'Lorena Ramonda',
         }
 

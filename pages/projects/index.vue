@@ -38,13 +38,14 @@ const projects = await storyblokApi
   })
   .then((response) => response.data.stories.map((item: SbBlokData) => item.content) ?? [])
 
-const bloks = computed(() =>
-  page.body.map((item: SbBlokData) => {
+const bloks = computed(() => {
+  if (!page?.body) return []
+  return page.body.map((item: SbBlokData) => {
     if (item.component === 'ItemsList') item.items = projects
 
     return item
-  }),
-)
+  })
+})
 
 $setMetadata($getMetadataFromStory(page))
 </script>

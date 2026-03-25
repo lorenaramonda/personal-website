@@ -54,7 +54,7 @@ const meeting = computed(() => {
 })
 
 const isTodayConf = computed(() => {
-  return new Date(meeting.value.date).toDateString() === new Date().toDateString()
+  return meeting.value ? new Date(meeting.value.date).toDateString() === new Date().toDateString() : false
 })
 </script>
 

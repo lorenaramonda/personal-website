@@ -7,7 +7,7 @@
       <h2 class="project-card__title">
         {{ blok.title }}
 
-        <span v-if="blok.url" class="project-card__link">
+        <span v-if="blok.url.url" class="project-card__link">
           (<a :href="blok.url.url" :target="blok.url.target" rel="noopener" itemprop="url">{{ getURLDomain(blok.url.url) }}</a
           >)
         </span>

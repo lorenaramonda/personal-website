@@ -1,7 +1,7 @@
 <template>
   <div class="section-hobbies">
     <div v-if="page" v-editable="page" class="container-page">
-      <header class="section-publications__title">
+      <header>
         <BaseHeading primary :label="$t('hobbies.title')">
           <template v-if="page.full_slug" #breadcrumbs>
             <BaseBreadcrumbs :items="breadcrumbs" />
@@ -85,7 +85,7 @@ onMounted(() => {
   useStoryblokBridge(page.value?.id, (updatedStory) => (page.value = updatedStory))
 })
 
-if (content) $setMetadata($getMetadataFromStory(content.value))
+if (content.value) $setMetadata($getMetadataFromStory(content.value))
 </script>
 
 <style lang="scss">

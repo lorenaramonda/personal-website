@@ -22,7 +22,6 @@
 
 <script setup lang="ts">
 import type { GenericObject } from '@/types'
-const { localeProperties: currentLocale } = useI18n()
 
 const { blok, highlighted } = defineProps<{
   blok: GenericObject
@@ -45,7 +44,7 @@ const cssClass = computed(() => {
 })
 
 const intro = computed(() => {
-  return blok.intro.replace(/\n/, '<br>')
+  return blok.intro?.replace(/\n/g, '<br>') ?? ''
 })
 </script>
 

@@ -51,14 +51,18 @@ const slugParams = computed(() => {
   return [params.slug].flat().join('/')
 })
 
-const data = await storyblokApi
-  .get(`cdn/stories/publications/${slugParams.value}`, getParams())
-  .then((response) => response.data)
-  .catch(() => null)
+const { data } = await useAsyncData(`publication-${slugParams.value}`, () =>
+  storyblokApi
+    .get(`cdn/stories/publications/${slugParams.value}`, getParams())
+    .then((response) => response.data)
+    .catch(() => null),
+)
 
-page.value = data.story
+if (data.value) {
+  page.value = data.value.story
+}
 
-if (!page) {
+if (!page.value) {
   throw createError({
     statusCode: 404,
   })
@@ -95,14 +99,14 @@ if (isStartpage.value) {
     })
   }
 
-  cssClass.value = data.story.content?.bg_color ? `section-publications--${data.story.content.bg_color}` : undefined
+  cssClass.value = data.value?.story?.content?.bg_color ? `section-publications--${data.value.story.content.bg_color}` : undefined
 }
 
 onMounted(() => {
   useStoryblokBridge(page.value?.id, (updatedStory) => (page.value = updatedStory))
 })
 
-if (content) $setMetadata({ ...$getMetadataFromStory(content.value), ogType: !isStartpage.value ? 'article' : undefined })
+if (content.value) $setMetadata({ ...$getMetadataFromStory(content.value), ogType: !isStartpage.value ? 'article' : undefined })
 </script>
 
 <style lang="scss">
