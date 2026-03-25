@@ -63,7 +63,7 @@ export default defineNuxtConfig({
     // Doc: https://nuxt.com/modules/vite-pwa-nuxt
     '@vite-pwa/nuxt',
   ],
-  // Doce: https://color-mode.nuxtjs.org/
+  // Doc: https://color-mode.nuxtjs.org/
   colorMode: {
     storageKey: 'palette-version',
   },
