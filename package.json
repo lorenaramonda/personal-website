@@ -45,7 +45,8 @@
     "sass": "^1.87.0",
     "sass-mq": "file:./local_modules/sass-mq",
     "typescript": "^5.8.3",
-    "vitest": "^3.2.1"
+    "vitest": "^3.2.1",
+    "vue": "^3.5.31"
   },
   "packageManager": "pnpm@10.9.0"
 }
