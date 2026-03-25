@@ -43,6 +43,10 @@ function currentScrollTop() {
 onMounted(() => {
   main.value?.addEventListener('scroll', handleScroll)
 })
+
+onUnmounted(() => {
+  main.value?.removeEventListener('scroll', handleScroll)
+})
 </script>
 
 <style lang="scss">
