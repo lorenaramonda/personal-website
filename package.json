@@ -44,7 +44,6 @@
     "nuxt-lucide-icons": "^1.0.3",
     "prettier": "^3.0.3",
     "sass": "^1.87.0",
-    "sass-loader": "^13.2.2",
     "sass-mq": "file:./local_modules/sass-mq",
     "typescript": "^5.2.2",
     "vitest": "^0.32.0"
