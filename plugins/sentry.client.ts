@@ -9,8 +9,8 @@ export default defineNuxtPlugin((nuxtApp) => {
     dsn: nuxtApp.$config.public.SENTRY_DNS,
     release,
     environment,
-    integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
-    tracesSampleRate: 1.0,
+    integrations: [Sentry.browserTracingIntegration(), Sentry.replayIntegration()],
+    tracesSampleRate: 0.2,
     replaysSessionSampleRate: 0.1,
     replaysOnErrorSampleRate: 1.0,
   })

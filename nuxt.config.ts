@@ -32,14 +32,15 @@ export default defineNuxtConfig({
     'nuxt-gtag',
     // Doc: https://nuxt.com/modules/image
     [
-      '@nuxt/image-edge',
+      '@nuxt/image',
       {
         storyblok: {
           baseURL: 'https://a.storyblok.com',
         },
         dir: 'assets/images',
       },
-    ], // Doc: https://nuxt.com/modules/storyblok
+    ],
+    // Doc: https://nuxt.com/modules/storyblok
     [
       '@storyblok/nuxt',
       {
@@ -51,7 +52,6 @@ export default defineNuxtConfig({
         } as ISbStoriesParams,
       },
     ],
-    '@nuxt/image',
     // Doc: https://pinia.vuejs.org/ssr/nuxt.html
     '@pinia/nuxt',
     // Doc: https://google-fonts.nuxtjs.org/getting-started/setup
@@ -100,9 +100,12 @@ export default defineNuxtConfig({
         file: 'es.js',
       },
     ],
-    lazy: false,
+    lazy: true,
     // Doc: https://v8.i18n.nuxtjs.org/guide/browser-language-detection
     detectBrowserLanguage: false,
+    bundle: {
+      optimizeTranslationDirective: false,
+    },
   },
   /**
    * Nuxt gtag module configuration
