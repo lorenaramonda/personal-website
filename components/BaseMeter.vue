@@ -9,8 +9,6 @@
 import * as icons from 'lucide-vue-next'
 
 const { t } = useI18n()
-const { $filters } = useNuxtApp()
-const { $capitalize } = useNuxtApp()
 
 const props = withDefaults(
   defineProps<{
@@ -31,7 +29,7 @@ const props = withDefaults(
   },
 )
 
-const icon = computed(() => icons[$capitalize(props.icon)])
+const icon = computed(() => icons[capitalize(props.icon)])
 
 const items = computed(() => {
   const items = []
@@ -48,7 +46,7 @@ const label = computed(() => {
   if (props.label) {
     return props.label
   } else {
-    const str = $filters.rateLabel(props.value)
+    const str = rateLabel(props.value)
     return t(str)
   }
 })

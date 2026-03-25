@@ -28,8 +28,6 @@
 import type { SbBlokData } from '@storyblok/js'
 import type { ItemListSchema, LayoutMode } from '@/types'
 
-const { $capitalize } = useNuxtApp()
-
 const props = withDefaults(
   defineProps<{
     blok: ItemListSchema
@@ -48,7 +46,7 @@ const listClasses = computed(() => {
 
 const items = computed(() => {
   return props.blok.items?.map((item: SbBlokData) => {
-    return { ...item, component: item.component ? $capitalize(`${item.component}-card`) : 'ItemsListCard' }
+    return { ...item, component: item.component ? capitalize(`${item.component}-card`) : 'ItemsListCard' }
   })
 })
 

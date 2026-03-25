@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { getDatesDiff, getDurationInYears, getDurationInMonth } from '~/helpers'
+import { getDatesDiff, getDurationInYears, getDurationInMonth } from '~/utils/dates'
 
 describe('getDatesDiff', () => {
   it('should return 0 for empty startDate', () => {

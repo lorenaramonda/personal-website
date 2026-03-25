@@ -11,7 +11,7 @@
       <p>
         <span itemprop="author" class="post-article__author">Lorena Ramonda</span>
         <time v-if="publishedDate" class="post-item__date post-article__date" :datetime="publishedDate">
-          <LucideCalendar :size="16" /> <span itemprop="datePublished">{{ $getDate(publishedDate, currentLocale?.iso) }}</span>
+          <LucideCalendar :size="16" /> <span itemprop="datePublished">{{ getDate(publishedDate, currentLocale?.iso) }}</span>
         </time>
       </p>
     </footer>

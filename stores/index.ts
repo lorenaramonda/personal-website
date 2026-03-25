@@ -1,6 +1,5 @@
 import type { ISbStoryData } from 'storyblok-js-client'
 import type { SbBlokData } from '@storyblok/js'
-import { getDurationInYears } from '@/helpers'
 import { useLocalizedStoryParams } from '@/composables/useLocalizedStoryParams'
 import type { StoryblokSpace } from '@/types'
 

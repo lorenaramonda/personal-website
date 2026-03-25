@@ -13,13 +13,13 @@
         <BlogTag v-else :label="$t('blog.ongoing')" active />
       </p>
       <h2 v-if="blok.title" class="blog-section-card__title">
-        <NuxtLink :to="`/${blok.full_slug}`" :hreflang="$getPostLang(blok.lang)" :title="blok.title">
+        <NuxtLink :to="`/${blok.full_slug}`" :hreflang="getPostLang(blok.lang)" :title="blok.title">
           {{ blok.title }}
         </NuxtLink>
       </h2>
       <p v-if="blok.started_at" class="blog-section-card__duration">
         <time class="blog-section-card__date" :datetime="blok.started_at">
-          {{ $getDate(blok.started_at, currentLocale.iso, { weekday: undefined }) }}
+          {{ getDate(blok.started_at, currentLocale.iso, { weekday: undefined }) }}
         </time>
       </p>
       <RichtextRenderer v-if="blok.description" :document="blok.description" class="blog-section-card__content" />
@@ -32,6 +32,7 @@
 import type { GenericObject } from '@/types'
 
 const { localeProperties: currentLocale } = useI18n()
+const { getPostLang } = usePostLang()
 
 const hoverStatus = ref(false)
 

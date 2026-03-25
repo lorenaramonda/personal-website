@@ -15,8 +15,6 @@
 // Icons: https://lucide.dev/icons/
 import * as icons from 'lucide-vue-next'
 
-const { $capitalize } = useNuxtApp()
-
 const props = defineProps<{
   to: string
   icon?: string
@@ -24,7 +22,7 @@ const props = defineProps<{
   type?: 'primary' | 'ghost'
 }>()
 
-const iconComponent = computed(() => icons[$capitalize(props.icon)])
+const iconComponent = computed(() => icons[capitalize(props.icon)])
 
 const cssClasses = computed(() => (props.type ? `action-link--${props.type}` : 'action-link--link'))
 </script>

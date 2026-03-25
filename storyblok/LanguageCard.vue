@@ -10,7 +10,6 @@
 import type { GenericObject } from '@/types'
 
 const { t } = useI18n()
-const { $filters } = useNuxtApp()
 
 const { lang } = defineProps<{
   lang: GenericObject
@@ -22,7 +21,7 @@ const rate = computed(() => {
 })
 
 const label = computed(() => {
-  const str = $filters.rateLabel(rate.value) || 'rate.beginner'
+  const str = rateLabel(rate.value) || 'rate.beginner'
   const values = []
   if (lang?.listening) values.push(`${t('language.listening')}: ${lang.listening}`)
   if (lang?.speaking) values.push(`${t('language.speaking')}: ${lang.speaking}`)

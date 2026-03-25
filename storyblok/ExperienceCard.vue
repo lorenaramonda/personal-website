@@ -25,8 +25,6 @@ import SkillsList from '~/storyblok/SkillsList.vue'
 
 import type { GenericObject } from '@/types'
 
-const { $getDurationInYears, $getDurationInMonth } = useNuxtApp()
-
 const { t } = useI18n()
 
 const props = defineProps<{
@@ -53,7 +51,7 @@ function getStartDate(startDate: string) {
 }
 
 function getEndDate(end: string, start: string) {
-  const yearsWorked = $getDurationInYears(start, end)
+  const yearsWorked = getDurationInYears(start, end)
 
   const duration = props.blok.show_duration ? ` (${t('misc.years', yearsWorked)})` : ''
   // if current position, don't return end date
@@ -64,7 +62,7 @@ function getEndDate(end: string, start: string) {
   if (yearsWorked === 0) {
     // returns months worked...
     if (props.blok.show_duration) {
-      return ` (${t('misc.months', $getDurationInMonth(start, end))})`
+      return ` (${t('misc.months', getDurationInMonth(start, end))})`
     }
   } else {
     // ... otherwise returns years worked

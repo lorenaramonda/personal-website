@@ -8,7 +8,7 @@
         {{ blok.title }}
 
         <span v-if="blok.url" class="project-card__link">
-          (<a :href="blok.url.url" :target="blok.url.target" rel="noopener" itemprop="url">{{ $getURLDomain(blok.url.url) }}</a
+          (<a :href="blok.url.url" :target="blok.url.target" rel="noopener" itemprop="url">{{ getURLDomain(blok.url.url) }}</a
           >)
         </span>
       </h2>
@@ -27,7 +27,6 @@
 <script setup lang="ts">
 import type { GenericObject } from '@/types'
 
-const { $getURLDomain } = useNuxtApp()
 const { t } = useI18n()
 
 const props = defineProps<{

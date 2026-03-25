@@ -19,7 +19,6 @@
 
 <script setup lang="ts">
 const { t } = useI18n()
-const { $filters } = useNuxtApp()
 
 type Skill = {
   name: string
@@ -44,7 +43,7 @@ const orderedSkills = computed(() => {
 })
 
 function getLabel(val: string) {
-  return val ? t($filters.rateLabel(parseInt(val))) : ''
+  return val ? t(rateLabel(parseInt(val))) : ''
 }
 </script>
 
