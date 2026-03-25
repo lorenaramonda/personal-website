@@ -4,12 +4,19 @@
     <div class="section-experiences">
       <div class="container-page">
         <header class="section-experiences__title">
-          <BaseHeading primary :label="$t('experiences.subtitle')">{{ $t('experiences.title') }}</BaseHeading>
+          <BaseHeading primary :label="$t('experiences.subtitle')">{{
+            $t('experiences.title')
+          }}</BaseHeading>
         </header>
       </div>
       <div class="section-experiences__content">
         <div class="container-page">
-          <StoryblokComponent v-for="blok in bloks" :key="blok._uid" :blok="blok" class="section-experiences__blok" />
+          <StoryblokComponent
+            v-for="blok in bloks"
+            :key="blok._uid"
+            :blok="blok"
+            class="section-experiences__blok"
+          />
           <EndOfPage />
         </div>
       </div>
@@ -22,31 +29,37 @@ import type { SbBlokData } from '@storyblok/js'
 import { useLocalizedStoryParams } from '@/composables/useLocalizedStoryParams'
 
 defineOptions({
-  name: 'ProjectPage',
+  name: 'ExperiencesPage',
 })
 
 const { $getMetadataFromStory, $setMetadata } = useNuxtApp()
-
 const { getParams } = useLocalizedStoryParams()
-
-const page = await useAsyncStoryblok('experiences', getParams())
-  .then((data) => data.value.content)
-  .catch(() => null)
-
 const store = useStore()
+
+const { story } = await useAsyncStoryblok('experiences', { api: getParams() })
 
 await store.fetchJobs()
 
-const bloks = computed(() =>
-  page.body.map((item: SbBlokData) => {
-    if (item.component === 'ItemsList' && store.jobs?.length) item.items = store.jobs
-    if (item.component === 'LongText') item.component = 'ExperienceSummary'
+const page = computed(() => story.value?.content ?? null)
 
+const bloks = computed(() => {
+  if (!page.value?.body) {
+    return []
+  }
+  return page.value.body.map((item: SbBlokData) => {
+    if (item.component === 'ItemsList' && store.jobs?.length) {
+      item.items = store.jobs
+    }
+    if (item.component === 'LongText') {
+      item.component = 'ExperienceSummary'
+    }
     return item
-  }),
-)
+  })
+})
 
-$setMetadata($getMetadataFromStory(page))
+if (page.value) {
+  $setMetadata($getMetadataFromStory(page.value))
+}
 </script>
 
 <style lang="scss">

@@ -2,6 +2,7 @@ import type { ISbStoriesParams } from 'storyblok-js-client'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  compatibilityDate: '2026-03-25',
   runtimeConfig: {
     public: {
       NODE_ENV: process.env.NODE_ENV,
@@ -198,7 +199,7 @@ export default defineNuxtConfig({
     },
   },
   vite: {
-    optimizeDeps: { exclude: ['fsevents'] },
+    optimizeDeps: { exclude: ['fsevents'], include: ['@storyblok/vue', 'floating-vue', '@sentry/browser'] },
     css: {
       preprocessorOptions: {
         scss: {
