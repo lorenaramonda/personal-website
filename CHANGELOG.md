@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file. (http://keepachangelog.com/)
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.8.0] - 2026-05-22
+
+- Migrated from Yarn to pnpm
+- Upgraded Storyblok SDK and updated codebase accordingly
+- Upgraded dependencies
+- Fixed hydration issues in MyPicture component
+- Fixed memory leak
+- Fixed API calls
+- Converted global provided plugins into auto-imported composables
+- Get hostname dynamically instead of hardcoded
+- Fixed TypeScript errors and imports
+- Added lint fix for staged files (pre-commit hook)
+- Added ESLint rule
+- Removed unnecessary module
+- Fixed typos
+
 ## [2.7.1] - 2025-05-08
 
 - Upgraded Yarn to 4.9.1
