@@ -1,5 +1,5 @@
 <template>
-  <figure :class="$style.profilePicture">
+  <figure :class="[$style.profilePicture, { [$style.profilePictureFeatured]: featured }]">
     <FlipBox @mouseenter="toggleTitle(true)" @mouseleave="toggleTitle(false)">
       <template #front>
         <img
@@ -29,6 +29,10 @@
 </template>
 
 <script setup lang="ts">
+defineProps<{
+  featured?: boolean
+}>()
+
 const highlightTitle = ref(false)
 
 function toggleTitle(shouldShow?: boolean) {
@@ -42,6 +46,14 @@ function toggleTitle(shouldShow?: boolean) {
   flex-direction: column;
   gap: 0.5rem;
   margin: 0 auto;
+}
+
+.profilePictureFeatured {
+  justify-self: center;
+  align-self: center;
+  @include mq($from: desktop) {
+    transform: rotate(-4deg) scale(1.5) translate(-10px, -17px);
+  }
 }
 
 .pictureCaption {
