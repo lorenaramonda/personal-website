@@ -1,7 +1,8 @@
-import type { ISbStoriesParams } from 'storyblok-js-client'
+import type { ISbStoriesParams } from '@storyblok/vue'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  compatibilityDate: '2026-03-25',
   runtimeConfig: {
     public: {
       NODE_ENV: process.env.NODE_ENV,
@@ -32,14 +33,15 @@ export default defineNuxtConfig({
     'nuxt-gtag',
     // Doc: https://nuxt.com/modules/image
     [
-      '@nuxt/image-edge',
+      '@nuxt/image',
       {
         storyblok: {
           baseURL: 'https://a.storyblok.com',
         },
         dir: 'assets/images',
       },
-    ], // Doc: https://nuxt.com/modules/storyblok
+    ],
+    // Doc: https://nuxt.com/modules/storyblok
     [
       '@storyblok/nuxt',
       {
@@ -51,7 +53,6 @@ export default defineNuxtConfig({
         } as ISbStoriesParams,
       },
     ],
-    '@nuxt/image',
     // Doc: https://pinia.vuejs.org/ssr/nuxt.html
     '@pinia/nuxt',
     // Doc: https://google-fonts.nuxtjs.org/getting-started/setup
@@ -63,7 +64,7 @@ export default defineNuxtConfig({
     // Doc: https://nuxt.com/modules/vite-pwa-nuxt
     '@vite-pwa/nuxt',
   ],
-  // Doce: https://color-mode.nuxtjs.org/
+  // Doc: https://color-mode.nuxtjs.org/
   colorMode: {
     storageKey: 'palette-version',
   },
@@ -100,9 +101,12 @@ export default defineNuxtConfig({
         file: 'es.js',
       },
     ],
-    lazy: false,
+    lazy: true,
     // Doc: https://v8.i18n.nuxtjs.org/guide/browser-language-detection
     detectBrowserLanguage: false,
+    bundle: {
+      optimizeTranslationDirective: false,
+    },
   },
   /**
    * Nuxt gtag module configuration
@@ -195,7 +199,10 @@ export default defineNuxtConfig({
     },
   },
   vite: {
-    optimizeDeps: { exclude: ['fsevents'] },
+    optimizeDeps: {
+      exclude: ['fsevents'],
+      include: ['@storyblok/vue', 'floating-vue', '@sentry/browser'],
+    },
     css: {
       preprocessorOptions: {
         scss: {

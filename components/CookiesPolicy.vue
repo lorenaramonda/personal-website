@@ -3,10 +3,16 @@
     <div class="cookies__content">
       <p>
         {{ $t('policy.text') }}
-        <a :href="privacyLink" :title="$t('policy.link.text')" target="_blank" rel="nofollow">{{ $t('policy.link.text') }}</a>
+        <a :href="privacyLink" :title="$t('policy.link.text')" target="_blank" rel="nofollow">{{
+          $t('policy.link.text')
+        }}</a>
       </p>
-      <button class="cookies__button cookies__button--primary" @click="acceptTracking">{{ $t('policy.buttonText.ok') }}</button>
-      <button class="cookies__button" @click="refuseTracking">{{ $t('policy.buttonText.ko') }}</button>
+      <button class="cookies__button cookies__button--primary" @click="acceptTracking">
+        {{ $t('policy.buttonText.ok') }}
+      </button>
+      <button class="cookies__button" @click="refuseTracking">
+        {{ $t('policy.buttonText.ko') }}
+      </button>
     </div>
   </div>
 </template>
@@ -17,38 +23,41 @@ const { $config } = useNuxtApp()
 
 const shouldShowWarning = ref(false)
 
-const cookieAccepted = useCookie('gtm-consent', {
+const cookieConsent = useCookie('gtm-consent', {
   maxAge: 60 * 60 * 24 * 365,
-})
-const cookieDenied = useCookie('gtm-consent', {
-  maxAge: 60 * 60 * 24,
 })
 
 const privacyLink = computed(() => {
-  return locale.value === 'it' ? 'https://www.iubenda.com/privacy-policy/262452' : 'https://www.iubenda.com/privacy-policy/730236'
+  return locale.value === 'it'
+    ? 'https://www.iubenda.com/privacy-policy/262452'
+    : 'https://www.iubenda.com/privacy-policy/730236'
 })
 
 function acceptTracking() {
   useGtagConsent(true)
-  cookieAccepted.value = '1'
+  cookieConsent.value = '1'
   shouldShowWarning.value = false
 }
 
 function refuseTracking() {
-  cookieDenied.value = '0'
+  cookieConsent.value = '0'
   shouldShowWarning.value = false
 }
 
 const showWarning = computed(() => {
-  if ($config?.public.gtag?.initialConsent) return false
+  if ($config?.public.gtag?.initialConsent) {
+    return false
+  }
   return shouldShowWarning.value
 })
 
 onMounted(() => {
-  if (cookieAccepted.value === undefined) {
+  if (cookieConsent.value === undefined) {
     shouldShowWarning.value = true
   } else {
-    if (cookieAccepted.value) useGtagConsent(true)
+    if (cookieConsent.value === '1') {
+      useGtagConsent(true)
+    }
     shouldShowWarning.value = false
   }
 })

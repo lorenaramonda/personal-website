@@ -1,5 +1,10 @@
 <template>
-  <button :aria-label="$t('misc.toggleMenu')" :title="$t('misc.toggleMenu')" class="navigation-toggle" :class="{ 'navigation-toggle--dark': dark }">
+  <button
+    :aria-label="$t('misc.toggleMenu')"
+    :title="$t('misc.toggleMenu')"
+    class="navigation-toggle"
+    :class="{ 'navigation-toggle--dark': dark }"
+  >
     <LucideMenu />
   </button>
 </template>

@@ -10,7 +10,7 @@
 const nuxtApp = useNuxtApp()
 const store = useStore()
 
-await useAsyncData('space', () => store.fetchSpace())
+await store.fetchSpace()
 
 nuxtApp.hook('page:finish', () => {
   window.scrollTo(0, 0)

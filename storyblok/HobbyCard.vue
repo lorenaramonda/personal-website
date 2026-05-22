@@ -12,7 +12,11 @@
         <StoryblokImage :image="blok.icon" :width="imgHeight" />
       </picture>
 
-      <RichtextRenderer v-if="blok.description" :document="blok.description" class="hobby-card__content" />
+      <RichtextRenderer
+        v-if="blok.description"
+        :document="blok.description"
+        class="hobby-card__content"
+      />
     </div>
 
     <BaseActionLink

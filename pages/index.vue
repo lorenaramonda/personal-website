@@ -7,25 +7,19 @@
 <script setup lang="ts">
 import { useLocalizedStoryParams } from '@/composables/useLocalizedStoryParams'
 
-// definePageMeta({
-//   layout: 'home',
-// })
-
 const { $getMetadataFromStory, $setMetadata } = useNuxtApp()
 const store = useStore()
 
 const { getParams } = useLocalizedStoryParams()
 
-await useAsyncData('jobs', () => store.fetchJobs())
+await store.fetchJobs()
 
-const page = await useAsyncStoryblok('home', getParams()).catch(() => {})
+const { story: page } = await useAsyncStoryblok('home', { api: getParams(), bridge: {} })
 
-const content = computed(() => page.value.content)
-const bloks = computed(() => content.value.body)
+const content = computed(() => page.value?.content)
+const bloks = computed(() => content.value?.body ?? [])
 
-onMounted(() => {
-  if (page.value) useStoryblokBridge(page.value.id, (updatedStory) => (page.value = updatedStory))
-})
-
-$setMetadata($getMetadataFromStory(content.value))
+if (content.value) {
+  $setMetadata($getMetadataFromStory(content.value))
+}
 </script>

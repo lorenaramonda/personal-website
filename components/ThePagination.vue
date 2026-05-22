@@ -30,6 +30,10 @@ defineProps<{
   showPages?: boolean
   showMode?: boolean
 }>()
+
+defineEmits<{
+  'set-mode': [mode: 'grid' | 'list']
+}>()
 </script>
 
 <style lang="scss">

@@ -36,17 +36,29 @@ type StorySeoContent = {
 export default defineNuxtPlugin(() => {
   return {
     provide: {
-      getMetadataFromStory(content: StorySeoContent) {
+      getMetadataFromStory(content: StorySeoContent | Record<string, any>) {
         const metadata: MetadataPayload = {
           title: content?.meta_title,
         }
-        if (content?.meta_description) metadata.description = content.meta_description
-        if (content?.meta_keywords) metadata.keywords = content.meta_keywords
-        if (content?.meta_image) metadata.image = content.meta_image
+        if (content?.meta_description) {
+          metadata.description = content.meta_description
+        }
+        if (content?.meta_keywords) {
+          metadata.keywords = content.meta_keywords
+        }
+        if (content?.meta_image) {
+          metadata.image = content.meta_image
+        }
 
         return metadata
       },
-      setMetadata({ title, description, keywords, image, ogType = 'website' }: MetadataPayload = {}) {
+      setMetadata({
+        title,
+        description,
+        keywords,
+        image,
+        ogType = 'website',
+      }: MetadataPayload = {}) {
         const { t } = useI18n()
         const { fullPath } = useRoute()
         const fallbackTitle = computed(() => t('meta.title'))
@@ -57,11 +69,11 @@ export default defineNuxtPlugin(() => {
           title: title || fallbackTitle.value,
           description: fallbackDescription.value,
           ogType,
-          ogTitle: title,
-          ogUrl: `https://lorena.ramonda.me${fullPath}`,
+          ogTitle: title || fallbackTitle.value,
+          ogUrl: `${useRequestURL().origin}${fullPath}`,
           ogSiteName: 'Lorena Ramonda',
           twitterCard: 'summary',
-          twitterTitle: title,
+          twitterTitle: title || fallbackTitle.value,
           twitterCreator: 'Lorena Ramonda',
         }
 
@@ -71,15 +83,18 @@ export default defineNuxtPlugin(() => {
           metadata.twitterDescription = description
         }
 
-        if (keywords) metadata.keywords = keywords
+        if (keywords) {
+          metadata.keywords = keywords
+        }
 
         if (image?.filename) {
           metadata.ogImage = image.filename
           metadata.twitterImage = image.filename
         }
-        if (image?.alt) metadata.ogImageAlt = image.alt
+        if (image?.alt) {
+          metadata.ogImageAlt = image.alt
+        }
 
-        useServerSeoMeta(metadata)
         useSeoMeta(metadata)
       },
     },

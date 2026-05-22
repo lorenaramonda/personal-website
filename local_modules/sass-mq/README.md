@@ -56,7 +56,6 @@ Immediately play with it on [SassMeister](http://sassmeister.com/): `@use 'mq';`
 OR:
 
 1. Install:
-
    - with [Bower](http://bower.io/ 'Bower: A package manager for the web'): `bower install sass-mq --save`
    - with [npm](https://www.npmjs.com/): `npm install sass-mq --save`
    - with [yarn](https://www.yarnpkg.com/): `yarn add sass-mq`

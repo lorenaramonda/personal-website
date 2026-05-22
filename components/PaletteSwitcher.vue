@@ -1,6 +1,14 @@
 <template>
   <div v-if="$colorMode.value" v-tooltip.left-start="text" class="palette-switcher">
-    <input id="switcher" v-model="$colorMode.value" type="checkbox" name="switch" true-value="light" false-value="dark" @change="switchMode" />
+    <input
+      id="switcher"
+      v-model="$colorMode.value"
+      type="checkbox"
+      name="switch"
+      true-value="light"
+      false-value="dark"
+      @change="switchMode"
+    />
     <label for="switcher" class="palette-switcher__slider">
       <span class="palette-switcher__label">
         <LucideSun class="palette-switcher__icon--sun" />
@@ -28,7 +36,9 @@ onMounted(() => {
     colorMode.value = 'light'
   }
   window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (event) => {
-    if (event.matches) colorMode.value = 'light'
+    if (event.matches) {
+      colorMode.value = 'light'
+    }
   })
 })
 </script>

@@ -6,9 +6,8 @@ variables:
 
 default:
   before_script:
-    - corepack enable # install Yarn 4
-    - yarn set version stable
-    - yarn
+    - corepack enable # install pnpm
+    - pnpm install
 
 cache:
   paths:

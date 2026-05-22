@@ -4,7 +4,11 @@
       <slot />
     </main>
     <TheNavigation />
-    <TheNavigationToggle class="navigation-toggle navigation__toggle--desktop" :dark="open" @click="open = !open" />
+    <TheNavigationToggle
+      class="navigation-toggle navigation__toggle--desktop"
+      :dark="open"
+      @click="open = !open"
+    />
     <ClientOnly>
       <PaletteSwitcher
         :class="{ 'palette-switcher--hidden': !showPaletteSwitcher }"
@@ -18,13 +22,13 @@
 </template>
 
 <script setup lang="ts">
-const SCROLL_TREESHOLD = 100
+const SCROLL_THRESHOLD = 100
 const open = ref(false)
 const showPaletteSwitcher = ref(true)
 const main = ref<HTMLElement>()
 
 function handleScroll() {
-  if (currentScrollTop() >= SCROLL_TREESHOLD) {
+  if (currentScrollTop() >= SCROLL_THRESHOLD) {
     showPaletteSwitcher.value = false
   } else {
     showPaletteSwitcher.value = true
@@ -32,7 +36,9 @@ function handleScroll() {
 }
 
 function togglePaletteSwitcher(value: boolean) {
-  if (currentScrollTop() < SCROLL_TREESHOLD) return
+  if (currentScrollTop() < SCROLL_THRESHOLD) {
+    return
+  }
   showPaletteSwitcher.value = value
 }
 
@@ -42,6 +48,10 @@ function currentScrollTop() {
 
 onMounted(() => {
   main.value?.addEventListener('scroll', handleScroll)
+})
+
+onUnmounted(() => {
+  main.value?.removeEventListener('scroll', handleScroll)
 })
 </script>
 

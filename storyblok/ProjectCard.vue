@@ -7,8 +7,10 @@
       <h2 class="project-card__title">
         {{ blok.title }}
 
-        <span v-if="blok.url" class="project-card__link">
-          (<a :href="blok.url.url" :target="blok.url.target" rel="noopener" itemprop="url">{{ $getURLDomain(blok.url.url) }}</a
+        <span v-if="blok.url.url" class="project-card__link">
+          (<a :href="blok.url.url" :target="blok.url.target" rel="noopener" itemprop="url">{{
+            getURLDomain(blok.url.url)
+          }}</a
           >)
         </span>
       </h2>
@@ -17,7 +19,12 @@
         <StoryblokImage :image="blok.image" :width="400" itemprop="thumbnail" />
       </picture>
 
-      <RichtextRenderer v-if="blok.content" :document="blok.content" class="project-card__content" itemprop="abstract" />
+      <RichtextRenderer
+        v-if="blok.content"
+        :document="blok.content"
+        class="project-card__content"
+        itemprop="abstract"
+      />
     </div>
 
     <ActionButton v-if="blok.url" :blok="link" class="project-card__action" />
@@ -27,7 +34,6 @@
 <script setup lang="ts">
 import type { GenericObject } from '@/types'
 
-const { $getURLDomain } = useNuxtApp()
 const { t } = useI18n()
 
 const props = defineProps<{

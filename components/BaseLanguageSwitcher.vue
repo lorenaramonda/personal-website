@@ -6,7 +6,10 @@
         v-for="lang in availableLocales"
         :key="lang.code"
         class="language-switcher__item"
-        :class="{ 'language-switcher__item--current': lang.code === locale, 'language-switcher__item--hide': !switchLocalePath(lang.code) }"
+        :class="{
+          'language-switcher__item--current': lang.code === locale,
+          'language-switcher__item--hide': !switchLocalePath(lang.code),
+        }"
       >
         <template v-if="switchLocalePath(lang.code)">
           <span class="language-switcher__lang">{{ lang.name }}</span>

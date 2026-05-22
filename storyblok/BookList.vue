@@ -39,7 +39,13 @@ const props = defineProps<{
 }>()
 
 const years = computed(() =>
-  Array.from(new Set(props.blok.items.filter((item) => item.finished_at).map((item) => item.finished_at.split('-')[0]))).join('-'),
+  Array.from(
+    new Set(
+      props.blok.items
+        .filter((item) => item.finished_at)
+        .map((item) => item.finished_at.split('-')[0]),
+    ),
+  ).join('-'),
 )
 </script>
 

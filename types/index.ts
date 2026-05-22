@@ -1,4 +1,4 @@
-import type { SbBlokData } from '@storyblok/js'
+import type { SbBlokData } from '@storyblok/vue'
 
 export type GenericObject = Record<string, any>
 

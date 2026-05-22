@@ -3,27 +3,40 @@
     <picture
       v-if="blok.image?.filename"
       class="blog-section-card__image"
-      :class="{ 'blog-section-card__image--grayscale': blok.ended_at, 'blog-section-card__image--hover': hoverStatus }"
+      :class="{
+        'blog-section-card__image--grayscale': blok.ended_at,
+        'blog-section-card__image--hover': hoverStatus,
+      }"
     >
       <StoryblokImage :image="blok.image" :width="800" :height="500" />
     </picture>
-    <div class="blog-section-card__details" @mouseenter="toggleHover(true)" @mouseleave="toggleHover(false)">
+    <div
+      class="blog-section-card__details"
+      @mouseenter="toggleHover(true)"
+      @mouseleave="toggleHover(false)"
+    >
       <p class="blog-section-card__tags">
         <BlogTag v-if="blok.ended_at" :label="$t('blog.complete')" />
         <BlogTag v-else :label="$t('blog.ongoing')" active />
       </p>
       <h2 v-if="blok.title" class="blog-section-card__title">
-        <NuxtLink :to="`/${blok.full_slug}`" :hreflang="$getPostLang(blok.lang)" :title="blok.title">
+        <NuxtLink :to="`/${blok.full_slug}`" :hreflang="getPostLang(blok.lang)" :title="blok.title">
           {{ blok.title }}
         </NuxtLink>
       </h2>
       <p v-if="blok.started_at" class="blog-section-card__duration">
         <time class="blog-section-card__date" :datetime="blok.started_at">
-          {{ $getDate(blok.started_at, currentLocale.iso, { weekday: undefined }) }}
+          {{ getDate(blok.started_at, currentLocale.iso, { weekday: undefined }) }}
         </time>
       </p>
-      <RichtextRenderer v-if="blok.description" :document="blok.description" class="blog-section-card__content" />
-      <BaseActionLink :to="`/${blok.full_slug}`" icon="arrow-right">{{ $t('publications.read') }}</BaseActionLink>
+      <RichtextRenderer
+        v-if="blok.description"
+        :document="blok.description"
+        class="blog-section-card__content"
+      />
+      <BaseActionLink :to="`/${blok.full_slug}`" icon="arrow-right">{{
+        $t('publications.read')
+      }}</BaseActionLink>
     </div>
   </div>
 </template>
@@ -32,6 +45,7 @@
 import type { GenericObject } from '@/types'
 
 const { localeProperties: currentLocale } = useI18n()
+const { getPostLang } = usePostLang()
 
 const hoverStatus = ref(false)
 

@@ -1,6 +1,12 @@
 <template>
   <div v-tooltip="label" class="meter">
-    <component :is="icon" v-for="item in items" :key="item.id" class="meter__icon" :class="{ 'meter__icon--full': item.full }" />
+    <component
+      :is="icon"
+      v-for="item in items"
+      :key="item.id"
+      class="meter__icon"
+      :class="{ 'meter__icon--full': item.full }"
+    />
     <span class="meter__text">{{ label }}</span>
   </div>
 </template>
@@ -9,8 +15,6 @@
 import * as icons from 'lucide-vue-next'
 
 const { t } = useI18n()
-const { $filters } = useNuxtApp()
-const { $capitalize } = useNuxtApp()
 
 const props = withDefaults(
   defineProps<{
@@ -31,7 +35,7 @@ const props = withDefaults(
   },
 )
 
-const icon = computed(() => icons[$capitalize(props.icon)])
+const icon = computed(() => icons[capitalize(props.icon)])
 
 const items = computed(() => {
   const items = []
@@ -48,7 +52,7 @@ const label = computed(() => {
   if (props.label) {
     return props.label
   } else {
-    const str = $filters.rateLabel(props.value)
+    const str = rateLabel(props.value)
     return t(str)
   }
 })

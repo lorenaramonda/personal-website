@@ -3,7 +3,15 @@
     <div class="row">
       <TheCopyrights class="left" />
       <div class="right">
-        <p><a v-tooltip="$t('personality.title')" :href="$t('personality.link')" :title="$t('personality.title')" target="_blank">INFJ-T</a></p>
+        <p>
+          <a
+            v-tooltip="$t('personality.title')"
+            :href="$t('personality.link')"
+            :title="$t('personality.title')"
+            target="_blank"
+            >INFJ-T</a
+          >
+        </p>
         <a
           href="https://www.iubenda.com/privacy-policy/262452"
           class="iubenda-white iubenda-embed"

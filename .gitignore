@@ -13,5 +13,6 @@ coverage
 # Local Netlify folder
 .netlify
 
-# Yarn
-.pnp.*
+# Claude
+.claude/*
+!.claude/settings.json

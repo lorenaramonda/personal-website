@@ -1,13 +1,20 @@
 <template>
   <BaseHeading v-if="blok.title"> {{ blok.title }}</BaseHeading>
-  <ThePagination v-if="pagination" :show-mode="pagination.mode" :show-pages="pagination.pages" :active-mode="layoutMode" @set-mode="setMode" />
+  <ThePagination
+    v-if="pagination"
+    :show-mode="pagination.mode"
+    :show-pages="pagination.pages"
+    :active-mode="layoutMode"
+    @set-mode="setMode"
+  />
   <ul v-if="items" v-editable="blok" class="items-list" :class="listClasses" v-bind="$attrs">
     <li
       v-for="(item, index) in items"
       :key="item._uid"
       class="items-list__item"
       :class="{
-        'items-list__item--highlighted': (blok.recent_on_top && item._uid === lastItemUid) || items.length === 1,
+        'items-list__item--highlighted':
+          (blok.recent_on_top && item._uid === lastItemUid) || items.length === 1,
         'items-list__item--single': items.length === 1,
       }"
     >
@@ -25,10 +32,8 @@
 </template>
 
 <script setup lang="ts">
-import type { SbBlokData } from '@storyblok/js'
+import type { SbBlokData } from '@storyblok/vue'
 import type { ItemListSchema, LayoutMode } from '@/types'
-
-const { $capitalize } = useNuxtApp()
 
 const props = withDefaults(
   defineProps<{
@@ -43,12 +48,18 @@ const props = withDefaults(
 const layoutMode: Ref<LayoutMode> = ref(props.blok.layout.split('.')[0] as LayoutMode)
 
 const listClasses = computed(() => {
-  return [`items-list--mode-${layoutMode.value}`, `items-list--layout-${props.blok.layout.replace('.', '-')}`]
+  return [
+    `items-list--mode-${layoutMode.value}`,
+    `items-list--layout-${props.blok.layout.replace('.', '-')}`,
+  ]
 })
 
 const items = computed(() => {
   return props.blok.items?.map((item: SbBlokData) => {
-    return { ...item, component: item.component ? $capitalize(`${item.component}-card`) : 'ItemsListCard' }
+    return {
+      ...item,
+      component: item.component ? capitalize(`${item.component}-card`) : 'ItemsListCard',
+    }
   })
 })
 
@@ -58,7 +69,12 @@ const lastItemUid = computed(() => {
 })
 
 const pagination = computed(() => {
-  if (items.value.length <= 1 || (!props.blok.show_pagination && !props.blok.enable_switch_layout)) return false
+  if (
+    items.value.length <= 1 ||
+    (!props.blok.show_pagination && !props.blok.enable_switch_layout)
+  ) {
+    return false
+  }
   return {
     pages: props.blok.show_pagination,
     mode: props.blok.enable_switch_layout,
@@ -66,7 +82,9 @@ const pagination = computed(() => {
 })
 
 function prependZero(number: number) {
-  if (number <= 9) return '0' + number
+  if (number <= 9) {
+    return '0' + number
+  }
   return number.toString()
 }
 

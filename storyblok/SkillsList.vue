@@ -19,13 +19,6 @@
 
 <script setup lang="ts">
 const { t } = useI18n()
-const { $filters } = useNuxtApp()
-
-type Skill = {
-  name: string
-  skill?: string
-  rate?: number
-}
 
 const props = defineProps<{
   blok: Record<string, any>
@@ -36,15 +29,20 @@ const MAX_SKILLS_TO_LIST = 14
 const MINIMUM_RATE = 6
 
 const orderedSkills = computed(() => {
-  if (!props.blok.items) return []
-  const allSkillsAreRated = props.blok.items.every((item: Skill) => item.rate).length > 1
+  if (!props.blok.items) {
+    return []
+  }
+  const allSkillsAreRated =
+    props.blok.items.length > 1 && props.blok.items.every((item) => item.rate)
   return allSkillsAreRated
-    ? props.blok.items.filter((e: Skill) => (e.rate ? e.rate >= MINIMUM_RATE : e)).slice(0, MAX_SKILLS_TO_LIST)
-    : props.blok.items.filter((e: Skill) => e.skill || e.name)
+    ? props.blok.items
+        .filter((e) => (e.rate ? e.rate >= MINIMUM_RATE : e))
+        .slice(0, MAX_SKILLS_TO_LIST)
+    : props.blok.items.filter((e) => e.skill || e.name)
 })
 
 function getLabel(val: string) {
-  return val ? t($filters.rateLabel(parseInt(val))) : ''
+  return val ? t(rateLabel(parseInt(val))) : ''
 }
 </script>
 

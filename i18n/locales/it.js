@@ -17,7 +17,8 @@ export default {
     light: 'Passa alla modalità chiara',
   },
   pwa: {
-    updatesWarning: 'Sono disponibili {emphasis}! ~ Ricarica il sito per ottenere la versione più aggiornata!',
+    updatesWarning:
+      'Sono disponibili {emphasis}! ~ Ricarica il sito per ottenere la versione più aggiornata!',
     updatesWarningEmphasis: 'nuovi contenuti',
     reload: 'Ricarica',
   },

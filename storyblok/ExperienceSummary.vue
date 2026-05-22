@@ -1,11 +1,11 @@
 <template>
   <div class="experience-summary" itemscope itemtype="http://schema.org/Person">
     <div class="experience-summary__intro">
-      <MyPicture />
+      <MyPicture featured />
     </div>
     <div class="experience-summary__content">
       <LongText :blok="blok" />
-      <p class="contact-info">
+      <div class="contact-info">
         <ClientOnly>
           <ContactAge class="contact-info__item" />
         </ClientOnly>
@@ -13,7 +13,7 @@
         <ClientOnly>
           <ContactEmail class="contact-info__item" />
         </ClientOnly>
-      </p>
+      </div>
     </div>
 
     <div v-if="yearsOfExperience !== '0' && yearsOfRemote" class="badges">
@@ -71,13 +71,6 @@ defineProps<{
   &__intro {
     display: grid;
     padding: 3rem;
-    .profile-picture {
-      justify-self: center;
-      align-self: center;
-      @include mq($from: desktop) {
-        transform: rotate(-4deg) scale(1.5) translate(-10px, -17px);
-      }
-    }
   }
   &__content {
     .contact-info {

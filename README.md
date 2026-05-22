@@ -27,7 +27,21 @@ Original Git Flow with some rules:
 
 ## Package manager
 
-Use [Yarn](https://yarnpkg.com/cli/install)
+Use [pnpm](https://pnpm.io/installation)
+
+### Installation
+
+Run `pnpm install`
+
+Generate SSH certificates:
+
+```
+brew install mkcert
+mkcert -install
+mkcert localhost
+```
+
+Run `pnpm dev`
 
 ## Upgrade Nuxt
 

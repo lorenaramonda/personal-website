@@ -1,6 +1,4 @@
-import type { ISbStoryData } from 'storyblok-js-client'
-import type { SbBlokData } from '@storyblok/js'
-import { getDurationInYears } from '@/helpers'
+import type { ISbStoryData, SbBlokData } from '@storyblok/vue'
 import { useLocalizedStoryParams } from '@/composables/useLocalizedStoryParams'
 import type { StoryblokSpace } from '@/types'
 
@@ -19,7 +17,9 @@ export const useStore = defineStore('store', {
   getters: {
     spaceLanguages: (state) => {
       const defaultLocale = ['it']
-      return state.space?.language_codes ? [defaultLocale].concat(state.space?.language_codes).flat() : defaultLocale
+      return state.space?.language_codes
+        ? [defaultLocale].concat(state.space?.language_codes).flat()
+        : defaultLocale
     },
     lastJobTitle: (state) => state.jobs.find((item) => !item.end_date)?.job_title ?? '',
     careerBeginning: (state) => state.jobs.slice().reverse()[0]?.start_date ?? '',
@@ -32,13 +32,17 @@ export const useStore = defineStore('store', {
       )
     },
     yearsOfExperience() {
-      const exactYears = getDurationInYears(typeof this.careerBeginning === 'string' ? this.careerBeginning : '')
+      const exactYears = getDurationInYears(
+        typeof this.careerBeginning === 'string' ? this.careerBeginning : '',
+      )
       const multipleOf5 = exactYears % 5
       const sign = multipleOf5 ? '+' : ''
       return `${exactYears - multipleOf5}${sign}`
     },
     yearsOfRemote() {
-      return getDurationInYears(typeof this.remoteBeginning === 'string' ? this.remoteBeginning : '')
+      return getDurationInYears(
+        typeof this.remoteBeginning === 'string' ? this.remoteBeginning : '',
+      )
     },
   },
   actions: {

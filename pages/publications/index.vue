@@ -2,7 +2,7 @@
   <div class="section-publications">
     <div class="container-page">
       <header class="section-publications__title">
-        <BaseHeading primary :label="$t('publications.subtitle')">{{ page.title }}</BaseHeading>
+        <BaseHeading primary :label="$t('publications.subtitle')">{{ page?.title }}</BaseHeading>
         <BlogSections v-if="blogSections.length" :pages="blogSections" />
       </header>
       <div class="section-publications__content">
@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import type { ISbStoryData } from 'storyblok-js-client'
+import type { ISbStoryData } from '@storyblok/vue'
 import { useLocalizedStoryParams } from '@/composables/useLocalizedStoryParams'
 
 import PostsList from '@/components/PostsList.vue'
@@ -29,38 +29,44 @@ defineI18nRoute({
 
 const storyblokApi = useStoryblokApi()
 const { $getMetadataFromStory, $setMetadata } = useNuxtApp()
-
 const { getParams } = useLocalizedStoryParams()
 
-const page = await useAsyncStoryblok('publications', getParams())
-  .then((data) => data.value.content)
-  .catch(() => null)
+const { data: pageStory } = await useAsyncData('publications-page', () =>
+  storyblokApi
+    .get('cdn/stories/publications', getParams())
+    .then((response) => response.data.story?.content ?? null)
+    .catch(() => null),
+)
 
-if (!page) {
-  throw createError({
-    statusCode: 404,
-  })
+if (!pageStory.value) {
+  throw createError({ statusCode: 404 })
 }
 
-const posts = await storyblokApi
-  .get(`cdn/stories`, {
-    ...getParams(),
-    starts_with: 'publications/',
-    level: 2,
-    sort_by: 'first_published_at:desc',
-  })
-  .then((response) => response.data.stories ?? [])
-  .catch(() => null)
+const page = computed(() => pageStory.value)
 
-const postsWithContent = computed(() => {
-  return posts.filter((e: ISbStoryData) => !e.is_startpage && e.content.title)
-})
+const { data: posts } = await useAsyncData('publications-posts', () =>
+  storyblokApi
+    .get('cdn/stories', {
+      ...getParams(),
+      starts_with: 'publications/',
+      level: 2,
+      sort_by: 'first_published_at:desc',
+    })
+    .then((response) => response.data.stories ?? [])
+    .catch(() => []),
+)
 
-const blogSections = computed(() => {
-  return posts.filter((e: ISbStoryData) => e.is_startpage && e.content.title)
-})
+const postsWithContent = computed(() =>
+  (posts.value ?? []).filter((e: ISbStoryData) => !e.is_startpage && e.content.title),
+)
 
-$setMetadata($getMetadataFromStory(page))
+const blogSections = computed(() =>
+  (posts.value ?? []).filter((e: ISbStoryData) => e.is_startpage && e.content.title),
+)
+
+if (pageStory.value) {
+  $setMetadata($getMetadataFromStory(pageStory.value))
+}
 </script>
 
 <style lang="scss" scoped>
