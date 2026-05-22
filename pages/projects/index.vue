@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import type { SbBlokData } from '@storyblok/js'
+import type { SbBlokData } from '@storyblok/vue'
 import { useLocalizedStoryParams } from '@/composables/useLocalizedStoryParams'
 
 defineOptions({

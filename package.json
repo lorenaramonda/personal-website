@@ -18,7 +18,8 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@sentry/browser": "^9.27.0"
+    "@sentry/browser": "^9.27.0",
+    "@storyblok/vue": "^10.1.8"
   },
   "devDependencies": {
     "@nuxt/image": "^1.9.0",
@@ -28,13 +29,13 @@
     "@nuxtjs/google-fonts": "^3.0.2",
     "@nuxtjs/i18n": "^9.0.0",
     "@pinia/nuxt": "^0.9.0",
+    "@storyblok/nuxt": "^10.1.8",
     "@types/node": "^18",
     "@typescript-eslint/parser": "^6.7.0",
     "@vite-pwa/nuxt": "^1.1.1",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vitest/coverage-istanbul": "^3.2.1",
     "@vue/test-utils": "^2.3.2",
-    "@storyblok/nuxt": "^10.1.8",
     "eslint": "^8.49.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",

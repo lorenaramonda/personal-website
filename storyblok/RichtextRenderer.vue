@@ -10,9 +10,9 @@
 </template>
 
 <script setup lang="ts">
-import { type ISbRichtext } from 'storyblok-js-client'
+import type { StoryblokRichTextDocumentNode } from '@storyblok/vue'
 
 defineProps<{
-  document: ISbRichtext
+  document: StoryblokRichTextDocumentNode
 }>()
 </script>

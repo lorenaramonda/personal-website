@@ -11,6 +11,9 @@ importers:
       '@sentry/browser':
         specifier: ^9.27.0
         version: 9.47.1
+      '@storyblok/vue':
+        specifier: ^10.1.8
+        version: 10.1.8(vue@3.5.31(typescript@5.9.3))
     devDependencies:
       '@nuxt/image':
         specifier: ^1.9.0
@@ -6137,11 +6140,6 @@ packages:
   spdx-license-ids@3.0.23:
     resolution: {integrity: sha512-CWLcCCH7VLu13TgOH+r8p1O/Znwhqv/dbb6lqWy67G+pT1kHmeD/+V36AVb/vq8QMIQwVShJ6Ssl5FPh0fuSdw==}
 
-  srvx@0.11.13:
-    resolution: {integrity: sha512-oknN6qduuMPafxKtHucUeG32Q963pjriA5g3/Bl05cwEsUe5VVbIU4qR9LrALHbipSCyBe+VmfDGGydqazDRkw==}
-    engines: {node: '>=20.16.0'}
-    hasBin: true
-
   srvx@0.11.15:
     resolution: {integrity: sha512-iXsux0UcOjdvs0LCMa2Ws3WwcDUozA3JN3BquNXkaFPP7TpRqgunKdEgoZ/uwb1J6xaYHfxtz9Twlh6yzwM6Tg==}
     engines: {node: '>=20.16.0'}
@@ -11915,7 +11913,7 @@ snapshots:
   h3@2.0.1-rc.19:
     dependencies:
       rou3: 0.8.1
-      srvx: 0.11.13
+      srvx: 0.11.15
 
   happy-dom@20.8.8:
     dependencies:
@@ -14065,8 +14063,6 @@ snapshots:
       spdx-license-ids: 3.0.23
 
   spdx-license-ids@3.0.23: {}
-
-  srvx@0.11.13: {}
 
   srvx@0.11.15: {}
 

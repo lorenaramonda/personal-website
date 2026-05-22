@@ -9,14 +9,19 @@
           {{ page.content.title }}
         </BaseHeading>
       </header>
-      <StoryblokComponent v-for="blok in bloks" :key="blok._uid" :blok="blok" class="section-hobbies__content" />
+      <StoryblokComponent
+        v-for="blok in bloks"
+        :key="blok._uid"
+        :blok="blok"
+        class="section-hobbies__content"
+      />
       <EndOfPage />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { ISbStoryData } from 'storyblok-js-client'
+import type { ISbStoryData } from '@storyblok/vue'
 
 import { useLocalizedStoryParams } from '@/composables/useLocalizedStoryParams'
 
@@ -68,12 +73,16 @@ const breadcrumbs = computed(() => [
 ])
 
 const bloks = computed(() => {
-  if (!content.value.body) return []
+  if (!content.value.body) {
+    return []
+  }
   return content.value.body.map((item) => {
     if (item.component === 'HobbiesList') {
       return {
         ...item,
-        items: Array.isArray(item.items) ? item.items.map((story) => ({ ...story.content, full_slug: story.full_slug })) : [],
+        items: Array.isArray(item.items)
+          ? item.items.map((story) => ({ ...story.content, full_slug: story.full_slug }))
+          : [],
       }
     }
 
@@ -85,7 +94,9 @@ onMounted(() => {
   useStoryblokBridge(page.value?.id, (updatedStory) => (page.value = updatedStory))
 })
 
-if (content.value) $setMetadata($getMetadataFromStory(content.value))
+if (content.value) {
+  $setMetadata($getMetadataFromStory(content.value))
+}
 </script>
 
 <style lang="scss">

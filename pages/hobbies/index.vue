@@ -19,8 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import type { SbBlokData } from '@storyblok/js'
-import type { ISbStoryData } from 'storyblok-js-client'
+import type { SbBlokData, ISbStoryData } from '@storyblok/vue'
 import { useLocalizedStoryParams } from '@/composables/useLocalizedStoryParams'
 
 defineOptions({

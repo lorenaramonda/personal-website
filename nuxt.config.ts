@@ -1,4 +1,4 @@
-import type { ISbStoriesParams } from 'storyblok-js-client'
+import type { ISbStoriesParams } from '@storyblok/vue'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -199,7 +199,10 @@ export default defineNuxtConfig({
     },
   },
   vite: {
-    optimizeDeps: { exclude: ['fsevents'], include: ['@storyblok/vue', 'floating-vue', '@sentry/browser'] },
+    optimizeDeps: {
+      exclude: ['fsevents'],
+      include: ['@storyblok/vue', 'floating-vue', '@sentry/browser'],
+    },
     css: {
       preprocessorOptions: {
         scss: {

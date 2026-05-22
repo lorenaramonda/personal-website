@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import type { ISbStoryData } from 'storyblok-js-client'
+import type { ISbStoryData } from '@storyblok/vue'
 import { useLocalizedStoryParams } from '@/composables/useLocalizedStoryParams'
 
 import PostsList from '@/components/PostsList.vue'

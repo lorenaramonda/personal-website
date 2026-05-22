@@ -15,7 +15,12 @@
         </template>
       </template>
       <template v-else>
-        <PostArticle v-if="page.content" :post="page.content" :published-date="page.first_published_at" :slug="page.full_slug" />
+        <PostArticle
+          v-if="page.content"
+          :post="page.content"
+          :published-date="page.first_published_at"
+          :slug="page.full_slug"
+        />
       </template>
       <EndOfPage />
     </div>
@@ -23,8 +28,7 @@
 </template>
 
 <script setup lang="ts">
-import type { SbBlokData } from '@storyblok/js'
-import type { ISbStoryData } from 'storyblok-js-client'
+import type { SbBlokData, ISbStoryData } from '@storyblok/vue'
 
 import { useLocalizedStoryParams } from '@/composables/useLocalizedStoryParams'
 import type { GenericObject } from '@/types'
@@ -70,7 +74,11 @@ if (!page.value) {
 
 const content = computed(() => page.value.content)
 const isStartpage = computed(() => page.value.is_startpage)
-const excludedSlug = computed(() => (slugParams.value.endsWith('/') ? `publications/${slugParams.value}` : `publications/${slugParams.value}/`))
+const excludedSlug = computed(() =>
+  slugParams.value.endsWith('/')
+    ? `publications/${slugParams.value}`
+    : `publications/${slugParams.value}/`,
+)
 
 if (isStartpage.value) {
   const posts = await storyblokApi
@@ -94,19 +102,28 @@ if (isStartpage.value) {
 
   if (content.value.body?.length && posts) {
     bloks.value = content.value.body.map((item: SbBlokData) => {
-      if (item.component === 'ItemsList') item.items = posts.filter((e: GenericObject) => e.title)
+      if (item.component === 'ItemsList') {
+        item.items = posts.filter((e: GenericObject) => e.title)
+      }
       return item
     })
   }
 
-  cssClass.value = data.value?.story?.content?.bg_color ? `section-publications--${data.value.story.content.bg_color}` : undefined
+  cssClass.value = data.value?.story?.content?.bg_color
+    ? `section-publications--${data.value.story.content.bg_color}`
+    : undefined
 }
 
 onMounted(() => {
   useStoryblokBridge(page.value?.id, (updatedStory) => (page.value = updatedStory))
 })
 
-if (content.value) $setMetadata({ ...$getMetadataFromStory(content.value), ogType: !isStartpage.value ? 'article' : undefined })
+if (content.value) {
+  $setMetadata({
+    ...$getMetadataFromStory(content.value),
+    ogType: !isStartpage.value ? 'article' : undefined,
+  })
+}
 </script>
 
 <style lang="scss">
