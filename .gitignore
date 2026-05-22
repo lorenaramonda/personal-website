@@ -12,3 +12,7 @@ coverage
 
 # Local Netlify folder
 .netlify
+
+# Claude
+.claude/*
+!.claude/settings.json
