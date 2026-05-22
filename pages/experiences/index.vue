@@ -36,7 +36,7 @@ const { $getMetadataFromStory, $setMetadata } = useNuxtApp()
 const { getParams } = useLocalizedStoryParams()
 const store = useStore()
 
-const { story } = await useAsyncStoryblok('experiences', { api: getParams() })
+const { story } = await useAsyncStoryblok('experiences', { api: getParams(), bridge: {} })
 
 await store.fetchJobs()
 

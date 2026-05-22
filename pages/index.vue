@@ -14,7 +14,7 @@ const { getParams } = useLocalizedStoryParams()
 
 await store.fetchJobs()
 
-const { story: page } = await useAsyncStoryblok('home', { api: getParams() })
+const { story: page } = await useAsyncStoryblok('home', { api: getParams(), bridge: {} })
 
 const content = computed(() => page.value?.content)
 const bloks = computed(() => content.value?.body ?? [])

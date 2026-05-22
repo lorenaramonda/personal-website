@@ -38,7 +38,7 @@ const { $getMetadataFromStory, $setMetadata } = useNuxtApp()
 const { getParams } = useLocalizedStoryParams()
 const { t } = useI18n()
 
-const page: Ref<ISbStoryData> = ref()
+const page = ref<ISbStoryData | undefined>()
 
 const slugParams = computed(() => {
   return [params.slug].flat().join('/')
@@ -64,7 +64,7 @@ if (!page.value) {
   })
 }
 
-const content = computed(() => page.value.content)
+const content = computed(() => page.value?.content)
 const breadcrumbs = computed(() => [
   {
     slug: localePath({ name: 'hobbies' }),
@@ -73,7 +73,7 @@ const breadcrumbs = computed(() => [
 ])
 
 const bloks = computed(() => {
-  if (!content.value.body) {
+  if (!content.value?.body) {
     return []
   }
   return content.value.body.map((item) => {
@@ -91,7 +91,9 @@ const bloks = computed(() => {
 })
 
 onMounted(() => {
-  useStoryblokBridge(page.value?.id, (updatedStory) => (page.value = updatedStory))
+  if (page.value?.id) {
+    useStoryblokBridge(page.value.id, (updatedStory) => (page.value = updatedStory))
+  }
 })
 
 if (content.value) {

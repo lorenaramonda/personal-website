@@ -31,6 +31,7 @@ const { getParams } = useLocalizedStoryParams()
 
 const { story } = await useAsyncStoryblok('hobbies', {
   api: { ...getParams(), resolve_relations: 'HobbiesList.items' },
+  bridge: {},
 })
 
 const page = computed(() => story.value?.content ?? null)

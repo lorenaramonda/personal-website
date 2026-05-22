@@ -18,7 +18,7 @@
         <PostArticle
           v-if="page.content"
           :post="page.content"
-          :published-date="page.first_published_at"
+          :published-date="page.first_published_at ?? undefined"
           :slug="page.full_slug"
         />
       </template>
