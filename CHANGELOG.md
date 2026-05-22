@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [2.8.0] - 2026-05-22
 
+- Add pull request template for GitHub
+
+## [2.8.0] - 2026-05-22
+
 - Migrated from Yarn to pnpm
 - Upgraded Storyblok SDK and updated codebase accordingly
 - Upgraded dependencies
