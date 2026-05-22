@@ -1,6 +1,8 @@
 <template>
   <div v-editable="blok" class="experience-card" itemscope itemtype="http://schema.org/Person">
-    <span class="experience-card__duration">{{ getStartDate(blok.start_date) }}{{ getEndDate(blok.end_date, blok.start_date) }}</span>
+    <span class="experience-card__duration"
+      >{{ getStartDate(blok.start_date) }}{{ getEndDate(blok.end_date, blok.start_date) }}</span
+    >
     <h2 class="experience-card__job-title" :itemprop="schemaJobTitle">{{ blok.job_title }}</h2>
 
     {{ $t('misc.at') }}
@@ -45,7 +47,9 @@ const schemaWorksFor = computed(() => {
 })
 
 function getStartDate(startDate: string) {
-  if (!startDate) return 0
+  if (!startDate) {
+    return 0
+  }
   const parsedDate = new Date(startDate.split(' ')[0])
   return parsedDate.getFullYear()
 }
@@ -55,7 +59,9 @@ function getEndDate(end: string, start: string) {
 
   const duration = props.blok.show_duration ? ` (${t('misc.years', yearsWorked)})` : ''
   // if current position, don't return end date
-  if (!end) return `-${t('misc.present')} ${duration}`
+  if (!end) {
+    return `-${t('misc.present')} ${duration}`
+  }
 
   const endDate = new Date(end.split(' ')[0])
 

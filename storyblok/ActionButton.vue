@@ -1,5 +1,11 @@
 <template>
-  <BaseActionLink :to="url" :target="blok.link?.target" :icon="blok.icon" :title="blok.link.title" :type="blok.type">
+  <BaseActionLink
+    :to="url"
+    :target="blok.link?.target"
+    :icon="blok.icon"
+    :title="blok.link.title"
+    :type="blok.type"
+  >
     {{ blok.label }}
   </BaseActionLink>
 </template>

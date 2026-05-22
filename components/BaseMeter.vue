@@ -1,6 +1,12 @@
 <template>
   <div v-tooltip="label" class="meter">
-    <component :is="icon" v-for="item in items" :key="item.id" class="meter__icon" :class="{ 'meter__icon--full': item.full }" />
+    <component
+      :is="icon"
+      v-for="item in items"
+      :key="item.id"
+      class="meter__icon"
+      :class="{ 'meter__icon--full': item.full }"
+    />
     <span class="meter__text">{{ label }}</span>
   </div>
 </template>

@@ -1,5 +1,9 @@
 <template>
-  <div id="contacts" class="onepage-contact-wrapper" :class="`onepage-contact-wrapper--${blok.bg_color}`">
+  <div
+    id="contacts"
+    class="onepage-contact-wrapper"
+    :class="`onepage-contact-wrapper--${blok.bg_color}`"
+  >
     <section v-editable="blok" class="onepage-contacts">
       <div class="onepage-contacts__left">
         <BaseHeading>{{ blok.title }}</BaseHeading>
@@ -21,9 +25,15 @@ const props = defineProps<{
 }>()
 
 const bgColor = computed(() => {
-  if (props.blok.bg_color === 'main') return 'rgb(var(--color-main-dark))'
-  if (props.blok.bg_color === 'secondary') return 'rgb(var(--color-secondary))'
-  if (props.blok.bg_color === 'dark') return 'rgb(var(--color-text))'
+  if (props.blok.bg_color === 'main') {
+    return 'rgb(var(--color-main-dark))'
+  }
+  if (props.blok.bg_color === 'secondary') {
+    return 'rgb(var(--color-secondary))'
+  }
+  if (props.blok.bg_color === 'dark') {
+    return 'rgb(var(--color-text))'
+  }
   return 'transparent'
 })
 </script>

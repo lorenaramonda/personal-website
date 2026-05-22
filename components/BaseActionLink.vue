@@ -1,6 +1,13 @@
 <template>
   <template v-if="$slots.default && to">
-    <a v-if="target === '_blank'" :href="to" class="action-link" :class="cssClasses" target="_blank" v-bind="$attrs">
+    <a
+      v-if="target === '_blank'"
+      :href="to"
+      class="action-link"
+      :class="cssClasses"
+      target="_blank"
+      v-bind="$attrs"
+    >
       <slot />
       <component :is="iconComponent" v-if="icon" />
     </a>

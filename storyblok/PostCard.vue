@@ -1,5 +1,10 @@
 <template>
-  <div class="post-card" :class="[`post-card--${mode}`, cssClass]" itemscope itemtype="https://schema.org/Article">
+  <div
+    class="post-card"
+    :class="[`post-card--${mode}`, cssClass]"
+    itemscope
+    itemtype="https://schema.org/Article"
+  >
     <h2 itemprop="name" class="post-card__title">
       <NuxtLink :to="`/${blok.full_slug}`">
         <span v-if="mode === 'list'">{{ index }}.</span>
@@ -12,10 +17,17 @@
 
     <p v-if="blok.intro" class="post-card__intro" v-html="intro"></p>
 
-    <BaseActionLink :to="`/${blok.full_slug}`" icon="arrow-right" class="post-card__link">{{ $t('publications.read') }}</BaseActionLink>
+    <BaseActionLink :to="`/${blok.full_slug}`" icon="arrow-right" class="post-card__link">{{
+      $t('publications.read')
+    }}</BaseActionLink>
 
     <picture v-if="blok.image?.filename" class="post-card__image">
-      <StoryblokImage :image="blok.image" :width="coverDimensions.width" :height="coverDimensions.height" itemprop="thumbnail" />
+      <StoryblokImage
+        :image="blok.image"
+        :width="coverDimensions.width"
+        :height="coverDimensions.height"
+        itemprop="thumbnail"
+      />
     </picture>
   </div>
 </template>

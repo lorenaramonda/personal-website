@@ -21,7 +21,13 @@
       {{ $t('misc.at') }}
       <em>
         <span>
-          <a :href="blok.institution_url.url" target="_blank" :title="blok.institution" rel="noopener">{{ blok.institution }}</a> </span
+          <a
+            :href="blok.institution_url.url"
+            target="_blank"
+            :title="blok.institution"
+            rel="noopener"
+            >{{ blok.institution }}</a
+          > </span
         >, <span>{{ blok.city }}</span> - {{ releasedAt }}{{ expiredAt }}
       </em>
     </p>
@@ -39,7 +45,9 @@ const releasedAt = computed(() => {
   return new Date(props.blok.released_at.split(' ')[0]).getFullYear()
 })
 const expiredAt = computed(() => {
-  return props.blok.expired_at ? `/${new Date(props.blok.expired_at.split(' ')[0]).getFullYear()}` : ''
+  return props.blok.expired_at
+    ? `/${new Date(props.blok.expired_at.split(' ')[0]).getFullYear()}`
+    : ''
 })
 </script>
 

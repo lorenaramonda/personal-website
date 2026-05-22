@@ -1,7 +1,11 @@
 <template>
   <div class="navigation" :class="{ 'navigation--open': open }">
     <div class="navigation__top">
-      <NuxtLink :to="localePath({ name: 'index' })" class="navigation__gohome" @click="toggleMenu(!open)">
+      <NuxtLink
+        :to="localePath({ name: 'index' })"
+        class="navigation__gohome"
+        @click="toggleMenu(!open)"
+      >
         <MyPicture />
       </NuxtLink>
       <BaseLanguageSwitcher @click="toggleMenu(false)">
@@ -85,7 +89,11 @@
       <TheCopyrights class="navigation__copyrights" />
     </div>
   </div>
-  <TheNavigationToggle class="navigation__toggle navigation__toggle--mobile" :dark="open" @click="toggleMenu(!open)" />
+  <TheNavigationToggle
+    class="navigation__toggle navigation__toggle--mobile"
+    :dark="open"
+    @click="toggleMenu(!open)"
+  />
 </template>
 
 <script setup lang="ts">

@@ -10,7 +10,13 @@
             <span class="month">{{ getMonth(meeting.content.date) }}</span>
           </time>
           <p>
-            <a v-if="meeting.content.url.url" :href="meeting.content.url.url" target="_blank" rel="nofollow noopener" class="event__name">
+            <a
+              v-if="meeting.content.url.url"
+              :href="meeting.content.url.url"
+              target="_blank"
+              rel="nofollow noopener"
+              class="event__name"
+            >
               {{ meeting.content.name }}
             </a>
             <span v-else class="event__name">{{ meeting.content.name }}</span>
@@ -46,23 +52,31 @@ const storiesParams = {
 }
 
 function getDay(value) {
-  if (!value) return 0
+  if (!value) {
+    return 0
+  }
   return new Date(Date.parse(value)).getDate()
 }
 
 function getMonth(date) {
-  if (!date) return date
+  if (!date) {
+    return date
+  }
   return new Date(date.split(' ')[0]).toLocaleDateString(currentLocale.value.iso, {
     month: 'short',
   })
 }
 
-const { data: meetingsStories } = await useAsyncData('agenda-meetings', () => storyblokApi.get(`cdn/stories`, storiesParams), {
-  transform: (value) =>
-    value.data.stories.sort((a, b) => {
-      return new Date(a.content.date.split(' ')[0]) - new Date(b.content.date.split(' ')[0])
-    }),
-})
+const { data: meetingsStories } = await useAsyncData(
+  'agenda-meetings',
+  () => storyblokApi.get(`cdn/stories`, storiesParams),
+  {
+    transform: (value) =>
+      value.data.stories.sort((a, b) => {
+        return new Date(a.content.date.split(' ')[0]) - new Date(b.content.date.split(' ')[0])
+      }),
+  },
+)
 
 const meetings = computed(() => {
   return meetingsStories.value || []

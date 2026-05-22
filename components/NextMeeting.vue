@@ -1,16 +1,37 @@
 <template>
-  <section v-if="meeting" :class="{ 'event--today': isTodayConf }" class="event" itemscope itemtype="http://schema.org/Event">
+  <section
+    v-if="meeting"
+    :class="{ 'event--today': isTodayConf }"
+    class="event"
+    itemscope
+    itemtype="http://schema.org/Event"
+  >
     <h3 class="section__subtitle">{{ $t('nextEvent.title') }}</h3>
     <meta :content="new Date(meeting.date)" itemprop="startDate" />
     <p>
       <span itemprop="location" itemscope itemtype="http://schema.org/Place">
         <span itemprop="name">{{ meeting.location }}</span>
-        <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">{{ meeting.city }}</span
+        <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">{{
+          meeting.city
+        }}</span
         >,
       </span>
-      {{ new Date(meeting.date).toLocaleDateString(currentLocale.iso, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) }}
+      {{
+        new Date(meeting.date).toLocaleDateString(currentLocale.iso, {
+          weekday: 'long',
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        })
+      }}
       {{ $t('misc.for') }}
-      <a v-if="meeting.url?.url" :href="meeting.url.url" target="_blank" itemprop="url" rel="nofollow noopener">
+      <a
+        v-if="meeting.url?.url"
+        :href="meeting.url.url"
+        target="_blank"
+        itemprop="url"
+        rel="nofollow noopener"
+      >
         <strong itemprop="name">{{ meeting.name }}</strong>
       </a>
       <strong v-else itemprop="name">{{ meeting.name }}</strong>
@@ -42,19 +63,25 @@ const storiesParams = {
 
 const storyblokApi = useStoryblokApi()
 
-const { data: meetingsStories } = await useAsyncData('next-meeting', () => storyblokApi.get(`cdn/stories`, storiesParams), {
-  transform: (value) =>
-    value.data.stories.sort((a, b) => {
-      return new Date(a.content.date) - new Date(b.content.date)
-    }),
-})
+const { data: meetingsStories } = await useAsyncData(
+  'next-meeting',
+  () => storyblokApi.get(`cdn/stories`, storiesParams),
+  {
+    transform: (value) =>
+      value.data.stories.sort((a, b) => {
+        return new Date(a.content.date) - new Date(b.content.date)
+      }),
+  },
+)
 
 const meeting = computed(() => {
   return meetingsStories.value ? meetingsStories.value[0]?.content : null
 })
 
 const isTodayConf = computed(() => {
-  return meeting.value ? new Date(meeting.value.date).toDateString() === new Date().toDateString() : false
+  return meeting.value
+    ? new Date(meeting.value.date).toDateString() === new Date().toDateString()
+    : false
 })
 </script>
 

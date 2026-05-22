@@ -4,7 +4,11 @@
       <slot />
     </main>
     <TheNavigation />
-    <TheNavigationToggle class="navigation-toggle navigation__toggle--desktop" :dark="open" @click="open = !open" />
+    <TheNavigationToggle
+      class="navigation-toggle navigation__toggle--desktop"
+      :dark="open"
+      @click="open = !open"
+    />
     <ClientOnly>
       <PaletteSwitcher
         :class="{ 'palette-switcher--hidden': !showPaletteSwitcher }"
@@ -32,7 +36,9 @@ function handleScroll() {
 }
 
 function togglePaletteSwitcher(value: boolean) {
-  if (currentScrollTop() < SCROLL_THRESHOLD) return
+  if (currentScrollTop() < SCROLL_THRESHOLD) {
+    return
+  }
   showPaletteSwitcher.value = value
 }
 

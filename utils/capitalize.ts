@@ -1,3 +1,5 @@
 export const capitalize = (s: string) => {
-  return s.replace(/^[-_]*(.)/, (_, c) => c.toUpperCase()).replace(/[-_]+(.)/g, (_, c) => '' + c.toUpperCase())
+  return s
+    .replace(/^[-_]*(.)/, (_, c) => c.toUpperCase())
+    .replace(/[-_]+(.)/g, (_, c) => '' + c.toUpperCase())
 }

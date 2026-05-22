@@ -19,14 +19,26 @@
           :height="512"
           class="onepage-intro__background"
         />
-        <svg v-else class="onepage-intro__background" width="680" height="701" viewBox="0 0 680 701" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          v-else
+          class="onepage-intro__background"
+          width="680"
+          height="701"
+          viewBox="0 0 680 701"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <circle cx="384" cy="406" r="295" fill="currentColor" />
           <path
             d="M1 557.656C1 557.656 361.283 778.271 426.143 497.286C491.004 216.302 679 191 679 191"
             stroke="rgb(var(--color-text))"
             stroke-width="2"
           />
-          <path d="M103 297C139 195.5 229 148 229 148" stroke="rgb(var(--color-text))" stroke-width="2" />
+          <path
+            d="M103 297C139 195.5 229 148 229 148"
+            stroke="rgb(var(--color-text))"
+            stroke-width="2"
+          />
           <path
             d="M513.135 4.994C513.346 4.45054 513.534 3.92869 513.7 3.44276C513.897 4.02574 514.121 4.65881 514.366 5.31464C514.874 6.66979 515.483 8.13658 516.163 9.46487C516.834 10.7777 517.61 12.0239 518.471 12.8848C519.331 13.7456 520.578 14.521 521.891 15.1929C523.219 15.8727 524.686 16.4815 526.041 16.9891C526.572 17.1882 527.089 17.3726 527.576 17.5404C527.177 17.6521 526.759 17.7754 526.327 17.9106C523.721 18.7276 520.478 20.0328 518.483 21.9582C516.387 23.9816 514.951 27.3582 514.048 30.0826C513.878 30.596 513.725 31.093 513.588 31.5621C513.424 31.0818 513.243 30.5716 513.044 30.044C512.016 27.3227 510.452 23.9664 508.372 21.9582C506.386 20.0411 503.28 18.7348 500.792 17.915C500.446 17.8009 500.108 17.6953 499.784 17.598C500.089 17.4924 500.405 17.3787 500.731 17.2569C503.195 16.3347 506.272 14.9026 508.368 12.901C510.568 10.8012 512.132 7.58387 513.135 4.994Z"
             stroke="rgb(var(--color-text))"
@@ -45,7 +57,13 @@
         </svg>
 
         <picture v-if="blok.image">
-          <StoryblokImage :image="blok.image" itemprop="image" :width="512" :height="512" class="onepage-intro__image" />
+          <StoryblokImage
+            :image="blok.image"
+            itemprop="image"
+            :width="512"
+            :height="512"
+            class="onepage-intro__image"
+          />
         </picture>
       </div>
 

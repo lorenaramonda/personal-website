@@ -1,7 +1,9 @@
 <template>
   <ol class="breadcrumbs">
     <li v-for="(breadcrumb, i) in breadcrumbs" :key="i" class="breadcrumbs__item">
-      <NuxtLink :to="getSlug(breadcrumb.slug)" :title="breadcrumb.title">{{ breadcrumb.title }}</NuxtLink>
+      <NuxtLink :to="getSlug(breadcrumb.slug)" :title="breadcrumb.title">{{
+        breadcrumb.title
+      }}</NuxtLink>
     </li>
   </ol>
 </template>
@@ -27,7 +29,9 @@ function removeTrailingSlash(str: string) {
 function getDefaultSlug(str: string) {
   const slug = removeTrailingSlash(str)
   const slugParts = slug.split('/')
-  if (localeCodes.value.includes(slugParts[0])) slugParts.shift()
+  if (localeCodes.value.includes(slugParts[0])) {
+    slugParts.shift()
+  }
   return slugParts.length ? slugParts : []
 }
 
@@ -51,7 +55,9 @@ if (props.slug) {
       slugParts.pop()
     }
   }
-} else if (props.items) breadcrumbs.value = props.items
+} else if (props.items) {
+  breadcrumbs.value = props.items
+}
 </script>
 
 <style lang="scss">

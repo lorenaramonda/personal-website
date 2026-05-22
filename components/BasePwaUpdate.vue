@@ -22,7 +22,13 @@ onMounted(() => {
             </template>
           </i18n-t>
           <Transition name="shake">
-            <button v-show="showAction" class="pwa-notification__button" @click="$pwa?.updateServiceWorker()">{{ $t('pwa.reload') }}</button>
+            <button
+              v-show="showAction"
+              class="pwa-notification__button"
+              @click="$pwa?.updateServiceWorker()"
+            >
+              {{ $t('pwa.reload') }}
+            </button>
           </Transition>
         </p>
       </div>

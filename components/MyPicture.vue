@@ -2,15 +2,28 @@
   <figure :class="$style.profilePicture">
     <FlipBox @mouseenter="toggleTitle(true)" @mouseleave="toggleTitle(false)">
       <template #front>
-        <img src="~/assets/images/lorena-ramonda_400x400.jpg" width="400" height="400" alt="Lorena Ramonda" itemprop="image" />
+        <img
+          src="~/assets/images/lorena-ramonda_400x400.jpg"
+          width="400"
+          height="400"
+          alt="Lorena Ramonda"
+          itemprop="image"
+        />
       </template>
       <template #back>
         <img src="~/assets/images/rocket.png" width="512" height="512" alt="Logo The Rocket Dev" />
       </template>
     </FlipBox>
-    <figcaption :class="[$style.profilePictureTitle, { [$style.profilePictureTitleHighlighted]: highlightTitle }]">
+    <figcaption
+      :class="[
+        $style.profilePictureTitle,
+        { [$style.profilePictureTitleHighlighted]: highlightTitle },
+      ]"
+    >
       <span>the rocket dev</span>
-      <div :class="$style.pictureCaption" itemprop="name"><span itemprop="givenName">Lorena</span> <span itemprop="familyName">Ramonda</span></div>
+      <div :class="$style.pictureCaption" itemprop="name">
+        <span itemprop="givenName">Lorena</span> <span itemprop="familyName">Ramonda</span>
+      </div>
     </figcaption>
   </figure>
 </template>

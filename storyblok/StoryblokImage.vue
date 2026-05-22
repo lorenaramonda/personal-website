@@ -37,8 +37,12 @@ const calculatedHeight = computed(() => props.height || undefined)
 
 const title = computed(() => {
   const imageInfo = props.image.title ? [props.image.title] : []
-  if (props.image.copyright) imageInfo.push(`${t('misc.credits')}: ${props.image.copyright}`)
-  if (props.image.source) imageInfo.push(`${t('misc.source')}: ${props.image.source}`)
+  if (props.image.copyright) {
+    imageInfo.push(`${t('misc.credits')}: ${props.image.copyright}`)
+  }
+  if (props.image.source) {
+    imageInfo.push(`${t('misc.source')}: ${props.image.source}`)
+  }
   return imageInfo.join(' / ')
 })
 </script>

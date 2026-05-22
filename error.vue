@@ -13,7 +13,9 @@
       <p v-if="error?.message" @click="toggleError()">{{ error.message }}</p>
       <pre v-show="showError">{{ error }}</pre>
     </template>
-    <NuxtLink :to="localePath({ name: 'index' })" class="button" @click="clearError()">Home page</NuxtLink>
+    <NuxtLink :to="localePath({ name: 'index' })" class="button" @click="clearError()"
+      >Home page</NuxtLink
+    >
   </div>
 </template>
 

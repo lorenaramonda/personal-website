@@ -3,11 +3,18 @@
     <picture
       v-if="blok.image?.filename"
       class="blog-section-card__image"
-      :class="{ 'blog-section-card__image--grayscale': blok.ended_at, 'blog-section-card__image--hover': hoverStatus }"
+      :class="{
+        'blog-section-card__image--grayscale': blok.ended_at,
+        'blog-section-card__image--hover': hoverStatus,
+      }"
     >
       <StoryblokImage :image="blok.image" :width="800" :height="500" />
     </picture>
-    <div class="blog-section-card__details" @mouseenter="toggleHover(true)" @mouseleave="toggleHover(false)">
+    <div
+      class="blog-section-card__details"
+      @mouseenter="toggleHover(true)"
+      @mouseleave="toggleHover(false)"
+    >
       <p class="blog-section-card__tags">
         <BlogTag v-if="blok.ended_at" :label="$t('blog.complete')" />
         <BlogTag v-else :label="$t('blog.ongoing')" active />
@@ -22,8 +29,14 @@
           {{ getDate(blok.started_at, currentLocale.iso, { weekday: undefined }) }}
         </time>
       </p>
-      <RichtextRenderer v-if="blok.description" :document="blok.description" class="blog-section-card__content" />
-      <BaseActionLink :to="`/${blok.full_slug}`" icon="arrow-right">{{ $t('publications.read') }}</BaseActionLink>
+      <RichtextRenderer
+        v-if="blok.description"
+        :document="blok.description"
+        class="blog-section-card__content"
+      />
+      <BaseActionLink :to="`/${blok.full_slug}`" icon="arrow-right">{{
+        $t('publications.read')
+      }}</BaseActionLink>
     </div>
   </div>
 </template>

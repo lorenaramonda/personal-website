@@ -1,8 +1,8 @@
 @use 'sass:math';
 @use 'sass:map';
 @use 'sass:list';
-@use "sass:string";
-@use "sass:meta";
+@use 'sass:string';
+@use 'sass:meta';
 
 /// Breakpoint list
 ///
@@ -274,10 +274,7 @@ $media-type: all !default;
 ///
 ///  // Show breakpoints using custom settings
 ///  @include show-breakpoints((L, XL), (S: 300px, L: 800px, XL: 1200px));
-@mixin show-breakpoints(
-  $show-breakpoints: $show-breakpoints,
-  $breakpoints: $breakpoints
-) {
+@mixin show-breakpoints($show-breakpoints: $show-breakpoints, $breakpoints: $breakpoints) {
   body:before {
     background-color: #fcf8e3;
     border-bottom: 1px solid #fbeed5;
